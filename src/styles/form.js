@@ -1,7 +1,10 @@
 import { styled } from '@mui/system';
-import { Form } from 'formik';
-import { COLORS } from 'helpers/enums/colors';
 import { Link } from 'react-router-dom';
+
+import { COLORS } from 'helpers/enums/colors';
+
+import Button from 'components/commons/Button';
+import { Form } from 'formik';
 
 export const Container = styled('div')({
   display: 'flex',
@@ -13,13 +16,6 @@ export const Container = styled('div')({
     'linear-gradient(180deg, #2A9D8F 0%, rgba(151, 255, 242, 0) 100%)',
 });
 
-export const Title = styled('span')({
-  fontFamily: 'Fira Sans, sans-serif',
-  fontSize: '50px',
-  fontWeight: '700',
-  color: COLORS.BlueDianne,
-});
-
 export const FormContainer = styled('div')({
   display: 'flex',
   flexDirection: 'column',
@@ -28,12 +24,23 @@ export const FormContainer = styled('div')({
   maxWidth: '400px',
 });
 
-export const CustomForm = styled('form')({
+export const CustomForm = styled(Form)({
   display: 'flex',
   flexDirection: 'column',
   gap: 30,
   alignItems: 'center',
 });
+
+export const Title = styled('span')({
+  fontFamily: 'Fira Sans, sans-serif',
+  fontSize: '50px',
+  fontWeight: '700',
+  color: COLORS.BlueDianne,
+});
+
+export const SubmitButton = styled(Button)`
+  width: 100%;
+`;
 
 export const LinkContainer = styled('div')({
   display: 'flex',

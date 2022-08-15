@@ -10,6 +10,11 @@ export const onLogin = (formData) => ({
   formData,
 });
 
+export const onRegister = (formData) => ({
+  type: constants.USER_ON_REGISTER_REQUESTED,
+  formData,
+});
+
 export const onLogout = () => ({
   type: constants.USER_ON_LOGOUT_REQUESTED,
 });

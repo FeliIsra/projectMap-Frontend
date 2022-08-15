@@ -2,30 +2,26 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { onLogin } from 'redux/actions/user.actions';
+import { onRegister } from 'redux/actions/user.actions';
 
 import Loading from 'components/commons/Loading';
 import LayoutContainer from 'containers/LayoutContainer';
 
-import LoginView from 'views/LoginView';
+import RegisterView from 'views/RegisterView';
 
-const LoginContainer = () => {
+const RegisterContainer = () => {
   const dispatch = useDispatch();
   const { loading, data } = useSelector((state) => state.user);
-  const initialValues = {
-    email: '',
-    password: '',
-  };
 
-  const onSubmit = (values) => dispatch(onLogin(values));
+  const onSubmit = (values) => dispatch(onRegister(values));
 
   return (
     <LayoutContainer hasHeader={false}>
-      <LoginView onSubmit={onSubmit} initialValues={initialValues} />
+      <RegisterView onSubmit={onSubmit} />
       {loading && <Loading isModalMode message="Loading" />}
-      {data && <Navigate to="/dashboard" replace={true} />}
+      {data && <Navigate to="/login" replace={true} />}
     </LayoutContainer>
   );
 };
 
-export default LoginContainer;
+export default RegisterContainer;

@@ -15,9 +15,7 @@ export const removeCookie = (key, options = {}) => {
 };
 
 export const saveUserCookies = (token) => {
-  const { accessToken, expiresIn, refreshToken } = token;
-  setCookie('accessToken', accessToken, { maxAge: expiresIn });
-  setCookie('refreshToken', refreshToken);
+  setCookie('accessToken', token);
 };
 
 export const removeUserCookies = () => {

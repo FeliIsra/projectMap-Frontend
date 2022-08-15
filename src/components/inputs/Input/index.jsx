@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { IconButton } from '@mui/material';
+import { VisibilityOutlined, VisibilityOffOutlined } from '@mui/icons-material';
 
-import { CustomInput, InputContainer } from './styles';
+import { CustomInput, InputContainer, IconContainer } from './styles';
 
 const Input = (props) => {
-  const { placeholder, field } = props;
+  const { placeholder, field, type } = props;
+  const [showPassword, setShowPassword] = useState(false);
+  const isPasswordInput = type === 'password';
+
+  const getInputType = () => {
+    let inputType = type;
+    if (isPasswordInput) {
+      inputType = showPassword ? 'text' : type;
+    }
+    return inputType;
+  };
+
   return (
     <InputContainer>
-      <CustomInput {...field} placeholder={placeholder} />
+      <CustomInput
+        {...field}
+        placeholder={placeholder}
+        type={getInputType()}
+        showIcon={isPasswordInput}
+      />
+      {isPasswordInput && (
+        <IconContainer className="icon">
+          <IconButton
+            aria-label="toggle password visibility"
+            data-testid="toggle-password-button"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+          </IconButton>
+        </IconContainer>
+      )}
     </InputContainer>
   );
 };
