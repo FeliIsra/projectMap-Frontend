@@ -31,7 +31,13 @@ export function* projectsOnGetAll() {
 
 export function* watchProjects() {
   yield all([
-    takeLatest(appConstants.APP_ON_INITIALIZE_REQUESTED, projectsOnGetAll),
+    takeLatest(
+      [
+        appConstants.APP_ON_INITIALIZE_REQUESTED,
+        constants.PROJECTS_ON_GET_ALL_REQUESTED,
+      ],
+      projectsOnGetAll
+    ),
     takeLatest(constants.PROJECTS_ON_CREATE_REQUESTED, projectsSaveOne),
   ]);
 }

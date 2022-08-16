@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DashboardView from 'views/DashboardView';
+import { onCreate, onGetAll } from 'redux/actions/projects.actions';
+
 import LayoutContainer from 'containers/LayoutContainer';
-import { onCreate } from 'redux/actions/projects.actions';
 import Modal from 'components/commons/Modal';
+
+import DashboardView from 'views/DashboardView';
 import ProjectForm from 'views/DashboardView/ProjectForm';
 
 const DashboardContainer = () => {
   const dispatch = useDispatch();
   const [isAddNewOpen, setAddNew] = useState(false);
   const { items } = useSelector((state) => state.projects);
+
+  useEffect(() => {
+    dispatch(onGetAll());
+  }, [dispatch]);
 
   const onSubmit = (formData) => {
     dispatch(onCreate(formData));

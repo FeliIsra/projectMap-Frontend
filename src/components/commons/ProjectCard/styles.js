@@ -8,6 +8,7 @@ export const Card = styled(MUICard)({
 
 export const CardContent = styled(MUICardContent)((props) => ({
   display: 'flex',
+  flex: 1,
   flexDirection: 'column',
   backgroundColor: props.backgroundColor,
   borderRadius: 15,
