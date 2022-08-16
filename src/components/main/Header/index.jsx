@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import { Menu, MenuItem } from '@mui/material';
-import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+import {
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+  Notifications,
+} from '@mui/icons-material';
 
 import Logo from 'components/commons/Logo';
 
@@ -14,8 +18,7 @@ import {
 } from './styles';
 
 const Header = (props) => {
-  console.log('props', props);
-  const { items, menuItems, user, exactPathKeys } = props;
+  const { menuItems, user } = props;
   const [anchorElement, setAnchorElement] = useState(null);
   const initials = `${user?.firstName.charAt(0)}${
     user?.lastName?.charAt(0) || ''
@@ -30,6 +33,9 @@ const Header = (props) => {
           <Logo />
           {user && (
             <HeaderAccountContainer>
+              <IconButton>
+                <Notifications />
+              </IconButton>
               {!!menuItems.length && (
                 <AccountButton
                   aria-haspopup="true"

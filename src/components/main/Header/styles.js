@@ -14,6 +14,7 @@ export const HeaderAccountContainer = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   height: '100%',
+  gap: 30,
 });
 
 export const ToolbarContainer = styled(Toolbar)({
