@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 18 18"><g transform="translate(-9.161 1.414)" fill="#000000"><rect data-name="Rectangle 5" width="22" height="3" rx="1.5" transform="rotate(-45 21.653 -3.987)"/><rect data-name="Rectangle 5" width="22" height="3" rx="1.5" transform="rotate(-135 15.727 3.013)"/></g></svg>
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 0.333252C7.78333 0.333252 0.333328 7.78325 0.333328 16.9999C0.333328 26.2166 7.78333 33.6666 17 33.6666C26.2167 33.6666 33.6667 26.2166 33.6667 16.9999C33.6667 7.78325 26.2167 0.333252 17 0.333252ZM25.3333 22.9833L22.9833 25.3333L17 19.3499L11.0167 25.3333L8.66666 22.9833L14.65 16.9999L8.66666 11.0166L11.0167 8.66659L17 14.6499L22.9833 8.66659L25.3333 11.0166L19.35 16.9999L25.3333 22.9833Z" fill="white"/>
+</svg>

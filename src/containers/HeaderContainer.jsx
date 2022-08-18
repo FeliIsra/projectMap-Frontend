@@ -8,7 +8,7 @@ import Header from 'components/main/Header';
 
 const HeaderContainer = () => {
   const dispatch = useDispatch();
-  const { to } = useNavigate();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.data);
 
   const onLogoutClick = () => {
@@ -19,7 +19,7 @@ const HeaderContainer = () => {
     {
       key: 'profile',
       label: 'Profile',
-      onClick: () => to('/me'),
+      onClick: () => navigate('/me'),
     },
     {
       key: 'logout',

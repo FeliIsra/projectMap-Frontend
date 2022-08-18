@@ -24,8 +24,8 @@ export const ModalContainer = styled(Modal)`
 `;
 
 export const ModalContent = styled('div')({
-  backgroundColor: COLORS.white,
-  padding: 10,
+  backgroundColor: COLORS.BlueDianne,
+  padding: 15,
   borderRadius: 10,
   maxHeight: '90vh',
   overflow: 'scroll',
@@ -44,9 +44,12 @@ export const CloseModalContainer = styled('div')({
   width: '100%',
 });
 
-export const CloseModalIcon = styled(CloseModalSVG)`
-  cursor: pointer;
-`;
+export const CloseModalIcon = styled(CloseModalSVG)({
+  cursor: 'pointer',
+  color: 'white',
+  height: '1.5rem',
+  width: '1.5rem',
+});
 
 export const ChildrenContainer = styled('div')({
   padding: 30,

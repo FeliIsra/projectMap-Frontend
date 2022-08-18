@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, Formik } from 'formik';
 
 import Input from 'components/inputs/Input';
+import Textarea from 'components/inputs/Textarea';
 
 import { FormContainer, CustomForm, SubmitButton } from 'styles/form';
 
@@ -18,11 +19,12 @@ const ProjectForm = ({ onSubmit }) => (
           />
           <Field
             name="descripcion"
-            type="text"
             placeholder="Descripcion"
-            component={Input}
+            component={Textarea}
           />
-          <SubmitButton type="submit">Create</SubmitButton>
+          <SubmitButton type="submit" color="primary">
+            Create
+          </SubmitButton>
         </CustomForm>
       )}
     </Formik>

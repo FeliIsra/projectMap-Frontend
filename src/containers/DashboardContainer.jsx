@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { onCreate, onGetAll } from 'redux/actions/projects.actions';
 
@@ -11,21 +12,27 @@ import ProjectForm from 'views/DashboardView/ProjectForm';
 
 const DashboardContainer = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isAddNewOpen, setAddNew] = useState(false);
   const { items } = useSelector((state) => state.projects);
 
   useEffect(() => {
     dispatch(onGetAll());
-  }, [dispatch]);
+  }, []);
 
   const onSubmit = (formData) => {
     dispatch(onCreate(formData));
     setAddNew(false);
   };
 
+  const onClickProject = (projectId) => navigate(`/projects/${projectId}`);
+
   return (
     <LayoutContainer>
-      <DashboardView onAddNew={() => setAddNew(true)} />
+      <DashboardView
+        onAddNew={() => setAddNew(true)}
+        onClickProject={onClickProject}
+      />
       <Modal isOpen={isAddNewOpen} onClose={() => setAddNew(false)}>
         <ProjectForm onSubmit={onSubmit} />
       </Modal>

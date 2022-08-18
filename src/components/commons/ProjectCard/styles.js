@@ -23,7 +23,7 @@ export const TitleContainer = styled('div')({
 });
 
 export const Title = styled('span')({
-  fontFamily: 'Fira Sansw',
+  fontFamily: 'Fira Sans',
   fontWeight: 500,
   fontSize: 24,
 });

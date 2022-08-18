@@ -15,13 +15,14 @@ import {
 } from './styles';
 
 const DashboardView = (props) => {
+  const { onAddNew, onClickProject } = props;
   return (
     <Container>
       <Content>
         <TitleContainer>
           <Title>My projects</Title>
           <ButtonContainer>
-            <Button onClick={props.onAddNew}>
+            <Button onClick={onAddNew}>
               <ButtonContent>
                 <AddCircleIcon /> Add new
               </ButtonContent>
@@ -34,7 +35,8 @@ const DashboardView = (props) => {
               backgroundcolor="red"
               title="Project 1"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => {}}
+              onClick={() => onClickProject()}
+              onClickIcon={() => {}}
             />
           </Grid>
           <Grid item xs={6} md={4}>
@@ -42,7 +44,8 @@ const DashboardView = (props) => {
               backgroundcolor="green"
               title="Project 2"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => {}}
+              onClick={() => onClickProject()}
+              onClickIcon={() => {}}
             />
           </Grid>
           <Grid item xs={6} md={4}>
@@ -50,7 +53,8 @@ const DashboardView = (props) => {
               backgroundcolor="grey"
               title="Project 3"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => {}}
+              onClick={() => onClickProject()}
+              onClickIcon={() => {}}
             />
           </Grid>
           <Grid item xs={6} md={4}>
@@ -58,7 +62,8 @@ const DashboardView = (props) => {
               backgroundcolor="blue"
               title="Project 4"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => {}}
+              onClick={() => onClickProject()}
+              onClickIcon={() => {}}
             />
           </Grid>
         </Grid>

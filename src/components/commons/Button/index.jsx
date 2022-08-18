@@ -1,13 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/system';
 
 import { CustomButton } from './styles';
+import { COLORS } from 'helpers/enums/colors';
 
-const Button = ({ children, href, type, onClick }) => {
+const customTheme = createTheme({
+  components: {
+    CustomButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: COLORS.BlueDianne,
+          color: COLORS.white,
+        },
+        primary: {
+          backgroundColor: COLORS.GreenJungle,
+        },
+      },
+    },
+  },
+});
+
+const Button = ({ children, href, type, onClick, color }) => {
   const renderButton = () => (
-    <CustomButton type={type} onClick={onClick}>
-      {children}
-    </CustomButton>
+    <ThemeProvider theme={customTheme}>
+      <CustomButton type={type} onClick={onClick} color={color}>
+        {children}
+      </CustomButton>
+    </ThemeProvider>
   );
 
   return href ? <Link href={href}>{renderButton()}</Link> : renderButton();

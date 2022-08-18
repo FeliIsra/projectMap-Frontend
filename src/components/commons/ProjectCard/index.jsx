@@ -11,16 +11,17 @@ import {
 import { IconButton } from '@mui/material';
 
 const ProjectCard = (props) => {
+  const { backgroundcolor, description, title, onClick, onClickIcon } = props;
   return (
-    <Card>
-      <CardContent backgroundColor={props.backgroundcolor}>
+    <Card onClick={onClick}>
+      <CardContent backgroundColor={backgroundcolor}>
         <TitleContainer>
-          <Title>{props.title}</Title>
-          <IconButton onClick={props.onClick}>
+          <Title>{title}</Title>
+          <IconButton onClick={onClickIcon}>
             <IosShareIcon color="black" />
           </IconButton>
         </TitleContainer>
-        <Description>{props.description}</Description>
+        <Description>{description}</Description>
       </CardContent>
     </Card>
   );

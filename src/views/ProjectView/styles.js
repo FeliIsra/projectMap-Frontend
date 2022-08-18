@@ -12,7 +12,8 @@ export const Content = styled('div')({
   flex: 1,
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '60px 20px 0',
+  backgroundColor: 'red',
+  borderRadius: 150,
 });
 
 export const TitleContainer = styled('div')({
@@ -29,17 +30,4 @@ export const TitleContainer = styled('div')({
 export const Title = styled('span')({
   fontSize: 25,
   fontWeight: 800,
-});
-
-export const ButtonContainer = styled('div')({});
-
-export const ButtonContent = styled('span')({
-  display: 'flex',
-  fontSize: '14px',
-  gap: 10,
-  alignItems: 'center',
-
-  svg: {
-    fontSize: '16px',
-  },
 });
