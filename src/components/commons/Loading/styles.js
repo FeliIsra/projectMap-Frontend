@@ -12,6 +12,6 @@ export const LoadingContainer = styled('div')({
 export const LoadingText = styled('span')({
   fontFamily: 'Fira sans',
   fontSize: '20px',
-  color: COLORS.BlueDianne,
+  color: COLORS.white,
   marginTop: '20px',
 });

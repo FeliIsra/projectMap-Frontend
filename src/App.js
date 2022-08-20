@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import { onInitialize } from 'redux/actions/app.actions';
 
@@ -15,6 +18,7 @@ function App() {
   return (
     <>
       <NavigationContainer />
+      <ToastContainer />
     </>
   );
 }

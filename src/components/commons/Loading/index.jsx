@@ -17,7 +17,7 @@ const Loading = (props) => {
 
   const renderLoading = () => (
     <LoadingContainer isModalMode={isModalMode} isTitleMode={isTitleMode}>
-      <CircularProgress size={size} sx={{ color: COLORS.BlueDianne }} />
+      <CircularProgress size={size} sx={{ color: COLORS.white }} />
       {!!message && <LoadingText>{message}</LoadingText>}
     </LoadingContainer>
   );
