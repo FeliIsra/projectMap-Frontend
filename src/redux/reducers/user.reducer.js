@@ -2,7 +2,7 @@ import * as constants from 'redux/contansts/user.constants';
 
 export const defaultState = {
   data: null,
-  loading: true,
+  loading: false,
 };
 
 const userReducer = (state = defaultState, action) => {
