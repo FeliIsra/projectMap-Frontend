@@ -10,7 +10,7 @@ export const CardContent = styled(MUICardContent)((props) => ({
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
-  backgroundColor: props.backgroundColor,
+  backgroundColor: props.backgroundcolor,
   borderRadius: 15,
   gap: 25,
 }));

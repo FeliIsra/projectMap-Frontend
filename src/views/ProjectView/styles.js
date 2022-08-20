@@ -5,6 +5,8 @@ export const Container = styled('div')({
   width: '100%',
   margin: '0 auto',
   maxWidth: 900,
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 export const Content = styled('div')({
@@ -12,8 +14,10 @@ export const Content = styled('div')({
   flex: 1,
   flexDirection: 'column',
   alignItems: 'center',
-  backgroundColor: 'red',
-  borderRadius: 150,
+  backgroundColor: 'grey',
+  borderRadius: '50%',
+  height: '95%',
+  maxWidth: '95%',
 });
 
 export const TitleContainer = styled('div')({

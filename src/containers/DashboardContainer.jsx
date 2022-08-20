@@ -21,7 +21,8 @@ const DashboardContainer = () => {
   }, []);
 
   const onSubmit = (formData) => {
-    dispatch(onCreate(formData));
+    const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    dispatch(onCreate({ ...formData, color }));
     setAddNew(false);
   };
 
@@ -32,6 +33,7 @@ const DashboardContainer = () => {
       <DashboardView
         onAddNew={() => setAddNew(true)}
         onClickProject={onClickProject}
+        items={items}
       />
       <Modal isOpen={isAddNewOpen} onClose={() => setAddNew(false)}>
         <ProjectForm onSubmit={onSubmit} />

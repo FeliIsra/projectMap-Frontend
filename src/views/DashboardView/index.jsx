@@ -15,7 +15,7 @@ import {
 } from './styles';
 
 const DashboardView = (props) => {
-  const { onAddNew, onClickProject } = props;
+  const { onAddNew, onClickProject, items } = props;
   return (
     <Container>
       <Content>
@@ -30,42 +30,18 @@ const DashboardView = (props) => {
           </ButtonContainer>
         </TitleContainer>
         <Grid container rowSpacing={2} columnSpacing={4}>
-          <Grid item xs={6} md={4}>
-            <ProjectCard
-              backgroundcolor="red"
-              title="Project 1"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => onClickProject()}
-              onClickIcon={() => {}}
-            />
-          </Grid>
-          <Grid item xs={6} md={4}>
-            <ProjectCard
-              backgroundcolor="green"
-              title="Project 2"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => onClickProject()}
-              onClickIcon={() => {}}
-            />
-          </Grid>
-          <Grid item xs={6} md={4}>
-            <ProjectCard
-              backgroundcolor="grey"
-              title="Project 3"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => onClickProject()}
-              onClickIcon={() => {}}
-            />
-          </Grid>
-          <Grid item xs={6} md={4}>
-            <ProjectCard
-              backgroundcolor="blue"
-              title="Project 4"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-              onClick={() => onClickProject()}
-              onClickIcon={() => {}}
-            />
-          </Grid>
+          {items.map(({ _id, color, titulo, descripcion }) => (
+            <Grid item xs={6} md={4} key={_id}>
+              <ProjectCard
+                key={_id}
+                color={color}
+                titulo={titulo}
+                descripcion={descripcion}
+                onClick={() => onClickProject(_id)}
+                onClickIcon={() => {}}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Content>
     </Container>
