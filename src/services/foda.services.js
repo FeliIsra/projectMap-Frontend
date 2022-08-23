@@ -6,6 +6,8 @@ export const remove = (id, formData) => remove(`foda/${id}`, formData);
 
 export const get = (id, formData) => get(`foda/${id}`, formData);
 
+export const getOptions = () => get(`foda/options`);
+
 export const insertFactor = (id, formData) => post(`foda/${id}`, formData);
 
 export const deleteFactor = (idFoda, idFactor, formData) =>

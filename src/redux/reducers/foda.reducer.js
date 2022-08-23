@@ -4,6 +4,7 @@ export const defaultState = {
   data: null,
   loading: false,
   items: [],
+  options: [],
 };
 
 const fodaReducer = (state = defaultState, action) => {
@@ -39,6 +40,11 @@ const fodaReducer = (state = defaultState, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case constants.GET_OPTIONS_REQUESTED:
+      return {
+        ...state,
+        options: data.options,
       };
     default:
       return error?.response?.status === 401 ? defaultState : state;

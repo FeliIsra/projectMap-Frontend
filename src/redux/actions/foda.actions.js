@@ -36,3 +36,7 @@ export const onDeleteFactor = (idFoda, idFactor, formData) => ({
   idFoda,
   idFactor,
 });
+
+export const onGetOptions = () => ({
+  type: constants.GET_OPTIONS_REQUESTED,
+});
