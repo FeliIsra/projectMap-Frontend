@@ -1,13 +1,12 @@
 import * as constants from 'redux/contansts/foda.constants';
 
 export const onCreate = (formData) => ({
-  type: constants.CREATE_FODA,
+  type: constants.CREATE_FODA_REQUESTED,
   formData,
 });
 
-export const onGetOne = (id, formData) => ({
+export const onGetOne = (id) => ({
   type: constants.GET_FODA_REQUESTED,
-  formData,
   id,
 });
 

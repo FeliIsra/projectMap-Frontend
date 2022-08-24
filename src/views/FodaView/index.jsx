@@ -9,9 +9,34 @@ import {
   CardContent,
   CardTitle,
   AddButton,
+  FactoresContainer,
+  FactorContent,
+  FactorDescription,
 } from './styles';
 
-const FodaView = (props) => {
+const FodaView = ({
+  onAdd,
+  debilidades,
+  amenazas,
+  oportunidades,
+  fortalezas,
+}) => {
+  const renderTitle = (title, onAdd) => (
+    <CardTitleContainer>
+      <CardTitle>{title}</CardTitle>
+      <AddButton onClick={onAdd}>
+        <AddCircleRoundedIcon />
+      </AddButton>
+    </CardTitleContainer>
+  );
+
+  const renderFactores = (factores) =>
+    factores.map((factor) => (
+      <FactorContent>
+        <FactorDescription>{factor.descripcion}</FactorDescription>
+      </FactorContent>
+    ));
+
   return (
     <Container>
       <Grid
@@ -22,43 +47,29 @@ const FodaView = (props) => {
         sx={{ padding: '30px 0' }}
       >
         <Grid item xs={12} md={6} display={'flex'}>
-          <CardContent backgroundcolor={COLORS.YellowGrandis}>
-            <CardTitleContainer>
-              <CardTitle>Debilidades</CardTitle>
-              <AddButton onClick={() => {}}>
-                <AddCircleRoundedIcon />
-              </AddButton>
-            </CardTitleContainer>
+          <CardContent backgroundcolor={COLORS.GreenEmerald}>
+            {renderTitle('Fortalezas', () => onAdd('Fortaleza'))}
+            <FactoresContainer>{renderFactores(fortalezas)}</FactoresContainer>
           </CardContent>
         </Grid>
         <Grid item xs={12} md={6} display={'flex'}>
           <CardContent backgroundcolor={COLORS.GreenSulu}>
-            <CardTitleContainer>
-              <CardTitle>Oportunidades</CardTitle>
-              <AddButton onClick={() => {}}>
-                <AddCircleRoundedIcon />
-              </AddButton>
-            </CardTitleContainer>
+            {renderTitle('Oportunidades', () => onAdd('Oportunidad'))}
+            <FactoresContainer>
+              {renderFactores(oportunidades)}
+            </FactoresContainer>
+          </CardContent>
+        </Grid>
+        <Grid item xs={12} md={6} display={'flex'}>
+          <CardContent backgroundcolor={COLORS.YellowGrandis}>
+            {renderTitle('Debilidades', () => onAdd('Debilidad'))}
+            <FactoresContainer>{renderFactores(debilidades)}</FactoresContainer>
           </CardContent>
         </Grid>
         <Grid item xs={12} md={6} display={'flex'}>
           <CardContent backgroundcolor={COLORS.RedBurntSienna}>
-            <CardTitleContainer>
-              <CardTitle>Amenazas</CardTitle>
-              <AddButton onClick={() => {}}>
-                <AddCircleRoundedIcon />
-              </AddButton>
-            </CardTitleContainer>
-          </CardContent>
-        </Grid>
-        <Grid item xs={12} md={6} display={'flex'}>
-          <CardContent backgroundcolor={COLORS.GreenEmerald}>
-            <CardTitleContainer>
-              <CardTitle>Fortalezas</CardTitle>
-              <AddButton onClick={() => {}}>
-                <AddCircleRoundedIcon />
-              </AddButton>
-            </CardTitleContainer>
+            {renderTitle('Amenazas', () => onAdd('Amenaza'))}
+            <FactoresContainer>{renderFactores(amenazas)}</FactoresContainer>
           </CardContent>
         </Grid>
       </Grid>

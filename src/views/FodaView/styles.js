@@ -33,8 +33,46 @@ export const CardTitle = styled('span')({
   fontStyle: 'normal',
   fontWeight: 700,
   fontSize: '24px',
+  color: COLORS.BlueDianne,
 });
 
 export const AddButton = styled(IconButton)({
   color: COLORS.white,
+});
+
+export const ButtonsContainer = styled('div')({
+  display: 'flex',
+  width: '100%',
+  gap: 15,
+  justifyContent: 'space-between',
+});
+
+export const CreateContent = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 30,
+});
+
+export const FactoresContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  gap: 5,
+});
+
+export const FactorContent = styled('div')({
+  display: 'flex',
+  background: 'rgba(217, 217, 217, 0.7)',
+  borderRadius: 15,
+  padding: 10,
+});
+
+export const FactorDescription = styled('span')({
+  fontFamily: "'Fira Sans'",
+  fontStyle: 'normal',
+  fontWeight: 500,
+  fontSize: '12px',
+  lineHeight: '14px',
+  display: 'flex',
+  alignItems: 'center',
 });

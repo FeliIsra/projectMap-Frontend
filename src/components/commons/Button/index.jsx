@@ -16,6 +16,11 @@ const customTheme = createTheme({
         primary: {
           backgroundColor: COLORS.GreenJungle,
         },
+        secondary: {
+          backgroundColor: COLORS.white,
+          color: COLORS.GreenJungle,
+          border: `1px solid ${COLORS.GreenJungle}`,
+        },
       },
     },
   },

@@ -18,7 +18,13 @@ ReactModal.defaultStyles.overlay = {
 };
 
 const Modal = (props) => {
-  const { children, disabled = false, isOpen, onClose = () => {} } = props;
+  const {
+    children,
+    disabled = false,
+    isOpen,
+    onClose = () => {},
+    backgroundColor,
+  } = props;
 
   useEffect(() => {
     // 27: Escape key
@@ -30,9 +36,11 @@ const Modal = (props) => {
     };
   });
 
+  console.log('backgroundColor', backgroundColor);
+
   return (
     <ModalContainer ariaHideApp={false} isOpen={isOpen}>
-      <ModalContent data-testid="modal">
+      <ModalContent data-testid="modal" backgroundColor={backgroundColor}>
         {!disabled && (
           <CloseModalContainer>
             <CloseModalIcon

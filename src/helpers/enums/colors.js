@@ -7,4 +7,5 @@ export const COLORS = {
   GreenSulu: '#AAF68380',
   RedBurntSienna: '#EE605580',
   GreenEmerald: '#60D39480',
+  WildSand: '#F5F5F5',
 };

@@ -23,8 +23,10 @@ export const ModalContainer = styled(Modal)`
   }
 `;
 
-export const ModalContent = styled('div')({
-  backgroundColor: COLORS.BlueDianne,
+export const ModalContent = styled('div')((props) => ({
+  backgroundColor: props.backgroundColor
+    ? props.backgroundColor
+    : COLORS.BlueDianne,
   padding: 15,
   borderRadius: 10,
   maxHeight: '90vh',
@@ -36,7 +38,7 @@ export const ModalContent = styled('div')({
     '-ms-overflow-style': 'none' /* IE and Edge */,
     'scrollbar-width': 'none' /* Firefox */,
   },
-});
+}));
 
 export const CloseModalContainer = styled('div')({
   display: 'flex',
