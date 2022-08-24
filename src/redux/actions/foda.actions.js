@@ -29,9 +29,8 @@ export const onUpdateFactor = (idFoda, idFactor, formData) => ({
   idFactor,
 });
 
-export const onDeleteFactor = (idFoda, idFactor, formData) => ({
+export const onDeleteFactor = (idFoda, idFactor) => ({
   type: constants.DELETE_FACTOR_REQUESTED,
-  formData,
   idFoda,
   idFactor,
 });

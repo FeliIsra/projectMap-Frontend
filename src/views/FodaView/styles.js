@@ -65,14 +65,19 @@ export const FactorContent = styled('div')({
   background: 'rgba(217, 217, 217, 0.7)',
   borderRadius: 15,
   padding: 10,
+
+  button: {
+    color: COLORS.BlueDianne,
+  },
 });
 
 export const FactorDescription = styled('span')({
+  display: 'flex',
+  flex: 1,
   fontFamily: "'Fira Sans'",
   fontStyle: 'normal',
   fontWeight: 500,
   fontSize: '12px',
   lineHeight: '14px',
-  display: 'flex',
   alignItems: 'center',
 });

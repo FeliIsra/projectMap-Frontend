@@ -1,6 +1,8 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, IconButton } from '@mui/material';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { COLORS } from 'helpers/enums/colors';
 
 import {
@@ -20,6 +22,8 @@ const FodaView = ({
   amenazas,
   oportunidades,
   fortalezas,
+  onEdit,
+  onDelete,
 }) => {
   const renderTitle = (title, onAdd) => (
     <CardTitleContainer>
@@ -34,6 +38,12 @@ const FodaView = ({
     factores.map((factor) => (
       <FactorContent>
         <FactorDescription>{factor.descripcion}</FactorDescription>
+        <IconButton size="small" onClick={() => onEdit(factor)}>
+          <EditIcon />
+        </IconButton>
+        <IconButton size="small" onClick={() => onDelete(factor)}>
+          <DeleteIcon />
+        </IconButton>
       </FactorContent>
     ));
 

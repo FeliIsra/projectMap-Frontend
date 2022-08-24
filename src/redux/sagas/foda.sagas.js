@@ -53,8 +53,8 @@ export function* fodaInsertFactor(action) {
 
 export function* fodaDeleteFactor(action) {
   try {
-    const { formData, id, idFactor } = action;
-    const { data } = yield call(deleteFactor, id, formData, idFactor);
+    const { idFoda, idFactor } = action;
+    const { data } = yield call(deleteFactor, idFoda, idFactor);
     yield put({ type: constants.DELETE_FACTOR_SUCCEEDED, data });
   } catch (error) {
     yield put({ type: constants.DELETE_FACTOR_FAILED, error });
@@ -63,8 +63,8 @@ export function* fodaDeleteFactor(action) {
 
 export function* fodaUpdateFactor(action) {
   try {
-    const { formData, id, idFactor } = action;
-    const { data } = yield call(updateFactor, id, formData, idFactor);
+    const { formData, idFoda, idFactor } = action;
+    const { data } = yield call(updateFactor, idFoda, idFactor, formData);
     yield put({ type: constants.UPDATE_FACTOR_SUCCEEDED, data });
   } catch (error) {
     yield put({ type: constants.UPDATE_FACTOR_FAILED, error });

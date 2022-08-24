@@ -27,3 +27,6 @@ export const put = (url, params = {}, headers = {}) =>
 
 export const remove = (url, headers = {}) =>
   api.delete(url, { ...getOptions(), ...headers });
+
+export const patch = (url, params = {}, headers = {}) =>
+  api.patch(url, params, { ...getOptions(), ...headers });

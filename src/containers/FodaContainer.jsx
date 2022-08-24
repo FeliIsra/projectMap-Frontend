@@ -18,6 +18,8 @@ import {
   onGetOne,
   onGetOptions,
   onInsertFactor,
+  onUpdateFactor,
+  onDeleteFactor,
 } from 'redux/actions/foda.actions';
 import { CustomForm } from 'styles/form';
 import { Formik, Field } from 'formik';
@@ -30,7 +32,7 @@ import {
 
 const FodaContainer = () => {
   const { fodaId } = useParams();
-  const [factor, setFactor] = useState('');
+  const [factor, setFactor] = useState(null);
   const disptch = useDispatch();
   const { importancia, intensidad, tendencia, urgencia } = useSelector(
     (state) => state.foda.options
@@ -47,12 +49,30 @@ const FodaContainer = () => {
 
   const onAdd = (factor) => setFactor(factor);
 
+  const onEdit = (factor) => setFactor(factor);
+
+  const onDelete = (factor) => disptch(onDeleteFactor(fodaId, factor._id));
+
   const onSubmitFactor = (formData) => {
-    disptch(onInsertFactor(fodaId, { ...formData, area: factor }));
+    if (factor._id)
+      disptch(onUpdateFactor(fodaId, factor._id, { ...formData }));
+    else disptch(onInsertFactor(fodaId, { ...formData, area: factor }));
     setFactor('');
   };
 
-  const showUrgencia = ['Oportunidad', 'Amenaza'].includes(factor);
+  const defaultValues = {
+    descripcion: '',
+    importancia: '',
+    tendencia: '',
+    area: factor,
+  };
+  const showUrgencia = ['Oportunidad', 'Amenaza'].includes(
+    factor?.area || factor
+  );
+  const optionalValues = showUrgencia ? { urgencia: '' } : { intensidad: '' };
+  const initialValues = !!factor?._id
+    ? { ...factor }
+    : { ...defaultValues, ...optionalValues };
 
   return (
     <LayoutContainer>
@@ -62,21 +82,15 @@ const FodaContainer = () => {
         amenazas={amenazas}
         oportunidades={oportunidades}
         fortalezas={fortalezas}
+        onEdit={onEdit}
+        onDelete={onDelete}
       />
       <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
         <CreateContent>
-          <CardTitle>Agregar {factor}</CardTitle>
-          <Formik
-            onSubmit={onSubmitFactor}
-            initialValues={{
-              descripcion: '',
-              importancia: '',
-              intensidad: '',
-              urgencia: '',
-              tendencia: '',
-              area: factor,
-            }}
-          >
+          <CardTitle>
+            {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
+          </CardTitle>
+          <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
             {({ handleSubmit }) => (
               <CustomForm onSubmit={handleSubmit}>
                 <Field
@@ -104,10 +118,10 @@ const FodaContainer = () => {
                 />
                 <ButtonsContainer>
                   <Button color="secondary" onClick={() => setFactor('')}>
-                    Cancel
+                    Cancelar
                   </Button>
                   <Button color="primary" type="submit">
-                    Create
+                    {!!factor?.area ? 'Editar' : 'Agregar'}
                   </Button>
                 </ButtonsContainer>
               </CustomForm>

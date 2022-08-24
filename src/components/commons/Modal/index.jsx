@@ -36,8 +36,6 @@ const Modal = (props) => {
     };
   });
 
-  console.log('backgroundColor', backgroundColor);
-
   return (
     <ModalContainer ariaHideApp={false} isOpen={isOpen}>
       <ModalContent data-testid="modal" backgroundColor={backgroundColor}>
