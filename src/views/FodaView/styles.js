@@ -4,12 +4,25 @@ import { IconButton } from '@mui/material';
 import { COLORS } from 'helpers/enums/colors';
 
 export const Container = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
   width: '90%',
   margin: '0 auto',
   maxWidth: 1300,
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
+});
+
+export const ButtonContainer = styled('div')({
+  display: 'flex',
+  flex: 1,
+  alignSelf: 'flex-end',
+  marginTop: '50px',
+
+  button: {
+    fontSize: 15,
+  },
 });
 
 export const CardContent = styled('div')((props) => ({

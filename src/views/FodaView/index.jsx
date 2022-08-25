@@ -14,7 +14,9 @@ import {
   FactoresContainer,
   FactorContent,
   FactorDescription,
+  ButtonContainer,
 } from './styles';
+import Button from 'components/commons/Button';
 
 const FodaView = ({
   onAdd,
@@ -49,6 +51,9 @@ const FodaView = ({
 
   return (
     <Container>
+      <ButtonContainer>
+        <Button onClick={() => {}}>Siguiente Paso</Button>
+      </ButtonContainer>
       <Grid
         container
         rowSpacing={2}
