@@ -32,6 +32,8 @@ export const CardContent = styled('div')((props) => ({
   backgroundColor: props.backgroundcolor,
   borderRadius: 15,
   padding: '12px 20px',
+  minHeight: 265,
+  maxHeight: 265,
 }));
 
 export const CardTitleContainer = styled('div')({
@@ -71,6 +73,7 @@ export const FactoresContainer = styled('div')({
   flexDirection: 'column',
   flex: 1,
   gap: 5,
+  overflowY: 'scroll',
 });
 
 export const FactorContent = styled('div')({
