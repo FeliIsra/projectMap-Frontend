@@ -136,4 +136,14 @@ export const ChartContainer = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  padding: '30px 0',
 });
+
+export const SectionTable = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '30px 0',
+  gap: 20,
+});
+export const SectionRadar = styled('div')({});
+export const SectionPie = styled('div')({});

@@ -21,6 +21,10 @@ import {
   ViewContainer,
   ChartContainer,
   Container,
+  Title,
+  SectionRadar,
+  SectionPie,
+  SectionTable,
 } from 'views/FodaView/styles';
 import RadarChartCustom from 'components/commons/RadarChart';
 import PieChartCustom from 'components/commons/PieChart';
@@ -62,34 +66,43 @@ const FodaContainer = () => {
             buttonTitle="Ir Atras"
             total={total}
           />
-          <CustomizedTables
-            items={items}
-            columns={[
-              {
-                label: 'Area',
-                value: 'area',
-              },
-              {
-                label: 'Porcentaje',
-                value: 'porcentaje',
-              },
-              {
-                label: 'Descripcion',
-                value: 'descripcion',
-              },
-            ]}
-          />
-          <ChartContainer>
-            <RadarChartCustom data={dataRadarChart} />
-            <PieChartCustom
-              data={dataPieChart}
-              colors={[
-                COLORS.GreenEmerald,
-                COLORS.GreenSulu,
-                COLORS.YellowGrandis,
-                COLORS.RedBurntSienna,
+          <SectionTable>
+            <Title>Tabla de Porcetanjes</Title>
+            <CustomizedTables
+              items={items}
+              columns={[
+                {
+                  label: 'Area',
+                  value: 'area',
+                },
+                {
+                  label: 'Porcentaje',
+                  value: 'porcentaje',
+                },
+                {
+                  label: 'Descripcion',
+                  value: 'descripcion',
+                },
               ]}
             />
+          </SectionTable>
+          <ChartContainer>
+            <SectionRadar>
+              <Title>Grafico de Radar</Title>
+              <RadarChartCustom data={dataRadarChart} />
+            </SectionRadar>
+            <SectionPie>
+              <Title>Grafico de Torta</Title>
+              <PieChartCustom
+                data={dataPieChart}
+                colors={[
+                  COLORS.GreenEmerald,
+                  COLORS.GreenSulu,
+                  COLORS.YellowGrandis,
+                  COLORS.RedBurntSienna,
+                ]}
+              />
+            </SectionPie>
           </ChartContainer>
         </ViewContainer>
       </Container>

@@ -93,12 +93,12 @@ export const porcentajeSelector = createSelector(
       fortaleza.descripcion =
         'Tus fortalezas son más bajas que tus debilidades, ¿qué te parece pensar en planes de acción para obtener mejores calificaciones en este elemento?';
       debilidad.descripcion =
-        'Tus debilidades son menores o iguales a tus fortalezas, esta es una buena señal, ¡pero no te conformes!';
+        'Tus debilidades son mayores que tus fortalezas, esta es una clásica señal de advertencia de que existen áreas de mejora en tu empresa, crea planes de acción para reducir estas debilidades.';
     } else {
       fortaleza.descripcion =
         'Tus fortalezas son mayores o iguales a tus debilidades, ¡mantén ese buen resultado!';
       debilidad.descripcion =
-        'Tus debilidades son mayores que tus fortalezas, esta es una clásica señal de advertencia de que existen áreas de mejora en tu empresa, crea planes de acción para reducir estas debilidades.';
+        'Tus debilidades son menores o iguales a tus fortalezas, esta es una buena señal, ¡pero no te conformes!';
     }
 
     if (oportunidad.porcentaje >= amenaza.porcentaje) {
