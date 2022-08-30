@@ -13,9 +13,18 @@ import {
   titleSelector,
   totalResultsSelect,
   tableSelector,
+  radarChartSelector,
+  pieChartSelector,
 } from 'redux/selectors/foda.selector';
 import CustomizedTables from 'components/commons/Table';
-import { ViewContainer } from 'views/FodaView/styles';
+import {
+  ViewContainer,
+  ChartContainer,
+  Container,
+} from 'views/FodaView/styles';
+import RadarChartCustom from 'components/commons/RadarChart';
+import PieChartCustom from 'components/commons/PieChart';
+import { COLORS } from 'helpers/enums/colors';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -26,11 +35,12 @@ const FodaContainer = () => {
   const oportunidades = useSelector(oportunidadesSelectorOrdenadas);
   const total = useSelector(totalResultsSelect);
   const { title } = useSelector(titleSelector);
+  const items = useSelector(tableSelector);
+  const dataRadarChart = useSelector(radarChartSelector);
+  const dataPieChart = useSelector(pieChartSelector);
 
   const navigate = useNavigate();
   const onClickGoBackButton = () => navigate(`/projects/${id}/foda/${fodaId}`);
-
-  const items = useSelector(tableSelector);
 
   useEffect(() => {
     disptch(onGetOptions());
@@ -39,36 +49,50 @@ const FodaContainer = () => {
 
   return (
     <LayoutContainer>
-      <ViewContainer>
-        <FodaView
-          showResults={true}
-          debilidades={debilidades}
-          amenazas={amenazas}
-          oportunidades={oportunidades}
-          fortalezas={fortalezas}
-          title={title}
-          onClickButton={onClickGoBackButton}
-          buttonTitle="Ir Atras"
-          total={total}
-        />
-        <CustomizedTables
-          items={items}
-          columns={[
-            {
-              label: 'Area',
-              value: 'area',
-            },
-            {
-              label: 'Porcentaje',
-              value: 'porcentaje',
-            },
-            {
-              label: 'Descripcion',
-              value: 'descripcion',
-            },
-          ]}
-        />
-      </ViewContainer>
+      <Container>
+        <ViewContainer>
+          <FodaView
+            showResults={true}
+            debilidades={debilidades}
+            amenazas={amenazas}
+            oportunidades={oportunidades}
+            fortalezas={fortalezas}
+            title={title}
+            onClickButton={onClickGoBackButton}
+            buttonTitle="Ir Atras"
+            total={total}
+          />
+          <CustomizedTables
+            items={items}
+            columns={[
+              {
+                label: 'Area',
+                value: 'area',
+              },
+              {
+                label: 'Porcentaje',
+                value: 'porcentaje',
+              },
+              {
+                label: 'Descripcion',
+                value: 'descripcion',
+              },
+            ]}
+          />
+          <ChartContainer>
+            <RadarChartCustom data={dataRadarChart} />
+            <PieChartCustom
+              data={dataPieChart}
+              colors={[
+                COLORS.GreenEmerald,
+                COLORS.GreenSulu,
+                COLORS.YellowGrandis,
+                COLORS.RedBurntSienna,
+              ]}
+            />
+          </ChartContainer>
+        </ViewContainer>
+      </Container>
     </LayoutContainer>
   );
 };

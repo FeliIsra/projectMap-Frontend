@@ -12,6 +12,7 @@ import {
   ButtonsContainer,
   CardTitle,
   CreateContent,
+  Container,
 } from 'views/FodaView/styles';
 import SelectInput from 'components/inputs/SelectInput';
 import {
@@ -81,62 +82,64 @@ const FodaContainer = () => {
 
   return (
     <LayoutContainer>
-      <FodaView
-        onAdd={onAdd}
-        debilidades={debilidades}
-        amenazas={amenazas}
-        oportunidades={oportunidades}
-        fortalezas={fortalezas}
-        onEdit={onEdit}
-        onDelete={onDelete}
-        title={title}
-        onClickButton={onClickResultsButton}
-        buttonTitle="Resultados"
-      />
-      <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
-        <CreateContent>
-          <CardTitle>
-            {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
-          </CardTitle>
-          <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
-            {({ handleSubmit }) => (
-              <CustomForm onSubmit={handleSubmit}>
-                <Field
-                  name="descripcion"
-                  placeholder="Descripcion"
-                  component={Input}
-                />
-                <Field
-                  name="importancia"
-                  component={SelectInput}
-                  options={importancia}
-                  placeholder="Importancia"
-                />
-                <Field
-                  name={showUrgencia ? 'urgencia' : 'intensidad'}
-                  component={SelectInput}
-                  options={showUrgencia ? urgencia : intensidad}
-                  placeholder={showUrgencia ? 'Urgencia' : 'Intensidad'}
-                />
-                <Field
-                  name="tendencia"
-                  component={SelectInput}
-                  options={tendencia}
-                  placeholder="Tendencia"
-                />
-                <ButtonsContainer>
-                  <Button color="secondary" onClick={() => setFactor('')}>
-                    Cancelar
-                  </Button>
-                  <Button color="primary" type="submit">
-                    {!!factor?.area ? 'Editar' : 'Agregar'}
-                  </Button>
-                </ButtonsContainer>
-              </CustomForm>
-            )}
-          </Formik>
-        </CreateContent>
-      </Modal>
+      <Container>
+        <FodaView
+          onAdd={onAdd}
+          debilidades={debilidades}
+          amenazas={amenazas}
+          oportunidades={oportunidades}
+          fortalezas={fortalezas}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          title={title}
+          onClickButton={onClickResultsButton}
+          buttonTitle="Resultados"
+        />
+        <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
+          <CreateContent>
+            <CardTitle>
+              {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
+            </CardTitle>
+            <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
+              {({ handleSubmit }) => (
+                <CustomForm onSubmit={handleSubmit}>
+                  <Field
+                    name="descripcion"
+                    placeholder="Descripcion"
+                    component={Input}
+                  />
+                  <Field
+                    name="importancia"
+                    component={SelectInput}
+                    options={importancia}
+                    placeholder="Importancia"
+                  />
+                  <Field
+                    name={showUrgencia ? 'urgencia' : 'intensidad'}
+                    component={SelectInput}
+                    options={showUrgencia ? urgencia : intensidad}
+                    placeholder={showUrgencia ? 'Urgencia' : 'Intensidad'}
+                  />
+                  <Field
+                    name="tendencia"
+                    component={SelectInput}
+                    options={tendencia}
+                    placeholder="Tendencia"
+                  />
+                  <ButtonsContainer>
+                    <Button color="secondary" onClick={() => setFactor('')}>
+                      Cancelar
+                    </Button>
+                    <Button color="primary" type="submit">
+                      {!!factor?.area ? 'Editar' : 'Agregar'}
+                    </Button>
+                  </ButtonsContainer>
+                </CustomForm>
+              )}
+            </Formik>
+          </CreateContent>
+        </Modal>
+      </Container>
     </LayoutContainer>
   );
 };

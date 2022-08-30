@@ -7,7 +7,6 @@ import Chip from '@mui/material/Chip';
 import { COLORS } from 'helpers/enums/colors';
 
 import {
-  Container,
   CardTitleContainer,
   CardContent,
   CardTitle,
@@ -71,7 +70,7 @@ const FodaView = ({
     ));
 
   return (
-    <Container>
+    <>
       <TitleContainer>
         <Title>{showResults ? `Resultados de ${title}` : title}</Title>
         <ButtonContainer>
@@ -124,7 +123,7 @@ const FodaView = ({
           </CardContent>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };
 

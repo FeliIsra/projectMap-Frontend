@@ -6,12 +6,12 @@ import { COLORS } from 'helpers/enums/colors';
 export const Container = styled('div')({
   display: 'flex',
   flexDirection: 'column',
-  width: '90%',
   margin: '0 auto',
   maxWidth: 1300,
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
+  width: '90%',
 });
 
 export const ButtonContainer = styled('div')({
@@ -29,7 +29,6 @@ export const CardContent = styled('div')((props) => ({
   backgroundColor: props.backgroundcolor,
   borderRadius: 15,
   padding: '12px 20px',
-  minHeight: 265,
   maxHeight: 265,
 }));
 
@@ -70,7 +69,7 @@ export const FactoresContainer = styled('div')({
   flexDirection: 'column',
   flex: 1,
   gap: 5,
-  overflowY: 'scroll',
+  overflowY: 'auto',
 });
 
 export const FactorContent = styled('div')({
@@ -130,4 +129,11 @@ export const ViewContainer = styled('div')({
   flex: 1,
   margin: '0 auto',
   flexDirection: 'column',
+  height: '100%',
+});
+
+export const ChartContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
 });
