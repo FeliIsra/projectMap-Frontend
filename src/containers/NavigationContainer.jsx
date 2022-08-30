@@ -6,8 +6,8 @@ import DashboardContainer from 'containers/DashboardContainer';
 import ForgotPasswordContainer from 'containers/ForgotPasswordContainer';
 import RegisterContainer from 'containers/RegisterContainer';
 import ProjectContainer from 'containers/ProjectContainer';
-import FodaContainer from 'containers/FodaContainer';
-import FodaContainerResults from 'containers/FodaContainerResults';
+import FodaContainer from 'containers/FODA/FodaContainer';
+import FodaContainerResults from 'containers/FODA/FodaContainerResults';
 
 export const NavigationContainer = () => {
   return (
