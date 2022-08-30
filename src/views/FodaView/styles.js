@@ -16,10 +16,7 @@ export const Container = styled('div')({
 
 export const ButtonContainer = styled('div')({
   display: 'flex',
-  flex: 1,
   alignSelf: 'flex-end',
-  marginTop: '50px',
-
   button: {
     fontSize: 15,
   },
@@ -96,4 +93,41 @@ export const FactorDescription = styled('span')({
   fontSize: '12px',
   lineHeight: '14px',
   alignItems: 'center',
+});
+
+export const TitleContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
+  marginTop: '50px',
+});
+
+export const Title = styled('span')({
+  fontFamily: 'Fira Sans',
+  fontWeight: 500,
+  fontSize: 24,
+});
+
+export const Puntuacion = styled('span')({
+  fontFamily: 'Fira Sans',
+  fontWeight: 500,
+  fontSize: 24,
+});
+
+export const ChipContainer = styled('div')({
+  padding: 8,
+  span: {
+    fontSize: 18,
+    fontWeight: 700,
+  },
+});
+
+export const ViewContainer = styled('div')({
+  display: 'flex',
+  flex: 1,
+  margin: '0 auto',
+  flexDirection: 'column',
 });

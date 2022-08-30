@@ -7,6 +7,7 @@ import ForgotPasswordContainer from 'containers/ForgotPasswordContainer';
 import RegisterContainer from 'containers/RegisterContainer';
 import ProjectContainer from 'containers/ProjectContainer';
 import FodaContainer from 'containers/FodaContainer';
+import FodaContainerResults from 'containers/FodaContainerResults';
 
 export const NavigationContainer = () => {
   return (
@@ -16,6 +17,10 @@ export const NavigationContainer = () => {
       <Route path="/forgot-password" element={<ForgotPasswordContainer />} />
       <Route path="/dashboard" element={<DashboardContainer />} />
       <Route path="/projects">
+        <Route
+          path=":id/foda/:fodaId/results"
+          element={<FodaContainerResults />}
+        />
         <Route path=":id/foda/:fodaId" element={<FodaContainer />} />
         <Route path=":id" element={<ProjectContainer />} />
       </Route>

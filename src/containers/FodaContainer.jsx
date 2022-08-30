@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import FodaView from 'views/FodaView';
@@ -28,11 +28,15 @@ import {
   debilidadesSelector,
   fortalezasSelector,
   oportunidadesSelector,
+  titleSelector,
 } from 'redux/selectors/foda.selector';
 
 const FodaContainer = () => {
-  const { fodaId } = useParams();
+  const { fodaId, id } = useParams();
   const [factor, setFactor] = useState(null);
+  const navigate = useNavigate();
+  const onClickResultsButton = () =>
+    navigate(`/projects/${id}/foda/${fodaId}/results`);
   const disptch = useDispatch();
   const { importancia, intensidad, tendencia, urgencia } = useSelector(
     (state) => state.foda.options
@@ -41,6 +45,7 @@ const FodaContainer = () => {
   const amenazas = useSelector(amenazasSelector);
   const fortalezas = useSelector(fortalezasSelector);
   const oportunidades = useSelector(oportunidadesSelector);
+  const { title } = useSelector(titleSelector);
 
   useEffect(() => {
     disptch(onGetOptions());
@@ -84,6 +89,9 @@ const FodaContainer = () => {
         fortalezas={fortalezas}
         onEdit={onEdit}
         onDelete={onDelete}
+        title={title}
+        onClickButton={onClickResultsButton}
+        buttonTitle="Resultados"
       />
       <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
         <CreateContent>

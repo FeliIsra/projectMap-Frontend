@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { onInitialize } from 'redux/actions/app.actions';
 
 import { NavigationContainer } from 'containers/NavigationContainer';
+import ScrollToTopContainer from 'containers/ScrollToTopContainer';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTopContainer />
       <NavigationContainer />
       <ToastContainer />
     </>
