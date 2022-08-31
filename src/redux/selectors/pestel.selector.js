@@ -97,8 +97,8 @@ export const porcentajeSelector = createSelector(
     let totalPuntuacion = 0;
     Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
     const politica = {
-      area: 'Politica',
-      porcentaje: (total['politicas'] * 100) / totalPuntuacion,
+      area: 'Politico',
+      porcentaje: (total['politicos'] * 100) / totalPuntuacion,
     };
     const economia = {
       area: 'Economico',
@@ -110,7 +110,7 @@ export const porcentajeSelector = createSelector(
     };
     const tecnologia = {
       area: 'Tecnologico',
-      porcentaje: (total['tecnoloicos'] * 100) / totalPuntuacion,
+      porcentaje: (total['tecnologicos'] * 100) / totalPuntuacion,
     };
     const ambientales = {
       area: 'Ambiental',
