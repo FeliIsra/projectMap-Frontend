@@ -1,4 +1,4 @@
-import { get, post, patch, remove } from 'services/api';
+import { get, post, put, remove } from 'services/api';
 
 export const create = (formData) => post('pestel', formData);
 
@@ -15,5 +15,5 @@ export const deleteFactor = (idPestel, idFactor) =>
   remove(`pestel/${idPestel}/factor/${idFactor}`);
 
 export const updateFactor = (idPestel, idFactor, formData) => {
-  return patch(`pestel/${idPestel}/factor/${idFactor}`, formData);
+  return put(`pestel/${idPestel}/factor/${idFactor}`, formData);
 };

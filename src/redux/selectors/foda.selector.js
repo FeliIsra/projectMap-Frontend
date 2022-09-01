@@ -146,14 +146,16 @@ export const pieChartSelector = createSelector(
 );
 
 export const radarChartSelector = createSelector(
-  [porcentajeSelector, totalResultsSelect],
-  (list, total) => {
+  [totalResultsSelect],
+  (total) => {
+    console.log({ total });
     let totalPuntuacion = 0;
     Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
-    return list.map((area) => {
+
+    return Object.keys(total).map((area) => {
       return {
-        subject: area.area,
-        A: area.porcentaje,
+        subject: area,
+        A: total[area],
         fullMark: totalPuntuacion,
       };
     });

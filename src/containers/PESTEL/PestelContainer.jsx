@@ -79,6 +79,9 @@ const PestelContainer = () => {
     area: factor,
   };
   const initialValues = !!factor?._id ? { ...factor } : { ...defaultValues };
+  console.log({ factor });
+  console.log({ defaultValues });
+  console.log({ initialValues });
 
   return (
     <LayoutContainer>
