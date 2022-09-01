@@ -45,9 +45,9 @@ export function* fodaInsertFactor(action) {
   try {
     const { formData, id } = action;
     const { data } = yield call(insertFactor, id, formData);
-    yield put({ type: constants.INSERT_FACTOR_SUCCEEDED, data });
+    yield put({ type: constants.FODA_INSERT_FACTOR_SUCCEEDED, data });
   } catch (error) {
-    yield put({ type: constants.INSERT_FACTOR_FAILED, error });
+    yield put({ type: constants.FODA_INSERT_FACTOR_FAILED, error });
   }
 }
 
@@ -55,9 +55,9 @@ export function* fodaDeleteFactor(action) {
   try {
     const { idFoda, idFactor } = action;
     const { data } = yield call(deleteFactor, idFoda, idFactor);
-    yield put({ type: constants.DELETE_FACTOR_SUCCEEDED, data });
+    yield put({ type: constants.FODA_DELETE_FACTOR_SUCCEEDED, data });
   } catch (error) {
-    yield put({ type: constants.DELETE_FACTOR_FAILED, error });
+    yield put({ type: constants.FODA_DELETE_FACTOR_FAILED, error });
   }
 }
 
@@ -65,18 +65,21 @@ export function* fodaUpdateFactor(action) {
   try {
     const { formData, idFoda, idFactor } = action;
     const { data } = yield call(updateFactor, idFoda, idFactor, formData);
-    yield put({ type: constants.UPDATE_FACTOR_SUCCEEDED, data });
+    yield put({ type: constants.FODA_UPDATE_FACTOR_SUCCEEDED, data });
   } catch (error) {
-    yield put({ type: constants.UPDATE_FACTOR_FAILED, error });
+    yield put({ type: constants.FODA_UPDATE_FACTOR_FAILED, error });
   }
 }
 
 export function* fodaGetOptions(action) {
   try {
     const { data: options } = yield call(getOptions);
-    yield put({ type: constants.GET_OPTIONS_SUCCEEDED, data: { options } });
+    yield put({
+      type: constants.FODA_GET_OPTIONS_SUCCEEDED,
+      data: { options },
+    });
   } catch (error) {
-    yield put({ type: constants.GET_OPTIONS_FAILED, error });
+    yield put({ type: constants.FODA_GET_OPTIONS_FAILED, error });
   }
 }
 
@@ -85,9 +88,9 @@ export function* watchFoda() {
     takeLatest(constants.CREATE_FODA_REQUESTED, fodaCreate),
     takeLatest(constants.DELETE_FODA_REQUEST, fodaDelete),
     takeLatest(constants.GET_FODA_REQUESTED, fodaGet),
-    takeLatest(constants.INSERT_FACTOR_REQUESTED, fodaInsertFactor),
-    takeLatest(constants.DELETE_FACTOR_REQUESTED, fodaDeleteFactor),
-    takeLatest(constants.UPDATE_FACTOR_REQUESTED, fodaUpdateFactor),
-    takeLatest(constants.GET_OPTIONS_REQUESTED, fodaGetOptions),
+    takeLatest(constants.FODA_INSERT_FACTOR_REQUESTED, fodaInsertFactor),
+    takeLatest(constants.FODA_DELETE_FACTOR_REQUESTED, fodaDeleteFactor),
+    takeLatest(constants.FODA_UPDATE_FACTOR_REQUESTED, fodaUpdateFactor),
+    takeLatest(constants.FODA_GET_OPTIONS_REQUESTED, fodaGetOptions),
   ]);
 }

@@ -17,24 +17,24 @@ export const onDelete = (id, formData) => ({
 });
 
 export const onInsertFactor = (id, formData) => ({
-  type: constants.INSERT_FACTOR_REQUESTED,
+  type: constants.PESTEL_INSERT_FACTOR_REQUESTED,
   formData,
   id,
 });
 
-export const onUpdateFactor = (idFoda, idFactor, formData) => ({
-  type: constants.UPDATE_FACTOR_REQUESTED,
+export const onUpdateFactor = (idPestel, idFactor, formData) => ({
+  type: constants.PESTEL_UPDATE_FACTOR_REQUESTED,
   formData,
-  idFoda,
+  idPestel,
   idFactor,
 });
 
-export const onDeleteFactor = (idFoda, idFactor) => ({
-  type: constants.DELETE_FACTOR_REQUESTED,
-  idFoda,
+export const onDeleteFactor = (idPestel, idFactor) => ({
+  type: constants.PESTEL_DELETE_FACTOR_REQUESTED,
+  idPestel,
   idFactor,
 });
 
 export const onGetOptions = () => ({
-  type: constants.GET_OPTIONS_REQUESTED,
+  type: constants.PESTEL_GET_OPTIONS_REQUESTED,
 });

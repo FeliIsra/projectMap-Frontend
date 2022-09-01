@@ -45,9 +45,9 @@ export function* pestelInsertFactor(action) {
   try {
     const { formData, id } = action;
     const { data } = yield call(insertFactor, id, formData);
-    yield put({ type: constants.INSERT_FACTOR_SUCCEEDED, data });
+    yield put({ type: constants.PESTEL_INSERT_FACTOR_SUCCEEDED, data });
   } catch (error) {
-    yield put({ type: constants.INSERT_FACTOR_FAILED, error });
+    yield put({ type: constants.PESTEL_INSERT_FACTOR_FAILED, error });
   }
 }
 
@@ -55,9 +55,9 @@ export function* pestelDeleteFactor(action) {
   try {
     const { idPestel, idFactor } = action;
     const { data } = yield call(deleteFactor, idPestel, idFactor);
-    yield put({ type: constants.DELETE_FACTOR_SUCCEEDED, data });
+    yield put({ type: constants.PESTEL_DELETE_FACTOR_SUCCEEDED, data });
   } catch (error) {
-    yield put({ type: constants.DELETE_FACTOR_FAILED, error });
+    yield put({ type: constants.PESTEL_DELETE_FACTOR_FAILED, error });
   }
 }
 
@@ -65,18 +65,21 @@ export function* pestelUpdateFactor(action) {
   try {
     const { formData, idPestel, idFactor } = action;
     const { data } = yield call(updateFactor, idPestel, idFactor, formData);
-    yield put({ type: constants.UPDATE_FACTOR_SUCCEEDED, data });
+    yield put({ type: constants.PESTEL_UPDATE_FACTOR_SUCCEEDED, data });
   } catch (error) {
-    yield put({ type: constants.UPDATE_FACTOR_FAILED, error });
+    yield put({ type: constants.PESTEL_UPDATE_FACTOR_FAILED, error });
   }
 }
 
 export function* pestelGetOptions(action) {
   try {
     const { data: options } = yield call(getOptions);
-    yield put({ type: constants.GET_OPTIONS_SUCCEEDED, data: { options } });
+    yield put({
+      type: constants.PESTEL_GET_OPTIONS_SUCCEEDED,
+      data: { options },
+    });
   } catch (error) {
-    yield put({ type: constants.GET_OPTIONS_FAILED, error });
+    yield put({ type: constants.PESTEL_GET_OPTIONS_FAILED, error });
   }
 }
 
@@ -85,9 +88,9 @@ export function* watchPestel() {
     takeLatest(constants.CREATE_PESTEL_REQUESTED, pestelCreate),
     takeLatest(constants.DELETE_PESTEL_REQUEST, pestelDelete),
     takeLatest(constants.GET_PESTEL_REQUESTED, pestelGet),
-    takeLatest(constants.INSERT_FACTOR_REQUESTED, pestelInsertFactor),
-    takeLatest(constants.DELETE_FACTOR_REQUESTED, pestelDeleteFactor),
-    takeLatest(constants.UPDATE_FACTOR_REQUESTED, pestelUpdateFactor),
-    takeLatest(constants.GET_OPTIONS_REQUESTED, pestelGetOptions),
+    takeLatest(constants.PESTEL_INSERT_FACTOR_REQUESTED, pestelInsertFactor),
+    takeLatest(constants.PESTEL_DELETE_FACTOR_REQUESTED, pestelDeleteFactor),
+    takeLatest(constants.PESTEL_UPDATE_FACTOR_REQUESTED, pestelUpdateFactor),
+    takeLatest(constants.PESTEL_GET_OPTIONS_REQUESTED, pestelGetOptions),
   ]);
 }

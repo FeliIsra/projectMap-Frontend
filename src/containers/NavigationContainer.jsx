@@ -8,6 +8,8 @@ import RegisterContainer from 'containers/RegisterContainer';
 import ProjectContainer from 'containers/ProjectContainer';
 import FodaContainer from 'containers/FODA/FodaContainer';
 import FodaContainerResults from 'containers/FODA/FodaContainerResults';
+import PestelContainer from 'containers/PESTEL/PestelContainer';
+import PestelContainerResults from 'containers/PESTEL/PestelContainerResults';
 
 export const NavigationContainer = () => {
   return (
@@ -22,6 +24,11 @@ export const NavigationContainer = () => {
           element={<FodaContainerResults />}
         />
         <Route path=":id/foda/:fodaId" element={<FodaContainer />} />
+        <Route
+          path=":id/pestel/:pestelId/results"
+          element={<PestelContainerResults />}
+        />
+        <Route path=":id/pestel/:pestelId" element={<PestelContainer />} />
         <Route path=":id" element={<ProjectContainer />} />
       </Route>
       <Route path="*" element={<Navigate to="/login" replace />} />

@@ -8,4 +8,10 @@ export const COLORS = {
   RedBurntSienna: '#EE605580',
   GreenEmerald: '#60D39480',
   WildSand: '#F5F5F5',
+  MiddleBlueGreen: '#84DCC6',
+  Aquamarine: '#A5FFD6',
+  MagicMint: '#BCE9C8',
+  Bone: '#D2D3BA',
+  VividTangerine: '#FFA69E',
+  BitterSweet: '#FF686B',
 };
