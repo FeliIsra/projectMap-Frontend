@@ -55,3 +55,10 @@ export const CustomLink = styled(Link)({
   fontSize: '18px',
   color: COLORS.BlueDianne,
 });
+
+export const ButtonsContainer = styled('div')({
+  display: 'flex',
+  width: '100%',
+  gap: 15,
+  justifyContent: 'space-between',
+});

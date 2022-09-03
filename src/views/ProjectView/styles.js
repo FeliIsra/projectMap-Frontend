@@ -70,3 +70,8 @@ export const StepTitle = styled('span')({
   textAlign: 'center',
   padding: '0 20px',
 });
+
+export const MenuItemText = styled('div')({
+  fontSize: 14,
+  color: COLORS.BlueDianne,
+});

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Add } from '@mui/icons-material';
 import { IconButton, Menu } from '@mui/material';
 
+import { STEPS } from 'helpers/enums/steps';
+
 import {
   Container,
   Content,
@@ -13,17 +15,17 @@ import {
   StepTitle,
 } from './styles';
 
-const ProjectView = (props) => {
-  const [anchorElement, setAnchorElement] = useState(null);
-
-  const renderStep = (title) => (
+const ProjectView = ({ items }) => {
+  const renderStep = (step) => (
     <Item>
       <ContentContainer style={{ flex: 1, justifyContent: 'center' }}>
-        <StepTitle>{title}</StepTitle>
+        <StepTitle>{step.title}</StepTitle>
       </ContentContainer>
       <ContentContainer>
-        <IconButton>
-          <Add onClick={(event) => setAnchorElement(event.currentTarget)} />
+        <IconButton
+          onClick={(event) => step.onClickAdd(step.value, event.currentTarget)}
+        >
+          <Add />
         </IconButton>
       </ContentContainer>
     </Item>
@@ -37,7 +39,7 @@ const ProjectView = (props) => {
             <ItemContainer
               style={{ left: '50%', transform: 'translateX(-50%)', top: '0' }}
             >
-              {renderStep('Evaluación del Entorno Externo')}
+              {renderStep(items[0])}
             </ItemContainer>
           </Step>
         </StepContainer>
@@ -46,14 +48,14 @@ const ProjectView = (props) => {
             <ItemContainer
               style={{ left: '-50%', transform: 'translateX(50%)', top: '0' }}
             >
-              {renderStep('Planeamiento Financiero y Medición de Resultados')}
+              {renderStep(items[1])}
             </ItemContainer>
           </Step>
           <Step>
             <ItemContainer
               style={{ right: '-50%', transform: 'translateX(-50%)', top: '0' }}
             >
-              {renderStep('Evaluación de la Situación Interna')}
+              {renderStep(items[2])}
             </ItemContainer>
           </Step>
         </StepContainer>
@@ -66,7 +68,7 @@ const ProjectView = (props) => {
                 top: '50%',
               }}
             >
-              {renderStep('Mejora Continua')}
+              {renderStep(items[3])}
             </ItemContainer>
           </Step>
         </StepContainer>
@@ -79,7 +81,7 @@ const ProjectView = (props) => {
                 bottom: '0',
               }}
             >
-              {renderStep('Definición de los Planes de Transformación')}
+              {renderStep(items[4])}
             </ItemContainer>
           </Step>
           <Step>
@@ -90,7 +92,7 @@ const ProjectView = (props) => {
                 bottom: '0',
               }}
             >
-              {renderStep('Definición de Lineamientos Estratégicos')}
+              {renderStep(items[5])}
             </ItemContainer>
           </Step>
         </StepContainer>
@@ -103,16 +105,11 @@ const ProjectView = (props) => {
                 bottom: '0',
               }}
             >
-              {renderStep('Formulación de la Estrategia Competitiva ')}
+              {renderStep(items[6])}
             </ItemContainer>
           </Step>
         </StepContainer>
       </Content>
-      <Menu
-        anchorEl={anchorElement}
-        onClose={() => setAnchorElement(null)}
-        open={!!anchorElement}
-      ></Menu>
     </Container>
   );
 };
