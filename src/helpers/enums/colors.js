@@ -10,4 +10,10 @@ export const COLORS = {
   WildSand: '#F5F5F5',
   AthensGray: '#E9ECEF',
   GhostGray: '#CED4DA',
+  MiddleBlueGreen: '#84DCC6',
+  Aquamarine: '#A5FFD6',
+  MagicMint: '#BCE9C8',
+  Bone: '#D2D3BA',
+  VividTangerine: '#FFA69E',
+  BitterSweet: '#FF686B',
 };

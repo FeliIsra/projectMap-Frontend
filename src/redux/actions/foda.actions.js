@@ -17,24 +17,24 @@ export const onDelete = (id, formData) => ({
 });
 
 export const onInsertFactor = (id, formData) => ({
-  type: constants.INSERT_FACTOR_REQUESTED,
+  type: constants.FODA_INSERT_FACTOR_REQUESTED,
   formData,
   id,
 });
 
 export const onUpdateFactor = (idFoda, idFactor, formData) => ({
-  type: constants.UPDATE_FACTOR_REQUESTED,
+  type: constants.FODA_UPDATE_FACTOR_REQUESTED,
   formData,
   idFoda,
   idFactor,
 });
 
 export const onDeleteFactor = (idFoda, idFactor) => ({
-  type: constants.DELETE_FACTOR_REQUESTED,
+  type: constants.FODA_DELETE_FACTOR_REQUESTED,
   idFoda,
   idFactor,
 });
 
 export const onGetOptions = () => ({
-  type: constants.GET_OPTIONS_REQUESTED,
+  type: constants.FODA_GET_OPTIONS_REQUESTED,
 });

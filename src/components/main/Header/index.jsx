@@ -20,7 +20,7 @@ import {
 const Header = (props) => {
   const { menuItems, user } = props;
   const [anchorElement, setAnchorElement] = useState(null);
-  const initials = `${user?.firstName.charAt(0)}${
+  const initials = `${user?.firstName?.charAt(0)}${
     user?.lastName?.charAt(0) || ''
   }`;
 

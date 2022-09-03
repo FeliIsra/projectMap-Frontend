@@ -21,12 +21,14 @@ import {
 } from './styles';
 import Button from 'components/commons/Button';
 
-const FodaView = ({
+const PestelView = ({
   onAdd,
-  debilidades,
-  amenazas,
-  oportunidades,
-  fortalezas,
+  politicos,
+  economicos,
+  sociales,
+  tecnologicos,
+  ambientales,
+  legales,
   onEdit,
   onDelete,
   title,
@@ -85,41 +87,58 @@ const FodaView = ({
         sx={{ padding: '30px 0' }}
       >
         <Grid item xs={12} md={6} display={'flex'}>
-          <CardContent backgroundcolor={COLORS.GreenEmerald}>
-            {renderTitle(
-              'Fortalezas',
-              () => onAdd('Fortaleza'),
-              total.fortalezas
-            )}
-            <FactoresContainer>{renderFactores(fortalezas)}</FactoresContainer>
+          <CardContent backgroundcolor={COLORS.MiddleBlueGreen}>
+            {renderTitle('Politicos', () => onAdd('Politico'), total.politicos)}
+            <FactoresContainer>{renderFactores(politicos)}</FactoresContainer>
           </CardContent>
         </Grid>
+
         <Grid item xs={12} md={6} display={'flex'}>
-          <CardContent backgroundcolor={COLORS.GreenSulu}>
+          <CardContent backgroundcolor={COLORS.Aquamarine}>
             {renderTitle(
-              'Oportunidades',
-              () => onAdd('Oportunidad'),
-              total.oportunidades
+              'Economicos',
+              () => onAdd('Economico'),
+              total.economicos
+            )}
+            <FactoresContainer>{renderFactores(economicos)}</FactoresContainer>
+          </CardContent>
+        </Grid>
+
+        <Grid item xs={12} md={6} display={'flex'}>
+          <CardContent backgroundcolor={COLORS.MagicMint}>
+            {renderTitle('Sociales', () => onAdd('Social'), total.sociales)}
+            <FactoresContainer>{renderFactores(sociales)}</FactoresContainer>
+          </CardContent>
+        </Grid>
+
+        <Grid item xs={12} md={6} display={'flex'}>
+          <CardContent backgroundcolor={COLORS.Bone}>
+            {renderTitle(
+              'Tecnologicos',
+              () => onAdd('Tecnologico'),
+              total.tecnologicos
             )}
             <FactoresContainer>
-              {renderFactores(oportunidades)}
+              {renderFactores(tecnologicos)}
             </FactoresContainer>
           </CardContent>
         </Grid>
+
         <Grid item xs={12} md={6} display={'flex'}>
-          <CardContent backgroundcolor={COLORS.YellowGrandis}>
+          <CardContent backgroundcolor={COLORS.VividTangerine}>
             {renderTitle(
-              'Debilidades',
-              () => onAdd('Debilidad'),
-              total.debilidades
+              'Ambientales',
+              () => onAdd('Ambiental'),
+              total.ambientales
             )}
-            <FactoresContainer>{renderFactores(debilidades)}</FactoresContainer>
+            <FactoresContainer>{renderFactores(ambientales)}</FactoresContainer>
           </CardContent>
         </Grid>
+
         <Grid item xs={12} md={6} display={'flex'}>
-          <CardContent backgroundcolor={COLORS.RedBurntSienna}>
-            {renderTitle('Amenazas', () => onAdd('Amenaza'), total.amenazas)}
-            <FactoresContainer>{renderFactores(amenazas)}</FactoresContainer>
+          <CardContent backgroundcolor={COLORS.BitterSweet}>
+            {renderTitle('Legales', () => onAdd('Legal'), total.legales)}
+            <FactoresContainer>{renderFactores(legales)}</FactoresContainer>
           </CardContent>
         </Grid>
       </Grid>
@@ -127,4 +146,4 @@ const FodaView = ({
   );
 };
 
-export default FodaView;
+export default PestelView;

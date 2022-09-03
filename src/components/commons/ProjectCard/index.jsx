@@ -12,7 +12,6 @@ import { IconButton } from '@mui/material';
 
 const ProjectCard = (props) => {
   const { color, descripcion, titulo, onClick, onClickIcon } = props;
-  console.log('color', color);
   return (
     <Card onClick={onClick}>
       <CardContent backgroundcolor={color}>
