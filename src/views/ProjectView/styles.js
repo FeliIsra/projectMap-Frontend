@@ -1,4 +1,7 @@
 import { styled } from '@mui/system';
+import { CircularProgress } from '@mui/material';
+import { circularProgressClasses } from '@mui/material/CircularProgress';
+
 import { COLORS } from 'helpers/enums/colors';
 
 export const Container = styled('div')({
@@ -11,6 +14,7 @@ export const Container = styled('div')({
 });
 
 export const Content = styled('div')({
+  position: 'relative',
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
@@ -74,4 +78,12 @@ export const StepTitle = styled('span')({
 export const MenuItemText = styled('div')({
   fontSize: 14,
   color: COLORS.BlueDianne,
+});
+
+export const CustomCircularProgress = styled(CircularProgress)({
+  position: 'absolute',
+
+  [`& .${circularProgressClasses.circle}`]: {
+    strokeLinecap: 'round',
+  },
 });

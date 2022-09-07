@@ -10,6 +10,7 @@ import FodaContainer from 'containers/FODA/FodaContainer';
 import FodaContainerResults from 'containers/FODA/FodaContainerResults';
 import PestelContainer from 'containers/PESTEL/PestelContainer';
 import PestelContainerResults from 'containers/PESTEL/PestelContainerResults';
+import CreateToolContainer from 'containers/CreateToolContainer';
 
 export const NavigationContainer = () => {
   return (
@@ -29,6 +30,7 @@ export const NavigationContainer = () => {
           element={<PestelContainerResults />}
         />
         <Route path=":id/pestel/:pestelId" element={<PestelContainer />} />
+        <Route path=":id/createTool/*" element={<CreateToolContainer />} />
         <Route path=":id" element={<ProjectContainer />} />
       </Route>
       <Route path="*" element={<Navigate to="/login" replace />} />

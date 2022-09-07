@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Menu, MenuItem } from '@mui/material';
 import { Formik, Field } from 'formik';
 
-import { onGetAll } from 'redux/actions/projects.actions';
+import { onGetOne } from 'redux/actions/projects.actions';
 import { STEPS, getMenuItems } from 'helpers/enums/steps';
 import { COLORS } from 'helpers/enums/colors';
 
@@ -25,13 +25,14 @@ import { MenuItemText } from 'views/ProjectView/styles';
 const ProjectContainer = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [anchorElement, setAnchorElement] = useState(null);
   const [stepValue, setStepValue] = useState(0);
   const [addTool, setAddTool] = useState(null);
   const menuItems = getMenuItems(stepValue);
 
   useEffect(() => {
-    dispatch(onGetAll(id));
+    dispatch(onGetOne(id));
   }, []);
 
   const onClickAdd = (value, anchorElement) => {
@@ -41,9 +42,15 @@ const ProjectContainer = () => {
 
   const onSubmitTool = (action, formData) => {
     dispatch(action(formData));
+    navigate('createTool');
   };
 
-  const items = STEPS.map((step) => ({ ...step, onClickAdd }));
+  const items = STEPS.map((step) => ({
+    ...step,
+    onClickAdd,
+    // TO-DO: cambiar por el valor que corresponde
+    progress: Math.floor(Math.random() * 100) + 1,
+  }));
 
   return (
     <LayoutContainer>
@@ -92,6 +99,7 @@ const ProjectContainer = () => {
           </Formik>
         </FormContainer>
       </Modal>
+      {}
     </LayoutContainer>
   );
 };

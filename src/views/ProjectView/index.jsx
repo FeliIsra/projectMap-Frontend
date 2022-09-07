@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Add } from '@mui/icons-material';
-import { IconButton, Menu } from '@mui/material';
-
-import { STEPS } from 'helpers/enums/steps';
+import { IconButton } from '@mui/material';
 
 import {
   Container,
@@ -13,11 +11,25 @@ import {
   Item,
   ContentContainer,
   StepTitle,
+  CustomCircularProgress,
 } from './styles';
 
 const ProjectView = ({ items }) => {
   const renderStep = (step) => (
     <Item>
+      <CustomCircularProgress
+        variant="determinate"
+        value={100}
+        size="168px"
+        thickness={2}
+        style={{ color: 'white' }}
+      />
+      <CustomCircularProgress
+        variant="determinate"
+        value={step.progress}
+        size="168px"
+        thickness={2}
+      />
       <ContentContainer style={{ flex: 1, justifyContent: 'center' }}>
         <StepTitle>{step.title}</StepTitle>
       </ContentContainer>
@@ -37,7 +49,7 @@ const ProjectView = ({ items }) => {
         <StepContainer style={{ justifyContent: 'center' }}>
           <Step>
             <ItemContainer
-              style={{ left: '50%', transform: 'translateX(-50%)', top: '0' }}
+              style={{ left: '50%', transform: 'translateX(-50%)', top: '4%' }}
             >
               {renderStep(items[0])}
             </ItemContainer>
@@ -46,14 +58,14 @@ const ProjectView = ({ items }) => {
         <StepContainer style={{ justifyContent: 'space-between' }}>
           <Step>
             <ItemContainer
-              style={{ left: '-50%', transform: 'translateX(50%)', top: '0' }}
+              style={{ left: '-40%', transform: 'translateX(50%)', top: '0' }}
             >
               {renderStep(items[1])}
             </ItemContainer>
           </Step>
           <Step>
             <ItemContainer
-              style={{ right: '-50%', transform: 'translateX(-50%)', top: '0' }}
+              style={{ right: '-40%', transform: 'translateX(-50%)', top: '0' }}
             >
               {renderStep(items[2])}
             </ItemContainer>
@@ -76,9 +88,9 @@ const ProjectView = ({ items }) => {
           <Step>
             <ItemContainer
               style={{
-                left: '-50%',
+                left: '-40%',
                 transform: 'translateX(50%)',
-                bottom: '0',
+                bottom: '5%',
               }}
             >
               {renderStep(items[4])}
@@ -87,9 +99,9 @@ const ProjectView = ({ items }) => {
           <Step>
             <ItemContainer
               style={{
-                right: '-50%',
+                right: '-40%',
                 transform: 'translateX(-50%)',
-                bottom: '0',
+                bottom: '5%',
               }}
             >
               {renderStep(items[5])}
@@ -102,7 +114,7 @@ const ProjectView = ({ items }) => {
               style={{
                 left: '50%',
                 transform: 'translateX(-50%)',
-                bottom: '0',
+                bottom: '10%',
               }}
             >
               {renderStep(items[6])}

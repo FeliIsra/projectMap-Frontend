@@ -1,4 +1,5 @@
 import { onCreate as onCreateFoda } from 'redux/actions/foda.actions';
+import { onCreate as onCreatePestel } from 'redux/actions/pestel.actions';
 
 const StepValue = {
   EVALUACION_ENTORNO_EXTERNO: 1,
@@ -16,7 +17,7 @@ export const STEPS = [
     title: 'Evaluación del Entorno Externo',
     menuItems: [
       { title: 'Agregar Foda', key: 1, action: onCreateFoda },
-      { title: 'Agregar Pestel', key: 2, action: () => {} },
+      { title: 'Agregar Pestel', key: 2, action: onCreatePestel },
     ],
   },
   {
