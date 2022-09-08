@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useParams } from 'react-router-dom';
 
+import { toolsLoadingSelector } from 'redux/selectors/app.selector';
+
 import Loading from 'components/commons/Loading';
 import LayoutContainer from 'containers/LayoutContainer';
 
@@ -10,7 +12,7 @@ const CreateToolContainer = () => {
 
   const foda = useSelector((state) => state.foda.data);
   const pestel = useSelector((state) => state.pestel.data);
-  const loading = useSelector('');
+  const loading = useSelector(toolsLoadingSelector);
 
   return (
     <LayoutContainer hasHeader={false}>
@@ -32,7 +34,7 @@ const CreateToolContainer = () => {
           />
         )}
       </Routes>
-      <Loading isModalMode message="Loading" />
+      {loading && <Loading isModalMode message="Loading" />}
     </LayoutContainer>
   );
 };
