@@ -16,39 +16,44 @@ export const STEPS = [
     value: StepValue.EVALUACION_ENTORNO_EXTERNO,
     title: 'Evaluación del Entorno Externo',
     menuItems: [
-      { title: 'Agregar Foda', key: 1, action: onCreateFoda },
-      { title: 'Agregar Pestel', key: 2, action: onCreatePestel },
+      { title: 'Agregar Analisis de Porter', key: 1, action: () => {} },
+      { title: 'Agregar Analisis de Pestel', key: 2, action: onCreatePestel },
     ],
   },
   {
     value: StepValue.PLAN_FINANCIERO_MEDICION_RESULTADOS,
     title: 'Planeamiento Financiero y Medición de Resultados',
-    menuItems: [{ title: 'Agregar Pestel' }],
+    menuItems: [
+      { title: 'Agregar Balaced Scorecard', action: () => {} },
+      { title: 'Agregar OKRs', action: () => {} },
+    ],
   },
   {
     value: StepValue.EVALUACION_SITUACION_INTERNA,
     title: 'Evaluación de la Situación Interna',
-    menuItems: [{ title: 'Agregar Pestel' }],
+    menuItems: [{ title: 'Agregar Analisis FODA', action: onCreateFoda }],
   },
   {
     value: StepValue.MEJORA_CONTINUA,
     title: 'Mejora Continua',
-    menuItems: [{ title: 'Agregar Pestel' }],
+    menuItems: [
+      { title: 'Agregar Analisis de Indicadores y Metas', action: () => {} },
+    ],
   },
   {
     value: StepValue.DEFINICION_PLANES_TRANSFORMACION,
     title: 'Definición de los Planes de Transformación',
-    menuItems: [{ title: 'Agregar Pestel' }],
+    menuItems: [{ title: 'Planes de transformacion', action: () => {} }],
   },
   {
     value: StepValue.DEFINICION_LINIAMIENTOS_ESTRATEGICOS,
     title: 'Definición de Lineamientos Estratégicos',
-    menuItems: [{ title: 'Agregar Pestel' }],
+    menuItems: [{ title: 'Agregar Matiz ANSOFF', action: () => {} }],
   },
   {
-    value: StepValue.EVALUACION_ENTORNO_EXTERNO,
+    value: StepValue.FORMULACION_ESTRATEGIA_COMPETITIVA,
     title: 'Formulación de la Estrategia Competitiva',
-    menuItems: [{ title: 'Agregar Pestel' }],
+    menuItems: [{ title: 'Agregar Matriz McKinsey', action: () => {} }],
   },
 ];
 
