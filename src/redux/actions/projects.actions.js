@@ -5,6 +5,11 @@ export const onCreate = (formData) => ({
   formData,
 });
 
-export const onGetAll = () => ({
+export const onGetAll = (id) => ({
   type: constants.PROJECTS_ON_GET_ALL_REQUESTED,
+});
+
+export const onGetOne = (id) => ({
+  type: constants.PROJECTS_ON_GET_ONE_REQUESTED,
+  id,
 });
