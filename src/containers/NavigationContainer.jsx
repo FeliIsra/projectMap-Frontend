@@ -11,6 +11,7 @@ import FodaContainerResults from 'containers/FODA/FodaContainerResults';
 import PestelContainer from 'containers/PESTEL/PestelContainer';
 import PestelContainerResults from 'containers/PESTEL/PestelContainerResults';
 import CreateToolContainer from 'containers/CreateToolContainer';
+import McKinseyContainer from 'containers/MCKINSEY/McKinseyContainer';
 
 export const NavigationContainer = () => {
   return (
@@ -30,6 +31,7 @@ export const NavigationContainer = () => {
           element={<PestelContainerResults />}
         />
         <Route path=":id/pestel/:pestelId" element={<PestelContainer />} />
+        <Route path=":id/mckinsey/:matrizId" element={<McKinseyContainer />} />
         <Route path=":id/createTool/*" element={<CreateToolContainer />} />
         <Route path=":id" element={<ProjectContainer />} />
       </Route>
