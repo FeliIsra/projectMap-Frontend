@@ -1,10 +1,5 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import {
-  create,
-  deletePestel,
-  getOne,
-  getOptions,
-} from 'services/mckinsey.services';
+import { create, deletePestel, getOne } from 'services/mckinsey.services';
 
 import * as constants from 'redux/contansts/mckinsey.constants';
 
@@ -38,23 +33,10 @@ export function* mckinseyGet(action) {
   }
 }
 
-export function* mckinseyGetOptions(action) {
-  try {
-    const { data: options } = yield call(getOptions);
-    yield put({
-      type: constants.GET_MCKINSEY_SUCCEEDED,
-      data: { options },
-    });
-  } catch (error) {
-    yield put({ type: constants.GET_MCKINSEY_FAILED, error });
-  }
-}
-
 export function* watchMckinsey() {
   yield all([
     takeLatest(constants.CREATE_MCKINSEY_REQUESTED, mckinseyCreate),
     takeLatest(constants.GET_MCKINSEY_REQUESTED, mckinseyGet),
     takeLatest(constants.DELETE_MCKINSEY_REQUEST, mckinseyDelete),
-    takeLatest(constants.MCKINSEY_GET_OPTIONS_REQUESTED, mckinseyGetOptions),
   ]);
 }

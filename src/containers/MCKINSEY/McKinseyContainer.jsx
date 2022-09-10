@@ -16,7 +16,6 @@ const McKinseyContainer = () => {
   const disptch = useDispatch();
 
   useEffect(() => {
-    disptch(onGetOptions());
     disptch(onGetOne(matrizId));
   }, []);
 

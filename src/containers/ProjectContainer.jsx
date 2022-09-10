@@ -41,7 +41,7 @@ const ProjectContainer = () => {
   };
 
   const onSubmitTool = (action, formData) => {
-    dispatch(action(formData));
+    dispatch(action({ ...formData, projectId: id }));
     navigate('createTool');
   };
 
@@ -81,11 +81,11 @@ const ProjectContainer = () => {
           <Title style={{ fontSize: 18 }}>{addTool?.title}</Title>
           <Formik
             onSubmit={(values) => onSubmitTool(addTool.action, values)}
-            initialValues={{ nombre: '' }}
+            initialValues={{ titulo: '' }}
           >
             {({ handleSubmit }) => (
               <CustomForm onSubmit={handleSubmit}>
-                <Field name="nombre" placeholder="Nombre" component={Input} />
+                <Field name="titulo" placeholder="Titulo" component={Input} />
                 <ButtonsContainer>
                   <Button color="secondary" onClick={() => setAddTool(null)}>
                     Cancelar

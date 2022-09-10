@@ -14,7 +14,3 @@ export const onDelete = (id) => ({
   type: constants.DELETE_MCKINSEY_REQUEST,
   id,
 });
-
-export const onGetOptions = () => ({
-  type: constants.MCKINSEY_GET_OPTIONS_REQUESTED,
-});
