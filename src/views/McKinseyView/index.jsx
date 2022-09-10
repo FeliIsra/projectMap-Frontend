@@ -70,15 +70,30 @@ const McKinseyView = ({
         height={'100%'}
         sx={{ padding: '30px 0' }}
       >
-        {renderBox(COLORS.YellowGrandis, '')}
-        {renderBox(COLORS.GreenSulu, '')}
-        {renderBox(COLORS.GreenEmerald, '')}
-        {renderBox(COLORS.VividTangerine, '')}
-        {renderBox(COLORS.YellowGrandis, '')}
-        {renderBox(COLORS.GreenSulu, '')}
-        {renderBox(COLORS.RedBurntSienna, '')}
-        {renderBox(COLORS.VividTangerine, '')}
-        {renderBox(COLORS.YellowGrandis, '')}
+        {renderBox(COLORS.YellowGrandis, renderTitle('Selección de inversión'))}
+        {renderBox(
+          COLORS.GreenSulu,
+          renderTitle('Inversión segura y Crecimiento')
+        )}
+        {renderBox(
+          COLORS.GreenEmerald,
+          renderTitle('Prioridad de la inversión')
+        )}
+        {renderBox(
+          COLORS.VividTangerine,
+          renderTitle('Expansión de la cosecha')
+        )}
+        {renderBox(COLORS.YellowGrandis, renderTitle('Selección de inversión'))}
+        {renderBox(
+          COLORS.GreenSulu,
+          renderTitle('Inversión segura y Crecimiento')
+        )}
+        {renderBox(COLORS.RedBurntSienna, renderTitle('Zona de peligro'))}
+        {renderBox(
+          COLORS.VividTangerine,
+          renderTitle('Expansión de la cosecha')
+        )}
+        {renderBox(COLORS.YellowGrandis, renderTitle('Selección de inversión'))}
       </Grid>
       <Fab
         color="primary"
@@ -90,6 +105,7 @@ const McKinseyView = ({
           right: 20,
           left: 'auto',
         }}
+        onClick={onAdd}
       >
         <AddIcon />
       </Fab>

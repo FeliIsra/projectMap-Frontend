@@ -35,7 +35,7 @@ export const CardContent = styled('div')((props) => ({
 export const CardTitleContainer = styled('div')({
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   alignItems: 'center',
 });
 
@@ -43,8 +43,9 @@ export const CardTitle = styled('span')({
   fontFamily: "'Fira Sans'",
   fontStyle: 'normal',
   fontWeight: 700,
-  fontSize: '24px',
+  fontSize: 16,
   color: COLORS.BlueDianne,
+  textAlign: 'center',
 });
 
 export const AddButton = styled(IconButton)({
