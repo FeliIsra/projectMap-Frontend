@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 
-import { onCreate, onGetOne } from 'redux/actions/mckinsey.actions';
+import { onAddUnidad, onGetOne } from 'redux/actions/mckinsey.actions';
+import { cuadrantesSelector } from 'redux/selectors/mckinsey.selector';
 
 import LayoutContainer from 'containers/LayoutContainer';
-
 import Modal from 'components/commons/Modal';
 import Input from 'components/inputs/Input';
 import Button from 'components/commons/Button';
+
 import { COLORS } from 'helpers/enums/colors';
 import {
   Container,
@@ -20,14 +21,13 @@ import {
 import { CustomForm } from 'styles/form';
 
 import McKinseyView from 'views/McKinseyView';
+import SliderInput from 'components/inputs/SliderInput';
 
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
-  const navigate = useNavigate();
-  const onClickResultsButton = () =>
-    navigate(`/projectss/${id}/pestel/${matrizId}/results`);
   const disptch = useDispatch();
   const [isAddModalOpen, setAddModalOpen] = useState(false);
+  const cuadrantes = useSelector(cuadrantesSelector);
 
   useEffect(() => {
     disptch(onGetOne(matrizId));
@@ -37,26 +37,21 @@ const McKinseyContainer = () => {
     setAddModalOpen(true);
   };
 
-  const onEdit = (factor) => {};
-
   const onSubmit = (formData) => {
-    disptch(onCreate({ ...formData, projectId: id }));
+    disptch(onAddUnidad(matrizId, { ...formData, projectId: id }));
+    setAddModalOpen(false);
   };
 
   const initialValues = {
     nombre: '',
-    fuerzaCompetitiva: 0,
-    atractivoDeMercado: 0,
+    fuerzaCompetitiva: 10,
+    atractivoDeMercado: 10,
   };
 
   return (
     <LayoutContainer>
       <Container>
-        <McKinseyView
-          onAdd={onAdd}
-          onClickButton={onClickResultsButton}
-          buttonTitle="Resultados"
-        />
+        <McKinseyView onAdd={onAdd} cuadrantes={cuadrantes} />
       </Container>
       <Modal isOpen={isAddModalOpen} backgroundColor={COLORS.WildSand} disabled>
         <CreateContent>
@@ -65,18 +60,16 @@ const McKinseyContainer = () => {
             {({ handleSubmit }) => (
               <CustomForm onSubmit={handleSubmit}>
                 <Field name="nombre" placeholder="Nombre" component={Input} />
-                {/* <Field
+                <Field
                   name="fuerzaCompetitiva"
-                  component={SelectInput}
-                  options={importancia}
-                  placeholder="Importancia"
+                  component={SliderInput}
+                  label="Fuerza Competitiva"
                 />
                 <Field
                   name="atractivoDeMercado"
-                  component={SelectInput}
-                  options={intensidad}
-                  placeholder={'Intensidad'}
-                /> */}
+                  component={SliderInput}
+                  label="Atractivo De Mercado"
+                />
                 <CreateButtonsContainer>
                   <Button
                     color="secondary"

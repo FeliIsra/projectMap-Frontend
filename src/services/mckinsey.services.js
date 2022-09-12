@@ -8,3 +8,6 @@ export const deletePestel = (id, formData) =>
 export const getOne = (id) => get(`mckinsey/${id}`);
 
 export const getOptions = () => get(`mckinsey/options`);
+
+export const addUnidad = (id, formData) =>
+  post(`mckinsey/${id}/unidades`, formData);

@@ -30,6 +30,7 @@ export const CardContent = styled('div')((props) => ({
   borderRadius: 15,
   padding: '12px 20px',
   maxHeight: 265,
+  gap: 10,
 }));
 
 export const CardTitleContainer = styled('div')({
@@ -43,7 +44,7 @@ export const CardTitle = styled('span')({
   fontFamily: "'Fira Sans'",
   fontStyle: 'normal',
   fontWeight: 700,
-  fontSize: 16,
+  fontSize: 18,
   color: COLORS.BlueDianne,
   textAlign: 'center',
 });

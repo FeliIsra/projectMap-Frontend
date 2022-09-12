@@ -14,3 +14,9 @@ export const onDelete = (id) => ({
   type: constants.DELETE_MCKINSEY_REQUEST,
   id,
 });
+
+export const onAddUnidad = (id, formData) => ({
+  type: constants.ADD_UNIDAD_MCKINSEY_REQUESTED,
+  id,
+  formData,
+});

@@ -1,5 +1,10 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { create, deletePestel, getOne } from 'services/mckinsey.services';
+import {
+  addUnidad,
+  create,
+  deletePestel,
+  getOne,
+} from 'services/mckinsey.services';
 
 import * as constants from 'redux/contansts/mckinsey.constants';
 
@@ -33,10 +38,21 @@ export function* mckinseyGet(action) {
   }
 }
 
+export function* mckinseyAddUnidad(action) {
+  try {
+    const { id, formData } = action;
+    const { data } = yield call(addUnidad, id, formData);
+    yield put({ type: constants.ADD_UNIDAD_MCKINSEY_SUCCEEDED, data });
+  } catch (error) {
+    yield put({ type: constants.ADD_UNIDAD_MCKINSEY_FAILED, error });
+  }
+}
+
 export function* watchMckinsey() {
   yield all([
     takeLatest(constants.CREATE_MCKINSEY_REQUESTED, mckinseyCreate),
     takeLatest(constants.GET_MCKINSEY_REQUESTED, mckinseyGet),
     takeLatest(constants.DELETE_MCKINSEY_REQUEST, mckinseyDelete),
+    takeLatest(constants.ADD_UNIDAD_MCKINSEY_REQUESTED, mckinseyAddUnidad),
   ]);
 }

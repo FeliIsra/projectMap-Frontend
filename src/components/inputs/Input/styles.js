@@ -14,7 +14,7 @@ export const CustomInput = styled('input')((props) => ({
   backgroundColor: 'white',
   borderRadius: 10,
   fontFamily: 'Fira Sans, sans-serif',
-  fontSize: '20px',
+  fontSize: 18,
   fontWeight: '400',
   ':focus': {
     outline: 'none',
