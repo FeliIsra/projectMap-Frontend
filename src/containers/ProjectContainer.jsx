@@ -41,7 +41,7 @@ const ProjectContainer = () => {
   };
 
   const onSubmitTool = (action, formData) => {
-    dispatch(action(formData));
+    dispatch(action({ ...formData, projectId: id }));
     navigate('createTool');
   };
 

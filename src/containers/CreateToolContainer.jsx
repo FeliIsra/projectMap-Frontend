@@ -12,6 +12,7 @@ const CreateToolContainer = () => {
 
   const foda = useSelector((state) => state.foda.data);
   const pestel = useSelector((state) => state.pestel.data);
+  const porter = useSelector((state) => state.porter.data);
   const loading = useSelector(toolsLoadingSelector);
 
   return (
@@ -30,6 +31,14 @@ const CreateToolContainer = () => {
             path="/"
             element={
               <Navigate to={`/projects/${id}/pestel/${pestel._id}`} replace />
+            }
+          />
+        )}
+        {!!porter?._id && (
+          <Route
+            path="/"
+            element={
+              <Navigate to={`/projects/${id}/porter/${porter._id}`} replace />
             }
           />
         )}
