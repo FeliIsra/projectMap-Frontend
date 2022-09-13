@@ -4,7 +4,14 @@ import { watchUser } from 'redux/sagas/user.sagas';
 import { watchProjects } from 'redux/sagas/projects.sagas';
 import { watchFoda } from 'redux/sagas/foda.sagas';
 import { watchPestel } from './pestel.sagas';
+import { watchPorter } from './porter.sagas';
 
 export default function* rootSaga() {
-  yield all([watchUser(), watchProjects(), watchFoda(), watchPestel()]);
+  yield all([
+    watchUser(),
+    watchProjects(),
+    watchFoda(),
+    watchPestel(),
+    watchPorter(),
+  ]);
 }
