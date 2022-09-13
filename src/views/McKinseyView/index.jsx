@@ -5,6 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import Chip from '@mui/material/Chip';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 import {
   CardTitleContainer,
@@ -14,7 +16,12 @@ import {
   FactorDescription,
 } from './styles';
 
-const McKinseyView = ({ onAdd, cuadrantes }) => {
+const McKinseyView = ({
+  onAdd,
+  cuadrantes,
+  onClickResultsButton,
+  showResults = false,
+}) => {
   const renderTitle = (title) => (
     <CardTitleContainer>
       <CardTitle>{title}</CardTitle>
@@ -25,11 +32,18 @@ const McKinseyView = ({ onAdd, cuadrantes }) => {
     items.map((item) => (
       <FactorContent>
         <FactorDescription>{item.nombre}</FactorDescription>
+        {showResults && <Chip label={item.puntuacion} />}
       </FactorContent>
     ));
 
-  const renderBox = (backgroundcolor, child) => (
+  // TO-DO: stylear el span para que este al costado
+  //  position: absolute;
+  //  right: 100%;
+  //  top: 50%;
+  //  rotate: 270deg;
+  const renderBox = (backgroundcolor, child, showText = false) => (
     <Grid item xs={4} sx={{ display: 'flex' }}>
+      {/* {showText && <span>hola</span>} */}
       <CardContent backgroundcolor={backgroundcolor}>{child}</CardContent>
     </Grid>
   );
@@ -44,7 +58,7 @@ const McKinseyView = ({ onAdd, cuadrantes }) => {
         height={'100%'}
         sx={{ padding: '30px 0' }}
       >
-        {cuadrantes.map(({ color, title, unidades }) =>
+        {cuadrantes.map(({ color, title, unidades }, index) =>
           renderBox(
             color,
             <>
@@ -54,9 +68,25 @@ const McKinseyView = ({ onAdd, cuadrantes }) => {
           )
         )}
       </Grid>
+      {!showResults && (
+        <Fab
+          color="primary"
+          aria-label="add"
+          style={{
+            position: 'fixed',
+            top: 'auto',
+            bottom: 80,
+            right: 20,
+            left: 'auto',
+          }}
+          onClick={onAdd}
+        >
+          <AddIcon />
+        </Fab>
+      )}
       <Fab
-        color="primary"
-        aria-label="add"
+        color="secondary"
+        aria-label="resultados"
         style={{
           position: 'fixed',
           top: 'auto',
@@ -64,9 +94,9 @@ const McKinseyView = ({ onAdd, cuadrantes }) => {
           right: 20,
           left: 'auto',
         }}
-        onClick={onAdd}
+        onClick={onClickResultsButton}
       >
-        <AddIcon />
+        {showResults ? <NavigateBeforeIcon /> : <NavigateNextIcon />}
       </Fab>
     </>
   );

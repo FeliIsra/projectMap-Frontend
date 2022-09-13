@@ -33,3 +33,11 @@ export const CreateButtonsContainer = styled('div')({
   gap: 15,
   justifyContent: 'space-between',
 });
+
+export const ViewContainer = styled('div')({
+  display: 'flex',
+  flex: 1,
+  margin: '0 auto',
+  flexDirection: 'column',
+  height: '100%',
+});

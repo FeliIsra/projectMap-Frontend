@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 
 import { onAddUnidad, onGetOne } from 'redux/actions/mckinsey.actions';
@@ -26,6 +26,9 @@ import SliderInput from 'components/inputs/SliderInput';
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
   const disptch = useDispatch();
+  const navigate = useNavigate();
+  const onClickResultsButton = () =>
+    navigate(`/projects/${id}/mckinsey/${matrizId}/results`);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const cuadrantes = useSelector(cuadrantesSelector);
 
@@ -51,7 +54,11 @@ const McKinseyContainer = () => {
   return (
     <LayoutContainer>
       <Container>
-        <McKinseyView onAdd={onAdd} cuadrantes={cuadrantes} />
+        <McKinseyView
+          onAdd={onAdd}
+          cuadrantes={cuadrantes}
+          onClickResultsButton={onClickResultsButton}
+        />
       </Container>
       <Modal isOpen={isAddModalOpen} backgroundColor={COLORS.WildSand} disabled>
         <CreateContent>
