@@ -16,7 +16,7 @@ export const onGetOne = (id) => ({
   id,
 });
 
-export const onInsertQuestion = (id, formData) => ({
+export const onInsertQuestions = (id, formData) => ({
   type: constants.PORTER_INSERT_QUESTION_REQUESTED,
   id,
   formData,

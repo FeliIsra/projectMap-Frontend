@@ -13,11 +13,11 @@ import Input from 'components/inputs/Input';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-const PorterView = ({ options, questions }) => {
+const PorterView = ({ options, questions, onSubmit }) => {
   return (
     <CreateContent>
       <CardTitle>Titulo</CardTitle>
-      <Formik onSubmit={() => {}} initialValues={{}}>
+      <Formik onSubmit={onSubmit} initialValues={{}}>
         {({ handleSubmit }) => (
           <CustomForm onSubmit={handleSubmit}>
             {questions.map(({ id, pregunta }) => (
@@ -28,7 +28,7 @@ const PorterView = ({ options, questions }) => {
                 {Object.entries(options).map(([key, value]) => (
                   <Grid item xs={3}>
                     <Field
-                      name={key}
+                      name={`${id}.${key}`}
                       component={SelectInput}
                       options={value}
                       placeholder={key}
@@ -37,14 +37,6 @@ const PorterView = ({ options, questions }) => {
                 ))}
               </Grid>
             ))}
-            <ButtonsContainer>
-              <Button color="secondary" onClick={() => ''}>
-                Cancelar
-              </Button>
-              <Button color="primary" type="submit">
-                Siguiente
-              </Button>
-            </ButtonsContainer>
           </CustomForm>
         )}
       </Formik>
