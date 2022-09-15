@@ -14,6 +14,7 @@ import {
   CardTitle,
   FactorContent,
   FactorDescription,
+  ContentContainer,
 } from './styles';
 
 const McKinseyView = ({
@@ -42,7 +43,7 @@ const McKinseyView = ({
   //  top: 50%;
   //  rotate: 270deg;
   const renderBox = (backgroundcolor, child, showText = false) => (
-    <Grid item xs={4} sx={{ display: 'flex' }}>
+    <Grid item xs={4} sx={{ display: 'flex', height: '33%' }}>
       {/* {showText && <span>hola</span>} */}
       <CardContent backgroundcolor={backgroundcolor}>{child}</CardContent>
     </Grid>
@@ -56,7 +57,7 @@ const McKinseyView = ({
         rowSpacing={2}
         columnSpacing={2}
         height={'100%'}
-        sx={{ padding: '30px 0' }}
+        sx={{ padding: '30px' }}
       >
         {cuadrantes.map(({ color, title, unidades }, index) =>
           renderBox(

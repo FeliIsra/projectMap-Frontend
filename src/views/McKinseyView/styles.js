@@ -14,6 +14,12 @@ export const Container = styled('div')({
   width: '90%',
 });
 
+export const ContentContainer = styled('div')({
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column',
+});
+
 export const ButtonContainer = styled('div')({
   display: 'flex',
   alignSelf: 'flex-end',
@@ -31,6 +37,7 @@ export const CardContent = styled('div')((props) => ({
   padding: '12px 20px',
   maxHeight: 265,
   gap: 10,
+  overflowY: 'scroll',
 }));
 
 export const CardTitleContainer = styled('div')({
@@ -71,7 +78,6 @@ export const FactoresContainer = styled('div')({
   flexDirection: 'column',
   flex: 1,
   gap: 5,
-  overflowY: 'auto',
 });
 
 export const FactorContent = styled('div')({

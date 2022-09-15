@@ -14,7 +14,7 @@ import { Container } from 'styles/global';
 import McKinseyView from 'views/McKinseyView';
 import { SectionTable, Title } from 'views/McKinseyView/styles';
 import { ViewContainer } from 'styles/global';
-impor;
+import { Grid } from '@mui/material';
 
 const McKinseyContainerResults = () => {
   const { matrizId, id } = useParams();
@@ -28,39 +28,41 @@ const McKinseyContainerResults = () => {
     disptch(onGetOne(matrizId));
   }, []);
 
-  console.log('bth', { items, cuadrantes });
-
   return (
     <LayoutContainer>
-      <Container>
-        <ViewContainer>
+      <Grid container>
+        <Grid item sx={{ height: '100%' }}>
           <McKinseyView
             cuadrantes={cuadrantes}
             onClickResultsButton={onClickResultsButton}
             showResults
           />
-          <SectionTable>
-            <Title>Tabla de General</Title>
-            <CustomizedTables
-              items={cuadrantes}
-              columns={[
-                {
-                  label: 'Cuadrante',
-                  value: 'title',
-                },
-                {
-                  label: 'Que significa para la Unidad de Negocio?',
-                  value: 'significado',
-                },
-                {
-                  label: 'Cantidad de Unidades de Negocio',
-                  value: (item) => item.unidades.length,
-                },
-              ]}
-            />
-          </SectionTable>
-        </ViewContainer>
-      </Container>
+        </Grid>
+        <Grid item sx={{ height: '100%' }}>
+          <Grid container>
+            <Grid item sx={{ padding: '30px' }}>
+              <Title>Tabla de General</Title>
+              <CustomizedTables
+                items={cuadrantes}
+                columns={[
+                  {
+                    label: 'Cuadrante',
+                    value: 'title',
+                  },
+                  {
+                    label: 'Que significa para la Unidad de Negocio?',
+                    value: 'significado',
+                  },
+                  {
+                    label: 'Cantidad de Unidades de Negocio',
+                    value: (item) => item.unidades.length,
+                  },
+                ]}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     </LayoutContainer>
   );
 };

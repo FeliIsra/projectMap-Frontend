@@ -22,6 +22,7 @@ import { CustomForm } from 'styles/form';
 
 import McKinseyView from 'views/McKinseyView';
 import SliderInput from 'components/inputs/SliderInput';
+import { Grid } from '@mui/material';
 
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
@@ -53,13 +54,15 @@ const McKinseyContainer = () => {
 
   return (
     <LayoutContainer>
-      <Container>
-        <McKinseyView
-          onAdd={onAdd}
-          cuadrantes={cuadrantes}
-          onClickResultsButton={onClickResultsButton}
-        />
-      </Container>
+      <Grid container>
+        <Grid item sx={{ height: '100%' }}>
+          <McKinseyView
+            onAdd={onAdd}
+            cuadrantes={cuadrantes}
+            onClickResultsButton={onClickResultsButton}
+          />
+        </Grid>
+      </Grid>
       <Modal isOpen={isAddModalOpen} backgroundColor={COLORS.WildSand} disabled>
         <CreateContent>
           <CreateModalTitle>{`Agregar Unidad de Negocio`}</CreateModalTitle>
