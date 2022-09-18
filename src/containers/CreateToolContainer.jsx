@@ -12,6 +12,7 @@ const CreateToolContainer = () => {
 
   const foda = useSelector((state) => state.foda.data);
   const pestel = useSelector((state) => state.pestel.data);
+  const mckinsey = useSelector((state) => state.mckinsey.data);
   const loading = useSelector(toolsLoadingSelector);
 
   return (
@@ -30,6 +31,17 @@ const CreateToolContainer = () => {
             path="/"
             element={
               <Navigate to={`/projects/${id}/pestel/${pestel._id}`} replace />
+            }
+          />
+        )}
+        {!!mckinsey?._id && (
+          <Route
+            path="/"
+            element={
+              <Navigate
+                to={`/projects/${id}/mckinsey/${mckinsey._id}`}
+                replace
+              />
             }
           />
         )}

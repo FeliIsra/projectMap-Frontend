@@ -1,5 +1,6 @@
 import { onCreate as onCreateFoda } from 'redux/actions/foda.actions';
 import { onCreate as onCreatePestel } from 'redux/actions/pestel.actions';
+import { onCreate as onCreateMckinsey } from 'redux/actions/mckinsey.actions';
 
 const StepValue = {
   EVALUACION_ENTORNO_EXTERNO: 1,
@@ -53,7 +54,7 @@ export const STEPS = [
   {
     value: StepValue.FORMULACION_ESTRATEGIA_COMPETITIVA,
     title: 'Formulación de la Estrategia Competitiva',
-    menuItems: [{ title: 'Agregar Matriz McKinsey', action: () => {} }],
+    menuItems: [{ title: 'Agregar Matriz McKinsey', action: onCreateMckinsey }],
   },
 ];
 

@@ -22,10 +22,14 @@ const CustomizedTables = ({ items, columns }) => {
         </TableHead>
         <TableBody>
           {items.map((item) => (
-            <StyledTableRow key={items.name}>
-              {columns.map((column) => (
+            <StyledTableRow
+              key={item.name}
+              style={{ backgroundColor: item?.color || '' }}
+            >
+              {columns.map(({ value }) => (
                 <StyledTableCell align="center">
-                  {item[column.value]}
+                  {typeof value === 'string' && item[value]}
+                  {typeof value === 'function' && value(item)}
                 </StyledTableCell>
               ))}
             </StyledTableRow>
