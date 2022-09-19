@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LayoutContainer from 'containers/LayoutContainer';
-import { Container } from 'views/PorterView/styles';
+import { Container, ButtonsContainer } from 'views/PorterView/styles';
 import PorterView from 'views/PorterView';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
+import Button from 'components/commons/Button';
 import Typography from '@mui/material/Typography';
 
 const PorterContainer = () => {
@@ -28,6 +28,8 @@ const PorterContainer = () => {
   const steps = Object.keys(questions);
 
   const [activeStep, setActiveStep] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [initialValues, setInitialValues] = useState({});
   const [skipped, setSkipped] = useState(new Set());
 
   const isStepOptional = (step) => {
@@ -38,34 +40,35 @@ const PorterContainer = () => {
     return skipped.has(step);
   };
 
-  const handleNext = (data) => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
+  const isLastStep = () => {
+    return activeStep === steps.length - 1;
+  };
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+  const handleSubmit = (formData) => {
+    console.log({ formData });
+    if (isLastStep()) {
+      console.log('IS LAST STEP');
+      setAnswers({ ...answers, [steps[activeStep]]: formData });
+      console.log({ answers });
+      dispatch(onInsertQuestions(porterId, formData));
+    } else {
+      console.log('IS NOT LAST STEP');
+      setAnswers({ ...answers, [steps[activeStep]]: formData });
+      console.log({ answers });
+      let newSkipped = skipped;
+
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values());
+        newSkipped.delete(activeStep);
+      }
+
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
+    }
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
   };
 
   const handleReset = () => {
@@ -77,14 +80,10 @@ const PorterContainer = () => {
     dispatch(onGetOptions());
   }, []);
 
-  const onSubmit = (formData) => {
-    dispatch(onInsertQuestions(porterId, formData));
-  };
-
   return (
     <LayoutContainer>
       <Container>
-        <Box sx={{ width: '100%', marginTop: '130px' }}>
+        <Box sx={{ width: '100%' }}>
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
@@ -120,32 +119,12 @@ const PorterContainer = () => {
                 <PorterView
                   options={options}
                   questions={questions[steps[activeStep]]}
+                  activeStep={activeStep}
+                  handleBack={handleBack}
+                  handleSubmit={handleSubmit}
+                  steps={steps}
                 />
               </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                <Button
-                  color="inherit"
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  sx={{ mr: 1 }}
-                >
-                  Back
-                </Button>
-                <Box sx={{ flex: '1 1 auto' }} />
-                {isStepOptional(activeStep) && (
-                  <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                    Skip
-                  </Button>
-                )}
-
-                <Button
-                  onClick={
-                    activeStep === steps.length - 1 ? onSubmit : handleNext
-                  }
-                >
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
-              </Box>
             </React.Fragment>
           )}
         </Box>

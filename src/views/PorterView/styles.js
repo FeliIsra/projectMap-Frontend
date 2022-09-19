@@ -25,9 +25,10 @@ export const CreateContent = styled('div')({
 
 export const ButtonsContainer = styled('div')({
   display: 'flex',
-  width: '100%',
-  gap: 15,
   justifyContent: 'space-between',
+  gap: 20,
+  width: '50%',
+  alignItems: 'flex-end',
 });
 
 export const CardTitleContainer = styled('div')({
