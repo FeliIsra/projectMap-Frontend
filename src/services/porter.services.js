@@ -2,7 +2,7 @@ import { get, post, put, remove } from 'services/api';
 
 export const create = (formData) => post('porter', formData);
 export const insertQuestion = (id, formData) =>
-  post(`porter/${id}/preguntas`, formData);
+  post(`porter/${id}/preguntas/replace`, { preguntas: formData });
 
 export const editQuestion = (id, idQuestion, formData) =>
   put(`porter/${id}/preguntas/${idQuestion}`, formData);

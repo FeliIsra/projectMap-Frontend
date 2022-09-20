@@ -16,10 +16,10 @@ export const onGetOne = (id) => ({
   id,
 });
 
-export const onInsertQuestions = (id, formData) => ({
+export const onInsertQuestions = (id, answers) => ({
   type: constants.PORTER_INSERT_QUESTION_REQUESTED,
   id,
-  formData,
+  answers,
 });
 
 export const onDeleteQuestion = (idPorter, idQuestion) => ({

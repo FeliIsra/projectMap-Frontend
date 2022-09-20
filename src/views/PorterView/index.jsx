@@ -19,11 +19,13 @@ const PorterView = ({
   handleBack,
   handleSubmit,
   steps,
+  initialValues,
+  titulo,
 }) => {
   return (
     <CreateContent>
-      <CardTitle>Titulo</CardTitle>
-      <Formik onSubmit={handleSubmit} initialValues={{}}>
+      <CardTitle>{titulo}</CardTitle>
+      <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit }) => (
           <CustomForm onSubmit={handleSubmit}>
             {questions.map(({ id, pregunta }) => (
@@ -34,10 +36,14 @@ const PorterView = ({
                 {Object.entries(options).map(([key, value]) => (
                   <Grid item xs={3}>
                     <Field
-                      name={`${id}.${key}`}
+                      name={`${steps[activeStep]}.${id}.${key}`}
                       component={SelectInput}
                       options={value}
-                      placeholder={key}
+                      placeholder={
+                        key === 'nivelDeConcordancia'
+                          ? 'nivel de concordancia'
+                          : key
+                      }
                     />
                   </Grid>
                 ))}

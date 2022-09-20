@@ -5,6 +5,7 @@ import PorterView from 'views/PorterView';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  onGetOne,
   onGetOptions,
   onGetQuestions,
   onInsertQuestions,
@@ -15,9 +16,11 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from 'components/commons/Button';
 import Typography from '@mui/material/Typography';
+import { initialValuesSelector } from 'redux/selectors/porter.selector';
 
 const PorterContainer = () => {
   const { porterId, id } = useParams();
+
   const dispatch = useDispatch();
 
   const example = useSelector((state) => state.porter);
@@ -28,9 +31,17 @@ const PorterContainer = () => {
   const steps = Object.keys(questions);
 
   const [activeStep, setActiveStep] = useState(0);
+  const [handleFinish, setHandleFinish] = useState(false);
   const [answers, setAnswers] = useState({});
-  const [initialValues, setInitialValues] = useState({});
   const [skipped, setSkipped] = useState(new Set());
+
+  const initialValues = useSelector(initialValuesSelector);
+  const loading = useSelector((state) => state?.porter?.loading);
+
+  useEffect(() => {
+    handleFinish && dispatch(onInsertQuestions(porterId, answers));
+    dispatch(onGetOne(porterId));
+  }, [handleFinish]);
 
   const isStepOptional = (step) => {
     return step === 99;
@@ -45,16 +56,11 @@ const PorterContainer = () => {
   };
 
   const handleSubmit = (formData) => {
-    console.log({ formData });
     if (isLastStep()) {
-      console.log('IS LAST STEP');
-      setAnswers({ ...answers, [steps[activeStep]]: formData });
-      console.log({ answers });
-      dispatch(onInsertQuestions(porterId, formData));
+      setAnswers({ ...answers, ...formData });
+      setHandleFinish(true);
     } else {
-      console.log('IS NOT LAST STEP');
-      setAnswers({ ...answers, [steps[activeStep]]: formData });
-      console.log({ answers });
+      setAnswers({ ...answers, ...formData });
       let newSkipped = skipped;
 
       if (isStepSkipped(activeStep)) {
@@ -116,14 +122,18 @@ const PorterContainer = () => {
           ) : (
             <React.Fragment>
               <Typography sx={{ mt: 2, mb: 1 }}>
-                <PorterView
-                  options={options}
-                  questions={questions[steps[activeStep]]}
-                  activeStep={activeStep}
-                  handleBack={handleBack}
-                  handleSubmit={handleSubmit}
-                  steps={steps}
-                />
+                {!loading && (
+                  <PorterView
+                    options={options}
+                    questions={questions[steps[activeStep]]}
+                    initialValues={initialValues}
+                    activeStep={activeStep}
+                    handleBack={handleBack}
+                    handleSubmit={handleSubmit}
+                    steps={steps}
+                    titulo={steps[activeStep]}
+                  />
+                )}
               </Typography>
             </React.Fragment>
           )}

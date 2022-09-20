@@ -51,19 +51,16 @@ const porterReducer = (state = defaultState, action) => {
       return {
         ...state,
         consejos: { ...state.consejos, ...data.consejos },
-        loading: false,
       };
     case constants.PORTER_GET_OPTIONS_SUCCEEDED:
       return {
         ...state,
         options: { ...state.options, ...data.options },
-        loading: false,
       };
     case constants.PORTER_GET_QUESTIONS_SUCCEEDED:
       return {
         ...state,
         questions: { ...state.questions, ...data.questions },
-        loading: false,
       };
     case constants.PORTER_CREATE_FAILED:
     case constants.PORTER_GET_FAILED:

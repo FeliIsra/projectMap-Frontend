@@ -60,7 +60,6 @@ const FodaContainer = () => {
   const onDelete = (factor) => disptch(onDeleteFactor(fodaId, factor._id));
 
   const onSubmitFactor = (formData) => {
-    console.log({ formData });
     if (factor._id)
       disptch(onUpdateFactor(fodaId, factor._id, { ...formData }));
     else disptch(onInsertFactor(fodaId, { ...formData, area: factor }));
