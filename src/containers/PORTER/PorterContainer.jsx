@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import LayoutContainer from 'containers/LayoutContainer';
-import { Container, ButtonsContainer } from 'views/PorterView/styles';
+import { Container } from 'views/PorterView/styles';
 import PorterView from 'views/PorterView';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   onGetOne,
@@ -22,9 +22,12 @@ const PorterContainer = () => {
   const { porterId, id } = useParams();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onClickResultsButton = () =>
+    navigate(`/projects/${id}/porter/${porterId}/results`);
 
-  const example = useSelector((state) => state.porter);
-  const { options, questions } = example;
+  const porter = useSelector((state) => state.porter);
+  const { options, questions } = porter;
 
   delete options.fuerza;
 
@@ -132,6 +135,7 @@ const PorterContainer = () => {
                     handleSubmit={handleSubmit}
                     steps={steps}
                     titulo={steps[activeStep]}
+                    onClickResults={onClickResultsButton}
                   />
                 )}
               </Typography>

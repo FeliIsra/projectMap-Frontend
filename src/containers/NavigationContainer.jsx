@@ -36,6 +36,10 @@ export const NavigationContainer = () => {
           path=":id/porter/:porterId/results"
           element={<PorterContainerResults />}
         />
+        <Route
+          path=":id/porter/:porterId/results"
+          element={<PorterContainerResults />}
+        />
         <Route path=":id/porter/:porterId" element={<PorterContainer />} />
         <Route path=":id/createTool/*" element={<CreateToolContainer />} />
         <Route path=":id" element={<ProjectContainer />} />

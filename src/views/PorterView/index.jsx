@@ -21,20 +21,42 @@ const PorterView = ({
   steps,
   initialValues,
   titulo,
+  onClickResults,
 }) => {
   return (
     <CreateContent>
       <CardTitle>{titulo}</CardTitle>
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit }) => (
-          <CustomForm onSubmit={handleSubmit}>
+          <CustomForm onSubmit={handleSubmit} sx={{ gap: '0px' }}>
             {questions.map(({ id, pregunta }) => (
-              <Grid container direction="row" alignItems="center">
-                <Grid item xs={6}>
+              <Grid
+                container
+                columnSpacing={3}
+                direction="row"
+                alignItems="center"
+                sx={{
+                  backgroundColor: id % 2 === 0 ? '#A0DBC0' : '#94BFBE',
+                  width: '100%',
+                  marginLeft: '0px',
+                  padding: '20px',
+                  borderTopLeftRadius: id === 1 ? '15px' : '0px',
+                  borderBottomLeftRadius:
+                    id === questions.length ? '15px' : '0px',
+                  borderTopRightRadius: id === 1 ? '15px' : '0px',
+                  borderBottomRightRadius:
+                    id === questions.length ? '15px' : '0px',
+                  borderTop: id === 1 ? '3px solid #264653' : '0',
+                  borderRight: '3px solid #264653',
+                  borderLeft: '3px solid #264653',
+                  borderBottom: '3px solid #264653',
+                }}
+              >
+                <Grid item xs={4}>
                   <Typography key={id}>{pregunta}</Typography>
                 </Grid>
                 {Object.entries(options).map(([key, value]) => (
-                  <Grid item xs={3}>
+                  <Grid item xs={4}>
                     <Field
                       name={`${steps[activeStep]}.${id}.${key}`}
                       component={SelectInput}
@@ -58,7 +80,7 @@ const PorterView = ({
                 justifyContent: 'flex-end',
               }}
             >
-              <ButtonsContainer>
+              <ButtonsContainer width={activeStep === 0 ? '25%' : null}>
                 {activeStep !== 0 && (
                   <Button
                     color="inherit"
@@ -67,11 +89,17 @@ const PorterView = ({
                     sx={{ mr: 1 }}
                     type="button"
                   >
-                    Back
+                    Atras
                   </Button>
                 )}
-                <Button color="primary" type="submit">
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                <Button
+                  color="primary"
+                  type="submit"
+                  onClick={
+                    activeStep === steps.length - 1 ? onClickResults : () => {}
+                  }
+                >
+                  {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
                 </Button>
               </ButtonsContainer>
             </Box>

@@ -51,6 +51,7 @@ const porterReducer = (state = defaultState, action) => {
       return {
         ...state,
         consejos: { ...state.consejos, ...data.consejos },
+        loading: false,
       };
     case constants.PORTER_GET_OPTIONS_SUCCEEDED:
       return {

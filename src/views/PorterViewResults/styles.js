@@ -23,13 +23,13 @@ export const CreateContent = styled('div')({
   gap: 30,
 });
 
-export const ButtonsContainer = styled('div')((props) => ({
+export const ButtonsContainer = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
   gap: 20,
-  width: props.width ? props.width : '50%',
+  width: '50%',
   alignItems: 'flex-end',
-}));
+});
 
 export const CardTitleContainer = styled('div')({
   display: 'flex',
