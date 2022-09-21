@@ -1,6 +1,7 @@
 import { onCreate as onCreateFoda } from 'redux/actions/foda.actions';
 import { onCreate as onCreatePestel } from 'redux/actions/pestel.actions';
 import { onCreate as onCreateMckinsey } from 'redux/actions/mckinsey.actions';
+import { onCreate as onCreatePorter } from 'redux/actions/porter.actions';
 
 const StepValue = {
   EVALUACION_ENTORNO_EXTERNO: 1,
@@ -17,7 +18,7 @@ export const STEPS = [
     value: StepValue.EVALUACION_ENTORNO_EXTERNO,
     title: 'Evaluación del Entorno Externo',
     menuItems: [
-      { title: 'Agregar Analisis de Porter', key: 1, action: () => {} },
+      { title: 'Agregar Analisis de Porter', key: 1, action: onCreatePorter },
       { title: 'Agregar Analisis de Pestel', key: 2, action: onCreatePestel },
     ],
   },

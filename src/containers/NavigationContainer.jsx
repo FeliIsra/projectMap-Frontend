@@ -13,6 +13,8 @@ import PestelContainerResults from 'containers/PESTEL/PestelContainerResults';
 import CreateToolContainer from 'containers/CreateToolContainer';
 import McKinseyContainer from 'containers/MCKINSEY/McKinseyContainer';
 import McKinseyContainerResults from 'containers/MCKINSEY/McKinseyContainerResults';
+import PorterContainerResults from 'containers/PORTER/PorterContainerResults';
+import PorterContainer from 'containers/PORTER/PorterContainer';
 
 export const NavigationContainer = () => {
   return (
@@ -37,6 +39,11 @@ export const NavigationContainer = () => {
           element={<McKinseyContainerResults />}
         />
         <Route path=":id/mckinsey/:matrizId" element={<McKinseyContainer />} />
+        <Route
+          path=":id/porter/:porterId/results"
+          element={<PorterContainerResults />}
+        />
+        <Route path=":id/porter/:porterId" element={<PorterContainer />} />
         <Route path=":id/createTool/*" element={<CreateToolContainer />} />
         <Route path=":id" element={<ProjectContainer />} />
       </Route>

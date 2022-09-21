@@ -156,7 +156,6 @@ export const pieChartSelector = createSelector(
 export const radarChartSelector = createSelector(
   [totalResultsSelect],
   (total) => {
-    console.log({ total });
     let totalPuntuacion = 0;
     Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
 
