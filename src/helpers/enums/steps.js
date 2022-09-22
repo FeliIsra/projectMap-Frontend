@@ -1,6 +1,7 @@
 import { onCreate as onCreateFoda } from 'redux/actions/foda.actions';
 import { onCreate as onCreatePestel } from 'redux/actions/pestel.actions';
 import { onCreate as onCreateMckinsey } from 'redux/actions/mckinsey.actions';
+import { onCreate as onCreateAnsoff } from 'redux/actions/ansoff.actions';
 import { onCreate as onCreatePorter } from 'redux/actions/porter.actions';
 
 const StepValue = {
@@ -50,7 +51,7 @@ export const STEPS = [
   {
     value: StepValue.DEFINICION_LINIAMIENTOS_ESTRATEGICOS,
     title: 'Definición de Lineamientos Estratégicos',
-    menuItems: [{ title: 'Agregar Matiz ANSOFF', action: () => {} }],
+    menuItems: [{ title: 'Agregar Matiz ANSOFF', action: onCreateAnsoff }],
   },
   {
     value: StepValue.FORMULACION_ESTRATEGIA_COMPETITIVA,
