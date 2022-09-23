@@ -8,17 +8,7 @@ import {
   StepLabel,
   Typography,
 } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-import CancelIcon from '@mui/icons-material/Cancel';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { Formik, Field } from 'formik';
-
-import Input from 'components/inputs/Input';
-import SelectInput from 'components/inputs/SelectInput';
 
 import { COLORS } from 'helpers/enums/colors';
 import SelectMenu from 'components/inputs/SelectMenu';
@@ -37,6 +27,7 @@ const Steps = ({
   handleBack,
   activeStep,
   productosFiltered,
+  onEditExito,
 }) => {
   return (
     <>
@@ -56,13 +47,17 @@ const Steps = ({
               }}
             >
               <Grid item xs={4} display="flex" justifyContent={'center'}>
-                <span>Nombre</span>
+                <span style={{ textAlign: 'center' }}>Nombre</span>
               </Grid>
               <Grid item xs={4} display="flex" justifyContent={'center'}>
-                <span>Situacion Del Mercado</span>
+                <span style={{ textAlign: 'center' }}>
+                  Situacion Del Mercado
+                </span>
               </Grid>
               <Grid item xs={4} display="flex" justifyContent={'center'}>
-                <span>Situacion Del Producto</span>
+                <span style={{ textAlign: 'center' }}>
+                  Situacion Del Producto
+                </span>
               </Grid>
             </Grid>
           </Grid>
@@ -167,14 +162,9 @@ const Steps = ({
                             ? getExitoProducto(producto.exito)
                             : { label: 'Selecione el exito', value: '' }
                         }
-                        // onChange={(newValue: number) => {
-                        //   dispatch(
-                        //     onSave(
-                        //       { firstName, lastName, email, roleId: newValue },
-                        //       id
-                        //     )
-                        //   );
-                        // }}
+                        onChange={(newValue) => {
+                          onEditExito({ ...producto, exito: newValue });
+                        }}
                       />
                     </Grid>
                   </>
@@ -239,7 +229,17 @@ const Steps = ({
                       justifyContent={'center'}
                       sx={{ padding: '20px 0' }}
                     >
-                      {producto.situacionDelMercado}
+                      <SelectMenu
+                        items={exitoProductoList}
+                        selectedValue={
+                          producto?.exito
+                            ? getExitoProducto(producto.exito)
+                            : { label: 'Selecione el exito', value: '' }
+                        }
+                        onChange={(newValue) => {
+                          onEditExito({ ...producto, exito: newValue });
+                        }}
+                      />
                     </Grid>
                   </>
                 ))}
@@ -303,7 +303,17 @@ const Steps = ({
                       justifyContent={'center'}
                       sx={{ padding: '20px 0' }}
                     >
-                      {producto.situacionDelMercado}
+                      <SelectMenu
+                        items={exitoProductoList}
+                        selectedValue={
+                          producto?.exito
+                            ? getExitoProducto(producto.exito)
+                            : { label: 'Selecione el exito', value: '' }
+                        }
+                        onChange={(newValue) => {
+                          onEditExito({ ...producto, exito: newValue });
+                        }}
+                      />
                     </Grid>
                   </>
                 ))}
@@ -367,7 +377,17 @@ const Steps = ({
                       justifyContent={'center'}
                       sx={{ padding: '20px 0' }}
                     >
-                      {producto.situacionDelMercado}
+                      <SelectMenu
+                        items={exitoProductoList}
+                        selectedValue={
+                          producto?.exito
+                            ? getExitoProducto(producto.exito)
+                            : { label: 'Selecione el exito', value: '' }
+                        }
+                        onChange={(newValue) => {
+                          onEditExito({ ...producto, exito: newValue });
+                        }}
+                      />
                     </Grid>
                   </>
                 ))}

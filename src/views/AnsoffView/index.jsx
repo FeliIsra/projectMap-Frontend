@@ -37,6 +37,7 @@ const AnsoffView = (props) => {
     handleNext,
     handleBack,
     activeStep,
+    onEditExito,
   } = props;
   const [showForm, setShowForm] = useState(false);
 

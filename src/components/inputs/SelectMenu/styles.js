@@ -14,7 +14,7 @@ export const SelectButtonContainer = styled('div')({
 
   span: {
     fontStyle: 'normal',
-    fontSize: '14px !important',
+    fontSize: '16px',
     lineHeight: '18px',
     color: COLORS.grayCloudBurst,
   },
@@ -25,7 +25,7 @@ export const SelectButtonContainer = styled('div')({
 });
 
 export const Menu = styled(MUIMenu)({
-  'MuiPaper-root': {
+  '.MuiPaper-root': {
     padding: '8px',
     gap: '8px',
     background: COLORS.white,
@@ -35,7 +35,7 @@ export const Menu = styled(MUIMenu)({
     borderRadius: '6px',
   },
 
-  'MuiList-root': {
+  '.MuiList-root': {
     display: 'flex',
     flexDirection: 'column',
     padding: 0,
@@ -45,8 +45,9 @@ export const Menu = styled(MUIMenu)({
 
 export const MenuItem = styled(MUIMenuItem)((props) => ({
   display: 'flex',
+  backgroundColor: 'red',
   justifyContent: 'flex-start',
-  padding: '0',
+  padding: '0px',
   color: COLORS.grayCloudBurst,
   background: `${COLORS.white} !important`,
 
@@ -55,14 +56,5 @@ export const MenuItem = styled(MUIMenuItem)((props) => ({
     fontWeight: props.selected ? '700' : '400',
     fontSize: '14px',
     lineHeight: '18px',
-  },
-
-  'MuiListItemIcon-root': {
-    minWidth: '30px',
-    color: COLORS.grayCloudBurst,
-  },
-
-  'MuiListItemText-inset': {
-    paddingLeft: '30px',
   },
 }));

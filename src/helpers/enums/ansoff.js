@@ -23,7 +23,7 @@ export const exitoProductoList = [
 ];
 
 export const getExitoProducto = (value) =>
-  Object.value(exitoProductoList).find((exito) => exito.value === value) || {
+  Object.values(exitoProductoList).find((exito) => exito.value === value) || {
     label: '',
     value: '',
   };

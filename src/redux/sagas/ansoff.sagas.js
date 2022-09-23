@@ -3,6 +3,7 @@ import {
   addProduct,
   create,
   deletePestel,
+  editProduct,
   getOne,
   getOptions,
 } from 'services/ansoff.services';
@@ -58,6 +59,16 @@ export function* ansoffGetOptions() {
   }
 }
 
+export function* ansoffEditProduct(action) {
+  try {
+    const { id, productId, formData } = action;
+    const { data } = yield call(editProduct, id, productId, formData);
+    yield put({ type: constants.EDIT_PRODUCT_ANSOFF_SUCCEEDED, data });
+  } catch (error) {
+    yield put({ type: constants.EDIT_PRODUCT_ANSOFF_FAILED, error });
+  }
+}
+
 export function* watchAnsoff() {
   yield all([
     takeLatest(constants.CREATE_ANSOFF_REQUESTED, ansoffCreate),
@@ -65,5 +76,6 @@ export function* watchAnsoff() {
     takeLatest(constants.DELETE_ANSOFF_REQUEST, ansoffDelete),
     takeLatest(constants.ADD_PRODUCT_ANSOFF_REQUESTED, ansoffAddProduct),
     takeLatest(constants.GET_OPTIONS_ANSOFF_REQUESTED, ansoffGetOptions),
+    takeLatest(constants.EDIT_PRODUCT_ANSOFF_REQUESTED, ansoffEditProduct),
   ]);
 }

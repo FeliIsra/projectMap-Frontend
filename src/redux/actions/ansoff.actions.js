@@ -24,3 +24,10 @@ export const onAddProducto = (id, formData) => ({
 export const onGetOptions = () => ({
   type: constants.GET_OPTIONS_ANSOFF_REQUESTED,
 });
+
+export const onEditProduct = (id, productId, formData) => ({
+  type: constants.EDIT_PRODUCT_ANSOFF_REQUESTED,
+  id,
+  productId,
+  formData,
+});

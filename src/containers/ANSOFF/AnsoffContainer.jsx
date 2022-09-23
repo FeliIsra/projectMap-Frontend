@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Formik, Field } from 'formik';
 
 import LayoutContainer from 'containers/LayoutContainer';
-import Modal from 'components/commons/Modal';
-import Input from 'components/inputs/Input';
-import Button from 'components/commons/Button';
 
 import AnsoffView from 'views/AnsoffView';
 import { Grid } from '@mui/material';
@@ -14,6 +10,7 @@ import {
   onAddProducto,
   onGetOne,
   onGetOptions,
+  onEditProduct,
 } from 'redux/actions/ansoff.actions';
 import {
   exitoSelector,
@@ -55,6 +52,9 @@ const AnsoffContainer = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
+  const onEditExito = (formData) =>
+    disptch(onEditProduct(ansoffId, formData._id, formData));
+
   const initialValuesProducto = {
     nombre: '',
     situacionDelMercado: '',
@@ -86,6 +86,7 @@ const AnsoffContainer = () => {
             handleNext={handleNext}
             activeStep={activeStep}
             productosFiltered={productosFiltered}
+            onEditExito={onEditExito}
           />
         </Grid>
       </Grid>
