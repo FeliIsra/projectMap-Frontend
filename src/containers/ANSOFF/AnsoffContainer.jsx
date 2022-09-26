@@ -24,21 +24,20 @@ const AnsoffContainer = () => {
   const { ansoffId, id } = useParams();
   const disptch = useDispatch();
   const navigate = useNavigate();
-  const onClickResultsButton = () =>
-    navigate(`/projects/${id}/mckinsey/${ansoffId}/results`);
 
   const [activeStep, setActiveStep] = useState(0);
 
   const item = useSelector((state) => state.ansoff.data);
   const situacionDelMercadoOptions = useSelector(situacionDelMercadoSelector);
   const situacionDelProductoOptions = useSelector(situacionDelProductoSelector);
-  const exitoOptions = useSelector(exitoSelector);
   const productosFiltered = useSelector(productosSelector);
 
   useEffect(() => {
     disptch(onGetOne(ansoffId));
     disptch(onGetOptions(ansoffId));
   }, []);
+
+  const isLastStep = activeStep === 4;
 
   const onSubmitProducto = (formData) => {
     disptch(onAddProducto(ansoffId, formData));
@@ -49,7 +48,8 @@ const AnsoffContainer = () => {
   };
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (!isLastStep) setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    else navigate(`/projects/${id}/ansoff/${ansoffId}/results`);
   };
 
   const onEditExito = (formData) =>
@@ -77,7 +77,6 @@ const AnsoffContainer = () => {
           <AnsoffView
             onSubmitProducto={onSubmitProducto}
             initialValuesProducto={initialValuesProducto}
-            onClickResultsButton={onClickResultsButton}
             situacionDelMercadoOptions={situacionDelMercadoOptions}
             situacionDelProductoOptions={situacionDelProductoOptions}
             productos={item?.productos}
@@ -87,6 +86,7 @@ const AnsoffContainer = () => {
             activeStep={activeStep}
             productosFiltered={productosFiltered}
             onEditExito={onEditExito}
+            isLastStep={isLastStep}
           />
         </Grid>
       </Grid>

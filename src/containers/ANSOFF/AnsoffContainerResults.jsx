@@ -3,64 +3,53 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 
-import { onGetOne } from 'redux/actions/mckinsey.actions';
+import {
+  onAddProducto,
+  onGetOne,
+  onEditProduct,
+} from 'redux/actions/ansoff.actions';
 import { cuadrantesSelector } from 'redux/selectors/mckinsey.selector';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import CustomizedTables from 'components/commons/Table';
-
-import { Container } from 'styles/global';
-
-import McKinseyView from 'views/McKinseyView';
-import { SectionTable, Title } from 'views/McKinseyView/styles';
-import { ViewContainer } from 'styles/global';
 import { Grid } from '@mui/material';
 
+import {
+  productosSelector,
+  porcentajesSelector,
+} from 'redux/selectors/ansoff.selector';
+import AnsoffViewResults from 'views/AnsoffViewResults';
+
 const AnsoffContainerResults = () => {
-  const { matrizId, id } = useParams();
+  const { ansoffId, id } = useParams();
   const disptch = useDispatch();
-  const navigate = useNavigate();
-  const onClickResultsButton = () =>
-    navigate(`/projects/${id}/mckinsey/${matrizId}`);
-  const cuadrantes = useSelector(cuadrantesSelector);
+
+  const productosFiltered = useSelector(productosSelector);
+  const porcentajes = useSelector(porcentajesSelector);
+
+  console.log('porcentajes', porcentajes);
 
   useEffect(() => {
-    disptch(onGetOne(matrizId));
+    disptch(onGetOne(ansoffId));
   }, []);
 
   return (
     <LayoutContainer>
       <Grid container>
-        <Grid item sx={{ height: '100%' }}>
-          <McKinseyView
-            cuadrantes={cuadrantes}
-            onClickResultsButton={onClickResultsButton}
-            showResults
+        <Grid
+          item
+          sx={{
+            height: '100%',
+            width: '100%',
+            padding: '30px',
+            maxWidth: '1300px',
+            margin: '0 auto',
+          }}
+        >
+          <AnsoffViewResults
+            productosFiltered={productosFiltered}
+            porcentajes={porcentajes}
           />
-        </Grid>
-        <Grid item sx={{ height: '100%' }}>
-          <Grid container>
-            <Grid item sx={{ padding: '30px' }}>
-              <Title>Tabla de General</Title>
-              <CustomizedTables
-                items={cuadrantes}
-                columns={[
-                  {
-                    label: 'Cuadrante',
-                    value: 'title',
-                  },
-                  {
-                    label: 'Que significa para la Unidad de Negocio?',
-                    value: 'significado',
-                  },
-                  {
-                    label: 'Cantidad de Unidades de Negocio',
-                    value: (item) => item.unidades.length,
-                  },
-                ]}
-              />
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
     </LayoutContainer>

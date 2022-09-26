@@ -23,21 +23,20 @@ import SelectInput from 'components/inputs/SelectInput';
 import { CustomForm, ButtonsContainer } from './styles';
 import { COLORS } from 'helpers/enums/colors';
 import Steps from './components';
+import { Check } from '@mui/icons-material';
 
 const AnsoffView = (props) => {
   const {
     onSubmitProducto,
-    onClickResultsButton,
     showResults = false,
     situacionDelMercadoOptions,
     situacionDelProductoOptions,
     initialValuesProducto,
-    productos,
     steps,
     handleNext,
     handleBack,
     activeStep,
-    onEditExito,
+    isLastStep,
   } = props;
   const [showForm, setShowForm] = useState(false);
 
@@ -176,7 +175,7 @@ const AnsoffView = (props) => {
         }}
         onClick={handleNext}
       >
-        <NavigateNextIcon />
+        {isLastStep ? <Check /> : <NavigateNextIcon />}
       </Fab>
     </>
   );
