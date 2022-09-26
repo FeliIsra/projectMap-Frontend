@@ -102,6 +102,7 @@ const AnsoffView = (props) => {
                         placeholder="Situacion Del Mercado"
                         component={SelectInput}
                         options={situacionDelMercadoOptions}
+                        fontSize={18}
                       />
                     </Grid>
                     <Grid item xs={12} md={3}>
@@ -110,6 +111,7 @@ const AnsoffView = (props) => {
                         placeholder="Situacion Del Producto"
                         component={SelectInput}
                         options={situacionDelProductoOptions}
+                        fontSize={18}
                       />
                     </Grid>
                     <Grid item xs={12} md={1}>
@@ -132,7 +134,7 @@ const AnsoffView = (props) => {
           </Grid>
         )}
       </Grid>
-      {!showResults && (
+      {!showResults && !showForm && (
         <Fab
           color="primary"
           aria-label="add"
@@ -148,35 +150,39 @@ const AnsoffView = (props) => {
           <AddIcon />
         </Fab>
       )}
-      <Fab
-        color="secondary"
-        aria-label="back"
-        style={{
-          position: 'fixed',
-          top: 'auto',
-          bottom: 20,
-          left: 20,
-          right: 'auto',
-        }}
-        onClick={handleBack}
-        disabled={activeStep === 0}
-      >
-        <NavigateBeforeIcon />
-      </Fab>
-      <Fab
-        color="secondary"
-        aria-label="next"
-        style={{
-          position: 'fixed',
-          top: 'auto',
-          bottom: 20,
-          right: 20,
-          left: 'auto',
-        }}
-        onClick={handleNext}
-      >
-        {isLastStep ? <Check /> : <NavigateNextIcon />}
-      </Fab>
+      {!showForm && (
+        <>
+          <Fab
+            color="secondary"
+            aria-label="back"
+            style={{
+              position: 'fixed',
+              top: 'auto',
+              bottom: 20,
+              left: 20,
+              right: 'auto',
+            }}
+            onClick={handleBack}
+            disabled={activeStep === 0}
+          >
+            <NavigateBeforeIcon />
+          </Fab>
+          <Fab
+            color="secondary"
+            aria-label="next"
+            style={{
+              position: 'fixed',
+              top: 'auto',
+              bottom: 20,
+              right: 20,
+              left: 'auto',
+            }}
+            onClick={handleNext}
+          >
+            {isLastStep ? <Check /> : <NavigateNextIcon />}
+          </Fab>
+        </>
+      )}
     </>
   );
 };
