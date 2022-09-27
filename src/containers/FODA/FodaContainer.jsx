@@ -5,7 +5,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import LayoutContainer from 'containers/LayoutContainer';
 import FodaView from 'views/FodaView';
 import Modal from 'components/commons/Modal';
-import Input from 'components/inputs/Input';
 import Button from 'components/commons/Button';
 import { COLORS } from 'helpers/enums/colors';
 import {
@@ -21,6 +20,7 @@ import {
   onInsertFactor,
   onUpdateFactor,
   onDeleteFactor,
+  onGetSeeds,
 } from 'redux/actions/foda.actions';
 import { CustomForm } from 'styles/form';
 import { Formik, Field } from 'formik';
@@ -31,6 +31,7 @@ import {
   oportunidadesSelector,
   titleSelector,
 } from 'redux/selectors/foda.selector';
+import AutoComplete from 'components/inputs/Autocomplete';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -46,10 +47,14 @@ const FodaContainer = () => {
   const amenazas = useSelector(amenazasSelector);
   const fortalezas = useSelector(fortalezasSelector);
   const oportunidades = useSelector(oportunidadesSelector);
+  const seeds = useSelector((state) => state.foda.seeds);
   const { title } = useSelector(titleSelector);
+
+  console.log('seeds', seeds);
 
   useEffect(() => {
     disptch(onGetOptions());
+    disptch(onGetSeeds());
     disptch(onGetOne(fodaId));
   }, []);
 
@@ -101,12 +106,22 @@ const FodaContainer = () => {
               {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
             </CardTitle>
             <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
-              {({ handleSubmit }) => (
+              {({ handleSubmit, setFieldValue }) => (
                 <CustomForm onSubmit={handleSubmit}>
                   <Field
                     name="descripcion"
                     placeholder="Descripcion"
-                    component={Input}
+                    component={AutoComplete}
+                    options={factor ? seeds[factor] : []}
+                    optionKey={'descripcion'}
+                    onChange={(value) =>
+                      setFieldValue(
+                        'descripcion',
+                        value?.descripcion !== null
+                          ? value.descripcion
+                          : initialValues.descripcion
+                      )
+                    }
                   />
                   <Field
                     name="importancia"

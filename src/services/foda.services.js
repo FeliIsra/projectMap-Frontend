@@ -8,6 +8,8 @@ export const getOne = (id) => get(`foda/${id}`);
 
 export const getOptions = () => get(`foda/options`);
 
+export const getSeeds = () => get(`foda/preSeeds`);
+
 export const insertFactor = (id, formData) =>
   post(`foda/${id}/factor`, formData);
 

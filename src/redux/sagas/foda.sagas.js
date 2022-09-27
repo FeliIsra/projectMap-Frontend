@@ -7,6 +7,7 @@ import {
   deleteFactor,
   updateFactor,
   getOptions,
+  getSeeds,
 } from 'services/foda.services';
 
 import * as constants from 'redux/contansts/foda.constants';
@@ -83,6 +84,18 @@ export function* fodaGetOptions(action) {
   }
 }
 
+export function* fodaGetSeeds() {
+  try {
+    const { data: seeds } = yield call(getSeeds);
+    yield put({
+      type: constants.FODA_GET_SEEDS_SUCCEEDED,
+      data: { seeds },
+    });
+  } catch (error) {
+    yield put({ type: constants.FODA_GET_SEEDS_FAILED, error });
+  }
+}
+
 export function* watchFoda() {
   yield all([
     takeLatest(constants.CREATE_FODA_REQUESTED, fodaCreate),
@@ -92,5 +105,6 @@ export function* watchFoda() {
     takeLatest(constants.FODA_DELETE_FACTOR_REQUESTED, fodaDeleteFactor),
     takeLatest(constants.FODA_UPDATE_FACTOR_REQUESTED, fodaUpdateFactor),
     takeLatest(constants.FODA_GET_OPTIONS_REQUESTED, fodaGetOptions),
+    takeLatest(constants.FODA_GET_SEEDS_REQUESTED, fodaGetSeeds),
   ]);
 }

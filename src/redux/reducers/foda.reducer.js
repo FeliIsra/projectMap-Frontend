@@ -11,6 +11,7 @@ export const defaultState = {
     tendencia: [],
     urgencia: [],
   },
+  seeds: [],
 };
 
 const fodaReducer = (state = defaultState, action) => {
@@ -41,6 +42,12 @@ const fodaReducer = (state = defaultState, action) => {
         ...state,
         loading: false,
         options: { ...state.options, ...data.options },
+      };
+    case constants.FODA_GET_SEEDS_SUCCEEDED:
+      return {
+        ...state,
+        loading: false,
+        seeds: { ...state.seeds, ...data.seeds },
       };
     case constants.CREATE_FODA_FAILED:
     case constants.FODA_DELETE_FACTOR_FAILED:

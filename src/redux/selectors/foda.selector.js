@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
 const sortByPuntuacion = (a, b) => b.puntuacion - a.puntuacion;
 const reduceByPuntuacion = (a, b) => a + b.puntuacion;
 const getFoda = (state) => state.foda.data;
+const getSeeds = (state) => state.foda.seeds;
 
 export const debilidadesSelector = createSelector(
   [getFoda],
@@ -158,5 +159,63 @@ export const radarChartSelector = createSelector(
         fullMark: totalPuntuacion,
       };
     });
+  }
+);
+
+export const consejosSelector = createSelector(
+  [
+    fortalezasSelector,
+    oportunidadesSelector,
+    debilidadesSelector,
+    amenazasSelector,
+    getSeeds,
+  ],
+  (fortalezas, oportunidades, debilidades, amenazas, seeds) => {
+    return Object.entries(seeds).reduce((prevValue, [key, seedList]) => {
+      switch (key) {
+        case 'Fortaleza':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                fortalezas.some(
+                  (fortaleza) => seed.descripcion === fortaleza.descripcion
+                )
+              )
+              .map((seed) => ({ ...seed, area: key }))
+          );
+        case 'Oportunidad':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                oportunidades.some(
+                  (oportunidad) => seed.descripcion === oportunidad.descripcion
+                )
+              )
+              .map((seed) => ({ ...seed, area: key }))
+          );
+        case 'Debilidad':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                debilidades.some(
+                  (debilidad) => seed.descripcion === debilidad.descripcion
+                )
+              )
+              .map((seed) => ({ ...seed, area: key }))
+          );
+        case 'Amenaza':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                amenazas.some(
+                  (amenaza) => seed.descripcion === amenaza.descripcion
+                )
+              )
+              .map((seed) => ({ ...seed, area: key }))
+          );
+        default:
+          return [];
+      }
+    }, []);
   }
 );

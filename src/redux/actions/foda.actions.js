@@ -38,3 +38,7 @@ export const onDeleteFactor = (idFoda, idFactor) => ({
 export const onGetOptions = () => ({
   type: constants.FODA_GET_OPTIONS_REQUESTED,
 });
+
+export const onGetSeeds = () => ({
+  type: constants.FODA_GET_SEEDS_REQUESTED,
+});

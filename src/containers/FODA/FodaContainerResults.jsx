@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import FodaView from 'views/FodaView';
-import { onGetOne, onGetOptions } from 'redux/actions/foda.actions';
+import { onGetOne, onGetOptions, onGetSeeds } from 'redux/actions/foda.actions';
 import {
   amenazasSelectorOrdenadas,
   debilidadesSelectorOrdenadas,
@@ -15,6 +15,7 @@ import {
   tableSelector,
   radarChartSelector,
   pieChartSelector,
+  consejosSelector,
 } from 'redux/selectors/foda.selector';
 import CustomizedTables from 'components/commons/Table';
 import {
@@ -29,6 +30,7 @@ import {
 import RadarChartCustom from 'components/commons/RadarChart';
 import PieChartCustom from 'components/commons/PieChart';
 import { COLORS } from 'helpers/enums/colors';
+import { Grid } from '@mui/material';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -42,12 +44,15 @@ const FodaContainer = () => {
   const items = useSelector(tableSelector);
   const dataRadarChart = useSelector(radarChartSelector);
   const dataPieChart = useSelector(pieChartSelector);
+  const consejos = useSelector(consejosSelector);
+  console.log('consejos', consejos);
 
   const navigate = useNavigate();
   const onClickGoBackButton = () => navigate(`/projects/${id}/foda/${fodaId}`);
 
   useEffect(() => {
     disptch(onGetOptions());
+    disptch(onGetSeeds());
     disptch(onGetOne(fodaId));
   }, []);
 
@@ -86,6 +91,28 @@ const FodaContainer = () => {
               ]}
             />
           </SectionTable>
+          {consejos.length && (
+            <SectionTable>
+              <Title>Tabla de Consejos</Title>
+              <CustomizedTables
+                items={consejos}
+                columns={[
+                  {
+                    label: 'Area',
+                    value: 'area',
+                  },
+                  {
+                    label: 'Descripcion',
+                    value: 'descripcion',
+                  },
+                  {
+                    label: 'Consejo',
+                    value: 'consejo',
+                  },
+                ]}
+              />
+            </SectionTable>
+          )}
           <ChartContainer>
             <SectionRadar>
               <Title>Grafico de Radar</Title>
