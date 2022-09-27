@@ -10,6 +10,7 @@ export const defaultState = {
     intensidad: [],
     tendencia: [],
   },
+  seeds: [],
 };
 
 const pestelReducer = (state = defaultState, action) => {
@@ -40,6 +41,12 @@ const pestelReducer = (state = defaultState, action) => {
         ...state,
         loading: false,
         options: { ...state.options, ...data.options },
+      };
+    case constants.PESTEL_GET_SEEDS_SUCCEEDED:
+      return {
+        ...state,
+        loading: false,
+        seeds: { ...state.seeds, ...data.seeds },
       };
     case constants.CREATE_PESTEL_FAILED:
     case constants.PESTEL_DELETE_FACTOR_FAILED:

@@ -4,7 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import PestelView from 'views/PestelView';
-import { onGetOne, onGetOptions } from 'redux/actions/pestel.actions';
+import {
+  onGetOne,
+  onGetOptions,
+  onGetSeeds,
+} from 'redux/actions/pestel.actions';
 import {
   titleSelector,
   totalResultsSelect,
@@ -16,6 +20,7 @@ import {
   tecnologicoSelectorOrdenadas,
   ambientalSelectorOrdenadas,
   legalSelectorOrdenadas,
+  consejosSelector,
 } from 'redux/selectors/pestel.selector';
 import {
   ViewContainer,
@@ -24,7 +29,9 @@ import {
   Title,
   SectionRadar,
   SectionPie,
+  SectionTable,
 } from 'views/PestelView/styles';
+import CustomizedTables from 'components/commons/Table';
 import RadarChartCustom from 'components/commons/RadarChart';
 import PieChartCustom from 'components/commons/PieChart';
 import { COLORS } from 'helpers/enums/colors';
@@ -42,6 +49,7 @@ const PestelContainer = () => {
   const { title } = useSelector(titleSelector);
   const dataRadarChart = useSelector(radarChartSelector);
   const dataPieChart = useSelector(pieChartSelector);
+  const consejos = useSelector(consejosSelector);
 
   const navigate = useNavigate();
   const onClickGoBackButton = () =>
@@ -49,6 +57,7 @@ const PestelContainer = () => {
 
   useEffect(() => {
     disptch(onGetOptions());
+    disptch(onGetSeeds());
     disptch(onGetOne(pestelId));
   }, []);
 
@@ -69,6 +78,30 @@ const PestelContainer = () => {
             buttonTitle="Ir Atras"
             total={total}
           />
+          {consejos.length ? (
+            <SectionTable>
+              <Title>Tabla de Consejos</Title>
+              <CustomizedTables
+                items={consejos}
+                columns={[
+                  {
+                    label: 'Area',
+                    value: 'area',
+                  },
+                  {
+                    label: 'Descripcion',
+                    value: 'descripcion',
+                  },
+                  {
+                    label: 'Consejo',
+                    value: 'consejo',
+                  },
+                ]}
+              />
+            </SectionTable>
+          ) : (
+            <></>
+          )}
           <ChartContainer>
             <SectionRadar>
               <Title>Grafico de Radar</Title>

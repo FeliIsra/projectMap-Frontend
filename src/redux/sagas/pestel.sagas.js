@@ -7,6 +7,7 @@ import {
   deleteFactor,
   updateFactor,
   getOptions,
+  getSeeds,
 } from 'services/pestel.services';
 
 import * as constants from 'redux/contansts/pestel.constants';
@@ -83,6 +84,18 @@ export function* pestelGetOptions(action) {
   }
 }
 
+export function* pestelGetSeeds() {
+  try {
+    const { data: seeds } = yield call(getSeeds);
+    yield put({
+      type: constants.PESTEL_GET_SEEDS_SUCCEEDED,
+      data: { seeds },
+    });
+  } catch (error) {
+    yield put({ type: constants.PESTEL_GET_SEEDS_FAILED, error });
+  }
+}
+
 export function* watchPestel() {
   yield all([
     takeLatest(constants.CREATE_PESTEL_REQUESTED, pestelCreate),
@@ -92,5 +105,6 @@ export function* watchPestel() {
     takeLatest(constants.PESTEL_DELETE_FACTOR_REQUESTED, pestelDeleteFactor),
     takeLatest(constants.PESTEL_UPDATE_FACTOR_REQUESTED, pestelUpdateFactor),
     takeLatest(constants.PESTEL_GET_OPTIONS_REQUESTED, pestelGetOptions),
+    takeLatest(constants.PESTEL_GET_SEEDS_REQUESTED, pestelGetSeeds),
   ]);
 }

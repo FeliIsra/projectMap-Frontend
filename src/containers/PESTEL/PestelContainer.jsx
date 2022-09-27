@@ -21,6 +21,7 @@ import {
   onInsertFactor,
   onUpdateFactor,
   onDeleteFactor,
+  onGetSeeds,
 } from 'redux/actions/pestel.actions';
 import { CustomForm } from 'styles/form';
 import { Formik, Field } from 'formik';
@@ -33,6 +34,7 @@ import {
   legalSelector,
   titleSelector,
 } from 'redux/selectors/pestel.selector';
+import AutoComplete from 'components/inputs/Autocomplete';
 
 const PestelContainer = () => {
   const { pestelId, id } = useParams();
@@ -51,10 +53,12 @@ const PestelContainer = () => {
   const tecnologicos = useSelector(tecnologicoSelector);
   const ambientales = useSelector(ambientalSelector);
   const legales = useSelector(legalSelector);
+  const seeds = useSelector((state) => state.pestel.seeds);
   const { title } = useSelector(titleSelector);
 
   useEffect(() => {
     disptch(onGetOptions());
+    disptch(onGetSeeds());
     disptch(onGetOne(pestelId));
   }, []);
 
@@ -103,12 +107,22 @@ const PestelContainer = () => {
               {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
             </CardTitle>
             <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
-              {({ handleSubmit }) => (
+              {({ handleSubmit, setFieldValue }) => (
                 <CustomForm onSubmit={handleSubmit}>
                   <Field
                     name="descripcion"
                     placeholder="Descripcion"
-                    component={Input}
+                    component={AutoComplete}
+                    options={factor ? seeds[factor] : []}
+                    optionKey={'descripcion'}
+                    onChange={(value) =>
+                      setFieldValue(
+                        'descripcion',
+                        value?.descripcion !== null
+                          ? value.descripcion
+                          : initialValues.descripcion
+                      )
+                    }
                   />
                   <Field
                     name="importancia"

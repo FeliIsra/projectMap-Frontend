@@ -21,7 +21,6 @@ const AutoComplete = (props) => {
       value={value}
       id={name}
       onChange={(_event, value) => {
-        console.log('option', value);
         onChange(value);
       }}
       filterOptions={(options, params) => {

@@ -1,9 +1,11 @@
 import { parseDate } from 'helpers/date';
 import { createSelector } from 'reselect';
+import { getConsejos } from 'services/porter.services';
 
 const sortByPuntuacion = (a, b) => b.puntuacion - a.puntuacion;
 const reduceByPuntuacion = (a, b) => a + b.puntuacion;
 const getPestel = (state) => state.pestel.data;
+const getSeeds = (state) => state.pestel.seeds;
 
 export const politicoSelector = createSelector(
   [getPestel],
@@ -166,5 +168,160 @@ export const radarChartSelector = createSelector(
         fullMark: totalPuntuacion,
       };
     });
+  }
+);
+
+export const consejosSelector = createSelector(
+  [
+    politicoSelector,
+    economicoSelector,
+    socialSelector,
+    tecnologicoSelector,
+    ambientalSelector,
+    legalSelector,
+    getSeeds,
+  ],
+  (
+    politicos,
+    economicos,
+    sociales,
+    tecnologicos,
+    ambientales,
+    legales,
+    seeds
+  ) => {
+    const getConsejo = (actualSeed, seed) => {
+      return actualSeed.puntuacion > seed.puntaje
+        ? seed.consejoPositivo
+        : seed.consejoNegativo;
+    };
+
+    return Object.entries(seeds).reduce((prevValue, [key, seedList]) => {
+      let actualSeed = {};
+      switch (key) {
+        case 'Politico':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                politicos.some((politico) => {
+                  if (seed.descripcion === politico.descripcion) {
+                    actualSeed = politico;
+                    return true;
+                  }
+                  return false;
+                })
+              )
+              .map((seed) => {
+                return {
+                  ...seed,
+                  area: key,
+                  consejo: getConsejo(actualSeed, seed),
+                };
+              })
+          );
+        case 'Economico':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                economicos.some((economico) => {
+                  if (seed.descripcion === economico.descripcion) {
+                    actualSeed = economico;
+                    return true;
+                  }
+                  return false;
+                })
+              )
+              .map((seed) => {
+                return {
+                  ...seed,
+                  area: key,
+                  consejo: getConsejo(actualSeed, seed),
+                };
+              })
+          );
+        case 'Social':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                sociales.some((social) => {
+                  if (seed.descripcion === social.descripcion) {
+                    actualSeed = social;
+                    return true;
+                  }
+                  return false;
+                })
+              )
+              .map((seed) => {
+                return {
+                  ...seed,
+                  area: key,
+                  consejo: getConsejo(actualSeed, seed),
+                };
+              })
+          );
+        case 'Tecnologico':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                tecnologicos.some((tech) => {
+                  if (seed.descripcion === tech.descripcion) {
+                    actualSeed = tech;
+                    return true;
+                  }
+                  return false;
+                })
+              )
+              .map((seed) => {
+                return {
+                  ...seed,
+                  area: key,
+                  consejo: getConsejo(actualSeed, seed),
+                };
+              })
+          );
+        case 'Ambiental':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                ambientales.some((ambiental) => {
+                  if (seed.descripcion === ambiental.descripcion) {
+                    actualSeed = ambiental;
+                    return true;
+                  }
+                  return false;
+                })
+              )
+              .map((seed) => {
+                return {
+                  ...seed,
+                  area: key,
+                  consejo: getConsejo(actualSeed, seed),
+                };
+              })
+          );
+        case 'Legal':
+          return prevValue.concat(
+            seedList
+              .filter((seed) =>
+                legales.some((legal) => {
+                  if (seed.descripcion === legal.descripcion) {
+                    actualSeed = legal;
+                    return true;
+                  }
+                  return false;
+                })
+              )
+              .map((seed) => {
+                return {
+                  ...seed,
+                  area: key,
+                  consejo: getConsejo(actualSeed, seed),
+                };
+              })
+          );
+        default:
+          return [];
+      }
+    }, []);
   }
 );

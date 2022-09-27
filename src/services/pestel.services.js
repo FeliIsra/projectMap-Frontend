@@ -8,6 +8,8 @@ export const getOne = (id) => get(`pestel/${id}`);
 
 export const getOptions = () => get(`pestel/options`);
 
+export const getSeeds = () => get(`pestel/preSeeds`);
+
 export const insertFactor = (id, formData) =>
   post(`pestel/${id}/factor`, formData);
 

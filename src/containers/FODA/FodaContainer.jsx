@@ -50,8 +50,6 @@ const FodaContainer = () => {
   const seeds = useSelector((state) => state.foda.seeds);
   const { title } = useSelector(titleSelector);
 
-  console.log('seeds', seeds);
-
   useEffect(() => {
     disptch(onGetOptions());
     disptch(onGetSeeds());

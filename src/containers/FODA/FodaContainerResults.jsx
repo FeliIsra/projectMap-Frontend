@@ -45,7 +45,6 @@ const FodaContainer = () => {
   const dataRadarChart = useSelector(radarChartSelector);
   const dataPieChart = useSelector(pieChartSelector);
   const consejos = useSelector(consejosSelector);
-  console.log('consejos', consejos);
 
   const navigate = useNavigate();
   const onClickGoBackButton = () => navigate(`/projects/${id}/foda/${fodaId}`);
@@ -91,7 +90,7 @@ const FodaContainer = () => {
               ]}
             />
           </SectionTable>
-          {consejos.length && (
+          {consejos.length ? (
             <SectionTable>
               <Title>Tabla de Consejos</Title>
               <CustomizedTables
@@ -112,6 +111,8 @@ const FodaContainer = () => {
                 ]}
               />
             </SectionTable>
+          ) : (
+            <></>
           )}
           <ChartContainer>
             <SectionRadar>
