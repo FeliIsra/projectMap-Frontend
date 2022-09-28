@@ -7,18 +7,18 @@ export const SelectContainer = styled('div')({
   width: '100%',
 });
 
-export const BootstrapInput = styled(InputBase)({
+export const BootstrapInput = styled(InputBase)((props) => ({
   '& .MuiInputBase-input': {
     flex: 1,
     borderRadius: 10,
     position: 'relative',
     backgroundColor: COLORS.white,
     border: 'none',
-    fontSize: 20,
+    fontSize: props.fontsize || 20,
     padding: 20,
     fontFamily: ['Fira Sans', 'sans-serif'].join(','),
     '&:focus': {
       border: 'none',
     },
   },
-});
+}));

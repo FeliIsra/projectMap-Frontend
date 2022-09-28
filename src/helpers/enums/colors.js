@@ -16,4 +16,7 @@ export const COLORS = {
   Bone: '#D2D3BA',
   VividTangerine: '#FFA69E',
   BitterSweet: '#FF686B',
+  GreenBayLeaf: '#84A98C',
+  GreenCuttySark: '#52796F',
+  Geyser: '#DEE2E6',
 };
