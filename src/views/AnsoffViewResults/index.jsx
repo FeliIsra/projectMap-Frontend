@@ -130,7 +130,7 @@ const AnsoffViewResults = (props) => {
                 alignItems="center"
               >
                 <span style={{ textAlign: 'center' }}>
-                  {porcentajes[estrategia]}
+                  {porcentajes[estrategia]?.porcentaje || 0}
                 </span>
               </Grid>
               <Grid
@@ -140,7 +140,9 @@ const AnsoffViewResults = (props) => {
                 justifyContent={'center'}
                 alignItems="center"
               >
-                <span style={{ textAlign: 'center' }}>Consejo</span>
+                <span style={{ textAlign: 'center' }}>
+                  {porcentajes[estrategia]?.consejo || ''}
+                </span>
               </Grid>
               <Grid
                 item
@@ -233,7 +235,7 @@ const AnsoffViewResults = (props) => {
                     }}
                   >
                     <Chip
-                      label={porcentajes[estrategia]}
+                      label={porcentajes[estrategia]?.porcentaje || 0}
                       variant="outlined"
                       sx={{ color: 'white' }}
                     />

@@ -1,5 +1,5 @@
 import { parseDate } from 'helpers/date';
-import { Estrategia } from 'helpers/enums/ansoff';
+import { consejosPorEstrategia, Estrategia } from 'helpers/enums/ansoff';
 import { createSelector } from 'reselect';
 
 const getOptions = (state) => state.ansoff.options;
@@ -35,14 +35,16 @@ export const porcentajesSelector = createSelector(
     let list = {};
     if (productosList && ansoff)
       Object.values(Estrategia).forEach((value) => {
+        const porcentaje = productosList[value]
+          ? (
+              (productosList[value].length / ansoff?.productos?.length) *
+              100
+            ).toFixed(2)
+          : 0;
+        const consejo = consejosPorEstrategia(value, porcentaje);
         list = {
           ...list,
-          [value]: productosList[value]
-            ? (
-                (productosList[value].length / ansoff?.productos?.length) *
-                100
-              ).toFixed(2)
-            : 0,
+          [value]: { porcentaje, consejo },
         };
       });
     return list;
