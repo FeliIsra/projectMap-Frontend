@@ -5,14 +5,14 @@ import Select from '@mui/material/Select';
 import { BootstrapInput, SelectContainer } from './styles';
 
 const SelectInput = (props) => {
-  const { field, options, placeholder } = props;
+  const { field, options, placeholder, fontSize } = props;
 
   return (
     <SelectContainer>
       <Select
         {...field}
         displayEmpty
-        input={<BootstrapInput />}
+        input={<BootstrapInput fontsize={fontSize} />}
         style={{ flex: 1 }}
       >
         <MenuItem disabled value="">
