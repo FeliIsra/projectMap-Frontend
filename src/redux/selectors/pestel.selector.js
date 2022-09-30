@@ -202,7 +202,7 @@ export const consejosSelector = createSelector(
         case 'Politico':
           return prevValue.concat(
             seedList
-              .filter((seed) =>
+              ?.filter((seed) =>
                 politicos.some((politico) => {
                   if (seed.descripcion === politico.descripcion) {
                     actualSeed = politico;
@@ -211,7 +211,7 @@ export const consejosSelector = createSelector(
                   return false;
                 })
               )
-              .map((seed) => {
+              ?.map((seed) => {
                 return {
                   ...seed,
                   area: key,
@@ -222,7 +222,7 @@ export const consejosSelector = createSelector(
         case 'Economico':
           return prevValue.concat(
             seedList
-              .filter((seed) =>
+              ?.filter((seed) =>
                 economicos.some((economico) => {
                   if (seed.descripcion === economico.descripcion) {
                     actualSeed = economico;
@@ -231,7 +231,7 @@ export const consejosSelector = createSelector(
                   return false;
                 })
               )
-              .map((seed) => {
+              ?.map((seed) => {
                 return {
                   ...seed,
                   area: key,
@@ -242,7 +242,7 @@ export const consejosSelector = createSelector(
         case 'Social':
           return prevValue.concat(
             seedList
-              .filter((seed) =>
+              ?.filter((seed) =>
                 sociales.some((social) => {
                   if (seed.descripcion === social.descripcion) {
                     actualSeed = social;
@@ -251,7 +251,7 @@ export const consejosSelector = createSelector(
                   return false;
                 })
               )
-              .map((seed) => {
+              ?.map((seed) => {
                 return {
                   ...seed,
                   area: key,
@@ -262,7 +262,7 @@ export const consejosSelector = createSelector(
         case 'Tecnologico':
           return prevValue.concat(
             seedList
-              .filter((seed) =>
+              ?.filter((seed) =>
                 tecnologicos.some((tech) => {
                   if (seed.descripcion === tech.descripcion) {
                     actualSeed = tech;
@@ -271,7 +271,7 @@ export const consejosSelector = createSelector(
                   return false;
                 })
               )
-              .map((seed) => {
+              ?.map((seed) => {
                 return {
                   ...seed,
                   area: key,
@@ -282,7 +282,7 @@ export const consejosSelector = createSelector(
         case 'Ambiental':
           return prevValue.concat(
             seedList
-              .filter((seed) =>
+              ?.filter((seed) =>
                 ambientales.some((ambiental) => {
                   if (seed.descripcion === ambiental.descripcion) {
                     actualSeed = ambiental;
@@ -291,7 +291,7 @@ export const consejosSelector = createSelector(
                   return false;
                 })
               )
-              .map((seed) => {
+              ?.map((seed) => {
                 return {
                   ...seed,
                   area: key,
@@ -302,7 +302,7 @@ export const consejosSelector = createSelector(
         case 'Legal':
           return prevValue.concat(
             seedList
-              .filter((seed) =>
+              ?.filter((seed) =>
                 legales.some((legal) => {
                   if (seed.descripcion === legal.descripcion) {
                     actualSeed = legal;
@@ -311,7 +311,7 @@ export const consejosSelector = createSelector(
                   return false;
                 })
               )
-              .map((seed) => {
+              ?.map((seed) => {
                 return {
                   ...seed,
                   area: key,

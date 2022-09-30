@@ -110,7 +110,7 @@ const FodaContainer = () => {
                     name="descripcion"
                     placeholder="Descripcion"
                     component={AutoComplete}
-                    options={factor ? seeds[factor] : []}
+                    options={seeds[factor] || []}
                     optionKey={'descripcion'}
                     onChange={(value) =>
                       setFieldValue(
