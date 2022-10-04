@@ -1,24 +1,35 @@
-import React from 'react';
-import { Divider, Grid, IconButton, Rating } from '@mui/material';
+import React, { useState } from 'react';
+import { Divider, Grid, IconButton, Rating, TextField } from '@mui/material';
 import { COLORS } from 'helpers/enums/colors';
 import { Add } from '@mui/icons-material';
+import { Field, Formik, Form } from 'formik';
 
 const OKRView = ({}) => {
+  const [showInput, setShowInput] = useState(false);
   return (
     <Grid container sx={{ padding: '30px' }}>
       <Grid item xs={12}>
         <Grid container sx={{ padding: '20px 0' }}>
           <Grid item md={3} sx={{ paddingLeft: '10px' }}>
-            <span>Objectivo 1</span>
+            <span>Objetivo 1</span>
+          </Grid>
+          <Grid item md={1} sx={{ display: 'flex' }}>
+            <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <span>Ene</span>
+            </div>
+          </Grid>
+          <Grid item md={1} sx={{ display: 'flex' }}>
+            <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <span>Feb</span>
+            </div>
+          </Grid>
+          <Grid item md={1} sx={{ display: 'flex' }}>
+            <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <span>Mar</span>
+            </div>
           </Grid>
           <Grid item md={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-            <span>Progress</span>
-          </Grid>
-          <Grid item md={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-            <span>Timeline</span>
-          </Grid>
-          <Grid item md={1} sx={{ display: 'flex', justifyContent: 'center' }}>
-            <span>Due Date</span>
+            <span>Objetivo</span>
           </Grid>
           <Grid item md={2} sx={{ display: 'flex', justifyContent: 'center' }}>
             <span>Prioridad</span>
@@ -43,26 +54,27 @@ const OKRView = ({}) => {
             </div>
             <Divider orientation="vertical" flexItem />
           </Grid>
-          <Grid item md={2} sx={{ display: 'flex' }}>
+          <Grid item md={1} sx={{ display: 'flex' }}>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-              <span>Barra</span>
-            </div>
-            <Divider orientation="vertical" flexItem />
-          </Grid>
-          <Grid item md={2} sx={{ display: 'flex' }}>
-            <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-              <span>Feb 1 - Feb 20</span>
+              <span>10</span>
             </div>
             <Divider orientation="vertical" flexItem />
           </Grid>
           <Grid item md={1} sx={{ display: 'flex' }}>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-              <div
-                style={{ display: 'flex', flex: 1, justifyContent: 'center' }}
-              >
-                <span>Feb 20</span>
-              </div>
-              <Divider orientation="vertical" flexItem />
+              <span>2</span>
+            </div>
+            <Divider orientation="vertical" flexItem />
+          </Grid>
+          <Grid item md={1} sx={{ display: 'flex' }}>
+            <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <span>3</span>
+            </div>
+            <Divider orientation="vertical" flexItem />
+          </Grid>
+          <Grid item md={2} sx={{ display: 'flex' }}>
+            <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <span>1000</span>
             </div>
             <Divider orientation="vertical" flexItem />
           </Grid>
@@ -83,11 +95,176 @@ const OKRView = ({}) => {
               >
                 <span>25%</span>
               </div>
-              <Divider orientation="vertical" flexItem />
             </div>
           </Grid>
         </Grid>
       </Grid>
+      {showInput && (
+        <Grid item xs={12}>
+          <Formik
+            initialValues={{
+              descripcion: '',
+              0: '',
+              1: '',
+              2: '',
+              prioridad: 0,
+            }}
+          >
+            <Form>
+              <Grid
+                container
+                sx={{
+                  padding: '10px 0',
+                  alignItems: 'center',
+                }}
+              >
+                <Grid item md={3} sx={{ display: 'flex', paddingLeft: '10px' }}>
+                  <div style={{ flex: 1 }}>
+                    <Field
+                      name="descripcion"
+                      placeholder="Descripcion"
+                      component={TextField}
+                      hiddenLabel
+                      id="standard-basic"
+                      variant="standard"
+                      size="small"
+                    />
+                  </div>
+                  <Divider orientation="vertical" flexItem />
+                </Grid>
+                <Grid item md={1} sx={{ display: 'flex' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flex: 1,
+                      justifyContent: 'center',
+                      padding: '0 5px',
+                    }}
+                  >
+                    <Field
+                      name="0"
+                      placeholder="Valor"
+                      component={(inputProps) => (
+                        <TextField
+                          {...inputProps}
+                          inputProps={{
+                            style: { textAlign: 'center' },
+                          }}
+                        />
+                      )}
+                      hiddenLabel
+                      id="standard-basic"
+                      variant="standard"
+                      size="small"
+                    />
+                  </div>
+                  <Divider orientation="vertical" flexItem />
+                </Grid>
+                <Grid item md={1} sx={{ display: 'flex' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flex: 1,
+                      justifyContent: 'center',
+                      padding: '0 5px',
+                    }}
+                  >
+                    <Field
+                      name="1"
+                      placeholder="Valor"
+                      component={(inputProps) => (
+                        <TextField
+                          {...inputProps}
+                          inputProps={{
+                            style: { textAlign: 'center' },
+                          }}
+                        />
+                      )}
+                      hiddenLabel
+                      id="standard-basic"
+                      variant="standard"
+                      size="small"
+                    />
+                  </div>
+                  <Divider orientation="vertical" flexItem />
+                </Grid>
+                <Grid item md={1} sx={{ display: 'flex' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flex: 1,
+                      justifyContent: 'center',
+                      padding: '0 5px',
+                    }}
+                  >
+                    <Field
+                      name="3"
+                      placeholder="Valor"
+                      component={(inputProps) => (
+                        <TextField
+                          {...inputProps}
+                          inputProps={{ style: { textAlign: 'center' } }}
+                        />
+                      )}
+                      hiddenLabel
+                      id="standard-basic"
+                      variant="standard"
+                      size="small"
+                    />
+                  </div>
+                  <Divider orientation="vertical" flexItem />
+                </Grid>
+                <Grid item md={2} sx={{ display: 'flex' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flex: 1,
+                      justifyContent: 'center',
+                      padding: '0 5px',
+                    }}
+                  >
+                    <Field
+                      name="goal"
+                      placeholder="Objectivo"
+                      component={(inputProps) => (
+                        <TextField
+                          {...inputProps}
+                          inputProps={{ style: { textAlign: 'center' } }}
+                        />
+                      )}
+                      hiddenLabel
+                      id="standard-basic"
+                      variant="standard"
+                      size="small"
+                    />
+                  </div>
+                  <Divider orientation="vertical" flexItem />
+                </Grid>
+                <Grid item md={2} sx={{ display: 'flex' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flex: 1,
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        flex: 1,
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Field name="prioridad" component={Rating} />
+                    </div>
+                  </div>
+                </Grid>
+                <Grid item md={2} sx={{ display: 'flex' }} />
+              </Grid>
+            </Form>
+          </Formik>
+        </Grid>
+      )}
       <Grid item xs={12}>
         <Grid
           container
@@ -112,6 +289,7 @@ const OKRView = ({}) => {
                   background: 'none',
                 },
               }}
+              onClick={() => setShowInput(true)}
             >
               <Add fontSize="1rem" />
               <span>Add</span>
@@ -121,8 +299,7 @@ const OKRView = ({}) => {
       </Grid>
       <Grid item xs={12}>
         <Grid container>
-          <Grid item md={3} />
-          <Grid item md={2} />
+          <Grid item md={6} />
           <Grid
             item
             md={2}
@@ -134,9 +311,8 @@ const OKRView = ({}) => {
               background: COLORS.AthensGray,
             }}
           >
-            <span>Feb 1 - Feb 20</span>
+            <span>1000</span>
           </Grid>
-          <Grid item md={1} />
           <Grid
             item
             md={2}
@@ -148,7 +324,7 @@ const OKRView = ({}) => {
               background: COLORS.AthensGray,
             }}
           >
-            <span>5</span>
+            <Rating name="read-only" value={4} readOnly />
           </Grid>
           <Grid
             item
