@@ -23,7 +23,11 @@ import SelectInput from 'components/inputs/SelectInput';
 import { CustomForm, ButtonsContainer } from './styles';
 import { COLORS } from 'helpers/enums/colors';
 import Steps from './components';
-import { Check } from '@mui/icons-material';
+import { ArrowBack, Check } from '@mui/icons-material';
+import { TitleContainer } from 'components/commons/ProjectCard/styles';
+import { ButtonContainer } from 'views/DashboardView/styles';
+import Button from 'components/commons/Button';
+import { Title } from 'styles/form';
 
 const AnsoffView = (props) => {
   const {
@@ -37,12 +41,22 @@ const AnsoffView = (props) => {
     handleBack,
     activeStep,
     isLastStep,
+    onClickGoBackButton,
+    title,
   } = props;
   const [showForm, setShowForm] = useState(false);
 
   // TO-DO: revisar el alto de los cuadrantes. Podriamos calcular dependiendo la pantalla
   return (
     <>
+      <TitleContainer>
+        <ButtonContainer>
+          <IconButton size="small" onClick={onClickGoBackButton}>
+            <ArrowBack />
+          </IconButton>
+        </ButtonContainer>
+        <Title>{showResults ? `Resultados de ${title}` : title}</Title>
+      </TitleContainer>
       <Grid container>
         <Grid
           item

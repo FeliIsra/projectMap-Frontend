@@ -20,6 +20,7 @@ import {
   ChipContainer,
 } from './styles';
 import Button from 'components/commons/Button';
+import { ArrowBack } from '@mui/icons-material';
 
 const FodaView = ({
   onAdd,
@@ -32,6 +33,7 @@ const FodaView = ({
   title,
   showResults = false,
   onClickButton,
+  onClickButtonGoBack,
   buttonTitle,
   total = {},
 }) => {
@@ -72,9 +74,16 @@ const FodaView = ({
   return (
     <>
       <TitleContainer>
+        <ButtonContainer>
+          <IconButton size="small" onClick={onClickButtonGoBack}>
+            <ArrowBack />
+          </IconButton>
+        </ButtonContainer>
         <Title>{showResults ? `Resultados de ${title}` : title}</Title>
         <ButtonContainer>
-          <Button onClick={onClickButton}>{buttonTitle}</Button>
+          {!showResults && (
+            <Button onClick={onClickButton}>{buttonTitle}</Button>
+          )}
         </ButtonContainer>
       </TitleContainer>
       <Grid

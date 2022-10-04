@@ -25,6 +25,7 @@ const PorterContainer = () => {
   const navigate = useNavigate();
   const onClickResultsButton = () =>
     navigate(`/projects/${id}/porter/${porterId}/results`);
+  const onClickGoBackButton = () => navigate(`/projects/${id}`);
 
   const porter = useSelector((state) => state.porter);
   const { options, questions } = porter;
@@ -136,6 +137,7 @@ const PorterContainer = () => {
                     steps={steps}
                     titulo={steps[activeStep]}
                     onClickResults={onClickResultsButton}
+                    onClickButtonGoBack={onClickGoBackButton}
                   />
                 )}
               </Typography>

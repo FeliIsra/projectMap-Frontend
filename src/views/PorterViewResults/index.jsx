@@ -10,6 +10,8 @@ import { CustomForm } from 'styles/form';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { ArrowBack } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 const PorterViewResults = ({
   consejo,
@@ -18,10 +20,22 @@ const PorterViewResults = ({
   handleNext,
   steps,
   titulo,
+  onClickButtonGoBack,
 }) => {
   return (
     <CreateContent sx={{ gap: '0px' }}>
-      <CardTitle>{titulo}</CardTitle>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+        }}
+      >
+        <IconButton size="small" onClick={onClickButtonGoBack}>
+          <ArrowBack />
+        </IconButton>
+        <CardTitle>{titulo}</CardTitle>
+      </Box>
       <Grid container director="row" alignItems="center">
         <Grid
           item

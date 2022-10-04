@@ -11,6 +11,8 @@ import SelectInput from 'components/inputs/SelectInput';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { ArrowBack } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 const PorterView = ({
   options,
@@ -22,10 +24,22 @@ const PorterView = ({
   initialValues,
   titulo,
   onClickResults,
+  onClickButtonGoBack,
 }) => {
   return (
     <CreateContent>
-      <CardTitle>{titulo}</CardTitle>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+        }}
+      >
+        <IconButton size="small" onClick={onClickButtonGoBack}>
+          <ArrowBack />
+        </IconButton>
+        <CardTitle>{titulo}</CardTitle>
+      </Box>
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit }) => (
           <CustomForm onSubmit={handleSubmit} sx={{ gap: '0px' }}>

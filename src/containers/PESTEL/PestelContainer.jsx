@@ -42,6 +42,7 @@ const PestelContainer = () => {
   const navigate = useNavigate();
   const onClickResultsButton = () =>
     navigate(`/projects/${id}/pestel/${pestelId}/results`);
+  const onClickResultsButtonGoBack = () => navigate(`/projects/${id}`);
   const disptch = useDispatch();
   const { importancia, intensidad, tendencia } = useSelector((state) => {
     return state.pestel.options;
@@ -99,6 +100,7 @@ const PestelContainer = () => {
           onDelete={onDelete}
           title={title}
           onClickButton={onClickResultsButton}
+          onClickButtonGoBack={onClickResultsButtonGoBack}
           buttonTitle="Resultados"
         />
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>

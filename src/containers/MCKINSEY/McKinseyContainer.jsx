@@ -30,6 +30,8 @@ const McKinseyContainer = () => {
   const navigate = useNavigate();
   const onClickResultsButton = () =>
     navigate(`/projects/${id}/mckinsey/${matrizId}/results`);
+
+  const onClickGoBackButton = () => navigate(`/projects/${id}`);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const cuadrantes = useSelector(cuadrantesSelector);
 
@@ -60,6 +62,7 @@ const McKinseyContainer = () => {
             onAdd={onAdd}
             cuadrantes={cuadrantes}
             onClickResultsButton={onClickResultsButton}
+            onClickGoBackButton={onClickGoBackButton}
           />
         </Grid>
       </Grid>

@@ -52,6 +52,8 @@ const AnsoffContainer = () => {
     else navigate(`/projects/${id}/ansoff/${ansoffId}/results`);
   };
 
+  const onClickGoBackButton = () => navigate(`/projects/${id}`);
+
   const onEditExito = (formData) =>
     disptch(onEditProduct(ansoffId, formData._id, formData));
 
@@ -87,6 +89,8 @@ const AnsoffContainer = () => {
             productosFiltered={productosFiltered}
             onEditExito={onEditExito}
             isLastStep={isLastStep}
+            onClickGoBackButton={onClickGoBackButton}
+            title={item.title}
           />
         </Grid>
       </Grid>

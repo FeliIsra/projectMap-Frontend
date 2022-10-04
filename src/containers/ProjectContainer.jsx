@@ -1,10 +1,19 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Menu, MenuItem } from '@mui/material';
 import { Formik, Field } from 'formik';
 
-import { onGetOne } from 'redux/actions/projects.actions';
+import {
+  onGetAnsoff,
+  onGetFoda,
+  onGetMckinsey,
+  onGetOKR,
+  onGetOne,
+  onGetPestel,
+  onGetPorter,
+} from 'redux/actions/projects.actions';
 import { STEPS, getMenuItems } from 'helpers/enums/steps';
 import { COLORS } from 'helpers/enums/colors';
 
@@ -21,6 +30,7 @@ import {
 import LayoutContainer from 'containers/LayoutContainer';
 import ProjectView from 'views/ProjectView';
 import { MenuItemText } from 'views/ProjectView/styles';
+import { stepToolsSelector } from 'redux/selectors/project.selector';
 
 const ProjectContainer = () => {
   let { id } = useParams();
@@ -30,9 +40,18 @@ const ProjectContainer = () => {
   const [stepValue, setStepValue] = useState(0);
   const [addTool, setAddTool] = useState(null);
   const menuItems = getMenuItems(stepValue);
+  const toolsItems = useSelector(stepToolsSelector);
+
+  console.log({ toolsItems });
 
   useEffect(() => {
     dispatch(onGetOne(id));
+    dispatch(onGetFoda(id));
+    dispatch(onGetPestel(id));
+    dispatch(onGetPorter(id));
+    dispatch(onGetAnsoff(id));
+    dispatch(onGetMckinsey(id));
+    dispatch(onGetOKR(id));
   }, []);
 
   const onClickAdd = (value, anchorElement) => {
@@ -60,15 +79,19 @@ const ProjectContainer = () => {
         onClose={() => setAnchorElement(null)}
         open={!!anchorElement}
       >
-        {menuItems.map((item) => (
+        {toolsItems[stepValue]?.map((item) => (
           <MenuItem
-            key={item.key}
+            key={item?.key}
             onClick={() => {
-              setAddTool(item);
-              setAnchorElement(null);
+              if (item._id) {
+                navigate(item.redirectUrl);
+              } else {
+                setAddTool(item);
+                setAnchorElement(null);
+              }
             }}
           >
-            <MenuItemText>{item.title}</MenuItemText>
+            <MenuItemText>{item?.title}</MenuItemText>
           </MenuItem>
         ))}
       </Menu>

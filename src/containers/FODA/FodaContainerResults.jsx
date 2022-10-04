@@ -66,7 +66,7 @@ const FodaContainer = () => {
             oportunidades={oportunidades}
             fortalezas={fortalezas}
             title={title}
-            onClickButton={onClickGoBackButton}
+            onClickButtonGoBack={onClickGoBackButton}
             buttonTitle="Ir Atras"
             total={total}
           />
