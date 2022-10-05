@@ -9,6 +9,8 @@ import Modal from 'components/commons/Modal';
 
 import DashboardView from 'views/DashboardView';
 import ProjectForm from 'views/DashboardView/ProjectForm';
+import { COLORS } from 'helpers/enums/colors';
+import { getRandomInt } from 'helpers/randomNumber';
 
 const DashboardContainer = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,18 @@ const DashboardContainer = () => {
   }, []);
 
   const onSubmit = (formData) => {
-    const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    const colors = [
+      COLORS.Aquamarine,
+      COLORS.AthensGray,
+      '#f58e90',
+      COLORS.GhostGray,
+      COLORS.VividTangerine,
+      COLORS.WildSand,
+    ];
+
+    const random = getRandomInt(6);
+
+    const color = colors[random];
     dispatch(onCreate({ ...formData, color }));
     setAddNew(false);
   };
@@ -35,7 +48,11 @@ const DashboardContainer = () => {
         onClickProject={onClickProject}
         items={items}
       />
-      <Modal isOpen={isAddNewOpen} onClose={() => setAddNew(false)}>
+      <Modal
+        isOpen={isAddNewOpen}
+        onClose={() => setAddNew(false)}
+        backgroundColor={COLORS.WildSand}
+      >
         <ProjectForm onSubmit={onSubmit} />
       </Modal>
     </LayoutContainer>

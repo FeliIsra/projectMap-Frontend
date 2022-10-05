@@ -24,7 +24,7 @@ const DashboardView = (props) => {
           <ButtonContainer>
             <Button onClick={onAddNew}>
               <ButtonContent>
-                <AddCircleIcon /> Add new
+                <AddCircleIcon /> Nuevo
               </ButtonContent>
             </Button>
           </ButtonContainer>

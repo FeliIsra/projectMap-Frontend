@@ -153,6 +153,7 @@ export function* projectsOnGetMckinseys(action) {
 
 export function* watchProjects() {
   yield all([
+    takeLatest(constants.PROJECTS_ON_GET_ONE_REQUESTED, projectsOnGetOne),
     takeLatest(constants.PROJECTS_ON_GET_ALL_REQUESTED, projectsOnGetAll),
     takeLatest(constants.PROJECTS_ON_CREATE_REQUESTED, projectsSaveOne),
     takeLatest(constants.PROJECTS_ON_GET_FODA_REQUESTED, projectsOnGetFodas),

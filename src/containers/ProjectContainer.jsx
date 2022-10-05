@@ -39,10 +39,12 @@ const ProjectContainer = () => {
   const [anchorElement, setAnchorElement] = useState(null);
   const [stepValue, setStepValue] = useState(0);
   const [addTool, setAddTool] = useState(null);
-  const menuItems = getMenuItems(stepValue);
+  // const menuItems = getMenuItems(stepValue);
   const toolsItems = useSelector(stepToolsSelector);
 
-  console.log({ toolsItems });
+  const projectInfo = useSelector((state) => state.projects.data);
+  const onClickButtonGoBack = () => navigate(`/dashboard`);
+  console.log({ projectInfo });
 
   useEffect(() => {
     dispatch(onGetOne(id));
@@ -73,7 +75,11 @@ const ProjectContainer = () => {
 
   return (
     <LayoutContainer>
-      <ProjectView items={items} />
+      <ProjectView
+        items={items}
+        titulo={projectInfo?.titulo}
+        onClickButtonGoBack={onClickButtonGoBack}
+      />
       <Menu
         anchorEl={anchorElement}
         onClose={() => setAnchorElement(null)}

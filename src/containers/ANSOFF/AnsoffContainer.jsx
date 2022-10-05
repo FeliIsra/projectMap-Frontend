@@ -90,7 +90,7 @@ const AnsoffContainer = () => {
             onEditExito={onEditExito}
             isLastStep={isLastStep}
             onClickGoBackButton={onClickGoBackButton}
-            title={item.title}
+            title={item?.title}
           />
         </Grid>
       </Grid>

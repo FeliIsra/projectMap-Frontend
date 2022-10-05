@@ -27,6 +27,9 @@ const AnsoffContainerResults = () => {
   const productosFiltered = useSelector(productosSelector);
   const porcentajes = useSelector(porcentajesSelector);
 
+  const navigate = useNavigate();
+  const onClickGoBackButton = () =>
+    navigate(`/projects/${id}/ansoff/${ansoffId}`);
   console.log('porcentajes', porcentajes);
 
   useEffect(() => {
@@ -49,6 +52,7 @@ const AnsoffContainerResults = () => {
           <AnsoffViewResults
             productosFiltered={productosFiltered}
             porcentajes={porcentajes}
+            onClickGoBackButton={onClickGoBackButton}
           />
         </Grid>
       </Grid>
