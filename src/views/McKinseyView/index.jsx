@@ -16,12 +16,15 @@ import {
   FactorDescription,
   ContentContainer,
 } from './styles';
+import { ButtonContainer } from 'views/DashboardView/styles';
+import { ArrowBack } from '@mui/icons-material';
 
 const McKinseyView = ({
   onAdd,
   cuadrantes,
   onClickResultsButton,
   showResults = false,
+  onClickGoBackButton,
 }) => {
   const renderTitle = (title) => (
     <CardTitleContainer>
@@ -52,6 +55,11 @@ const McKinseyView = ({
   // TO-DO: revisar el alto de los cuadrantes. Podriamos calcular dependiendo la pantalla
   return (
     <>
+      <ButtonContainer>
+        <IconButton size="small" onClick={onClickGoBackButton}>
+          <ArrowBack />
+        </IconButton>
+      </ButtonContainer>
       <Grid
         container
         rowSpacing={2}

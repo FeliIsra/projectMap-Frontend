@@ -87,3 +87,19 @@ export const CustomCircularProgress = styled(CircularProgress)({
     strokeLinecap: 'round',
   },
 });
+
+export const TitleButtonContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  padding: '20px',
+  position: 'absolute',
+  alignItems: 'center',
+});
+
+export const ButtonContainer = styled('div')({});
+
+export const Title = styled('span')({
+  fontFamily: 'Fira Sans',
+  fontWeight: 500,
+  fontSize: 36,
+});

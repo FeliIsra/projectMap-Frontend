@@ -16,9 +16,10 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from 'components/commons/Button';
 import Typography from '@mui/material/Typography';
 import { consejosSelector } from 'redux/selectors/porter.selector';
+import { useNavigate } from 'react-router-dom';
 
 const PorterContainerResults = () => {
-  const { porterId } = useParams();
+  const { porterId, id } = useParams();
 
   const dispatch = useDispatch();
   const porter = useSelector((state) => state.porter);
@@ -30,6 +31,8 @@ const PorterContainerResults = () => {
   const [skipped, setSkipped] = useState(new Set());
 
   const consejos = useSelector(consejosSelector);
+  const navigate = useNavigate();
+  const onClickGoBack = () => navigate(`/projects/${id}/porter/${porterId}`);
 
   useEffect(() => {
     dispatch(onGetConsejos(porterId));
@@ -119,6 +122,7 @@ const PorterContainerResults = () => {
                   handleNext={handleNext}
                   steps={steps}
                   titulo={steps[activeStep]}
+                  onClickButtonGoBack={onClickGoBack}
                 />
               </Typography>
             </React.Fragment>

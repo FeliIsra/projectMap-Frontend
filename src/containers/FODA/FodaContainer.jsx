@@ -39,6 +39,7 @@ const FodaContainer = () => {
   const navigate = useNavigate();
   const onClickResultsButton = () =>
     navigate(`/projects/${id}/foda/${fodaId}/results`);
+  const onClickResultsButtonGoBack = () => navigate(`/projects/${id}`);
   const disptch = useDispatch();
   const { importancia, intensidad, tendencia, urgencia } = useSelector(
     (state) => state.foda.options
@@ -96,6 +97,7 @@ const FodaContainer = () => {
           onDelete={onDelete}
           title={title}
           onClickButton={onClickResultsButton}
+          onClickButtonGoBack={onClickResultsButtonGoBack}
           buttonTitle="Resultados"
         />
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
@@ -110,7 +112,7 @@ const FodaContainer = () => {
                     name="descripcion"
                     placeholder="Descripcion"
                     component={AutoComplete}
-                    options={factor ? seeds[factor] : []}
+                    options={seeds[factor] || []}
                     optionKey={'descripcion'}
                     onChange={(value) =>
                       setFieldValue(
