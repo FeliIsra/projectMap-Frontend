@@ -97,7 +97,7 @@ const ProjectContainer = () => {
               }
             }}
           >
-            <MenuItemText>{item?.title}</MenuItemText>
+            <MenuItemText>{item?.titulo}</MenuItemText>
           </MenuItem>
         ))}
       </Menu>
