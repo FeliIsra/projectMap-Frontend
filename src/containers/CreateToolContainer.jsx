@@ -15,6 +15,7 @@ const CreateToolContainer = () => {
   const mckinsey = useSelector((state) => state.mckinsey.data);
   const porter = useSelector((state) => state.porter.data);
   const ansoff = useSelector((state) => state.ansoff.data);
+  const okr = useSelector((state) => state.okr.data);
   const loading = useSelector(toolsLoadingSelector);
 
   return (
@@ -61,6 +62,12 @@ const CreateToolContainer = () => {
             element={
               <Navigate to={`/projects/${id}/porter/${porter._id}`} replace />
             }
+          />
+        )}
+        {!!okr?._id && (
+          <Route
+            path="/"
+            element={<Navigate to={`/projects/${id}/okr/${okr._id}`} replace />}
           />
         )}
       </Routes>

@@ -17,6 +17,7 @@ import AnsoffContainer from 'containers/ANSOFF/AnsoffContainer';
 import AnsoffContainerResults from 'containers/ANSOFF/AnsoffContainerResults';
 import PorterContainerResults from 'containers/PORTER/PorterContainerResults';
 import PorterContainer from 'containers/PORTER/PorterContainer';
+import OKRContainer from 'containers/OKRs/OKRContainer';
 
 export const NavigationContainer = () => {
   return (
@@ -51,6 +52,7 @@ export const NavigationContainer = () => {
           element={<PorterContainerResults />}
         />
         <Route path=":id/porter/:porterId" element={<PorterContainer />} />
+        <Route path=":id/okr/:okrToolId" element={<OKRContainer />} />
         <Route path=":id/createTool/*" element={<CreateToolContainer />} />
         <Route path=":id" element={<ProjectContainer />} />
       </Route>

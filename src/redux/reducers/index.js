@@ -6,7 +6,8 @@ import fodaReducer from 'redux/reducers/foda.reducer';
 import pestelReducer from 'redux/reducers/pestel.reducer';
 import mckinseyReducer from 'redux/reducers/mckinsey.reducer';
 import ansoffReducer from 'redux/reducers/ansoff.reducer';
-import porterReducer from './porter.reducer';
+import porterReducer from 'redux/reducers/porter.reducer';
+import okrReducer from 'redux/reducers/okr.reducer';
 
 export default combineReducers({
   user: userReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   mckinsey: mckinseyReducer,
   porter: porterReducer,
   ansoff: ansoffReducer,
+  okr: okrReducer,
 });
