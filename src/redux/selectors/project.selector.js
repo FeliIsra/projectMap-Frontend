@@ -16,17 +16,35 @@ const getMckinseys = (state) =>
     ...x,
     redirectUrl: `mckinsey/${x._id}`,
   }));
+const getBalancedScorecard = (state) =>
+  state.projects.balancedScorecards.map((x) => ({
+    ...x,
+    redirectUrl: `balanced-scorecard/${x._id}`,
+  }));
 
 export const stepToolsSelector = createSelector(
-  [getFodas, getPorters, getPestels, getAnsoffs, getOkrs, getMckinseys],
-  (fodas, porters, pestels, ansoffs, okrs, mckenseys) => {
+  [
+    getFodas,
+    getPorters,
+    getPestels,
+    getAnsoffs,
+    getOkrs,
+    getMckinseys,
+    getBalancedScorecard,
+  ],
+  (fodas, porters, pestels, ansoffs, okrs, mckenseys, balanceScorecards) => {
     return {
       1: [...porters, getMenuItems(1)[0], ...pestels, getMenuItems(1)[1]],
       2: [...fodas, getMenuItems(2)[0]],
       3: [...ansoffs, getMenuItems(3)[0]],
       4: [...mckenseys, getMenuItems(4)[0]],
       5: [getMenuItems(5)[0]],
-      6: [...okrs, getMenuItems(6)[0], getMenuItems(6)[1]],
+      6: [
+        ...okrs,
+        getMenuItems(6)[0],
+        ...balanceScorecards,
+        getMenuItems(6)[1],
+      ],
       7: [getMenuItems(7)[0]],
     };
   }
