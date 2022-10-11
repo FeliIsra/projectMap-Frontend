@@ -27,3 +27,19 @@ export const onAddKeyResult = (id, okrId, formData) => ({
   okrId,
   formData,
 });
+
+export const onEditKeyStatus = (id, okrId, keyResultId, formData) => ({
+  type: constants.EDIT_KEY_RESULT_KEY_STATUS_REQUESTED,
+  id,
+  okrId,
+  keyResultId,
+  formData,
+});
+
+export const onEditKeyResult = (id, okrId, keyResultId, formData) => ({
+  type: constants.EDIT_KEY_RESULT_REQUESTED,
+  id,
+  okrId,
+  keyResultId,
+  formData,
+});

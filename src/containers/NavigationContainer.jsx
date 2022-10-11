@@ -52,7 +52,7 @@ export const NavigationContainer = () => {
           element={<PorterContainerResults />}
         />
         <Route path=":id/porter/:porterId" element={<PorterContainer />} />
-        <Route path=":id/okr/:okrId" element={<OKRContainer />} />
+        <Route path=":id/okr/:okrToolId" element={<OKRContainer />} />
         <Route path=":id/createTool/*" element={<CreateToolContainer />} />
         <Route path=":id" element={<ProjectContainer />} />
       </Route>
