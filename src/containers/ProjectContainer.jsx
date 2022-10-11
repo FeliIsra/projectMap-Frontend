@@ -44,7 +44,6 @@ const ProjectContainer = () => {
 
   const projectInfo = useSelector((state) => state.projects.data);
   const onClickButtonGoBack = () => navigate(`/dashboard`);
-  console.log({ projectInfo });
 
   useEffect(() => {
     dispatch(onGetOne(id));
@@ -97,7 +96,7 @@ const ProjectContainer = () => {
               }
             }}
           >
-            <MenuItemText>{item?.title}</MenuItemText>
+            <MenuItemText>{item?.titulo}</MenuItemText>
           </MenuItem>
         ))}
       </Menu>

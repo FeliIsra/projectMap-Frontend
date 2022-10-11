@@ -8,6 +8,7 @@ import { watchMckinsey } from 'redux/sagas/mckinsey.sagas';
 import { watchAnsoff } from 'redux/sagas/ansoff.sagas';
 import { watchPorter } from 'redux/sagas/porter.sagas';
 import { watchBalanceScorecard } from 'redux/sagas/balanceScorecard.sagas';
+import { watchOkr } from 'redux/sagas/okr.sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     watchAnsoff(),
     watchPorter(),
     watchBalanceScorecard(),
+    watchOkr(),
   ]);
 }

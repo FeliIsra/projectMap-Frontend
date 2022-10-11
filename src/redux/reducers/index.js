@@ -8,6 +8,7 @@ import mckinseyReducer from 'redux/reducers/mckinsey.reducer';
 import ansoffReducer from 'redux/reducers/ansoff.reducer';
 import porterReducer from 'redux/reducers/porter.reducer';
 import balanceScorecardReducer from 'redux/reducers/balanceScorecard.reducer';
+import okrReducer from 'redux/reducers/okr.reducer';
 
 export default combineReducers({
   user: userReducer,
@@ -18,4 +19,5 @@ export default combineReducers({
   porter: porterReducer,
   ansoff: ansoffReducer,
   balanceScorecard: balanceScorecardReducer,
+  okr: okrReducer,
 });
