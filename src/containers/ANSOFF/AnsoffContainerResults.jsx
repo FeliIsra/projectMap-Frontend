@@ -30,7 +30,6 @@ const AnsoffContainerResults = () => {
   const navigate = useNavigate();
   const onClickGoBackButton = () =>
     navigate(`/projects/${id}/ansoff/${ansoffId}`);
-  console.log('porcentajes', porcentajes);
 
   useEffect(() => {
     disptch(onGetOne(ansoffId));

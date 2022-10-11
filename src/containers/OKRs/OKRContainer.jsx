@@ -31,7 +31,6 @@ const OKRContainer = () => {
   const dispatch = useDispatch();
   const [isAddOkrModalOpen, setAddOkrModalOpen] = useState(false);
   const selectedTool = useSelector(okrToolSelector);
-  console.log('tool', selectedTool);
 
   useEffect(() => {
     dispatch(onGetOneTool(okrToolId));

@@ -44,7 +44,6 @@ const ProjectContainer = () => {
 
   const projectInfo = useSelector((state) => state.projects.data);
   const onClickButtonGoBack = () => navigate(`/dashboard`);
-  console.log({ projectInfo });
 
   useEffect(() => {
     dispatch(onGetOne(id));
