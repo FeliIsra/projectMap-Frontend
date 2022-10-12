@@ -7,6 +7,7 @@ import { Formik, Field } from 'formik';
 
 import {
   onGetAnsoff,
+  onGetBalanced,
   onGetFoda,
   onGetMckinsey,
   onGetOKR,
@@ -53,6 +54,7 @@ const ProjectContainer = () => {
     dispatch(onGetAnsoff(id));
     dispatch(onGetMckinsey(id));
     dispatch(onGetOKR(id));
+    dispatch(onGetBalanced(id));
   }, []);
 
   const onClickAdd = (value, anchorElement) => {
