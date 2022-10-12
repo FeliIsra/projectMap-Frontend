@@ -40,9 +40,9 @@ export const stepToolsSelector = createSelector(
       4: [...mckenseys, getMenuItems(4)[0]],
       5: [getMenuItems(5)[0]],
       6: [
-        ...okrs,
-        getMenuItems(6)[0],
         ...balanceScorecards,
+        getMenuItems(6)[0],
+        ...okrs,
         getMenuItems(6)[1],
       ],
       7: [getMenuItems(7)[0]],

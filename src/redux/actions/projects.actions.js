@@ -43,3 +43,8 @@ export const onGetAnsoff = (id) => ({
   type: constants.PROJECTS_ON_GET_ANSOFF_REQUESTED,
   id,
 });
+
+export const onGetBalanced = (id) => ({
+  type: constants.PROJECTS_ON_GET_BALANCED_SCORECARD_REQUESTED,
+  id,
+});

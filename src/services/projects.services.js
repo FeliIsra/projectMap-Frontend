@@ -16,7 +16,7 @@ export const getAnsoffs = (id) => get(`projects/${id}/ansoff`);
 
 export const getMckinsey = (id) => get(`projects/${id}/mckinsey`);
 
-export const getOkrs = (id) => get(`projects/${id}/okr`);
+export const getOkrs = (id) => get(`projects/${id}/okr-projects`);
 
 export const getBalancedScorecard = (id) =>
   get(`projects/${id}/balanced-scorecards`);
