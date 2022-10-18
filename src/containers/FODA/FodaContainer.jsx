@@ -32,6 +32,7 @@ import {
   titleSelector,
 } from 'redux/selectors/foda.selector';
 import AutoComplete from 'components/inputs/Autocomplete';
+// import Comments from 'components/comments/Comments';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -100,6 +101,7 @@ const FodaContainer = () => {
           onClickButtonGoBack={onClickResultsButtonGoBack}
           buttonTitle="Resultados"
         />
+        {/* <Comments show tool="FODA" toolId={fodaId} projectId={id} /> */}
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
           <CreateContent>
             <CardTitle>

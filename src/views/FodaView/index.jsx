@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, IconButton } from '@mui/material';
+import { Box, Grid, IconButton } from '@mui/material';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -21,6 +21,7 @@ import {
 } from './styles';
 import Button from 'components/commons/Button';
 import { ArrowBack } from '@mui/icons-material';
+import Comments from 'components/comments/Comments';
 
 const FodaView = ({
   onAdd,
