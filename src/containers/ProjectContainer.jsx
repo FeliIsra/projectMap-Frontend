@@ -80,6 +80,7 @@ const ProjectContainer = () => {
         items={items}
         titulo={projectInfo?.titulo}
         onClickButtonGoBack={onClickButtonGoBack}
+        project={projectInfo}
       />
       <Menu
         anchorEl={anchorElement}

@@ -19,7 +19,6 @@ export const Content = styled('div')({
   flex: 1,
   flexDirection: 'column',
   alignItems: 'center',
-  backgroundColor: COLORS.AthensGray,
   borderRadius: '50%',
   height: '95%',
   maxWidth: '95%',

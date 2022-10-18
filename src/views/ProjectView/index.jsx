@@ -2,6 +2,8 @@ import React from 'react';
 import { Add, ArrowBack } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
+import { COLORS } from 'helpers/enums/colors';
+
 import {
   Container,
   Content,
@@ -17,7 +19,7 @@ import {
   Title,
 } from './styles';
 
-const ProjectView = ({ items, titulo, onClickButtonGoBack }) => {
+const ProjectView = ({ items, titulo, onClickButtonGoBack, project }) => {
   const renderStep = (step) => (
     <Item>
       <CustomCircularProgress
@@ -57,7 +59,7 @@ const ProjectView = ({ items, titulo, onClickButtonGoBack }) => {
         <Title>{titulo}</Title>
       </TitleButtonContainer>
       <Container>
-        <Content>
+        <Content style={{ background: project?.color || COLORS.AthensGray }}>
           <StepContainer style={{ justifyContent: 'center' }}>
             <Step>
               <ItemContainer
