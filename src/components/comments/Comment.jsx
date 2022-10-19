@@ -30,7 +30,10 @@ const Comment = ({ comment }) => {
         <CardContent sx={{ position: 'relative' }}>
           <Box position="absolute" right={5} top={2}>
             <Tooltip arrow placement="top" title="Borrar">
-              <IconButton onClick={onClickDeleteButton}>
+              <IconButton
+                onClick={onClickDeleteButton}
+                disabled={!comment.showDelete}
+              >
                 <DeleteIcon />
               </IconButton>
             </Tooltip>

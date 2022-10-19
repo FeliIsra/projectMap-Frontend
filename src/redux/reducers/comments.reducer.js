@@ -16,13 +16,23 @@ const commentsReducer = (state = defaultState, action) => {
         ...state,
         loading: true,
       };
-    case constants.COMMENT_EDIT_SUCCEEDED:
-    case constants.COMMENT_CREATE_SUCCEEDED:
-    case constants.COMMENT_DELETE_SUCCEEDED:
     case constants.COMMENT_GET_ALL_SUCCEEDED:
       return {
         ...state,
-        data: { ...state.data, ...data },
+        data,
+        loading: false,
+      };
+    case constants.COMMENT_EDIT_SUCCEEDED:
+    case constants.COMMENT_CREATE_SUCCEEDED:
+      return {
+        ...state,
+        data: state.data.concat(data),
+        loading: false,
+      };
+    case constants.COMMENT_DELETE_SUCCEEDED:
+      return {
+        ...state,
+        data: state.data.filter((item) => item._id !== data._id),
         loading: false,
       };
     case constants.COMMENT_CREATE_FAILED:
