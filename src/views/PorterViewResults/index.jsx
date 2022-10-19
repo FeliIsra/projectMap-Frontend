@@ -5,13 +5,12 @@ import {
   CreateContent,
 } from 'views/PorterView/styles';
 import Button from 'components/commons/Button';
-import { Formik } from 'formik';
-import { CustomForm } from 'styles/form';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowBack, Comment } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
+import { ButtonContainer } from 'views/FodaView/styles';
 
 const PorterViewResults = ({
   consejo,
@@ -21,6 +20,7 @@ const PorterViewResults = ({
   steps,
   titulo,
   onClickButtonGoBack,
+  openComments,
 }) => {
   return (
     <CreateContent sx={{ gap: '0px' }}>
@@ -29,12 +29,21 @@ const PorterViewResults = ({
           display: 'flex',
           alignItems: 'center',
           gap: '5px',
+          justifyContent: 'space-between',
         }}
       >
         <IconButton size="small" onClick={onClickButtonGoBack}>
           <ArrowBack />
         </IconButton>
         <CardTitle>{titulo}</CardTitle>
+        <ButtonContainer sx={{ gap: '10px' }}>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
+          >
+            <Comment />
+          </IconButton>
+        </ButtonContainer>
       </Box>
       <Grid container director="row" alignItems="center">
         <Grid

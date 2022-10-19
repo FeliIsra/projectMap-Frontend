@@ -35,6 +35,8 @@ import {
   titleSelector,
 } from 'redux/selectors/pestel.selector';
 import AutoComplete from 'components/inputs/Autocomplete';
+import Comments from 'components/comments/Comments';
+import { Menu, MenuItem } from '@mui/material';
 
 const PestelContainer = () => {
   const { pestelId, id } = useParams();
@@ -47,6 +49,8 @@ const PestelContainer = () => {
   const { importancia, intensidad, tendencia } = useSelector((state) => {
     return state.pestel.options;
   });
+
+  const [anchorElement, setAnchorElement] = useState(null);
 
   const politicos = useSelector(politicoSelector);
   const economicos = useSelector(economicoSelector);
@@ -102,7 +106,27 @@ const PestelContainer = () => {
           onClickButton={onClickResultsButton}
           onClickButtonGoBack={onClickResultsButtonGoBack}
           buttonTitle="Resultados"
+          openComments={(target) => setAnchorElement(target)}
         />
+        <Menu
+          anchorEl={anchorElement}
+          onClose={() => setAnchorElement(null)}
+          open={!!anchorElement}
+          PaperProps={{
+            style: {
+              width: 500,
+            },
+          }}
+          sx={{
+            '& .MuiMenu-list': {
+              background: COLORS.AthensGray,
+            },
+          }}
+        >
+          <MenuItem key={1} disableRipple>
+            <Comments show tool="PESTEL" toolId={pestelId} projectId={id} />
+          </MenuItem>
+        </Menu>
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
           <CreateContent>
             <CardTitle>

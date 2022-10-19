@@ -17,6 +17,9 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from 'components/commons/Button';
 import Typography from '@mui/material/Typography';
 import { initialValuesSelector } from 'redux/selectors/porter.selector';
+import { Menu, MenuItem } from '@mui/material';
+import Comments from 'components/comments/Comments';
+import { COLORS } from 'helpers/enums/colors';
 
 const PorterContainer = () => {
   const { porterId, id } = useParams();
@@ -38,6 +41,7 @@ const PorterContainer = () => {
   const [handleFinish, setHandleFinish] = useState(false);
   const [answers, setAnswers] = useState({});
   const [skipped, setSkipped] = useState(new Set());
+  const [anchorElement, setAnchorElement] = useState(null);
 
   const initialValues = useSelector(initialValuesSelector);
   const loading = useSelector((state) => state?.porter?.loading);
@@ -138,8 +142,33 @@ const PorterContainer = () => {
                     titulo={steps[activeStep]}
                     onClickResults={onClickResultsButton}
                     onClickButtonGoBack={onClickGoBackButton}
+                    openComments={(target) => setAnchorElement(target)}
                   />
                 )}
+                <Menu
+                  anchorEl={anchorElement}
+                  onClose={() => setAnchorElement(null)}
+                  open={!!anchorElement}
+                  PaperProps={{
+                    style: {
+                      width: 500,
+                    },
+                  }}
+                  sx={{
+                    '& .MuiMenu-list': {
+                      background: COLORS.AthensGray,
+                    },
+                  }}
+                >
+                  <MenuItem key={1} disableRipple>
+                    <Comments
+                      show
+                      tool="PORTER"
+                      toolId={porterId}
+                      projectId={id}
+                    />
+                  </MenuItem>
+                </Menu>
               </Typography>
             </React.Fragment>
           )}

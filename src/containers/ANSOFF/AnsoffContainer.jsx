@@ -13,12 +13,14 @@ import {
   onEditProduct,
 } from 'redux/actions/ansoff.actions';
 import {
-  exitoSelector,
   situacionDelMercadoSelector,
   situacionDelProductoSelector,
   productosSelector,
 } from 'redux/selectors/ansoff.selector';
 import { ansoffSteps } from 'helpers/enums/ansoff';
+import { Menu, MenuItem } from '@mui/material';
+import Comments from 'components/comments/Comments';
+import { COLORS } from 'helpers/enums/colors';
 
 const AnsoffContainer = () => {
   const { ansoffId, id } = useParams();
@@ -26,6 +28,7 @@ const AnsoffContainer = () => {
   const navigate = useNavigate();
 
   const [activeStep, setActiveStep] = useState(0);
+  const [anchorElement, setAnchorElement] = useState(null);
 
   const item = useSelector((state) => state.ansoff.data);
   const situacionDelMercadoOptions = useSelector(situacionDelMercadoSelector);
@@ -91,7 +94,27 @@ const AnsoffContainer = () => {
             isLastStep={isLastStep}
             onClickGoBackButton={onClickGoBackButton}
             title={item?.title}
+            openComments={(target) => setAnchorElement(target)}
           />
+          <Menu
+            anchorEl={anchorElement}
+            onClose={() => setAnchorElement(null)}
+            open={!!anchorElement}
+            PaperProps={{
+              style: {
+                width: 500,
+              },
+            }}
+            sx={{
+              '& .MuiMenu-list': {
+                background: COLORS.AthensGray,
+              },
+            }}
+          >
+            <MenuItem key={1} disableRipple>
+              <Comments show tool="ANSOFF" toolId={ansoffId} projectId={id} />
+            </MenuItem>
+          </Menu>
         </Grid>
       </Grid>
     </LayoutContainer>

@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 import { COLORS } from 'helpers/enums/colors';
-import { Add, Check, Delete } from '@mui/icons-material';
+import { Add, Check, Comment, Delete } from '@mui/icons-material';
 import Button from 'components/commons/Button';
 import { getKeyResultWitValues, monthsPerQuarter } from 'helpers/enums/okr';
 import KeyResultInput from './components/KeyResultInput';
@@ -18,7 +18,6 @@ import { KeyResultCell, OkrContainer } from './styles';
 import Edit from '@mui/icons-material/Edit';
 import { Field, Form, Formik } from 'formik';
 import Input from './components/Input';
-import ToolTip from 'components/commons/ToolTip';
 
 const tableHeaderStyle = { display: 'flex', justifyContent: 'center' };
 
@@ -57,6 +56,7 @@ const OKRView = ({
   onSubmitKeyResult,
   titulo,
   onEditKeyResultStatus,
+  openComments,
 }) => {
   const [okrInputId, setOkrInputId] = useState(null);
   const [keyResultId, setKeyResultId] = useState(null);
@@ -68,10 +68,18 @@ const OKRView = ({
         padding: '30px',
       }}
     >
-      <Grid item xs={10} sx={{ display: 'flex', alignItems: 'center' }}>
+      <Grid item xs={9} sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography style={{ fontSize: 30, fontWeight: 800 }}>
           {titulo}
         </Typography>
+      </Grid>
+      <Grid item xs={1}>
+        <IconButton
+          size="small"
+          onClick={(event) => openComments(event.currentTarget)}
+        >
+          <Comment />
+        </IconButton>
       </Grid>
       <Grid item xs={2}>
         <Button onClick={openAddOkrModal}>

@@ -1,28 +1,9 @@
 import React, { useState } from 'react';
-import {
-  Grid,
-  IconButton,
-  Fab,
-  Stepper,
-  Step,
-  StepLabel,
-  Typography,
-  Chip,
-} from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import AddIcon from '@mui/icons-material/Add';
-import CancelIcon from '@mui/icons-material/Cancel';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { Formik, Field } from 'formik';
+import { Grid, IconButton, Typography, Chip } from '@mui/material';
 
-import Input from 'components/inputs/Input';
-import SelectInput from 'components/inputs/SelectInput';
-
-import { CustomForm, ButtonsContainer } from './styles';
 import { COLORS } from 'helpers/enums/colors';
 
-import { ArrowBack, Check } from '@mui/icons-material';
+import { ArrowBack, Comment } from '@mui/icons-material';
 import {
   Estrategia,
   EstrategiaClasificacion,
@@ -32,14 +13,23 @@ import { TitleContainer } from 'components/commons/ProjectCard/styles';
 import { ButtonContainer } from 'views/ProjectView/styles';
 
 const AnsoffViewResults = (props) => {
-  const { productosFiltered, porcentajes, onClickGoBackButton } = props;
+  const { productosFiltered, porcentajes, onClickGoBackButton, openComments } =
+    props;
 
   return (
     <>
       <TitleContainer>
-        <ButtonContainer>
+        <ButtonContainer
+          sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}
+        >
           <IconButton size="small" onClick={onClickGoBackButton}>
             <ArrowBack />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
+          >
+            <Comment />
           </IconButton>
         </ButtonContainer>
       </TitleContainer>

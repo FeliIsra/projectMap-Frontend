@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -35,6 +35,8 @@ import CustomizedTables from 'components/commons/Table';
 import RadarChartCustom from 'components/commons/RadarChart';
 import PieChartCustom from 'components/commons/PieChart';
 import { COLORS } from 'helpers/enums/colors';
+import { Menu, MenuItem } from '@mui/material';
+import Comments from 'components/comments/Comments';
 
 const PestelContainer = () => {
   const { pestelId, id } = useParams();
@@ -54,6 +56,8 @@ const PestelContainer = () => {
   const navigate = useNavigate();
   const onClickGoBackButton = () =>
     navigate(`/projects/${id}/pestel/${pestelId}`);
+
+  const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     disptch(onGetOptions());
@@ -77,7 +81,27 @@ const PestelContainer = () => {
             onClickButtonGoBack={onClickGoBackButton}
             buttonTitle="Ir Atras"
             total={total}
+            openComments={(target) => setAnchorElement(target)}
           />
+          <Menu
+            anchorEl={anchorElement}
+            onClose={() => setAnchorElement(null)}
+            open={!!anchorElement}
+            PaperProps={{
+              style: {
+                width: 500,
+              },
+            }}
+            sx={{
+              '& .MuiMenu-list': {
+                background: COLORS.AthensGray,
+              },
+            }}
+          >
+            <MenuItem key={1} disableRipple>
+              <Comments show tool="PESTEL" toolId={pestelId} projectId={id} />
+            </MenuItem>
+          </Menu>
           {consejos.length ? (
             <SectionTable>
               <Title>Tabla de Consejos</Title>

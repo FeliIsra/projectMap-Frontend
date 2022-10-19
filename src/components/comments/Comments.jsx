@@ -34,7 +34,7 @@ const Comments = ({ show, tool, toolId, projectId }) => {
 
   return (
     <Box width="100%">
-      <Box maxWidth="100vw" width={{ xs: '100%', md: '100%', lg: '350px' }}>
+      <Box maxWidth="100vw" width={{ xs: '100%', md: '100%', lg: '100%' }}>
         <>
           {!Array.isArray(comments) || comments.length <= 0 ? (
             <div />
