@@ -41,7 +41,7 @@ const Comments = ({ show, tool, toolId, projectId }) => {
           ) : (
             <Box overflow="auto" maxHeight="calc(100vh - 300px)">
               {comments.map((comment) => (
-                <Comment key={comment._id} comment={comment} />
+                <Comment key={comment.author._id} comment={comment} />
               ))}
             </Box>
           )}
