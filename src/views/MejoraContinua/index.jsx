@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Grid, Paper, Stack, styled } from '@mui/material';
-import { Pie, Radar, Bar, Line, PolarArea } from 'react-chartjs-2';
+import { Box, Grid, Paper, Stack, styled, Typography } from '@mui/material';
+import { Doughnut, Radar, Bar, Line, PolarArea } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -38,68 +38,107 @@ const Item = styled(Paper)(({ theme }) => ({
   display: 'flex',
 }));
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = [
+  'Desarrollo Mer.',
+  'Penetracion',
+  'Diversificacion',
+  'Desarollo Prod.',
+];
+
+const labelsMonths = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre',
+];
+
+const porterLabels = [
+  'Competidores',
+  'Clientes',
+  'Proveedores',
+  'A. Competidores',
+  'A. Substitutos',
+];
 
 export const dataBar = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: porterLabels,
   datasets: [
     {
-      label: 'Dataset 1',
-      data: labels.map(() => getRandomInt(1000)),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      label: 'PORTER 2021',
+      data: porterLabels.map(() => getRandomInt(100)),
+      backgroundColor: 'rgba(255, 99, 132)',
     },
     {
-      label: 'Dataset 2',
-      data: labels.map(() => getRandomInt(1000)),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      label: 'PORTER 2022',
+      data: porterLabels.map(() => getRandomInt(100)),
+      backgroundColor: 'rgba(53, 162, 235)',
     },
   ],
 };
 
 export const dataLine = {
-  labels,
+  labels: labelsMonths,
   datasets: [
     {
       label: 'Dataset 1',
-      data: labels.map(() => getRandomInt(1000)),
+      data: labelsMonths.map(() => getRandomInt(1000)),
       borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      backgroundColor: 'rgba(255, 99, 132)',
     },
     {
       label: 'Dataset 2',
-      data: labels.map(() => getRandomInt(1000)),
+      data: labelsMonths.map(() => getRandomInt(1000)),
       borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      backgroundColor: 'rgba(53, 162, 235)',
     },
   ],
 };
 
 export const dataRadar = {
-  labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
+  labels: ['Amenazas', 'Fortalezas', 'Debilidades', 'Oportunidades'],
   datasets: [
     {
-      label: '# of Votes',
-      data: [2, 9, 3, 5, 2, 3],
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      label: 'FODA 2021',
+      data: [40, 30, 25, 24],
+      backgroundColor: 'rgba(255, 206, 86)',
+      borderWidth: 1,
+    },
+    {
+      label: 'FODA 2022',
+      data: [12, 32, 43, 50],
+      backgroundColor: 'rgb(107, 99, 255)',
       borderWidth: 1,
     },
   ],
 };
 
 export const dataPolar = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: [
+    'Producto 1',
+    'Producto 2',
+    'Producto 3',
+    'Producto 4',
+    'Producto 5',
+  ],
   datasets: [
     {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Productos',
+      data: [12, 19, 3, 5, 2],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(75, 192, 192, 0.5)',
-        'rgba(153, 102, 255, 0.5)',
-        'rgba(255, 159, 64, 0.5)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
       ],
       borderWidth: 1,
     },
@@ -107,40 +146,73 @@ export const dataPolar = {
 };
 
 export const dataHorizontalBar = {
-  labels,
+  labels: ['Objetivo 1', 'Objectivo 2', 'Objetivo 3', 'Objetivo 4'],
   datasets: [
     {
       label: 'Dataset 1',
       data: labels.map(() => getRandomInt(1000)),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      backgroundColor: 'rgba(75, 192, 192, 1)',
     },
     {
       label: 'Dataset 2',
       data: labels.map(() => getRandomInt(1000)),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      backgroundColor: 'rgba(54, 162, 235, 1)',
     },
   ],
 };
-
 export const dataPie = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: [
+    'Politicos',
+    'Economicos',
+    'Sociales',
+    'Tecnologicos',
+    'Ambientales',
+    'Legales',
+  ],
   datasets: [
     {
-      label: '# of Votes',
+      label: 'PESTEL 2022',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132)',
+        'rgba(54, 162, 235)',
+        'rgba(255, 206, 86)',
+        'rgba(75, 192, 192)',
+        'rgba(153, 102, 255)',
+        'rgba(255, 159, 64)',
       ],
       borderWidth: 1,
     },
   ],
+};
+
+export const ansoffData = {
+  labels,
+  datasets: [
+    {
+      label: 'ANSOFF 2021',
+      data: labels.map(() => getRandomInt(1000)),
+      backgroundColor: 'rgb(255, 99, 132)',
+    },
+    {
+      label: 'ANSOFF 2022',
+      data: labels.map(() => getRandomInt(1000)),
+      backgroundColor: 'rgb(75, 192, 192)',
+    },
+  ],
+};
+
+export const ansoffOptions = {
+  responsive: true,
+  scales: {
+    x: {
+      stacked: true,
+    },
+    y: {
+      stacked: true,
+    },
+  },
+  indexAxis: 'y',
 };
 
 const MejoraContinuaView = () => {
@@ -155,18 +227,103 @@ const MejoraContinuaView = () => {
       <Grid container spacing={2}>
         <Grid item md={4} sx={{ display: 'flex', flex: 1 }}>
           <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
-            <Item sx={{ display: 'flex' }}>
-              <Box>
-                <Radar data={dataRadar} />
+            <Item sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Box sx={{ width: '100%' }}>
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontFamily: 'Fira Sans',
+                    fontSize: '1.3rem',
+                  }}
+                >
+                  Comparativa FODA
+                </Typography>
+                <Radar
+                  data={dataRadar}
+                  options={{
+                    scales: {
+                      r: {
+                        ticks: {
+                          stepSize: 10,
+                        },
+                      },
+                    },
+                  }}
+                />
               </Box>
             </Item>
-            <Item>
-              <Box>
+            <Item sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Box sx={{ width: '100%' }}>
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontFamily: 'Fira Sans',
+                    fontSize: '1.3rem',
+                  }}
+                >
+                  Comparativa PORTER
+                </Typography>
                 <Bar data={dataBar} />
               </Box>
             </Item>
-            <Item>
+            <Item sx={{ display: 'flex', justifyContent: 'center' }}>
               <Box>
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontFamily: 'Fira Sans',
+                    fontSize: '1.3rem',
+                  }}
+                >
+                  MCKINSEY
+                </Typography>
+                <PolarArea
+                  data={dataPolar}
+                  options={{
+                    plugins: {
+                      legend: {
+                        position: 'right',
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Item>
+          </Stack>
+        </Grid>
+        <Grid item md={5} sx={{ display: 'flex', flex: 1 }}>
+          <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
+            <Item sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontFamily: 'Fira Sans',
+                    fontSize: '1.3rem',
+                  }}
+                >
+                  OKR
+                </Typography>
+                <Line data={dataLine} />;
+              </Box>
+            </Item>
+            <Item
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}
+            >
+              <Box>
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontFamily: 'Fira Sans',
+                    fontSize: '1.3rem',
+                  }}
+                >
+                  Balanced Scorecard
+                </Typography>
                 <Bar
                   options={{
                     indexAxis: 'y',
@@ -178,21 +335,6 @@ const MejoraContinuaView = () => {
                   }}
                   data={dataHorizontalBar}
                 />
-                ;
-              </Box>
-            </Item>
-          </Stack>
-        </Grid>
-        <Grid item md={5} sx={{ display: 'flex', flex: 1 }}>
-          <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
-            <Item sx={{ display: 'flex', flex: 1 }}>
-              <Box>
-                <PolarArea data={dataPolar} />
-              </Box>
-            </Item>
-            <Item sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Box>
-                <Line data={dataLine} />;
               </Box>
             </Item>
           </Stack>
@@ -201,13 +343,61 @@ const MejoraContinuaView = () => {
           <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
             <Item sx={{ display: 'flex', flexDirection: 'column' }}>
               <Box>
-                <Pie
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontFamily: 'Fira Sans',
+                    fontSize: '1.3rem',
+                  }}
+                >
+                  PESTEL
+                </Typography>
+                <Doughnut
                   data={dataPie}
                   style={{ display: 'flex', width: '100%' }}
+                  options={{
+                    plugins: {
+                      legend: {
+                        position: 'bottom',
+                      },
+                    },
+                  }}
                 />
               </Box>
             </Item>
-            <Item>Item 2</Item>
+            <Item sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontFamily: 'Fira Sans',
+                    fontSize: '1.3rem',
+                  }}
+                >
+                  ANSOFF
+                </Typography>
+                <Bar
+                  options={{
+                    plugins: {
+                      legend: {
+                        position: 'bottom',
+                      },
+                    },
+                    responsive: true,
+                    scales: {
+                      x: {
+                        stacked: true,
+                      },
+                      y: {
+                        stacked: true,
+                      },
+                    },
+                    indexAxis: 'y',
+                  }}
+                  data={ansoffData}
+                />
+              </Box>
+            </Item>
           </Stack>
         </Grid>
       </Grid>
