@@ -32,6 +32,8 @@ import {
   titleSelector,
 } from 'redux/selectors/foda.selector';
 import AutoComplete from 'components/inputs/Autocomplete';
+import Comments from 'components/comments/Comments';
+import { Menu, MenuItem } from '@mui/material';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -41,6 +43,7 @@ const FodaContainer = () => {
     navigate(`/projects/${id}/foda/${fodaId}/results`);
   const onClickResultsButtonGoBack = () => navigate(`/projects/${id}`);
   const disptch = useDispatch();
+  const [anchorElement, setAnchorElement] = useState(null);
   const { importancia, intensidad, tendencia, urgencia } = useSelector(
     (state) => state.foda.options
   );
@@ -99,7 +102,27 @@ const FodaContainer = () => {
           onClickButton={onClickResultsButton}
           onClickButtonGoBack={onClickResultsButtonGoBack}
           buttonTitle="Resultados"
+          openComments={(target) => setAnchorElement(target)}
         />
+        <Menu
+          anchorEl={anchorElement}
+          onClose={() => setAnchorElement(null)}
+          open={!!anchorElement}
+          PaperProps={{
+            style: {
+              width: 500,
+            },
+          }}
+          sx={{
+            '& .MuiMenu-list': {
+              background: COLORS.AthensGray,
+            },
+          }}
+        >
+          <MenuItem key={1} disableRipple>
+            <Comments show tool="FODA" toolId={fodaId} projectId={id} />
+          </MenuItem>
+        </Menu>
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
           <CreateContent>
             <CardTitle>

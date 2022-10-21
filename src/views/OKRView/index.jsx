@@ -18,6 +18,7 @@ import { KeyResultCell, OkrContainer } from './styles';
 import Edit from '@mui/icons-material/Edit';
 import { Field, Form, Formik } from 'formik';
 import Input from './components/Input';
+import ToolTip from 'components/commons/ToolTip';
 
 const tableHeaderStyle = { display: 'flex', justifyContent: 'center' };
 
