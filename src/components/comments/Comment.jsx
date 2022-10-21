@@ -53,7 +53,7 @@ const Comment = ({ comment }) => {
                 fontSize={12}
               >
                 {' '}
-                {comment.author.firstName[0]}{' '}
+                {comment.author?.firstName[0]}{' '}
               </Typography>
             </Box>
             <Box>
@@ -69,7 +69,7 @@ const Comment = ({ comment }) => {
                   ></Typography>
                 </Typography>
               </Box>
-              <Typography> {comment.text} </Typography>
+              <Typography> {comment?.text} </Typography>
             </Box>
           </Box>
         </CardContent>
