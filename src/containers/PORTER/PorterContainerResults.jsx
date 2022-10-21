@@ -17,6 +17,9 @@ import Button from 'components/commons/Button';
 import Typography from '@mui/material/Typography';
 import { consejosSelector } from 'redux/selectors/porter.selector';
 import { useNavigate } from 'react-router-dom';
+import Comments from 'components/comments/Comments';
+import { COLORS } from 'helpers/enums/colors';
+import { Menu, MenuItem } from '@mui/material';
 
 const PorterContainerResults = () => {
   const { porterId, id } = useParams();
@@ -29,6 +32,7 @@ const PorterContainerResults = () => {
 
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
+  const [anchorElement, setAnchorElement] = useState(null);
 
   const consejos = useSelector(consejosSelector);
   const navigate = useNavigate();
@@ -123,7 +127,32 @@ const PorterContainerResults = () => {
                   steps={steps}
                   titulo={steps[activeStep]}
                   onClickButtonGoBack={onClickGoBack}
+                  openComments={(target) => setAnchorElement(target)}
                 />
+                <Menu
+                  anchorEl={anchorElement}
+                  onClose={() => setAnchorElement(null)}
+                  open={!!anchorElement}
+                  PaperProps={{
+                    style: {
+                      width: 500,
+                    },
+                  }}
+                  sx={{
+                    '& .MuiMenu-list': {
+                      background: COLORS.AthensGray,
+                    },
+                  }}
+                >
+                  <MenuItem key={1} disableRipple>
+                    <Comments
+                      show
+                      tool="PORTER"
+                      toolId={porterId}
+                      projectId={id}
+                    />
+                  </MenuItem>
+                </Menu>
               </Typography>
             </React.Fragment>
           )}

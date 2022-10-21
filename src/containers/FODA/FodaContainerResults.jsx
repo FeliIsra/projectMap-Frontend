@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -30,7 +30,8 @@ import {
 import RadarChartCustom from 'components/commons/RadarChart';
 import PieChartCustom from 'components/commons/PieChart';
 import { COLORS } from 'helpers/enums/colors';
-import { Grid } from '@mui/material';
+import { Menu, MenuItem } from '@mui/material';
+import Comments from 'components/comments/Comments';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -48,6 +49,8 @@ const FodaContainer = () => {
 
   const navigate = useNavigate();
   const onClickGoBackButton = () => navigate(`/projects/${id}/foda/${fodaId}`);
+
+  const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     disptch(onGetOptions());
@@ -69,7 +72,27 @@ const FodaContainer = () => {
             onClickButtonGoBack={onClickGoBackButton}
             buttonTitle="Ir Atras"
             total={total}
+            openComments={(target) => setAnchorElement(target)}
           />
+          <Menu
+            anchorEl={anchorElement}
+            onClose={() => setAnchorElement(null)}
+            open={!!anchorElement}
+            PaperProps={{
+              style: {
+                width: 500,
+              },
+            }}
+            sx={{
+              '& .MuiMenu-list': {
+                background: COLORS.AthensGray,
+              },
+            }}
+          >
+            <MenuItem key={1} disableRipple>
+              <Comments show tool="FODA" toolId={fodaId} projectId={id} />
+            </MenuItem>
+          </Menu>
           <SectionTable>
             <Title>Tabla de Porcetanjes</Title>
             <CustomizedTables

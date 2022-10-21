@@ -11,8 +11,9 @@ import SelectInput from 'components/inputs/SelectInput';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowBack, Comment } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
+import { ButtonContainer } from 'views/FodaView/styles';
 
 const PorterView = ({
   options,
@@ -25,6 +26,7 @@ const PorterView = ({
   titulo,
   onClickResults,
   onClickButtonGoBack,
+  openComments,
 }) => {
   return (
     <CreateContent>
@@ -33,12 +35,21 @@ const PorterView = ({
           display: 'flex',
           alignItems: 'center',
           gap: '5px',
+          justifyContent: 'space-between',
         }}
       >
         <IconButton size="small" onClick={onClickButtonGoBack}>
           <ArrowBack />
         </IconButton>
         <CardTitle>{titulo}</CardTitle>
+        <ButtonContainer sx={{ gap: '10px' }}>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
+          >
+            <Comment />
+          </IconButton>
+        </ButtonContainer>
       </Box>
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit }) => (

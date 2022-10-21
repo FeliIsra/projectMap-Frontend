@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid, IconButton } from '@mui/material';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -20,7 +20,7 @@ import {
   ChipContainer,
 } from './styles';
 import Button from 'components/commons/Button';
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowBack, Comment } from '@mui/icons-material';
 import Comments from 'components/comments/Comments';
 
 const FodaView = ({
@@ -37,6 +37,7 @@ const FodaView = ({
   onClickButtonGoBack,
   buttonTitle,
   total = {},
+  openComments,
 }) => {
   const renderTitle = (title, onAdd, total) => (
     <CardTitleContainer>
@@ -81,7 +82,13 @@ const FodaView = ({
           </IconButton>
         </ButtonContainer>
         <Title>{showResults ? `Resultados de ${title}` : title}</Title>
-        <ButtonContainer>
+        <ButtonContainer sx={{ gap: '10px' }}>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
+          >
+            <Comment />
+          </IconButton>
           {!showResults && (
             <Button onClick={onClickButton}>{buttonTitle}</Button>
           )}

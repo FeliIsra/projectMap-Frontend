@@ -30,7 +30,10 @@ const Comment = ({ comment }) => {
         <CardContent sx={{ position: 'relative' }}>
           <Box position="absolute" right={5} top={2}>
             <Tooltip arrow placement="top" title="Borrar">
-              <IconButton onClick={onClickDeleteButton}>
+              <IconButton
+                onClick={onClickDeleteButton}
+                disabled={!comment.showDelete}
+              >
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
@@ -50,13 +53,13 @@ const Comment = ({ comment }) => {
                 fontSize={12}
               >
                 {' '}
-                {comment.author[0]}{' '}
+                {comment.author.firstName[0]}{' '}
               </Typography>
             </Box>
             <Box>
               <Box alignItems="center" display="flex">
                 <Typography fontSize={14} fontWeight={500}>
-                  {comment.author}
+                  {comment.author?.firstName} {comment.author?.lastName}
                   <Typography
                     color={'#aeaeae'}
                     component="span"
