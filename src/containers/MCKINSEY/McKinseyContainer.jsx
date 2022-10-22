@@ -11,9 +11,7 @@ import Modal from 'components/commons/Modal';
 import Input from 'components/inputs/Input';
 import Button from 'components/commons/Button';
 
-import { COLORS } from 'helpers/enums/colors';
 import {
-  Container,
   CreateContent,
   CreateModalTitle,
   CreateButtonsContainer,
@@ -23,6 +21,10 @@ import { CustomForm } from 'styles/form';
 import McKinseyView from 'views/McKinseyView';
 import SliderInput from 'components/inputs/SliderInput';
 import { Grid } from '@mui/material';
+
+import { Menu, MenuItem } from '@mui/material';
+import Comments from 'components/comments/Comments';
+import { COLORS } from 'helpers/enums/colors';
 
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
@@ -34,6 +36,8 @@ const McKinseyContainer = () => {
   const onClickGoBackButton = () => navigate(`/projects/${id}`);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const cuadrantes = useSelector(cuadrantesSelector);
+
+  const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     disptch(onGetOne(matrizId));
@@ -63,9 +67,29 @@ const McKinseyContainer = () => {
             cuadrantes={cuadrantes}
             onClickResultsButton={onClickResultsButton}
             onClickGoBackButton={onClickGoBackButton}
+            openComments={(target) => setAnchorElement(target)}
           />
         </Grid>
       </Grid>
+      <Menu
+        anchorEl={anchorElement}
+        onClose={() => setAnchorElement(null)}
+        open={!!anchorElement}
+        PaperProps={{
+          style: {
+            width: 500,
+          },
+        }}
+        sx={{
+          '& .MuiMenu-list': {
+            background: COLORS.AthensGray,
+          },
+        }}
+      >
+        <MenuItem key={1} disableRipple>
+          <Comments show tool="MCKINSEY" toolId={matrizId} projectId={id} />
+        </MenuItem>
+      </Menu>
       <Modal isOpen={isAddModalOpen} backgroundColor={COLORS.WildSand} disabled>
         <CreateContent>
           <CreateModalTitle>{`Agregar Unidad de Negocio`}</CreateModalTitle>

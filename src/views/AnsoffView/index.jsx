@@ -1,16 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Grid,
-  IconButton,
-  Fab,
-  Stepper,
-  Step,
-  StepLabel,
-  Typography,
-} from '@mui/material';
+import { Grid, IconButton, Fab, Stepper, Step, StepLabel } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import CancelIcon from '@mui/icons-material/Cancel';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -23,10 +13,9 @@ import SelectInput from 'components/inputs/SelectInput';
 import { CustomForm, ButtonsContainer } from './styles';
 import { COLORS } from 'helpers/enums/colors';
 import Steps from './components';
-import { ArrowBack, Check } from '@mui/icons-material';
+import { ArrowBack, Check, Comment } from '@mui/icons-material';
 import { TitleContainer } from 'components/commons/ProjectCard/styles';
 import { ButtonContainer } from 'views/DashboardView/styles';
-import Button from 'components/commons/Button';
 import { Title } from 'styles/form';
 
 const AnsoffView = (props) => {
@@ -43,6 +32,7 @@ const AnsoffView = (props) => {
     isLastStep,
     onClickGoBackButton,
     title,
+    openComments,
   } = props;
   const [showForm, setShowForm] = useState(false);
 
@@ -50,9 +40,17 @@ const AnsoffView = (props) => {
   return (
     <>
       <TitleContainer>
-        <ButtonContainer>
+        <ButtonContainer
+          sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}
+        >
           <IconButton size="small" onClick={onClickGoBackButton}>
             <ArrowBack />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
+          >
+            <Comment />
           </IconButton>
         </ButtonContainer>
         <Title>{showResults ? `Resultados de ${title}` : title}</Title>

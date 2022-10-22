@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Formik, Field } from 'formik';
 
 import { onGetOne } from 'redux/actions/mckinsey.actions';
 import { cuadrantesSelector } from 'redux/selectors/mckinsey.selector';
@@ -9,12 +8,13 @@ import { cuadrantesSelector } from 'redux/selectors/mckinsey.selector';
 import LayoutContainer from 'containers/LayoutContainer';
 import CustomizedTables from 'components/commons/Table';
 
-import { Container } from 'styles/global';
-
 import McKinseyView from 'views/McKinseyView';
-import { SectionTable, Title } from 'views/McKinseyView/styles';
-import { ViewContainer } from 'styles/global';
+import { Title } from 'views/McKinseyView/styles';
 import { Grid } from '@mui/material';
+
+import { Menu, MenuItem } from '@mui/material';
+import Comments from 'components/comments/Comments';
+import { COLORS } from 'helpers/enums/colors';
 
 const McKinseyContainerResults = () => {
   const { matrizId, id } = useParams();
@@ -23,6 +23,8 @@ const McKinseyContainerResults = () => {
   const onClickResultsButton = () =>
     navigate(`/projects/${id}/mckinsey/${matrizId}`);
   const cuadrantes = useSelector(cuadrantesSelector);
+
+  const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     disptch(onGetOne(matrizId));
@@ -36,8 +38,28 @@ const McKinseyContainerResults = () => {
             cuadrantes={cuadrantes}
             onClickResultsButton={onClickResultsButton}
             showResults
+            openComments={(target) => setAnchorElement(target)}
           />
         </Grid>
+        <Menu
+          anchorEl={anchorElement}
+          onClose={() => setAnchorElement(null)}
+          open={!!anchorElement}
+          PaperProps={{
+            style: {
+              width: 500,
+            },
+          }}
+          sx={{
+            '& .MuiMenu-list': {
+              background: COLORS.AthensGray,
+            },
+          }}
+        >
+          <MenuItem key={1} disableRipple>
+            <Comments show tool="MCKINSEY" toolId={matrizId} projectId={id} />
+          </MenuItem>
+        </Menu>
         <Grid item sx={{ height: '100%' }}>
           <Grid container>
             <Grid item sx={{ padding: '30px' }}>

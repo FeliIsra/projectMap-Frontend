@@ -19,18 +19,22 @@ import { useState } from 'react';
 import { ButtonsContainer, CustomForm } from 'styles/form';
 import { Field, Formik } from 'formik';
 import { CreateContent, CreateModalTitle } from 'styles/global';
-import { COLORS } from 'helpers/enums/colors';
 import Modal from 'components/commons/Modal';
 import Button from 'components/commons/Button';
 import Input from 'components/inputs/Input';
 import { quartersOptions } from 'helpers/enums/okr';
 import { okrToolSelector } from 'redux/selectors/okr.selector';
+import { Menu, MenuItem } from '@mui/material';
+import Comments from 'components/comments/Comments';
+import { COLORS } from 'helpers/enums/colors';
 
 const OKRContainer = () => {
-  const { okrToolId } = useParams();
+  const { okrToolId, id } = useParams();
   const dispatch = useDispatch();
   const [isAddOkrModalOpen, setAddOkrModalOpen] = useState(false);
   const selectedTool = useSelector(okrToolSelector);
+
+  const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     dispatch(onGetOneTool(okrToolId));
@@ -58,7 +62,27 @@ const OKRContainer = () => {
             okrs={selectedTool?.okrs}
             titulo={selectedTool.titulo}
             onEditKeyResultStatus={onEditKeyResultStatus}
+            openComments={(target) => setAnchorElement(target)}
           />
+          <Menu
+            anchorEl={anchorElement}
+            onClose={() => setAnchorElement(null)}
+            open={!!anchorElement}
+            PaperProps={{
+              style: {
+                width: 500,
+              },
+            }}
+            sx={{
+              '& .MuiMenu-list': {
+                background: COLORS.AthensGray,
+              },
+            }}
+          >
+            <MenuItem key={1} disableRipple>
+              <Comments show tool="OKR" toolId={okrToolId} projectId={id} />
+            </MenuItem>
+          </Menu>
         </Grid>
       </Grid>
       <Modal

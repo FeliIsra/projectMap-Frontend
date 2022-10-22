@@ -53,13 +53,13 @@ const Comment = ({ comment }) => {
                 fontSize={12}
               >
                 {' '}
-                {comment.author[0]}{' '}
+                {comment.author?.firstName[0]}{' '}
               </Typography>
             </Box>
             <Box>
               <Box alignItems="center" display="flex">
                 <Typography fontSize={14} fontWeight={500}>
-                  {comment.author}
+                  {comment.author?.firstName} {comment.author?.lastName}
                   <Typography
                     color={'#aeaeae'}
                     component="span"
@@ -69,7 +69,7 @@ const Comment = ({ comment }) => {
                   ></Typography>
                 </Typography>
               </Box>
-              <Typography> {comment.text} </Typography>
+              <Typography> {comment?.text} </Typography>
             </Box>
           </Box>
         </CardContent>
