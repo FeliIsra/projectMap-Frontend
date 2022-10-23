@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Avatar, Box, Divider, Grid, Tooltip } from '@mui/material';
+import { Avatar, Box, Grid, Tooltip } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
-import { Area, Trend } from 'helpers/enums/balanced';
+import { Area, getDeviationColor, Trend } from 'helpers/enums/balanced';
 
 import ObjetiveInput from './components/ObjetiveInput';
 import AddButton from './components/AddButton';
@@ -107,6 +107,7 @@ const BalancedView = ({ onSubmitObjetive, objectives, onEditObjective }) => {
     target,
     progress,
     trend,
+    deviation,
   }) => (
     <Grid
       container
@@ -130,10 +131,10 @@ const BalancedView = ({ onSubmitObjetive, objectives, onEditObjective }) => {
       </Grid>
       <Grid item md={1} sx={tableHeaderStyle}>
         <span>
-          {progress.toLocaleString(undefined, {
+          {progress?.toLocaleString(undefined, {
             maximumFractionDigits: 2,
             minimumFractionDigits: 0,
-          })}
+          }) || 0}
           %
         </span>
       </Grid>
@@ -141,7 +142,16 @@ const BalancedView = ({ onSubmitObjetive, objectives, onEditObjective }) => {
         <span>{trend && getTrendIcon(trend)}</span>
       </Grid>
       <Grid item md={1} sx={tableHeaderStyle}>
-        <span>Verde</span>
+        <Tooltip title={deviation} placement="top" arrow>
+          <Box
+            sx={{
+              borderRadius: '50%',
+              backgroundColor: getDeviationColor(deviation),
+              width: '24px',
+              height: '24px',
+            }}
+          />
+        </Tooltip>
       </Grid>
     </Grid>
   );
@@ -177,6 +187,7 @@ const BalancedView = ({ onSubmitObjetive, objectives, onEditObjective }) => {
                   <AccordionDetails>
                     <Checkpoints
                       checkpoints={objective.checkpoints}
+                      onClickCancel={handleChange(null)}
                       onSubmit={(formData) =>
                         onEditObjective(objective._id, {
                           ...objective,

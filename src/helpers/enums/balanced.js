@@ -25,3 +25,19 @@ export const Trend = {
   Downwards: 'Downwards',
   Stable: 'Stable',
 };
+
+export const Deviation = {
+  None: 'None',
+  Acceptable: 'Acceptable',
+  Risky: 'Risky',
+};
+
+export const DeviationColor = {
+  None: '#3BB273',
+  Acceptable: '#E1BC29',
+  Risky: '#E15554',
+};
+
+export const getDeviation = (deviation) => Deviation[deviation] || '';
+
+export const getDeviationColor = (deviation) => DeviationColor[deviation];

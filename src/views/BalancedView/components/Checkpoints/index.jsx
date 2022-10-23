@@ -51,7 +51,7 @@ const Checkpoints = ({ checkpoints, onSubmit, onClickCancel }) => {
                 </Box>
                 <Box display="flex">
                   <span>
-                    {checkpoint.target.toLocaleString(undefined, {
+                    {checkpoint.target?.toLocaleString(undefined, {
                       maximumFractionDigits: 2,
                       minimumFractionDigits: 0,
                     })}
@@ -90,7 +90,7 @@ const Checkpoints = ({ checkpoints, onSubmit, onClickCancel }) => {
           gap={2}
           justifyContent="flex-end"
         >
-          <IconButton type="button" onClick={onClickCancel}>
+          <IconButton type="button" onClick={() => onClickCancel()}>
             <Close color="secondary" />
           </IconButton>
           <IconButton type="submit">
