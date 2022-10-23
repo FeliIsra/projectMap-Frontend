@@ -16,6 +16,7 @@ const CreateToolContainer = () => {
   const porter = useSelector((state) => state.porter.data);
   const ansoff = useSelector((state) => state.ansoff.data);
   const okr = useSelector((state) => state.okr.data);
+  const balanceScorecard = useSelector((state) => state.balanceScorecard.data);
   const loading = useSelector(toolsLoadingSelector);
 
   return (
@@ -68,6 +69,17 @@ const CreateToolContainer = () => {
           <Route
             path="/"
             element={<Navigate to={`/projects/${id}/okr/${okr._id}`} replace />}
+          />
+        )}
+        {!!balanceScorecard?._id && (
+          <Route
+            path="/"
+            element={
+              <Navigate
+                to={`/projects/${id}/balanceScorecard/${balanceScorecard._id}`}
+                replace
+              />
+            }
           />
         )}
       </Routes>
