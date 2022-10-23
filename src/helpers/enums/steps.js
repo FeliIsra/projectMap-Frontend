@@ -4,6 +4,7 @@ import { onCreate as onCreateMckinsey } from 'redux/actions/mckinsey.actions';
 import { onCreate as onCreateAnsoff } from 'redux/actions/ansoff.actions';
 import { onCreate as onCreatePorter } from 'redux/actions/porter.actions';
 import { onCreateTool as onCreateOkr } from 'redux/actions/okr.actions';
+import { onCreate as onCreateBalanced } from 'redux/actions/balanceScorecard.actions';
 
 const StepValue = {
   EVALUACION_ENTORNO_EXTERNO: 1,
@@ -28,7 +29,7 @@ export const STEPS = [
     value: StepValue.PLAN_FINANCIERO_MEDICION_RESULTADOS,
     title: 'Planeamiento Financiero y Medición de Resultados',
     menuItems: [
-      { titulo: 'Agregar Balaced Scorecard', action: () => {} },
+      { titulo: 'Agregar Balaced Scorecard', action: onCreateBalanced },
       { titulo: 'Agregar OKRs', action: onCreateOkr },
     ],
   },

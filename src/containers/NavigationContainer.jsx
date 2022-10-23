@@ -18,6 +18,7 @@ import AnsoffContainerResults from 'containers/ANSOFF/AnsoffContainerResults';
 import PorterContainerResults from 'containers/PORTER/PorterContainerResults';
 import PorterContainer from 'containers/PORTER/PorterContainer';
 import OKRContainer from 'containers/OKRs/OKRContainer';
+import BalancedContainer from 'containers/Balanced Scorecard/BalancedContainer';
 import MejoraContinuaContainer from 'containers/MEJORA-CONTINUA/MejoraContinuaContainer';
 
 export const NavigationContainer = () => {
@@ -54,6 +55,10 @@ export const NavigationContainer = () => {
         />
         <Route path=":id/porter/:porterId" element={<PorterContainer />} />
         <Route path=":id/okr/:okrToolId" element={<OKRContainer />} />
+        <Route
+          path=":id/balanceScorecard/:balancedId"
+          element={<BalancedContainer />}
+        />
         <Route
           path=":id/mejora-continua"
           element={<MejoraContinuaContainer />}

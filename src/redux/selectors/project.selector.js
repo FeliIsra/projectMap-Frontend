@@ -19,7 +19,7 @@ const getMckinseys = (state) =>
 const getBalancedScorecard = (state) =>
   state.projects.balancedScorecards.map((x) => ({
     ...x,
-    redirectUrl: `balanced-scorecard/${x._id}`,
+    redirectUrl: `balanceScorecard/${x._id}`,
   }));
 
 export const stepToolsSelector = createSelector(

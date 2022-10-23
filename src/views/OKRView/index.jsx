@@ -45,6 +45,9 @@ function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
+      width: 24,
+      height: 24,
+      fontSize: 14,
     },
     children: `${name && name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
   };
@@ -157,7 +160,6 @@ const OKRView = ({
                           >
                             <Avatar
                               {...stringAvatar(keyResult?.responsible || '')}
-                              sx={{ width: 24, height: 24, fontSize: 14 }}
                             />
                           </Tooltip>
                         </KeyResultCell>

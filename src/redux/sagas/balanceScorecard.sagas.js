@@ -183,8 +183,8 @@ export function* balanceScorecardUpdateInitiative(action) {
 
 export function* balanceScorecardUpdateObjective(action) {
   try {
-    const { id, objetiveId, formData } = action;
-    const { data } = yield call(updateObjetive, id, objetiveId, formData);
+    const { id, objectiveId, formData } = action;
+    const { data } = yield call(updateObjetive, id, objectiveId, formData);
     yield put({
       type: constants.UPDATE_OBJETIVE_BALANCE_SCORECARD_SUCCEEDED,
       data,
