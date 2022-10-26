@@ -14,6 +14,7 @@ import {
   LinearScale,
   BarElement,
 } from 'chart.js';
+
 import { getRandomInt } from 'helpers/randomNumber';
 ChartJS.register(
   ArcElement,
@@ -60,30 +61,6 @@ const labelsMonths = [
   'Diciembre',
 ];
 
-const porterLabels = [
-  'Competidores',
-  'Clientes',
-  'Proveedores',
-  'A. Competidores',
-  'A. Substitutos',
-];
-
-export const dataBar = {
-  labels: porterLabels,
-  datasets: [
-    {
-      label: 'PORTER 2021',
-      data: porterLabels.map(() => getRandomInt(100)),
-      backgroundColor: 'rgba(255, 99, 132)',
-    },
-    {
-      label: 'PORTER 2022',
-      data: porterLabels.map(() => getRandomInt(100)),
-      backgroundColor: 'rgba(53, 162, 235)',
-    },
-  ],
-};
-
 export const dataLine = {
   labels: labelsMonths,
   datasets: [
@@ -98,49 +75,6 @@ export const dataLine = {
       data: labelsMonths.map(() => getRandomInt(1000)),
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235)',
-    },
-  ],
-};
-
-export const dataRadar = {
-  labels: ['Amenazas', 'Fortalezas', 'Debilidades', 'Oportunidades'],
-  datasets: [
-    {
-      label: 'FODA 2021',
-      data: [40, 30, 25, 24],
-      backgroundColor: 'rgba(255, 206, 86)',
-      borderWidth: 1,
-    },
-    {
-      label: 'FODA 2022',
-      data: [12, 32, 43, 50],
-      backgroundColor: 'rgb(107, 99, 255)',
-      borderWidth: 1,
-    },
-  ],
-};
-
-export const dataPolar = {
-  labels: [
-    'Producto 1',
-    'Producto 2',
-    'Producto 3',
-    'Producto 4',
-    'Producto 5',
-  ],
-  datasets: [
-    {
-      label: 'Productos',
-      data: [12, 19, 3, 5, 2],
-      backgroundColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-      ],
-      borderWidth: 1,
     },
   ],
 };
@@ -160,6 +94,7 @@ export const dataHorizontalBar = {
     },
   ],
 };
+
 export const dataPie = {
   labels: [
     'Politicos',
@@ -215,7 +150,15 @@ export const ansoffOptions = {
   indexAxis: 'y',
 };
 
-const MejoraContinuaView = () => {
+const MejoraContinuaView = ({
+  dataFODA,
+  dataPESTEL,
+  dataMckinsey,
+  dataPorter,
+  dataAnsoff,
+  dataOkrs,
+  dataBalanced,
+}) => {
   return (
     <Box
       sx={{
@@ -239,12 +182,12 @@ const MejoraContinuaView = () => {
                   Comparativa FODA
                 </Typography>
                 <Radar
-                  data={dataRadar}
+                  data={dataFODA}
                   options={{
                     scales: {
                       r: {
                         ticks: {
-                          stepSize: 10,
+                          stepSize: 50,
                         },
                       },
                     },
@@ -263,7 +206,7 @@ const MejoraContinuaView = () => {
                 >
                   Comparativa PORTER
                 </Typography>
-                <Bar data={dataBar} />
+                <Bar data={dataPorter} />
               </Box>
             </Item>
             <Item sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -278,7 +221,7 @@ const MejoraContinuaView = () => {
                   MCKINSEY
                 </Typography>
                 <PolarArea
-                  data={dataPolar}
+                  data={dataMckinsey}
                   options={{
                     plugins: {
                       legend: {
@@ -302,9 +245,9 @@ const MejoraContinuaView = () => {
                     fontSize: '1.3rem',
                   }}
                 >
-                  OKR
+                  Balanced Scoredcard
                 </Typography>
-                <Line data={dataLine} />;
+                <Line data={dataBalanced} />
               </Box>
             </Item>
             <Item
@@ -322,7 +265,7 @@ const MejoraContinuaView = () => {
                     fontSize: '1.3rem',
                   }}
                 >
-                  Balanced Scorecard
+                  OKR
                 </Typography>
                 <Bar
                   options={{
@@ -333,7 +276,7 @@ const MejoraContinuaView = () => {
                       },
                     },
                   }}
-                  data={dataHorizontalBar}
+                  data={dataOkrs}
                 />
               </Box>
             </Item>
@@ -353,7 +296,7 @@ const MejoraContinuaView = () => {
                   PESTEL
                 </Typography>
                 <Doughnut
-                  data={dataPie}
+                  data={dataPESTEL}
                   style={{ display: 'flex', width: '100%' }}
                   options={{
                     plugins: {
@@ -394,7 +337,7 @@ const MejoraContinuaView = () => {
                     },
                     indexAxis: 'y',
                   }}
-                  data={ansoffData}
+                  data={dataAnsoff}
                 />
               </Box>
             </Item>

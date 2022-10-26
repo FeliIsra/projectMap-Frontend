@@ -26,34 +26,46 @@ import Input from 'components/inputs/Input';
 import { quartersOptions } from 'helpers/enums/okr';
 import { okrToolSelector } from 'redux/selectors/okr.selector';
 import MejoraContinuaView from 'views/MejoraContinua';
+import { onGetOne } from 'redux/actions/mejora.continua.actions';
+import {
+  radarChartSelector,
+  pieChartSelector,
+  polarChartSelector,
+  barChartSelector,
+  horizontalBarChartSelector,
+  horizontalChartSelector,
+  lineChartSelector,
+} from 'redux/selectors/mejora.continua.selector';
+import Loading from 'components/commons/Loading';
 
 const MejoraContinuaContainer = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [isAddOkrModalOpen, setAddOkrModalOpen] = useState(false);
-  const selectedTool = useSelector(okrToolSelector);
+  const dataFODA = useSelector(radarChartSelector);
+  const dataPESTEL = useSelector(pieChartSelector);
+  const dataMckinsey = useSelector(polarChartSelector);
+  const dataPorter = useSelector(barChartSelector);
+  const dataAnsoff = useSelector(horizontalBarChartSelector);
+  const dataOkrs = useSelector(horizontalChartSelector);
+  const dataBalanced = useSelector(lineChartSelector);
 
-  // useEffect(() => {
-  //   dispatch(onGetOneTool(okrToolId));
-  // }, []);
-
-  // const onSubmitOkr = (formData) => {
-  //   dispatch(onAddOkr(okrToolId, formData));
-  //   setAddOkrModalOpen(false);
-  // };
-
-  // const onSubmitKeyResult = (okrId, formData) =>
-  //   dispatch(onAddKeyResult(okrToolId, okrId, formData));
-
-  // const onEditKeyResultStatus = (okrId, keyResultId, formData) => {
-  //   dispatch(onEditKeyResult(okrToolId, okrId, keyResultId, formData));
-  // };
+  useEffect(() => {
+    dispatch(onGetOne(id));
+  }, []);
 
   return (
     <LayoutContainer>
       <Grid container>
         <Grid item sx={{ height: '100%', width: '100%', display: 'flex' }}>
-          <MejoraContinuaView />
+          <MejoraContinuaView
+            dataFODA={dataFODA}
+            dataPESTEL={dataPESTEL}
+            dataMckinsey={dataMckinsey}
+            dataPorter={dataPorter}
+            dataAnsoff={dataAnsoff}
+            dataOkrs={dataOkrs}
+            dataBalanced={dataBalanced}
+          />
         </Grid>
       </Grid>
     </LayoutContainer>
