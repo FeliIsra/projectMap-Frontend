@@ -100,20 +100,19 @@ export const polarChartSelector = createSelector(
       datasets: [
         {
           label: 'Productos',
-          data: [0, 0, 0, 0, 0],
-          backgroundColor: [],
+          data: [],
+          backgroundColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+          ],
           borderWidth: 1,
         },
       ],
     };
-    const backgroundColor = [
-      'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(153, 102, 255, 1)',
-      'rgba(255, 159, 64, 1)',
-    ];
     const unidades = mckinseys[0]?.unidadesDeNegocio.map(
       ({ nombre, atractivoDeMercado, fuerzaCompetitiva }) => ({
         nombre,
@@ -126,7 +125,6 @@ export const polarChartSelector = createSelector(
       .forEach((unidad, index) => {
         defaultData.labels.push(unidad.nombre);
         defaultData.datasets[0].data.push(unidad.puntuacion);
-        defaultData.datasets[0].backgroundColor.push(backgroundColor[index]);
       });
     return defaultData;
   }
@@ -250,6 +248,18 @@ export const horizontalChartSelector = createSelector([getOkrs], (tool) => {
 export const lineChartSelector = createSelector(
   [getBalancedScorecard],
   (balanced) => {
+    const colors = [
+      '#d9ed92',
+      '#b5e48c',
+      '#99d98c',
+      '#76c893',
+      '#52b69a',
+      '#34a0a4',
+      '#168aad',
+      '#1a759f',
+      '#1e6091',
+      '#184e77',
+    ];
     const defaultData = {
       labels: [
         'Enero',
@@ -267,12 +277,18 @@ export const lineChartSelector = createSelector(
       ],
       datasets: [],
     };
-    balanced[0]?.objectives.forEach((objective) => {
+    balanced[0]?.objectives.forEach((objective, index) => {
+      const color =
+        colors[
+          index % 2 === 0
+            ? index % colors.length
+            : colors.length - (index % colors.length)
+        ];
       defaultData.datasets.push({
         label: objective.action,
         data: objective.checkpoints.map((check) => check.actual),
-        backgroundColor: stringToColor(objective.action),
-        borderColor: stringToColor(objective.action),
+        backgroundColor: color,
+        borderColor: color,
       });
     });
     return defaultData;
