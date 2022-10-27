@@ -34,24 +34,26 @@ export const resultsSelector = createSelector(
 );
 
 export const initialValuesSelector = createSelector(
-  [getQuestionnaire, getLoading],
-  (one, loading) => {
+  [getQuestionnaire],
+  (one) => {
     const initialValues = {};
     one?.chapters?.map((chapter) => {
       const chapterId = chapter?.chapterId;
 
-      initialValues[chapterId.toString()] = {};
+      if (!initialValues[chapterId.toString()])
+        initialValues[chapterId.toString()] = {};
 
       const questions = chapter?.questions;
       questions?.map((question) => {
         const questionId = question?.questionId;
 
-        initialValues[chapterId.toString()][questionId.toString()] = {};
+        if (!initialValues[chapterId.toString()][questionId.toString()])
+          initialValues[chapterId.toString()][questionId.toString()] = {};
 
         const questionText = question?.question;
         const selectedAnswer = question?.selectedAnswer || '';
         const answers = question?.answers;
-        const answer = answers[selectedAnswer]?.answer || '';
+        const answer = answers[selectedAnswer - 1]?.answer || '';
 
         initialValues[chapterId.toString()][questionId.toString()][
           questionText

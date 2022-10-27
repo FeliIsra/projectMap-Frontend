@@ -1,4 +1,3 @@
-import { Satellite } from '@mui/icons-material';
 import * as constants from 'redux/contansts/questionnarie.constants';
 
 export const defaultState = {
@@ -22,12 +21,11 @@ const questionnaireReducer = (state = defaultState, action) => {
     case constants.QUESTIONNARIE_ON_GET_QUIESTIONS_SUCCEEDED:
       return {
         ...state,
-        data: { ...state.data, ...data },
+        data,
       };
     case constants.QUESTIONNARIE_ON_INSERT_SUCCEEDED:
       return {
         ...state,
-        data: { ...state.data, ...data },
         loading: false,
       };
 
