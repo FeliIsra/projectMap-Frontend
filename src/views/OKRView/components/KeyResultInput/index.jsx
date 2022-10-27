@@ -1,7 +1,7 @@
 import React from 'react';
 import { Check, Delete } from '@mui/icons-material';
 import { Divider, Grid, IconButton, Rating } from '@mui/material';
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 import Input from '../Input';
 
@@ -127,6 +127,11 @@ const KeyResultInput = ({ okr, onSubmit, onClickCancel }) => {
                   variant="standard"
                   size="small"
                   type="number"
+                  validate={(value) => {
+                    // TODO: mostrar el erro al usuario
+                    if (value <= 0) return 'El objetivo debe ser distinto a 0';
+                    return undefined;
+                  }}
                 />
               </QuarterFieldContainer>
               <Divider orientation="vertical" flexItem />
