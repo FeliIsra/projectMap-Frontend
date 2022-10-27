@@ -7,7 +7,7 @@ export const areaObjectivesSelector = createSelector(
   [getBalancedSelected],
   (balanced) => {
     let objectivesPerArea = {};
-    Object.values(Area).forEach((area) => {
+    Object.values(Area)?.forEach((area) => {
       objectivesPerArea = {
         ...objectivesPerArea,
         [area]:

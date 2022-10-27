@@ -51,13 +51,13 @@ const QuestionnarieQuestionsContainer = () => {
     formDataList?.map(({ chapterId, chapter }) => {
       Object.entries(chapter)?.map(([questionId, question]) => {
         Object.entries(question)?.map(([question, answer]) => {
-          const _chapter = data.find(
-            (x) => x.chapterId.toString() === chapterId
+          const _chapter = data?.find(
+            (x) => x.chapterId?.toString() === chapterId
           );
           const _question = _chapter?.questions?.find(
-            (x) => x.questionId.toString() === questionId
+            (x) => x.questionId?.toString() === questionId
           );
-          const answerId = _question?.answers.find(
+          const answerId = _question?.answers?.find(
             (x) => x.answer === answer
           )?.answerId;
 

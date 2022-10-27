@@ -18,7 +18,7 @@ const stringToColor = (string) => {
   let i;
 
   /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
+  for (i = 0; i < string?.length; i += 1) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
 
@@ -35,7 +35,7 @@ const stringToColor = (string) => {
 const stringAvatar = (name) => {
   return {
     sx: {
-      bgcolor: stringToColor(name).toString(),
+      bgcolor: stringToColor(name)?.toString(),
       width: 24,
       height: 24,
       fontSize: 14,

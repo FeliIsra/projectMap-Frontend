@@ -134,7 +134,7 @@ const Steps = ({
               </Grid>
             </Grid>
           </Grid>
-          {productosFiltered['Penetracion'].length ? (
+          {productosFiltered['Penetracion']?.length ? (
             <Grid item xs={12}>
               <Grid container display="flex">
                 {productosFiltered['Penetracion']?.map((producto) => (

@@ -68,7 +68,7 @@ export const porcentajeSelector = createSelector(
   [totalResultsSelect],
   (total) => {
     let totalPuntuacion = 0;
-    Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
+    Object.keys(total)?.forEach((area) => (totalPuntuacion += total[area]));
     const fortaleza = {
       area: 'Fortaleza',
       porcentaje: (total['fortalezas'] * 100) / totalPuntuacion,
@@ -136,7 +136,7 @@ export const pieChartSelector = createSelector(
   [porcentajeSelector, totalResultsSelect],
   (list, total) => {
     let totalPuntuacion = 0;
-    Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
+    Object.keys(total)?.forEach((area) => (totalPuntuacion += total[area]));
     return list?.map((area) => {
       return {
         name: area.area,
@@ -150,7 +150,7 @@ export const radarChartSelector = createSelector(
   [totalResultsSelect],
   (total) => {
     let totalPuntuacion = 0;
-    Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
+    Object.keys(total)?.forEach((area) => (totalPuntuacion += total[area]));
 
     return Object.keys(total)?.map((area) => {
       return {

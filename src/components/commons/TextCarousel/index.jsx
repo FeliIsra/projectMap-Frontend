@@ -12,7 +12,7 @@ import { COLORS } from 'helpers/enums/colors';
 export default function TextStepper({ steps }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = steps.length;
+  const maxSteps = steps?.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);

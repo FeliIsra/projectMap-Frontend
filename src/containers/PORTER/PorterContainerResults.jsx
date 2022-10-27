@@ -51,7 +51,7 @@ const PorterContainerResults = () => {
   };
 
   const isLastStep = () => {
-    return activeStep === steps.length - 1;
+    return activeStep === steps?.length - 1;
   };
 
   const handleNext = () => {
@@ -63,9 +63,9 @@ const PorterContainerResults = () => {
     }
 
     setActiveStep((prevActiveStep) =>
-      prevActiveStep + 1 !== steps.length
+      prevActiveStep + 1 !== steps?.length
         ? prevActiveStep + 1
-        : steps.length - 1
+        : steps?.length - 1
     );
     setSkipped(newSkipped);
   };
@@ -106,7 +106,7 @@ const PorterContainerResults = () => {
               );
             })}
           </Stepper>
-          {activeStep === steps.length ? (
+          {activeStep === steps?.length ? (
             <React.Fragment>
               <Typography sx={{ mt: 2, mb: 1 }}>
                 All steps completed - you&apos;re finished

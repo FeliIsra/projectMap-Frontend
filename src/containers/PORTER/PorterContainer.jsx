@@ -60,7 +60,7 @@ const PorterContainer = () => {
   };
 
   const isLastStep = () => {
-    return activeStep === steps.length - 1;
+    return activeStep === steps?.length - 1;
   };
 
   const handleSubmit = (formData) => {
@@ -117,7 +117,7 @@ const PorterContainer = () => {
               );
             })}
           </Stepper>
-          {activeStep === steps.length ? (
+          {activeStep === steps?.length ? (
             <React.Fragment>
               <Typography sx={{ mt: 2, mb: 1 }}>
                 All steps completed - you&apos;re finished

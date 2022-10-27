@@ -36,7 +36,7 @@ const Header = (props) => {
               <IconButton>
                 <Notifications />
               </IconButton>
-              {!!menuItems.length && (
+              {!!menuItems?.length && (
                 <AccountButton
                   aria-haspopup="true"
                   id="basic-button"

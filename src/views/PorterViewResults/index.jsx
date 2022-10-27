@@ -118,7 +118,7 @@ const PorterViewResults = ({
             </Button>
           )}
           <Button color="primary" onClick={handleNext}>
-            {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
+            {activeStep === steps?.length - 1 ? 'Finalizar' : 'Siguiente'}
           </Button>
         </ButtonsContainer>
       </Box>

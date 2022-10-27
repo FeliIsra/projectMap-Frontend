@@ -1,4 +1,3 @@
-import { parseDate } from 'helpers/date';
 import { consejosPorEstrategia, Estrategia } from 'helpers/enums/ansoff';
 import { createSelector } from 'reselect';
 
@@ -34,10 +33,10 @@ export const porcentajesSelector = createSelector(
   (productosList, ansoff) => {
     let list = {};
     if (productosList && ansoff)
-      Object.values(Estrategia).forEach((value) => {
+      Object.values(Estrategia)?.forEach((value) => {
         const porcentaje = productosList[value]
           ? (
-              (productosList[value].length / ansoff?.productos?.length) *
+              (productosList[value]?.length / ansoff?.productos?.length) *
               100
             ).toFixed(2)
           : 0;

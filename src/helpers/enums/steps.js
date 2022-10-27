@@ -68,5 +68,5 @@ export const STEPS = [
 ];
 
 export const getMenuItems = (stepValue) =>
-  Object.values(STEPS).find((step) => step.value === stepValue)?.menuItems ||
+  Object.values(STEPS)?.find((step) => step.value === stepValue)?.menuItems ||
   [];

@@ -77,7 +77,7 @@ const McKinseyContainerResults = () => {
                   },
                   {
                     label: 'Cantidad de Unidades de Negocio',
-                    value: (item) => item.unidades.length,
+                    value: (item) => item.unidades?.length,
                   },
                 ]}
               />

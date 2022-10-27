@@ -113,7 +113,7 @@ const FodaContainer = () => {
               ]}
             />
           </SectionTable>
-          {consejos.length ? (
+          {consejos?.length ? (
             <SectionTable>
               <Title>Tabla de Consejos</Title>
               <CustomizedTables

@@ -10,7 +10,7 @@ export const resultsSelector = createSelector(
     const chartsData = [];
     one?.chapters?.map((chapter) => {
       const questions = chapter?.questions;
-      const cantQuestions = questions.length;
+      const cantQuestions = questions?.length;
       let cantRightAnswers = 0;
       questions?.map((question) => {
         if (question?.rightAnswer === question?.selectedAnswer)
@@ -40,22 +40,22 @@ export const initialValuesSelector = createSelector(
     one?.chapters?.map((chapter) => {
       const chapterId = chapter?.chapterId;
 
-      if (!initialValues[chapterId.toString()])
-        initialValues[chapterId.toString()] = {};
+      if (!initialValues[chapterId?.toString()])
+        initialValues[chapterId?.toString()] = {};
 
       const questions = chapter?.questions;
       questions?.map((question) => {
         const questionId = question?.questionId;
 
-        if (!initialValues[chapterId.toString()][questionId.toString()])
-          initialValues[chapterId.toString()][questionId.toString()] = {};
+        if (!initialValues[chapterId?.toString()][questionId?.toString()])
+          initialValues[chapterId?.toString()][questionId?.toString()] = {};
 
         const questionText = question?.question;
         const selectedAnswer = question?.selectedAnswer || '';
         const answers = question?.answers;
         const answer = answers[selectedAnswer - 1]?.answer || '';
 
-        initialValues[chapterId.toString()][questionId.toString()][
+        initialValues[chapterId?.toString()][questionId?.toString()][
           questionText
         ] = answer;
       });

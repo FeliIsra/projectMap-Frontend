@@ -67,10 +67,10 @@ const PorterView = ({
                   padding: '20px',
                   borderTopLeftRadius: id === 1 ? '15px' : '0px',
                   borderBottomLeftRadius:
-                    id === questions.length ? '15px' : '0px',
+                    id === questions?.length ? '15px' : '0px',
                   borderTopRightRadius: id === 1 ? '15px' : '0px',
                   borderBottomRightRadius:
-                    id === questions.length ? '15px' : '0px',
+                    id === questions?.length ? '15px' : '0px',
                   borderTop: id === 1 ? '3px solid #264653' : '0',
                   borderRight: '3px solid #264653',
                   borderLeft: '3px solid #264653',
@@ -121,10 +121,10 @@ const PorterView = ({
                   color="primary"
                   type="submit"
                   onClick={
-                    activeStep === steps.length - 1 ? onClickResults : () => {}
+                    activeStep === steps?.length - 1 ? onClickResults : () => {}
                   }
                 >
-                  {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
+                  {activeStep === steps?.length - 1 ? 'Finalizar' : 'Siguiente'}
                 </Button>
               </ButtonsContainer>
             </Box>

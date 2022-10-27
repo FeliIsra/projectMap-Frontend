@@ -102,7 +102,7 @@ const PestelContainer = () => {
               <Comments show tool="PESTEL" toolId={pestelId} projectId={id} />
             </MenuItem>
           </Menu>
-          {consejos.length ? (
+          {consejos?.length ? (
             <SectionTable>
               <Title>Tabla de Consejos</Title>
               <CustomizedTables

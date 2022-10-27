@@ -11,7 +11,8 @@ export const okrToolSelector = createSelector([getOkrSelected], (okrTool) => ({
         return {
           goal: previusValue.goal + keyResult.goal,
           priority:
-            previusValue.priority + keyResult.priority / okr?.keyResults.length,
+            previusValue.priority +
+            keyResult.priority / okr?.keyResults?.length,
         };
       },
       {

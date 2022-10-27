@@ -15,7 +15,7 @@ const stringToColor = (string) => {
   let i;
 
   /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
+  for (i = 0; i < string?.length; i += 1) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
 
@@ -122,7 +122,7 @@ export const polarChartSelector = createSelector(
     unidades
       ?.sort((a, b) => a.puntuacion > b.puntuacion)
       .slice(0, 5)
-      .forEach((unidad, index) => {
+      ?.forEach((unidad, index) => {
         defaultData.labels.push(unidad.nombre);
         defaultData.datasets[0].data.push(unidad.puntuacion);
       });
@@ -178,7 +178,7 @@ export const horizontalBarChartSelector = createSelector(
     return ansoffs?.reduce(
       (prev, ansoff, index) => {
         prev.datasets[index].label = ansoff.titulo;
-        const total = ansoff?.productos.length;
+        const total = ansoff?.productos?.length;
         if (!total) return prev;
         ansoff?.productos?.forEach((producto) => {
           if (producto.estrategia === Estrategia.DESARROLLO_DE_MERCADO)
@@ -236,7 +236,7 @@ export const horizontalChartSelector = createSelector([getOkrs], (tool) => {
     ],
   };
   tool[0]?.okrs?.forEach((ork) => {
-    ork.keyResults.forEach((keyResult) => {
+    ork.keyResults?.forEach((keyResult) => {
       defaultData.labels.push(keyResult.description);
       defaultData.datasets[0].data.push(100);
       defaultData.datasets[1].data.push(keyResult.progress);
@@ -277,12 +277,12 @@ export const lineChartSelector = createSelector(
       ],
       datasets: [],
     };
-    balanced[0]?.objectives.forEach((objective, index) => {
+    balanced[0]?.objectives?.forEach((objective, index) => {
       const color =
         colors[
           index % 2 === 0
-            ? index % colors.length
-            : colors.length - (index % colors.length)
+            ? index % colors?.length
+            : colors?.length - (index % colors?.length)
         ];
       defaultData.datasets.push({
         label: objective.action,

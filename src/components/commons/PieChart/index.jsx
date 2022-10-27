@@ -41,7 +41,7 @@ const PieChartCustom = ({ data, colors }) => {
         dataKey="value"
       >
         {data?.map((_entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          <Cell key={`cell-${index}`} fill={colors[index % colors?.length]} />
         ))}
       </Pie>
     </PieChart>
