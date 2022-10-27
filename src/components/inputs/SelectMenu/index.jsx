@@ -44,7 +44,7 @@ const SelectMenu = (props) => {
         onBackdropClick={handleClose}
         variant="menu"
       >
-        {items.map(({ label, value }) => (
+        {items?.map(({ label, value }) => (
           <MenuItem
             onClick={() => handleMenuItemClick(value)}
             key={label}

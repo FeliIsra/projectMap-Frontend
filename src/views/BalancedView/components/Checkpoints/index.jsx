@@ -38,7 +38,7 @@ const Checkpoints = ({ checkpoints, onSubmit, onClickCancel }) => {
               },
             }}
           >
-            {checkpoints.map((checkpoint, index) => (
+            {checkpoints?.map((checkpoint, index) => (
               <Box
                 display="flex"
                 flexDirection="column"

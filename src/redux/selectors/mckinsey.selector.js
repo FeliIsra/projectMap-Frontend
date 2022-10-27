@@ -10,7 +10,7 @@ import {
 const getMckinsey = (state) => state.mckinsey.data;
 
 export const cuadrantesSelector = createSelector([getMckinsey], (mckinsey) =>
-  Object.entries(Cuadrantes).map(([key, value]) => ({
+  Object.entries(Cuadrantes)?.map(([key, value]) => ({
     title: value,
     name: value,
     unidades:

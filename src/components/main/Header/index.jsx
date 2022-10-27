@@ -53,7 +53,7 @@ const Header = (props) => {
                 onClose={onCloseAccountMenu}
                 open={!!anchorElement}
               >
-                {menuItems.map(({ key, label, onClick }) => (
+                {menuItems?.map(({ key, label, onClick }) => (
                   <MenuItem
                     key={key}
                     onClick={() => {

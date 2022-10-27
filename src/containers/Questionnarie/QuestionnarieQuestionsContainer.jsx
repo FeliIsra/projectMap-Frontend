@@ -28,11 +28,13 @@ const QuestionnarieQuestionsContainer = () => {
   const data = useSelector((state) => {
     const data = state.questionnaire?.data || [];
     const dataList = [];
-    Object.entries(data).map(([_key, value]) => dataList.push(value));
+    Object.entries(data)?.map(([_key, value]) => dataList.push(value));
     return dataList;
   });
 
-  const initialValues = useSelector(initialValuesSelector);
+  const loading = useSelector((state) => state.questionnaire.loading);
+  let initialValues = {};
+  initialValues = useSelector(initialValuesSelector);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,18 +44,30 @@ const QuestionnarieQuestionsContainer = () => {
 
   const handleSubmit = (formData) => {
     const submit = [];
-    formData?.map((questions, chapterId) => {
-      questions?.map((answer, questionId) => {
-        const chapter = data?.find((x) => x.chapterId === chapterId);
-        const question = chapter?.questions?.find(
-          (x) => x.questionId === questionId
-        );
-        const answerId = question?.answers?.find(
-          (x) => x.answer === Object.values(answer)[0]
-        ).answerId;
+    const formDataList = [];
+    Object.entries(formData)?.map(([chapterId, chapter]) =>
+      formDataList.push({ chapterId, chapter })
+    );
+    formDataList?.map(({ chapterId, chapter }) => {
+      Object.entries(chapter)?.map(([questionId, question]) => {
+        Object.entries(question)?.map(([question, answer]) => {
+          const _chapter = data.find(
+            (x) => x.chapterId.toString() === chapterId
+          );
+          const _question = _chapter?.questions?.find(
+            (x) => x.questionId.toString() === questionId
+          );
+          const answerId = _question?.answers.find(
+            (x) => x.answer === answer
+          )?.answerId;
 
-        if (chapterId && questionId && answerId)
-          submit.push({ chapterId, questionId, answerId });
+          if (chapterId && questionId && answerId)
+            submit.push({
+              chapterId: +chapterId,
+              questionId: +questionId,
+              answerId: +answerId,
+            });
+        });
       });
     });
 
@@ -62,43 +76,47 @@ const QuestionnarieQuestionsContainer = () => {
   };
 
   return (
-    <LayoutContainer>
-      <Container>
-        <QuestionnaireQuestionsView
-          title="Preguntas"
-          onClickButtonGoBack={onClickButtonGoBack}
-          onClickNextButton={onClickNextButton}
-          openComments={(target) => setAnchorElement(target)}
-          questions={data}
-          handleSubmit={handleSubmit}
-          initialValues={initialValues}
-        />
-        <Menu
-          anchorEl={anchorElement}
-          onClose={() => setAnchorElement(null)}
-          open={!!anchorElement}
-          PaperProps={{
-            style: {
-              width: 500,
-            },
-          }}
-          sx={{
-            '& .MuiMenu-list': {
-              background: COLORS.AthensGray,
-            },
-          }}
-        >
-          <MenuItem key={1} disableRipple>
-            <Comments
-              show
-              tool="QUESTIONNAIRE"
-              toolId={questionnaireId}
-              projectId={id}
+    !loading && (
+      <>
+        <LayoutContainer>
+          <Container>
+            <QuestionnaireQuestionsView
+              title="Preguntas"
+              onClickButtonGoBack={onClickButtonGoBack}
+              onClickNextButton={onClickNextButton}
+              openComments={(target) => setAnchorElement(target)}
+              questions={data}
+              handleSubmit={handleSubmit}
+              initialValues={initialValues}
             />
-          </MenuItem>
-        </Menu>
-      </Container>
-    </LayoutContainer>
+            <Menu
+              anchorEl={anchorElement}
+              onClose={() => setAnchorElement(null)}
+              open={!!anchorElement}
+              PaperProps={{
+                style: {
+                  width: 500,
+                },
+              }}
+              sx={{
+                '& .MuiMenu-list': {
+                  background: COLORS.AthensGray,
+                },
+              }}
+            >
+              <MenuItem key={1} disableRipple>
+                <Comments
+                  show
+                  tool="QUESTIONNAIRE"
+                  toolId={questionnaireId}
+                  projectId={id}
+                />
+              </MenuItem>
+            </Menu>
+          </Container>
+        </LayoutContainer>
+      </>
+    )
   );
 };
 

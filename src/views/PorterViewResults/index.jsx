@@ -72,7 +72,7 @@ const PorterViewResults = ({
           <Typography variant={'h6'}>{consejo?.consejoGeneral}</Typography>
         </Grid>
       </Grid>
-      {consejo?.consejos.map((oneConsejo, index) => (
+      {consejo?.consejos?.map((oneConsejo, index) => (
         <Grid
           container
           direction="row"

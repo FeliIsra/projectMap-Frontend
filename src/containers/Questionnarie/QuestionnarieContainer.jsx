@@ -22,7 +22,7 @@ const QuestionnarieContainer = () => {
   const data = useSelector((state) => {
     const data = state.questionnaire?.data || [];
     const dataList = [];
-    Object.entries(data).map(([_key, value]) => dataList.push(value));
+    Object.entries(data)?.map(([_key, value]) => dataList.push(value));
     return dataList;
   });
 
@@ -39,7 +39,7 @@ const QuestionnarieContainer = () => {
           onClickButtonGoBack={onClickResultsButtonGoBack}
           onClickNextButton={onClickNextButton}
           openComments={(target) => setAnchorElement(target)}
-          subjects={data.map((x) => ({
+          subjects={data?.map((x) => ({
             id: x.chapterId,
             titulo: x.title,
             ppts: x.presentations,

@@ -15,18 +15,18 @@ const CustomizedTables = ({ items, columns }) => {
       >
         <TableHead>
           <TableRow>
-            {columns.map((column) => (
+            {columns?.map((column) => (
               <StyledTableCell align="center">{column.label}</StyledTableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {items.map((item) => (
+          {items?.map((item) => (
             <StyledTableRow
               key={item.name}
               style={{ backgroundColor: item?.color || '' }}
             >
-              {columns.map(({ value }) => (
+              {columns?.map(({ value }) => (
                 <StyledTableCell align="center">
                   {typeof value === 'string' && item[value]}
                   {typeof value === 'function' && value(item)}

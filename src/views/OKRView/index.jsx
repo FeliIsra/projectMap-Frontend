@@ -102,7 +102,7 @@ const OKRView = ({
                 <Grid item md={1} sx={tableHeaderStyle}>
                   <span>Responsable</span>
                 </Grid>
-                {monthsPerQuarter[okr.quarter].map((month) => (
+                {monthsPerQuarter[okr.quarter]?.map((month) => (
                   <Grid item md={1} sx={tableHeaderStyle}>
                     <span>{month}</span>
                   </Grid>

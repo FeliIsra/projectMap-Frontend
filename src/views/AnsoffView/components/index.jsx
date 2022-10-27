@@ -64,7 +64,7 @@ const Steps = ({
           {productos ? (
             <Grid item xs={12}>
               <Grid container display="flex">
-                {productos.map((producto) => (
+                {productos?.map((producto) => (
                   <>
                     <Grid
                       item
@@ -137,7 +137,7 @@ const Steps = ({
           {productosFiltered['Penetracion'].length ? (
             <Grid item xs={12}>
               <Grid container display="flex">
-                {productosFiltered['Penetracion'].map((producto) => (
+                {productosFiltered['Penetracion']?.map((producto) => (
                   <>
                     <Grid
                       item
@@ -211,38 +211,40 @@ const Steps = ({
           {productosFiltered['Desarrollo de Producto'] ? (
             <Grid item xs={12}>
               <Grid container display="flex">
-                {productosFiltered['Desarrollo de Producto'].map((producto) => (
-                  <>
-                    <Grid
-                      item
-                      xs={6}
-                      display="flex"
-                      justifyContent={'center'}
-                      sx={{ padding: '20px 0' }}
-                    >
-                      {producto.nombre}
-                    </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                      display="flex"
-                      justifyContent={'center'}
-                      sx={{ padding: '20px 0' }}
-                    >
-                      <SelectMenu
-                        items={exitoProductoList}
-                        selectedValue={
-                          producto?.exito
-                            ? getExitoProducto(producto.exito)
-                            : { label: 'Selecione el exito', value: '' }
-                        }
-                        onChange={(newValue) => {
-                          onEditExito({ ...producto, exito: newValue });
-                        }}
-                      />
-                    </Grid>
-                  </>
-                ))}
+                {productosFiltered['Desarrollo de Producto']?.map(
+                  (producto) => (
+                    <>
+                      <Grid
+                        item
+                        xs={6}
+                        display="flex"
+                        justifyContent={'center'}
+                        sx={{ padding: '20px 0' }}
+                      >
+                        {producto.nombre}
+                      </Grid>
+                      <Grid
+                        item
+                        xs={6}
+                        display="flex"
+                        justifyContent={'center'}
+                        sx={{ padding: '20px 0' }}
+                      >
+                        <SelectMenu
+                          items={exitoProductoList}
+                          selectedValue={
+                            producto?.exito
+                              ? getExitoProducto(producto.exito)
+                              : { label: 'Selecione el exito', value: '' }
+                          }
+                          onChange={(newValue) => {
+                            onEditExito({ ...producto, exito: newValue });
+                          }}
+                        />
+                      </Grid>
+                    </>
+                  )
+                )}
               </Grid>
             </Grid>
           ) : (
@@ -285,7 +287,7 @@ const Steps = ({
           {productosFiltered['Diversificacion'] ? (
             <Grid item xs={12}>
               <Grid container display="flex">
-                {productosFiltered['Diversificacion'].map((producto) => (
+                {productosFiltered['Diversificacion']?.map((producto) => (
                   <>
                     <Grid
                       item
@@ -359,7 +361,7 @@ const Steps = ({
           {productosFiltered['Desarrollo de Mercado'] ? (
             <Grid item xs={12}>
               <Grid container display="flex">
-                {productosFiltered['Desarrollo de Mercado'].map((producto) => (
+                {productosFiltered['Desarrollo de Mercado']?.map((producto) => (
                   <>
                     <Grid
                       item

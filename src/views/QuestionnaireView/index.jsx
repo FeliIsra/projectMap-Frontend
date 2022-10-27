@@ -41,7 +41,7 @@ const QuestionnaireView = ({
   };
 
   const renderPPTs = (ppts) => {
-    const pptsReady = ppts.map((ppt, index) => ({
+    const pptsReady = ppts?.map((ppt, index) => ({
       label: `Teoria ${index + 1}`,
       description: ppt,
     }));
@@ -54,12 +54,12 @@ const QuestionnaireView = ({
       <TabContext value={subjectId}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange}>
-            {subjects.map((subject) => (
+            {subjects?.map((subject) => (
               <Tab label={subject.titulo} value={subject.id} />
             ))}
           </TabList>
         </Box>
-        {subjects.map((subject) => (
+        {subjects?.map((subject) => (
           <TabPanel value={subject.id}>{renderPPTs(subject.ppts)}</TabPanel>
         ))}
       </TabContext>

@@ -7,8 +7,6 @@ import { BootstrapInput, SelectContainer } from './styles';
 const SelectInput = (props) => {
   const { field, options, placeholder, fontSize } = props;
 
-  console.log({ field });
-
   return (
     <SelectContainer>
       <Select
@@ -20,7 +18,7 @@ const SelectInput = (props) => {
         <MenuItem disabled value="">
           <em>{placeholder}</em>
         </MenuItem>
-        {options.map((option) => (
+        {options?.map((option) => (
           <MenuItem value={option}>{option}</MenuItem>
         ))}
       </Select>

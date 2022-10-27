@@ -21,7 +21,6 @@ const QuestionnaireQuestionsView = ({
   handleSubmit,
   initialValues,
 }) => {
-  console.log({ initialValues });
   const [subjectId, setSubjectId] = useState(1);
   const handleChange = (event, newValue) => {
     setSubjectId(newValue);
@@ -64,14 +63,14 @@ const QuestionnaireQuestionsView = ({
             <TabContext value={subjectId}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange}>
-                  {questions.map((subject) => (
+                  {questions?.map((subject) => (
                     <Tab label={subject.title} value={subject.chapterId} />
                   ))}
                 </TabList>
               </Box>
-              {questions.map((subject) => (
+              {questions?.map((subject) => (
                 <TabPanel value={subject.chapterId}>
-                  {subject.questions.map(
+                  {subject.questions?.map(
                     ({ questionId, question, answers }) => (
                       <Grid
                         container
@@ -92,14 +91,10 @@ const QuestionnaireQuestionsView = ({
                           <Typography key={questionId}>{question}</Typography>
                         </Grid>
                         <Grid item xs={4}>
-                          {console.log({
-                            name: `${subject?.chapterId}.${questionId}.${question}`,
-                          })}
-                          {console.log(answers.map((answer) => answer.answer))}
                           <Field
                             name={`${subject.chapterId}.${questionId}.${question}`}
                             component={SelectInput}
-                            options={answers.map((answer) => answer.answer)}
+                            options={answers?.map((answer) => answer.answer)}
                             placeholder="Respuesta.."
                           />
                         </Grid>

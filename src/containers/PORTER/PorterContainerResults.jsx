@@ -88,7 +88,7 @@ const PorterContainerResults = () => {
       <Container>
         <Box sx={{ width: '100%' }}>
           <Stepper activeStep={activeStep}>
-            {steps.map((label, index) => {
+            {steps?.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
               if (isStepOptional(index)) {

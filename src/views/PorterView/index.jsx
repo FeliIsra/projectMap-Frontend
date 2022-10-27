@@ -54,7 +54,7 @@ const PorterView = ({
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit }) => (
           <CustomForm onSubmit={handleSubmit} sx={{ gap: '0px' }}>
-            {questions.map(({ id, pregunta }) => (
+            {questions?.map(({ id, pregunta }) => (
               <Grid
                 container
                 columnSpacing={3}
@@ -80,7 +80,7 @@ const PorterView = ({
                 <Grid item xs={4}>
                   <Typography key={id}>{pregunta}</Typography>
                 </Grid>
-                {Object.entries(options).map(([key, value]) => (
+                {Object.entries(options)?.map(([key, value]) => (
                   <Grid item xs={4}>
                     <Field
                       name={`${steps[activeStep]}.${id}.${key}`}

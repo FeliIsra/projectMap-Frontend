@@ -125,7 +125,7 @@ const OKRContainer = () => {
                         }
                         value={field.value}
                       >
-                        {quartersOptions.map(({ value, label }) => (
+                        {quartersOptions?.map(({ value, label }) => (
                           <ToggleButton value={value}>{label}</ToggleButton>
                         ))}
                       </ToggleButtonGroup>

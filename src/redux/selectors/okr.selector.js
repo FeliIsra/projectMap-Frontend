@@ -4,7 +4,7 @@ const getOkrSelected = (state) => state.okr.data;
 
 export const okrToolSelector = createSelector([getOkrSelected], (okrTool) => ({
   ...okrTool,
-  okrs: okrTool?.okrs.map((okr) => ({
+  okrs: okrTool?.okrs?.map((okr) => ({
     ...okr,
     ...okr?.keyResults.reduce(
       (previusValue, keyResult) => {

@@ -55,7 +55,7 @@ const FodaView = ({
   );
 
   const renderFactores = (factores) =>
-    factores.map((factor) => (
+    factores?.map((factor) => (
       <FactorContent>
         <FactorDescription>{factor.descripcion}</FactorDescription>
         {!showResults ? (

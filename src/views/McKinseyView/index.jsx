@@ -34,7 +34,7 @@ const McKinseyView = ({
   );
 
   const renderFactores = (items) =>
-    items.map((item) => (
+    items?.map((item) => (
       <FactorContent>
         <FactorDescription>{item.nombre}</FactorDescription>
         {showResults && <Chip label={item.puntuacion} />}
@@ -76,7 +76,7 @@ const McKinseyView = ({
         height={'100%'}
         sx={{ padding: '30px' }}
       >
-        {cuadrantes.map(({ color, title, unidades }, index) =>
+        {cuadrantes?.map(({ color, title, unidades }, index) =>
           renderBox(
             color,
             <>

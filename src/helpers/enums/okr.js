@@ -25,14 +25,14 @@ export const monthsPerQuarter = {
 };
 
 export const getKeyResultInitialValues = (quarter) => {
-  return monthsPerQuarter[quarter].map((monthName) => ({
+  return monthsPerQuarter[quarter]?.map((monthName) => ({
     month: monthName.toLowerCase(),
     value: 0,
   }));
 };
 
 export const getKeyResultWitValues = (quarter, values) => {
-  return monthsPerQuarter[quarter].map((monthName, index) => ({
+  return monthsPerQuarter[quarter]?.map((monthName, index) => ({
     month: monthName.toLowerCase(),
     value: values[index].value,
   }));

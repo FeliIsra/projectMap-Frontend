@@ -44,7 +44,6 @@ const PorterContainer = () => {
   const [anchorElement, setAnchorElement] = useState(null);
 
   const initialValues = useSelector(initialValuesSelector);
-  console.log({ initialValues });
   const loading = useSelector((state) => state?.porter?.loading);
 
   useEffect(() => {
@@ -100,7 +99,7 @@ const PorterContainer = () => {
       <Container>
         <Box sx={{ width: '100%' }}>
           <Stepper activeStep={activeStep}>
-            {steps.map((label, index) => {
+            {steps?.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
               if (isStepOptional(index)) {

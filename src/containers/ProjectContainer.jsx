@@ -69,7 +69,7 @@ const ProjectContainer = () => {
     navigate('createTool');
   };
 
-  const items = STEPS.map((step) => ({
+  const items = STEPS?.map((step) => ({
     ...step,
     onClickAdd,
     // TO-DO: cambiar por el valor que corresponde

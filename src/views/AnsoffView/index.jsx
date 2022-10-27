@@ -67,7 +67,7 @@ const AnsoffView = (props) => {
           }}
         >
           <Stepper activeStep={activeStep}>
-            {steps.map(({ label }, index) => (
+            {steps?.map(({ label }, index) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
               </Step>

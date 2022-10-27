@@ -107,7 +107,7 @@ const AnsoffViewResults = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Grid container display="flex">
-            {Object.values(Estrategia).map((estrategia) => (
+            {Object.values(Estrategia)?.map((estrategia) => (
               <Grid
                 container
                 display="flex"
@@ -208,7 +208,7 @@ const AnsoffViewResults = (props) => {
           display="flex"
         >
           <Grid container display="flex" spacing={4}>
-            {Object.values(Estrategia).map((estrategia) => (
+            {Object.values(Estrategia)?.map((estrategia) => (
               <Grid item xs={12} md={6}>
                 <div
                   style={{

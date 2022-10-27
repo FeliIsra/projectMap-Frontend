@@ -119,7 +119,7 @@ export const porcentajeSelector = createSelector(
 );
 
 export const tableSelector = createSelector([porcentajeSelector], (list) => {
-  return list.map((area) => {
+  return list?.map((area) => {
     return {
       ...area,
       porcentaje: `${area.porcentaje.toFixed(2)}%`,
@@ -137,7 +137,7 @@ export const pieChartSelector = createSelector(
   (list, total) => {
     let totalPuntuacion = 0;
     Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
-    return list.map((area) => {
+    return list?.map((area) => {
       return {
         name: area.area,
         value: area.porcentaje,
@@ -152,7 +152,7 @@ export const radarChartSelector = createSelector(
     let totalPuntuacion = 0;
     Object.keys(total).forEach((area) => (totalPuntuacion += total[area]));
 
-    return Object.keys(total).map((area) => {
+    return Object.keys(total)?.map((area) => {
       return {
         subject: area,
         A: total[area],
@@ -181,7 +181,7 @@ export const consejosSelector = createSelector(
                   (fortaleza) => seed.descripcion === fortaleza.descripcion
                 )
               )
-              .map((seed) => ({ ...seed, area: key }))
+              ?.map((seed) => ({ ...seed, area: key }))
           );
         case 'Oportunidad':
           return prevValue.concat(
@@ -191,7 +191,7 @@ export const consejosSelector = createSelector(
                   (oportunidad) => seed.descripcion === oportunidad.descripcion
                 )
               )
-              .map((seed) => ({ ...seed, area: key }))
+              ?.map((seed) => ({ ...seed, area: key }))
           );
         case 'Debilidad':
           return prevValue.concat(
@@ -201,7 +201,7 @@ export const consejosSelector = createSelector(
                   (debilidad) => seed.descripcion === debilidad.descripcion
                 )
               )
-              .map((seed) => ({ ...seed, area: key }))
+              ?.map((seed) => ({ ...seed, area: key }))
           );
         case 'Amenaza':
           return prevValue.concat(
@@ -211,7 +211,7 @@ export const consejosSelector = createSelector(
                   (amenaza) => seed.descripcion === amenaza.descripcion
                 )
               )
-              .map((seed) => ({ ...seed, area: key }))
+              ?.map((seed) => ({ ...seed, area: key }))
           );
         default:
           return [];

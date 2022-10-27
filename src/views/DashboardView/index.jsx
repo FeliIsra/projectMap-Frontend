@@ -30,7 +30,7 @@ const DashboardView = (props) => {
           </ButtonContainer>
         </TitleContainer>
         <Grid container rowSpacing={2} columnSpacing={4}>
-          {items.map(({ _id, color, titulo, descripcion }) => (
+          {items?.map(({ _id, color, titulo, descripcion }) => (
             <Grid item xs={6} md={4} key={_id}>
               <ProjectCard
                 key={_id}
