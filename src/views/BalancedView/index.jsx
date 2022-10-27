@@ -40,7 +40,9 @@ const stringAvatar = (name) => {
       height: 24,
       fontSize: 14,
     },
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+    children: `${name && name.split(' ')[0][0]}${
+      name.split(' ')[1] ? name.split(' ')[1][0] : ''
+    }`,
   };
 };
 

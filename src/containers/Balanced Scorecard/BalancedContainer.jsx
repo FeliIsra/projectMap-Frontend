@@ -25,7 +25,16 @@ const BalancedContainer = () => {
   }, []);
 
   const onSubmitObjetive = (area, formData) => {
-    dispatch(onAddObjective(balancedId, { ...formData, area }));
+    const [firstName, lastName] = formData.responsible.split(' ');
+    dispatch(
+      onAddObjective(balancedId, {
+        ...formData,
+        area,
+        responsible: `${firstName[0].toUpperCase() + firstName.slice(1)} ${
+          lastName ? lastName[0].toUpperCase() + lastName.slice(1) : ''
+        }`,
+      })
+    );
   };
 
   const onEditObjective = (objectiveId, formData) => {

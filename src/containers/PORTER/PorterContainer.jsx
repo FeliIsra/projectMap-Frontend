@@ -38,18 +38,11 @@ const PorterContainer = () => {
   const steps = Object.keys(questions);
 
   const [activeStep, setActiveStep] = useState(0);
-  const [handleFinish, setHandleFinish] = useState(false);
-  const [answers, setAnswers] = useState({});
   const [skipped, setSkipped] = useState(new Set());
   const [anchorElement, setAnchorElement] = useState(null);
 
   const initialValues = useSelector(initialValuesSelector);
   const loading = useSelector((state) => state?.porter?.loading);
-
-  useEffect(() => {
-    handleFinish && dispatch(onInsertQuestions(porterId, answers));
-    dispatch(onGetOne(porterId));
-  }, [handleFinish]);
 
   const isStepOptional = (step) => {
     return step === 99;
@@ -65,10 +58,9 @@ const PorterContainer = () => {
 
   const handleSubmit = (formData) => {
     if (isLastStep()) {
-      setAnswers({ ...answers, ...formData });
-      setHandleFinish(true);
+      dispatch(onInsertQuestions(porterId, formData));
+      onClickResultsButton();
     } else {
-      setAnswers({ ...answers, ...formData });
       let newSkipped = skipped;
 
       if (isStepSkipped(activeStep)) {
@@ -90,6 +82,7 @@ const PorterContainer = () => {
   };
 
   useEffect(() => {
+    dispatch(onGetOne(porterId));
     dispatch(onGetQuestions());
     dispatch(onGetOptions());
   }, []);
