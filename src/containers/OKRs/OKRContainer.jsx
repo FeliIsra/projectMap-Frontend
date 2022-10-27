@@ -48,8 +48,17 @@ const OKRContainer = () => {
     setAddOkrModalOpen(false);
   };
 
-  const onSubmitKeyResult = (okrId, formData) =>
-    dispatch(onAddKeyResult(okrToolId, okrId, formData));
+  const onSubmitKeyResult = (okrId, formData) => {
+    const [firstName, lastName] = formData.responsible.split(' ');
+    dispatch(
+      onAddKeyResult(okrToolId, okrId, {
+        ...formData,
+        responsible: `${firstName[0].toUpperCase() + firstName.slice(1)} ${
+          lastName ? lastName[0].toUpperCase() + lastName.slice(1) : ''
+        }`,
+      })
+    );
+  };
 
   const onEditKeyResultStatus = (okrId, keyResultId, formData) => {
     dispatch(onEditKeyResult(okrToolId, okrId, keyResultId, formData));

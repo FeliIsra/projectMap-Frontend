@@ -136,14 +136,8 @@ const PorterView = ({
                     Atras
                   </Button>
                 )}
-                <Button
-                  color="primary"
-                  type="submit"
-                  onClick={
-                    activeStep === steps?.length - 1 ? onClickResults : () => {}
-                  }
-                >
-                  {activeStep === steps?.length - 1 ? 'Finalizar' : 'Siguiente'}
+                <Button color="primary" type="submit">
+                  {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
                 </Button>
               </ButtonsContainer>
             </Box>

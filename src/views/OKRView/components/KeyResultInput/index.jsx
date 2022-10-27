@@ -174,7 +174,11 @@ const KeyResultInput = ({ okr, onSubmit, onClickCancel }) => {
                   variant="standard"
                   size="small"
                   type="number"
-                  validate={validateField}
+                  validate={(value) => {
+                    // TODO: mostrar el erro al usuario
+                    if (value <= 0) return 'El objetivo debe ser distinto a 0';
+                    return undefined;
+                  }}
                 />
               </QuarterFieldContainer>
               <Divider orientation="vertical" flexItem />
