@@ -21,6 +21,11 @@ const getBalancedScorecard = (state) =>
     ...x,
     redirectUrl: `balanceScorecard/${x._id}`,
   }));
+const getQuestionnaires = (state) =>
+  state.projects.questionnaires.map((x) => ({
+    ...x,
+    redirectUrl: `questionnaire/${x._id}`,
+  }));
 
 export const stepToolsSelector = createSelector(
   [
@@ -31,14 +36,24 @@ export const stepToolsSelector = createSelector(
     getOkrs,
     getMckinseys,
     getBalancedScorecard,
+    getQuestionnaires,
   ],
-  (fodas, porters, pestels, ansoffs, okrs, mckenseys, balanceScorecards) => {
+  (
+    fodas,
+    porters,
+    pestels,
+    ansoffs,
+    okrs,
+    mckenseys,
+    balanceScorecards,
+    questionnaires
+  ) => {
     return {
       1: [...porters, getMenuItems(1)[0], ...pestels, getMenuItems(1)[1]],
       2: [...fodas, getMenuItems(2)[0]],
       3: [...ansoffs, getMenuItems(3)[0]],
       4: [...mckenseys, getMenuItems(4)[0]],
-      5: [getMenuItems(5)[0]],
+      5: [...questionnaires, getMenuItems(5)[0]],
       6: [
         ...balanceScorecards,
         getMenuItems(6)[0],

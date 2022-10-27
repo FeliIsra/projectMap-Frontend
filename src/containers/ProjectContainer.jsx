@@ -14,6 +14,7 @@ import {
   onGetOne,
   onGetPestel,
   onGetPorter,
+  onGetQuestionnaire,
 } from 'redux/actions/projects.actions';
 import { STEPS, getMenuItems } from 'helpers/enums/steps';
 import { COLORS } from 'helpers/enums/colors';
@@ -55,6 +56,7 @@ const ProjectContainer = () => {
     dispatch(onGetMckinsey(id));
     dispatch(onGetOKR(id));
     dispatch(onGetBalanced(id));
+    dispatch(onGetQuestionnaire(id));
   }, []);
 
   const onClickAdd = (value, anchorElement) => {

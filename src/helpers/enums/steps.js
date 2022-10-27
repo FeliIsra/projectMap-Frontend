@@ -5,6 +5,7 @@ import { onCreate as onCreateAnsoff } from 'redux/actions/ansoff.actions';
 import { onCreate as onCreatePorter } from 'redux/actions/porter.actions';
 import { onCreateTool as onCreateOkr } from 'redux/actions/okr.actions';
 import { onCreate as onCreateBalanced } from 'redux/actions/balanceScorecard.actions';
+import { onCreate as onCreateQuestionnarie } from 'redux/actions/questionnarie.actions';
 
 const StepValue = {
   EVALUACION_ENTORNO_EXTERNO: 1,
@@ -48,7 +49,9 @@ export const STEPS = [
   {
     value: StepValue.DEFINICION_PLANES_TRANSFORMACION,
     title: 'Definición de los Planes de Transformación',
-    menuItems: [{ titulo: 'Planes de transformacion', action: () => {} }],
+    menuItems: [
+      { titulo: 'Planes de transformacion', action: onCreateQuestionnarie },
+    ],
   },
   {
     value: StepValue.DEFINICION_LINIAMIENTOS_ESTRATEGICOS,

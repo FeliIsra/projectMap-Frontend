@@ -20,3 +20,5 @@ export const getOkrs = (id) => get(`projects/${id}/okr-projects`);
 
 export const getBalancedScorecard = (id) =>
   get(`projects/${id}/balanced-scorecards`);
+
+export const getQuestionnaires = (id) => get(`projects/${id}/questionnaires`);

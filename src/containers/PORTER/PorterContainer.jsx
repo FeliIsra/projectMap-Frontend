@@ -44,6 +44,7 @@ const PorterContainer = () => {
   const [anchorElement, setAnchorElement] = useState(null);
 
   const initialValues = useSelector(initialValuesSelector);
+  console.log({ initialValues });
   const loading = useSelector((state) => state?.porter?.loading);
 
   useEffect(() => {

@@ -19,6 +19,7 @@ import {
   getPestels,
   getPorters,
   getBalancedScorecard,
+  getQuestionnaires,
   save,
 } from 'services/projects.services';
 
@@ -170,6 +171,24 @@ export function* projectsOnGetBalancedScorecard(action) {
   }
 }
 
+export function* projectsOnGetQuestionnaires(action) {
+  try {
+    const { id } = action;
+    if (id) {
+      const { data } = yield call(getQuestionnaires, id);
+      yield put({
+        type: constants.PROJECTS_ON_GET_QUESTIONNAIRE_SUCCEEDED,
+        data,
+      });
+    }
+  } catch (error) {
+    yield put({
+      type: constants.PROJECTS_ON_GET_QUESTIONNAIRE_FAILED,
+      error,
+    });
+  }
+}
+
 export function* watchProjects() {
   yield all([
     takeLatest(constants.PROJECTS_ON_GET_ONE_REQUESTED, projectsOnGetOne),
@@ -196,6 +215,10 @@ export function* watchProjects() {
     takeLatest(
       constants.PROJECTS_ON_GET_BALANCED_SCORECARD_REQUESTED,
       projectsOnGetBalancedScorecard
+    ),
+    takeLatest(
+      constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED,
+      projectsOnGetQuestionnaires
     ),
   ]);
 }

@@ -7,6 +7,8 @@ import { BootstrapInput, SelectContainer } from './styles';
 const SelectInput = (props) => {
   const { field, options, placeholder, fontSize } = props;
 
+  console.log({ field });
+
   return (
     <SelectContainer>
       <Select

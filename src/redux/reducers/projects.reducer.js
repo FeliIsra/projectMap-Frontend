@@ -11,6 +11,7 @@ export const defaultState = {
   okrs: [],
   mckinseys: [],
   balancedScorecards: [],
+  questionnaires: [],
 };
 
 const projectsReducer = (state = defaultState, action) => {
@@ -25,6 +26,7 @@ const projectsReducer = (state = defaultState, action) => {
     case constants.PROJECTS_ON_GET_MCKINSEY_REQUESTED:
     case constants.PROJECTS_ON_GET_OKR_REQUESTED:
     case constants.PROJECTS_ON_GET_BALANCED_SCORECARD_REQUESTED:
+    case constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED:
       return {
         ...state,
         loading: true,
@@ -87,6 +89,12 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         balancedScorecards: data,
+        loding: false,
+      };
+    case constants.PROJECTS_ON_GET_QUESTIONNAIRE_SUCCEEDED:
+      return {
+        ...state,
+        questionnaires: data,
         loding: false,
       };
     case constants.PROJECTS_ON_CREATE_FAILED:

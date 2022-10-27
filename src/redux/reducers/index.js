@@ -10,6 +10,7 @@ import porterReducer from 'redux/reducers/porter.reducer';
 import balanceScorecardReducer from 'redux/reducers/balanceScorecard.reducer';
 import okrReducer from 'redux/reducers/okr.reducer';
 import commentsReducer from './comments.reducer';
+import questionnaireReducer from './questionnaire.reducer';
 
 export default combineReducers({
   user: userReducer,
@@ -22,4 +23,5 @@ export default combineReducers({
   balanceScorecard: balanceScorecardReducer,
   okr: okrReducer,
   comments: commentsReducer,
+  questionnaire: questionnaireReducer,
 });
