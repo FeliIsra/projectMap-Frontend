@@ -9,8 +9,9 @@ import ansoffReducer from 'redux/reducers/ansoff.reducer';
 import porterReducer from 'redux/reducers/porter.reducer';
 import balanceScorecardReducer from 'redux/reducers/balanceScorecard.reducer';
 import okrReducer from 'redux/reducers/okr.reducer';
-import commentsReducer from './comments.reducer';
-import questionnaireReducer from './questionnaire.reducer';
+import questionnaireReducer from 'redux/reducers/questionnaire.reducer';
+import commentsReducer from 'redux/reducers/comments.reducer';
+import mejoraContinuaReducer from 'redux/reducers/mejora.containua.reducer';
 
 export default combineReducers({
   user: userReducer,
@@ -24,4 +25,5 @@ export default combineReducers({
   okr: okrReducer,
   comments: commentsReducer,
   questionnaire: questionnaireReducer,
+  mejoraContinua: mejoraContinuaReducer,
 });

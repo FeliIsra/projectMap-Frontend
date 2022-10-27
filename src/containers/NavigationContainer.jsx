@@ -20,8 +20,9 @@ import PorterContainer from 'containers/PORTER/PorterContainer';
 import OKRContainer from 'containers/OKRs/OKRContainer';
 import BalancedContainer from 'containers/Balanced Scorecard/BalancedContainer';
 import QuestionnarieContainer from 'containers/Questionnarie/QuestionnarieContainer';
-import QuestionnarieQuestionsContainer from './Questionnarie/QuestionnarieQuestionsContainer';
-import QuestionnarieResultsContainer from './Questionnarie/QuestionnarieResultsContainer';
+import QuestionnarieQuestionsContainer from 'containers/Questionnarie/QuestionnarieQuestionsContainer';
+import QuestionnarieResultsContainer from 'containers/Questionnarie/QuestionnarieResultsContainer';
+import MejoraContinuaContainer from 'containers/MEJORA-CONTINUA/MejoraContinuaContainer';
 
 export const NavigationContainer = () => {
   return (
@@ -72,6 +73,10 @@ export const NavigationContainer = () => {
         <Route
           path=":id/questionnaire/:questionnaireId/results"
           element={<QuestionnarieResultsContainer />}
+        />
+        <Route
+          path=":id/mejora-continua"
+          element={<MejoraContinuaContainer />}
         />
         <Route path=":id/createTool/*" element={<CreateToolContainer />} />
         <Route path=":id" element={<ProjectContainer />} />

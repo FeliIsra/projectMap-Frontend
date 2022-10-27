@@ -9,8 +9,9 @@ import { watchAnsoff } from 'redux/sagas/ansoff.sagas';
 import { watchPorter } from 'redux/sagas/porter.sagas';
 import { watchBalanceScorecard } from 'redux/sagas/balanceScorecard.sagas';
 import { watchOkr } from 'redux/sagas/okr.sagas';
-import { watchComments } from './comments.sagas';
-import { watchQuestionnaire } from './questionnaire.sagas';
+import { watchQuestionnaire } from 'redux/sagas/questionnaire.sagas';
+import { watchComments } from 'redux/sagas/comments.sagas';
+import { watchMejoraContinua } from 'redux/sagas/mejora.continua.sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     watchOkr(),
     watchComments(),
     watchQuestionnaire(),
+    watchMejoraContinua(),
   ]);
 }
