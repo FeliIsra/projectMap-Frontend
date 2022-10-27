@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Menu, MenuItem } from '@mui/material';
-import { Formik, Field } from 'formik';
-
+import { Formik, Field, ErrorMessage } from 'formik';
+import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 import {
   onGetAnsoff,
   onGetBalanced,
@@ -16,7 +17,7 @@ import {
   onGetPorter,
   onGetQuestionnaire,
 } from 'redux/actions/projects.actions';
-import { STEPS, getMenuItems } from 'helpers/enums/steps';
+import { STEPS } from 'helpers/enums/steps';
 import { COLORS } from 'helpers/enums/colors';
 
 import Modal from 'components/commons/Modal';
@@ -33,6 +34,7 @@ import LayoutContainer from 'containers/LayoutContainer';
 import ProjectView from 'views/ProjectView';
 import { MenuItemText } from 'views/ProjectView/styles';
 import { stepToolsSelector } from 'redux/selectors/project.selector';
+import { validateField } from 'helpers/validateField';
 
 const ProjectContainer = () => {
   let { id } = useParams();
@@ -118,7 +120,29 @@ const ProjectContainer = () => {
           >
             {({ handleSubmit }) => (
               <CustomForm onSubmit={handleSubmit}>
-                <Field name="titulo" placeholder="Titulo" component={Input} />
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="titulo"
+                    placeholder="Titulo"
+                    component={Input}
+                    validate={validateField}
+                  />
+                  <ErrorMessage name="titulo">
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
                 <ButtonsContainer>
                   <Button color="secondary" onClick={() => setAddTool(null)}>
                     Cancelar

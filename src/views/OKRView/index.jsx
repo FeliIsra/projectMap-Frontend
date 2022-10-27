@@ -18,6 +18,7 @@ import { KeyResultCell, OkrContainer } from './styles';
 import Edit from '@mui/icons-material/Edit';
 import { Field, Form, Formik } from 'formik';
 import Input from './components/Input';
+import { validateField } from 'helpers/validateField';
 
 const tableHeaderStyle = { display: 'flex', justifyContent: 'center' };
 
@@ -183,6 +184,7 @@ const OKRView = ({
                                   variant="standard"
                                   size="small"
                                   type="number"
+                                  validate={validateField}
                                 />
                               ) : (
                                 <span>{keyStatus.value}</span>

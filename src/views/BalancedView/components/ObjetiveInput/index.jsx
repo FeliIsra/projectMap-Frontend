@@ -1,11 +1,12 @@
 import React from 'react';
 import { Check, Delete } from '@mui/icons-material';
-import { Divider, Grid, IconButton } from '@mui/material';
-import { Field, Form, Formik } from 'formik';
+import { Box, Divider, Grid, IconButton, Typography } from '@mui/material';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 import Input from '../Input';
 
 import { QuarterFieldContainer, ButtonsContainer } from './styles';
+import { validateField } from 'helpers/validateField';
 
 const ObjetiveInput = ({ onSubmit, onClickCancel, area }) => {
   const initialValues = {
@@ -34,63 +35,135 @@ const ObjetiveInput = ({ onSubmit, onClickCancel, area }) => {
           >
             <Grid item md={4} sx={{ display: 'flex' }}>
               <div style={{ display: 'flex', flex: 1 }}>
-                <Field
-                  name="action"
-                  placeholder="Accion"
-                  component={Input}
-                  hiddenLabel
-                  variant="standard"
-                  size="small"
-                />
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="action"
+                    placeholder="Accion"
+                    component={Input}
+                    hiddenLabel
+                    variant="standard"
+                    size="small"
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'action'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
               </div>
               <Divider orientation="vertical" flexItem />
             </Grid>
             <Grid item md={2} sx={{ display: 'flex' }}>
               <QuarterFieldContainer>
-                <Field
-                  name="measure"
-                  placeholder="Medida"
-                  component={Input}
-                  hiddenLabel
-                  variant="standard"
-                  size="small"
-                  inputProps={{
-                    style: { textAlign: 'center' },
-                  }}
-                />
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="measure"
+                    placeholder="Medida"
+                    component={Input}
+                    hiddenLabel
+                    variant="standard"
+                    size="small"
+                    inputProps={{
+                      style: { textAlign: 'center' },
+                    }}
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'measure'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
               </QuarterFieldContainer>
               <Divider orientation="vertical" flexItem />
             </Grid>
             <Grid item md={2} sx={{ display: 'flex' }}>
               <QuarterFieldContainer>
-                <Field
-                  name="responsible"
-                  placeholder="Responsable"
-                  component={Input}
-                  inputProps={{
-                    style: { textAlign: 'center' },
-                  }}
-                  hiddenLabel
-                  variant="standard"
-                  size="small"
-                />
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="responsible"
+                    placeholder="Responsable"
+                    component={Input}
+                    inputProps={{
+                      style: { textAlign: 'center' },
+                    }}
+                    hiddenLabel
+                    variant="standard"
+                    size="small"
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'responsible'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
               </QuarterFieldContainer>
               <Divider orientation="vertical" flexItem />
             </Grid>
             <Grid item md={1} sx={{ display: 'flex' }}>
               <QuarterFieldContainer>
-                <Field
-                  name="target"
-                  placeholder="Objectivo"
-                  component={Input}
-                  inputProps={{
-                    style: { textAlign: 'center' },
-                  }}
-                  hiddenLabel
-                  variant="standard"
-                  size="small"
-                  type="number"
-                />
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="target"
+                    placeholder="Objectivo"
+                    component={Input}
+                    inputProps={{
+                      style: { textAlign: 'center' },
+                    }}
+                    hiddenLabel
+                    variant="standard"
+                    size="small"
+                    type="number"
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'target'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
               </QuarterFieldContainer>
               <Divider orientation="vertical" flexItem />
             </Grid>

@@ -6,11 +6,11 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import { Formik, Field, useFormikContext } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import { CustomForm } from 'styles/form';
 import SelectInput from 'components/inputs/SelectInput';
 import { COLORS } from 'helpers/enums/colors';
-import Button from 'components/commons/Button';
+import { validateField } from 'helpers/validateField';
 
 const QuestionnaireQuestionsView = ({
   title,
@@ -91,12 +91,32 @@ const QuestionnaireQuestionsView = ({
                           <Typography key={questionId}>{question}</Typography>
                         </Grid>
                         <Grid item xs={4}>
-                          <Field
-                            name={`${subject.chapterId}.${questionId}.${question}`}
-                            component={SelectInput}
-                            options={answers?.map((answer) => answer.answer)}
-                            placeholder="Respuesta.."
-                          />
+                          <Box sx={{ width: '100%' }}>
+                            <Field
+                              name={`${subject.chapterId}.${questionId}.${question}`}
+                              component={SelectInput}
+                              options={answers?.map((answer) => answer.answer)}
+                              placeholder="Respuesta.."
+                              validate={validateField}
+                            />
+                            <ErrorMessage
+                              name={`${subject.chapterId}.${questionId}.${question}`}
+                            >
+                              {(msg) => (
+                                <Typography
+                                  sx={{
+                                    textAlign: 'left',
+                                    color: 'red',
+                                    marginLeft: 2,
+                                    marginTop: '2px',
+                                    fontSize: '14px',
+                                  }}
+                                >
+                                  {msg}
+                                </Typography>
+                              )}
+                            </ErrorMessage>
+                          </Box>
                         </Grid>
                       </Grid>
                     )

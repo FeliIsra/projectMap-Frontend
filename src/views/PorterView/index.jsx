@@ -5,7 +5,7 @@ import {
   CreateContent,
 } from 'views/PorterView/styles';
 import Button from 'components/commons/Button';
-import { Formik, Field } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import { CustomForm } from 'styles/form';
 import SelectInput from 'components/inputs/SelectInput';
 import Typography from '@mui/material/Typography';
@@ -14,6 +14,7 @@ import Box from '@mui/material/Box';
 import { ArrowBack, Comment } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { ButtonContainer } from 'views/FodaView/styles';
+import { validateField } from 'helpers/validateField';
 
 const PorterView = ({
   options,
@@ -82,16 +83,34 @@ const PorterView = ({
                 </Grid>
                 {Object.entries(options)?.map(([key, value]) => (
                   <Grid item xs={4}>
-                    <Field
-                      name={`${steps[activeStep]}.${id}.${key}`}
-                      component={SelectInput}
-                      options={value}
-                      placeholder={
-                        key === 'nivelDeConcordancia'
-                          ? 'nivel de concordancia'
-                          : key
-                      }
-                    />
+                    <Box sx={{ width: '100%' }}>
+                      <Field
+                        name={`${steps[activeStep]}.${id}.${key}`}
+                        component={SelectInput}
+                        options={value}
+                        placeholder={
+                          key === 'nivelDeConcordancia'
+                            ? 'nivel de concordancia'
+                            : key
+                        }
+                        validate={validateField}
+                      />
+                      <ErrorMessage name={`${steps[activeStep]}.${id}.${key}`}>
+                        {(msg) => (
+                          <Typography
+                            sx={{
+                              textAlign: 'left',
+                              color: 'red',
+                              marginLeft: 2,
+                              marginTop: '2px',
+                              fontSize: '14px',
+                            }}
+                          >
+                            {msg}
+                          </Typography>
+                        )}
+                      </ErrorMessage>
+                    </Box>
                   </Grid>
                 ))}
               </Grid>

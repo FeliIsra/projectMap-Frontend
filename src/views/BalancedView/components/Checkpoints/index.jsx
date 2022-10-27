@@ -4,6 +4,7 @@ import { Check, Close } from '@mui/icons-material';
 import { Field, Form, Formik } from 'formik';
 import Input from '../Input';
 import { useState } from 'react';
+import { validateField } from 'helpers/validateField';
 
 const Checkpoints = ({ checkpoints, onSubmit, onClickCancel }) => {
   const [selectedId, setSelectedId] = useState(null);
@@ -70,6 +71,7 @@ const Checkpoints = ({ checkpoints, onSubmit, onClickCancel }) => {
                       variant="standard"
                       size="small"
                       type="number"
+                      validate={validateField}
                     />
                   ) : (
                     <span onClick={() => setSelectedId(checkpoint._id)}>

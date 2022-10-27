@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Formik, Field } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 
 import { onAddUnidad, onGetOne } from 'redux/actions/mckinsey.actions';
 import { cuadrantesSelector } from 'redux/selectors/mckinsey.selector';
@@ -20,11 +20,12 @@ import { CustomForm } from 'styles/form';
 
 import McKinseyView from 'views/McKinseyView';
 import SliderInput from 'components/inputs/SliderInput';
-import { Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 
 import { Menu, MenuItem } from '@mui/material';
 import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
+import { validateField } from 'helpers/validateField';
 
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
@@ -96,17 +97,75 @@ const McKinseyContainer = () => {
           <Formik onSubmit={onSubmit} initialValues={initialValues}>
             {({ handleSubmit }) => (
               <CustomForm onSubmit={handleSubmit}>
-                <Field name="nombre" placeholder="Nombre" component={Input} />
-                <Field
-                  name="fuerzaCompetitiva"
-                  component={SliderInput}
-                  label="Fuerza Competitiva"
-                />
-                <Field
-                  name="atractivoDeMercado"
-                  component={SliderInput}
-                  label="Atractivo De Mercado"
-                />
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="nombre"
+                    placeholder="Nombre"
+                    component={Input}
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'nombre'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="fuerzaCompetitiva"
+                    component={SliderInput}
+                    label="Fuerza Competitiva"
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'fuerzaCompetitiva'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="atractivoDeMercado"
+                    component={SliderInput}
+                    label="Atractivo De Mercado"
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'atractivoDeMercado'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
                 <CreateButtonsContainer>
                   <Button
                     color="secondary"

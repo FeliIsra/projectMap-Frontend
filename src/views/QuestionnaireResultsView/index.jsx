@@ -1,16 +1,8 @@
-import { ArrowBack, ArrowForward, Comment } from '@mui/icons-material';
-import { Box, IconButton, Typography, Grid } from '@mui/material';
-import React, { useState } from 'react';
+import { ArrowBack, Comment } from '@mui/icons-material';
+import { Box, IconButton, Typography } from '@mui/material';
+import React from 'react';
 import { ButtonContainer, Title, TitleContainer } from 'views/FodaView/styles';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import { Formik, Field, useFormikContext } from 'formik';
-import { CustomForm } from 'styles/form';
-import SelectInput from 'components/inputs/SelectInput';
 import { COLORS } from 'helpers/enums/colors';
-import Button from 'components/commons/Button';
 import PieChartCustom from 'components/commons/PieChart';
 
 const QuestionnaireResultsView = ({

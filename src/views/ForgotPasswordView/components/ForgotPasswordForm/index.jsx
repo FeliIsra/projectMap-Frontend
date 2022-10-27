@@ -1,10 +1,12 @@
 import React from 'react';
-import { Field, Formik } from 'formik';
+import { ErrorMessage, Field, Formik } from 'formik';
 
 import Input from 'components/inputs/Input';
 
 import { Title } from 'styles/form';
 import { FormContainer, CustomForm, SubmitButton } from 'styles/form';
+import { validateField } from 'helpers/validateField';
+import { Box, Typography } from '@mui/material';
 
 const ForgotPasswordForm = ({ onSubmit }) => (
   <FormContainer>
@@ -12,12 +14,30 @@ const ForgotPasswordForm = ({ onSubmit }) => (
     <Formik onSubmit={onSubmit} initialValues={{ email: '' }}>
       {({ handleSubmit }) => (
         <CustomForm onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            type="email"
-            placeholder="Email"
-            component={Input}
-          />
+          <Box sx={{ width: '100%' }}>
+            <Field
+              name="email"
+              type="email"
+              placeholder="Email"
+              component={Input}
+              validate={validateField}
+            />
+            <ErrorMessage name="email">
+              {(msg) => (
+                <Typography
+                  sx={{
+                    textAlign: 'left',
+                    color: 'red',
+                    marginLeft: 2,
+                    marginTop: '2px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {msg}
+                </Typography>
+              )}
+            </ErrorMessage>
+          </Box>
           <SubmitButton type="submit">Send</SubmitButton>
         </CustomForm>
       )}

@@ -23,7 +23,7 @@ import {
   onGetSeeds,
 } from 'redux/actions/foda.actions';
 import { CustomForm } from 'styles/form';
-import { Formik, Field } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import {
   amenazasSelector,
   debilidadesSelector,
@@ -33,7 +33,8 @@ import {
 } from 'redux/selectors/foda.selector';
 import AutoComplete from 'components/inputs/Autocomplete';
 import Comments from 'components/comments/Comments';
-import { Menu, MenuItem } from '@mui/material';
+import { Box, Menu, MenuItem, Typography } from '@mui/material';
+import { validateField } from 'helpers/validateField';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -131,39 +132,113 @@ const FodaContainer = () => {
             <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
               {({ handleSubmit, setFieldValue }) => (
                 <CustomForm onSubmit={handleSubmit}>
-                  <Field
-                    name="descripcion"
-                    placeholder="Descripcion"
-                    component={AutoComplete}
-                    options={seeds[factor] || []}
-                    optionKey={'descripcion'}
-                    onChange={(value) =>
-                      setFieldValue(
-                        'descripcion',
-                        value?.descripcion !== null
-                          ? value.descripcion
-                          : initialValues.descripcion
-                      )
-                    }
-                  />
-                  <Field
-                    name="importancia"
-                    component={SelectInput}
-                    options={importancia}
-                    placeholder="Importancia"
-                  />
-                  <Field
-                    name={showUrgencia ? 'urgencia' : 'intensidad'}
-                    component={SelectInput}
-                    options={showUrgencia ? urgencia : intensidad}
-                    placeholder={showUrgencia ? 'Urgencia' : 'Intensidad'}
-                  />
-                  <Field
-                    name="tendencia"
-                    component={SelectInput}
-                    options={tendencia}
-                    placeholder="Tendencia"
-                  />
+                  <Box sx={{ width: '100%' }}>
+                    <Field
+                      name="descripcion"
+                      placeholder="Descripcion"
+                      component={AutoComplete}
+                      options={seeds[factor] || []}
+                      optionKey={'descripcion'}
+                      onChange={(value) =>
+                        setFieldValue(
+                          'descripcion',
+                          value?.descripcion !== null
+                            ? value.descripcion
+                            : initialValues.descripcion
+                        )
+                      }
+                      validate={validateField}
+                    />
+                    <ErrorMessage name="descripcion">
+                      {(msg) => (
+                        <Typography
+                          sx={{
+                            textAlign: 'left',
+                            color: 'red',
+                            marginLeft: 2,
+                            marginTop: '2px',
+                            fontSize: '14px',
+                          }}
+                        >
+                          {msg}
+                        </Typography>
+                      )}
+                    </ErrorMessage>
+                  </Box>
+                  <Box sx={{ width: '100%' }}>
+                    <Field
+                      name="importancia"
+                      component={SelectInput}
+                      options={importancia}
+                      placeholder="Importancia"
+                      validate={validateField}
+                    />
+                    <ErrorMessage name="importancia">
+                      {(msg) => (
+                        <Typography
+                          sx={{
+                            textAlign: 'left',
+                            color: 'red',
+                            marginLeft: 2,
+                            marginTop: '2px',
+                            fontSize: '14px',
+                          }}
+                        >
+                          {msg}
+                        </Typography>
+                      )}
+                    </ErrorMessage>
+                  </Box>
+                  <Box sx={{ width: '100%' }}>
+                    <Field
+                      name={showUrgencia ? 'urgencia' : 'intensidad'}
+                      component={SelectInput}
+                      options={showUrgencia ? urgencia : intensidad}
+                      placeholder={showUrgencia ? 'Urgencia' : 'Intensidad'}
+                      validate={validateField}
+                    />
+                    <ErrorMessage
+                      name={showUrgencia ? 'urgencia' : 'intensidad'}
+                    >
+                      {(msg) => (
+                        <Typography
+                          sx={{
+                            textAlign: 'left',
+                            color: 'red',
+                            marginLeft: 2,
+                            marginTop: '2px',
+                            fontSize: '14px',
+                          }}
+                        >
+                          {msg}
+                        </Typography>
+                      )}
+                    </ErrorMessage>
+                  </Box>
+                  <Box sx={{ width: '100%' }}>
+                    <Field
+                      name="tendencia"
+                      component={SelectInput}
+                      options={tendencia}
+                      placeholder="Tendencia"
+                      validate={validateField}
+                    />
+                    <ErrorMessage name={'tendencia'}>
+                      {(msg) => (
+                        <Typography
+                          sx={{
+                            textAlign: 'left',
+                            color: 'red',
+                            marginLeft: 2,
+                            marginTop: '2px',
+                            fontSize: '14px',
+                          }}
+                        >
+                          {msg}
+                        </Typography>
+                      )}
+                    </ErrorMessage>
+                  </Box>
                   <ButtonsContainer>
                     <Button color="secondary" onClick={() => setFactor('')}>
                       Cancelar

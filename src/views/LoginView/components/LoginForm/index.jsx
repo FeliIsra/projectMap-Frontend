@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Formik } from 'formik';
+import { ErrorMessage, Field, Formik } from 'formik';
 
 import Input from 'components/inputs/Input';
 
@@ -11,6 +11,8 @@ import {
   LinkContainer,
   CustomLink,
 } from 'styles/form';
+import { validateField } from 'helpers/validateField';
+import { Box, Typography } from '@mui/material';
 
 const LoginForm = ({ onSubmit }) => (
   <FormContainer>
@@ -18,18 +20,54 @@ const LoginForm = ({ onSubmit }) => (
     <Formik onSubmit={onSubmit} initialValues={{ email: '', password: '' }}>
       {({ handleSubmit }) => (
         <CustomForm onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            type="email"
-            placeholder="Email"
-            component={Input}
-          />
-          <Field
-            name="password"
-            type="password"
-            placeholder="Password"
-            component={Input}
-          />
+          <Box sx={{ width: '100%' }}>
+            <Field
+              name="email"
+              type="email"
+              placeholder="Email"
+              component={Input}
+              validate={validateField}
+            />
+            <ErrorMessage name="email">
+              {(msg) => (
+                <Typography
+                  sx={{
+                    textAlign: 'left',
+                    color: 'red',
+                    marginLeft: 2,
+                    marginTop: '2px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {msg}
+                </Typography>
+              )}
+            </ErrorMessage>
+          </Box>
+          <Box sx={{ width: '100%' }}>
+            <Field
+              name="password"
+              type="password"
+              placeholder="Password"
+              component={Input}
+              validate={validateField}
+            />
+            <ErrorMessage name="password">
+              {(msg) => (
+                <Typography
+                  sx={{
+                    textAlign: 'left',
+                    color: 'red',
+                    marginLeft: 2,
+                    marginTop: '2px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {msg}
+                </Typography>
+              )}
+            </ErrorMessage>
+          </Box>
           <SubmitButton type="submit">Login</SubmitButton>
         </CustomForm>
       )}

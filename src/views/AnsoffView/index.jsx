@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { Grid, IconButton, Fab, Stepper, Step, StepLabel } from '@mui/material';
+import {
+  Grid,
+  IconButton,
+  Fab,
+  Stepper,
+  Step,
+  StepLabel,
+  Box,
+  Typography,
+} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AddIcon from '@mui/icons-material/Add';
 import CancelIcon from '@mui/icons-material/Cancel';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { Formik, Field } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 
 import Input from 'components/inputs/Input';
 import SelectInput from 'components/inputs/SelectInput';
@@ -17,6 +26,7 @@ import { ArrowBack, Check, Comment } from '@mui/icons-material';
 import { TitleContainer } from 'components/commons/ProjectCard/styles';
 import { ButtonContainer } from 'views/DashboardView/styles';
 import { Title } from 'styles/form';
+import { validateField } from 'helpers/validateField';
 
 const AnsoffView = (props) => {
   const {
@@ -102,29 +112,83 @@ const AnsoffView = (props) => {
                     justifyContent={'space-between'}
                   >
                     <Grid item xs={12} md={4}>
-                      <Field
-                        name="nombre"
-                        placeholder="Nombre"
-                        component={Input}
-                      />
+                      <Box sx={{ width: '100%' }}>
+                        <Field
+                          name="nombre"
+                          placeholder="Nombre"
+                          component={Input}
+                          validate={validateField}
+                        />
+                        <ErrorMessage name={'nombre'}>
+                          {(msg) => (
+                            <Typography
+                              sx={{
+                                textAlign: 'left',
+                                color: 'red',
+                                marginLeft: 2,
+                                marginTop: '2px',
+                                fontSize: '14px',
+                              }}
+                            >
+                              {msg}
+                            </Typography>
+                          )}
+                        </ErrorMessage>
+                      </Box>
                     </Grid>
                     <Grid item xs={12} md={3}>
-                      <Field
-                        name="situacionDelMercado"
-                        placeholder="Situacion Del Mercado"
-                        component={SelectInput}
-                        options={situacionDelMercadoOptions}
-                        fontSize={18}
-                      />
+                      <Box sx={{ width: '100%' }}>
+                        <Field
+                          name="situacionDelMercado"
+                          placeholder="Situacion Del Mercado"
+                          component={SelectInput}
+                          options={situacionDelMercadoOptions}
+                          fontSize={18}
+                          validate={validateField}
+                        />
+                      </Box>
+                      <ErrorMessage name={'situacionDelMercado'}>
+                        {(msg) => (
+                          <Typography
+                            sx={{
+                              textAlign: 'left',
+                              color: 'red',
+                              marginLeft: 2,
+                              marginTop: '2px',
+                              fontSize: '14px',
+                            }}
+                          >
+                            {msg}
+                          </Typography>
+                        )}
+                      </ErrorMessage>
                     </Grid>
                     <Grid item xs={12} md={3}>
-                      <Field
-                        name="situacionDelProducto"
-                        placeholder="Situacion Del Producto"
-                        component={SelectInput}
-                        options={situacionDelProductoOptions}
-                        fontSize={18}
-                      />
+                      <Box sx={{ width: '100%' }}>
+                        <Field
+                          name="situacionDelProducto"
+                          placeholder="Situacion Del Producto"
+                          component={SelectInput}
+                          options={situacionDelProductoOptions}
+                          fontSize={18}
+                          validate={validateField}
+                        />
+                        <ErrorMessage name={'situacionDelProducto'}>
+                          {(msg) => (
+                            <Typography
+                              sx={{
+                                textAlign: 'left',
+                                color: 'red',
+                                marginLeft: 2,
+                                marginTop: '2px',
+                                fontSize: '14px',
+                              }}
+                            >
+                              {msg}
+                            </Typography>
+                          )}
+                        </ErrorMessage>
+                      </Box>
                     </Grid>
                     <Grid item xs={12} md={1}>
                       <ButtonsContainer>
