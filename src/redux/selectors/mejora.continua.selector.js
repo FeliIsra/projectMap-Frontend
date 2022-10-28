@@ -135,15 +135,15 @@ export const barChartSelector = createSelector([getPorters], (porters) => {
     (prev, porter, index) => {
       porter?.consejos?.forEach((item) => {
         if (item.fuerza === 'Rivalidad entre competidores')
-          prev.datasets[index].data[0] += item.puntuacion;
+          prev.datasets[index].data[0] = item.valorConsejoGeneral;
         if (item.fuerza === 'Poder de negociacion con los clientes')
-          prev.datasets[index].data[1] += item.puntuacion;
+          prev.datasets[index].data[1] = item.valorConsejoGeneral;
         if (item.fuerza === 'Poder de negociacion con los proveedores')
-          prev.datasets[index].data[2] += item.puntuacion;
+          prev.datasets[index].data[2] = item.valorConsejoGeneral;
         if (item.fuerza === 'Amenaza de nuevos competidores')
-          prev.datasets[index].data[3] += item.puntuacion;
+          prev.datasets[index].data[3] = item.valorConsejoGeneral;
         if (item.fuerza === 'Amenaza de productos substitutos')
-          prev.datasets[index].data[4] += item.puntuacion;
+          prev.datasets[index].data[4] = item.valorConsejoGeneral;
       });
       prev.datasets[index].label = porter.titulo;
       return prev;
