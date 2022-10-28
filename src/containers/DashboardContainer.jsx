@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { onCreate, onGetAll } from 'redux/actions/projects.actions';
+import { onCreate, onGetAll, onDelete } from 'redux/actions/projects.actions';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import Modal from 'components/commons/Modal';
@@ -41,12 +41,17 @@ const DashboardContainer = () => {
 
   const onClickProject = (projectId) => navigate(`/projects/${projectId}`);
 
+  const onClickDelete = (id) => {
+    dispatch(onDelete(id));
+  };
+
   return (
     <LayoutContainer>
       <DashboardView
         onAddNew={() => setAddNew(true)}
         onClickProject={onClickProject}
         items={items}
+        onClickDelete={onClickDelete}
       />
       <Modal
         isOpen={isAddNewOpen}

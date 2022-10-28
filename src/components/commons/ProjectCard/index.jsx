@@ -1,5 +1,6 @@
 import React from 'react';
 import IosShareIcon from '@mui/icons-material/IosShare';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import {
   Card,
@@ -8,18 +9,23 @@ import {
   Description,
   CardContent,
 } from './styles';
-import { IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 
 const ProjectCard = (props) => {
-  const { color, descripcion, titulo, onClick, onClickIcon } = props;
+  const { color, descripcion, titulo, onClick, onClickDelete } = props;
   return (
-    <Card onClick={onClick}>
+    <Card>
       <CardContent backgroundcolor={color}>
         <TitleContainer>
           <Title>{titulo}</Title>
-          <IconButton onClick={onClickIcon}>
-            <IosShareIcon color="black" />
-          </IconButton>
+          <Box display="flex">
+            <IconButton onClick={onClick}>
+              <IosShareIcon color="black" />
+            </IconButton>
+            <IconButton onClick={onClickDelete}>
+              <DeleteIcon color="black" />
+            </IconButton>
+          </Box>
         </TitleContainer>
         <Description>{descripcion}</Description>
       </CardContent>

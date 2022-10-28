@@ -1,8 +1,10 @@
-import { post, get } from 'services/api';
+import { post, get, remove } from 'services/api';
 
 export const save = (formData) => post('projects', formData);
 
 export const getAll = () => get('projects');
+
+export const deleteProject = (id) => remove(`projects/${id}`);
 
 export const getOne = (id) => get(`projects/${id}`);
 

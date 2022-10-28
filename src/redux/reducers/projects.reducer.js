@@ -27,6 +27,7 @@ const projectsReducer = (state = defaultState, action) => {
     case constants.PROJECTS_ON_GET_OKR_REQUESTED:
     case constants.PROJECTS_ON_GET_BALANCED_SCORECARD_REQUESTED:
     case constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED:
+    case constants.PROJECTS_ON_DELETE_REQUESTED:
       return {
         ...state,
         loading: true,
@@ -97,8 +98,15 @@ const projectsReducer = (state = defaultState, action) => {
         questionnaires: data,
         loding: false,
       };
+    case constants.PROJECTS_ON_DELETE_SUCCEEDED:
+      return {
+        ...state,
+        items: state.items.filter((item) => item._id !== data._id),
+        loading: false,
+      };
     case constants.PROJECTS_ON_CREATE_FAILED:
     case constants.PROJECTS_ON_GET_ONE_FAILED:
+    case constants.PROJECTS_ON_DELETE_FAILED:
       return defaultState;
     default:
       return error?.response?.status === 401 ? defaultState : state;

@@ -5,6 +5,11 @@ export const onCreate = (formData) => ({
   formData,
 });
 
+export const onDelete = (id) => ({
+  type: constants.PROJECTS_ON_DELETE_REQUESTED,
+  id,
+});
+
 export const onGetAll = (id) => ({
   type: constants.PROJECTS_ON_GET_ALL_REQUESTED,
 });

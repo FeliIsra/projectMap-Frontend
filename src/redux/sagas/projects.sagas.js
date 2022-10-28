@@ -21,6 +21,7 @@ import {
   getBalancedScorecard,
   getQuestionnaires,
   save,
+  deleteProject,
 } from 'services/projects.services';
 
 export function* projectsSaveOne(action) {
@@ -33,6 +34,19 @@ export function* projectsSaveOne(action) {
     });
   } catch (error) {
     yield put({ type: constants.PROJECTS_ON_CREATE_FAILED, error });
+  }
+}
+
+export function* projectsDelete(action) {
+  try {
+    const { id } = action;
+    const { data } = yield call(deleteProject, id);
+    yield put({
+      type: constants.PROJECTS_ON_DELETE_SUCCEEDED,
+      data,
+    });
+  } catch (error) {
+    yield put({ type: constants.PROJECTS_ON_DELETE_FAILED, error });
   }
 }
 
@@ -192,6 +206,7 @@ export function* projectsOnGetQuestionnaires(action) {
 export function* watchProjects() {
   yield all([
     takeLatest(constants.PROJECTS_ON_GET_ONE_REQUESTED, projectsOnGetOne),
+    takeLatest(constants.PROJECTS_ON_DELETE_REQUESTED, projectsDelete),
     takeLatest(constants.PROJECTS_ON_GET_ALL_REQUESTED, projectsOnGetAll),
     takeLatest(constants.PROJECTS_ON_CREATE_REQUESTED, projectsSaveOne),
     takeLatest(constants.PROJECTS_ON_GET_FODA_REQUESTED, projectsOnGetFodas),

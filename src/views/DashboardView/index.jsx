@@ -15,7 +15,7 @@ import {
 } from './styles';
 
 const DashboardView = (props) => {
-  const { onAddNew, onClickProject, items } = props;
+  const { onAddNew, onClickProject, items, onClickDelete } = props;
   return (
     <Container>
       <Content>
@@ -39,6 +39,7 @@ const DashboardView = (props) => {
                 descripcion={descripcion}
                 onClick={() => onClickProject(_id)}
                 onClickIcon={() => {}}
+                onClickDelete={() => onClickDelete(_id)}
               />
             </Grid>
           ))}
