@@ -16,10 +16,11 @@ export const onGetOne = (id) => ({
   id,
 });
 
-export const onInsertQuestions = (id, answers) => ({
+export const onInsertQuestions = (id, answers, callback) => ({
   type: constants.PORTER_INSERT_QUESTION_REQUESTED,
   id,
   answers,
+  callback,
 });
 
 export const onDeleteQuestion = (idPorter, idQuestion) => ({

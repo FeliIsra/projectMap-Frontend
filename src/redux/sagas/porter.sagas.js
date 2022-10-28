@@ -44,8 +44,9 @@ export function* porterGet(action) {
 
 export function* porterInsertQuestion(action) {
   try {
-    const { answers, id } = action;
+    const { answers, id, callback } = action;
     const { data } = yield call(insertQuestion, id, answers);
+    if (callback) callback();
     yield put({ type: constants.PORTER_INSERT_QUESTION_SUCCEEDED, data });
   } catch (error) {
     yield put({ type: constants.PORTER_INSERT_QUESTION_FAILED, error });

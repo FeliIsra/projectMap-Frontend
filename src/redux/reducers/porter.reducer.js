@@ -38,7 +38,6 @@ const porterReducer = (state = defaultState, action) => {
       };
     case constants.PORTER_CREATE_SUCCEEDED:
     case constants.PORTER_GET_SUCCEEDED:
-    case constants.PORTER_DELETE_SUCCEEDED:
     case constants.PORTER_INSERT_QUESTION_SUCCEEDED:
     case constants.PORTER_DELETE_QUESTION_SUCCEEDED:
     case constants.PORTER_EDIT_QUESTION_SUCCEEDED:
@@ -63,6 +62,7 @@ const porterReducer = (state = defaultState, action) => {
         ...state,
         questions: { ...state.questions, ...data.questions },
       };
+    case constants.PORTER_DELETE_SUCCEEDED:
     case constants.PORTER_CREATE_FAILED:
     case constants.PORTER_GET_FAILED:
     case constants.PORTER_DELETE_FAILED:

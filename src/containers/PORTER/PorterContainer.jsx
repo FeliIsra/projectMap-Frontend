@@ -58,8 +58,7 @@ const PorterContainer = () => {
 
   const handleSubmit = (formData) => {
     if (isLastStep()) {
-      dispatch(onInsertQuestions(porterId, formData));
-      onClickResultsButton();
+      dispatch(onInsertQuestions(porterId, formData, onClickResultsButton));
     } else {
       let newSkipped = skipped;
 

@@ -1,4 +1,5 @@
 import * as constants from 'redux/contansts/questionnarie.constants';
+import * as projectConstants from 'redux/contansts/projects.constants';
 
 export const defaultState = {
   data: null,
@@ -43,6 +44,8 @@ const questionnaireReducer = (state = defaultState, action) => {
         ...state,
         loading: false,
       };
+    case projectConstants.PROJECTS_ON_GET_ONE_REQUESTED:
+      return defaultState;
     default:
       return error?.response?.status === 401 ? defaultState : state;
   }

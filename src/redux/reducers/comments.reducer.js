@@ -1,4 +1,5 @@
 import * as constants from 'redux/contansts/comments.constants';
+import * as projectConstants from 'redux/contansts/projects.constants';
 
 export const defaultState = {
   data: [],
@@ -43,6 +44,8 @@ const commentsReducer = (state = defaultState, action) => {
         ...state,
         loading: true,
       };
+    case projectConstants.PROJECTS_ON_GET_ONE_REQUESTED:
+      return defaultState;
     default:
       return error?.response?.status === 401 ? defaultState : state;
   }
