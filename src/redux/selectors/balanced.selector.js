@@ -1,3 +1,4 @@
+import { parseDate } from 'helpers/date';
 import { Area } from 'helpers/enums/balanced';
 import { createSelector } from 'reselect';
 
@@ -19,3 +20,8 @@ export const areaObjectivesSelector = createSelector(
     return objectivesPerArea;
   }
 );
+
+export const titleSelector = createSelector([getBalancedSelected], (tool) => ({
+  ...tool,
+  title: `${tool?.titulo} - ${parseDate(tool?.createdAt)}`,
+}));

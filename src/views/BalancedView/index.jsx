@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Box, Grid, Tooltip } from '@mui/material';
+import { Avatar, Box, Grid, IconButton, Tooltip } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
 import { Area, getDeviationColor, Trend } from 'helpers/enums/balanced';
@@ -9,7 +9,14 @@ import AddButton from './components/AddButton';
 
 import { Accordion, AccordionDetails, AccordionSummary } from './styles';
 import Checkpoints from './components/Checkpoints';
-import { TrendingDown, TrendingFlat, TrendingUp } from '@mui/icons-material';
+import {
+  ArrowBack,
+  TrendingDown,
+  TrendingFlat,
+  TrendingUp,
+  Comment,
+} from '@mui/icons-material';
+import { ButtonContainer, Title, TitleContainer } from 'views/FodaView/styles';
 
 const tableHeaderStyle = { display: 'flex', justifyContent: 'center' };
 
@@ -60,7 +67,14 @@ const getTrendIcon = (trend) => {
   }
 };
 
-const BalancedView = ({ onSubmitObjetive, objectives, onEditObjective }) => {
+const BalancedView = ({
+  onSubmitObjetive,
+  objectives,
+  onEditObjective,
+  title,
+  openComments,
+  onClickButtonGoBack,
+}) => {
   const [areaInput, setAreaInput] = useState(null);
   const [expanded, setExpanded] = useState(null);
 
@@ -159,63 +173,81 @@ const BalancedView = ({ onSubmitObjetive, objectives, onEditObjective }) => {
   );
 
   return (
-    <Grid
-      container
-      sx={{
-        padding: '30px',
-      }}
-      rowGap={6}
-    >
-      {Object.values(Area).map((area) => (
-        <Grid item xs={12}>
-          {renderHeader(area)}
-          <Grid
-            container
-            sx={{
-              padding: '10px',
-              background: COLORS.AthensGray,
-              alignItems: 'center',
-            }}
+    <>
+      {/* <TitleContainer>
+        <ButtonContainer>
+          <IconButton size="small" onClick={onClickButtonGoBack}>
+            <ArrowBack />
+          </IconButton>
+        </ButtonContainer>
+        <Title>{title}</Title>
+        <ButtonContainer sx={{ gap: '10px' }}>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
           >
-            {objectives[area]?.map((objective) => (
+            <Comment />
+          </IconButton>
+        </ButtonContainer>
+      </TitleContainer> */}
+      <Grid
+        container
+        sx={{
+          padding: '30px',
+        }}
+        rowGap={6}
+      >
+        {Object.values(Area).map((area) => (
+          <Grid item xs={12}>
+            {renderHeader(area)}
+            <Grid
+              container
+              sx={{
+                padding: '10px',
+                background: COLORS.AthensGray,
+                alignItems: 'center',
+              }}
+            >
+              {objectives[area]?.map((objective) => (
+                <Grid item xs={12}>
+                  <Accordion>
+                    <AccordionSummary
+                      expanded={expanded === objective._id}
+                      onChange={handleChange(objective._id)}
+                    >
+                      {renderRow(objective)}
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Checkpoints
+                        checkpoints={objective.checkpoints}
+                        onClickCancel={handleChange(null)}
+                        onSubmit={(formData) =>
+                          onEditObjective(objective._id, {
+                            ...objective,
+                            ...formData,
+                          })
+                        }
+                      />
+                    </AccordionDetails>
+                  </Accordion>
+                </Grid>
+              ))}
+              {/* Cambiar por el area que hace el render */}
               <Grid item xs={12}>
-                <Accordion>
-                  <AccordionSummary
-                    expanded={expanded === objective._id}
-                    onChange={handleChange(objective._id)}
-                  >
-                    {renderRow(objective)}
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Checkpoints
-                      checkpoints={objective.checkpoints}
-                      onClickCancel={handleChange(null)}
-                      onSubmit={(formData) =>
-                        onEditObjective(objective._id, {
-                          ...objective,
-                          ...formData,
-                        })
-                      }
-                    />
-                  </AccordionDetails>
-                </Accordion>
+                {areaInput === area && (
+                  <ObjetiveInput
+                    area={area}
+                    onClickCancel={() => setAreaInput(null)}
+                    onSubmit={onSubmitObjetive}
+                  />
+                )}
               </Grid>
-            ))}
-            {/* Cambiar por el area que hace el render */}
-            <Grid item xs={12}>
-              {areaInput === area && (
-                <ObjetiveInput
-                  area={area}
-                  onClickCancel={() => setAreaInput(null)}
-                  onSubmit={onSubmitObjetive}
-                />
-              )}
+              <AddButton onClick={() => setAreaInput(area)} />
             </Grid>
-            <AddButton onClick={() => setAreaInput(area)} />
           </Grid>
-        </Grid>
-      ))}
-    </Grid>
+        ))}
+      </Grid>
+    </>
   );
 };
 

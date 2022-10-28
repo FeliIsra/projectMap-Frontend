@@ -1,3 +1,4 @@
+import { parseDate } from 'helpers/date';
 import { consejosPorEstrategia, Estrategia } from 'helpers/enums/ansoff';
 import { createSelector } from 'reselect';
 
@@ -49,3 +50,8 @@ export const porcentajesSelector = createSelector(
     return list;
   }
 );
+
+export const titleSelector = createSelector([getItem], (ansoff) => ({
+  ...ansoff,
+  title: `${ansoff?.titulo} - ${parseDate(ansoff?.createdAt)}`,
+}));

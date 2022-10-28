@@ -129,7 +129,7 @@ export const tableSelector = createSelector([porcentajeSelector], (list) => {
 
 export const titleSelector = createSelector([getFoda], (foda) => ({
   ...foda,
-  title: `${foda?.title} - ${parseDate(foda?.createdAt)}`,
+  title: `${foda?.titulo} - ${parseDate(foda?.createdAt)}`,
 }));
 
 export const pieChartSelector = createSelector(
