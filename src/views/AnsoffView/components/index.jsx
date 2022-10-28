@@ -48,7 +48,7 @@ const Steps = ({
               </Grid>
             </Grid>
           </Grid>
-          {productos.length ? (
+          {productos?.length ? (
             <Grid item xs={12}>
               <Grid container display="flex">
                 {productos?.map((producto) => (

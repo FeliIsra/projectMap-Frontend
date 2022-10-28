@@ -264,7 +264,7 @@ const AnsoffViewResults = (props) => {
                       {productosFiltered[estrategia] ? (
                         <ul>
                           {productosFiltered[estrategia]?.map((productos) => (
-                            <li>{productos.nombre}</li>
+                            <li>{productos?.nombre}</li>
                           ))}
                         </ul>
                       ) : (
