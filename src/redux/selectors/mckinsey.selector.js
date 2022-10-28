@@ -6,6 +6,7 @@ import {
   SignificadoCuadrante,
   CuadrantesOrder,
 } from 'helpers/enums/mckinsey';
+import { parseDate } from 'helpers/date';
 
 const getMckinsey = (state) => state.mckinsey.data;
 
@@ -27,3 +28,8 @@ export const cuadrantesSelector = createSelector([getMckinsey], (mckinsey) =>
     significado: SignificadoCuadrante[key],
   }))
 );
+
+export const titleSelector = createSelector([getMckinsey], (tool) => ({
+  ...tool,
+  title: `${tool?.titulo} - ${parseDate(tool?.createdAt)}`,
+}));

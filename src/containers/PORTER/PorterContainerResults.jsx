@@ -26,6 +26,7 @@ const PorterContainerResults = () => {
 
   const dispatch = useDispatch();
   const porter = useSelector((state) => state.porter);
+  const isLoading = useSelector((state) => state.porter.loading);
   const { questions } = porter;
 
   const steps = Object.keys(questions);
@@ -119,16 +120,19 @@ const PorterContainerResults = () => {
           ) : (
             <React.Fragment>
               <Typography sx={{ mt: 2, mb: 1 }}>
-                <PorterViewResults
-                  consejo={consejos[steps[activeStep]]}
-                  activeStep={activeStep}
-                  handleBack={handleBack}
-                  handleNext={handleNext}
-                  steps={steps}
-                  titulo={steps[activeStep]}
-                  onClickButtonGoBack={onClickGoBack}
-                  openComments={(target) => setAnchorElement(target)}
-                />
+                {!isLoading && (
+                  <PorterViewResults
+                    consejo={consejos[steps[activeStep]]}
+                    activeStep={activeStep}
+                    handleBack={handleBack}
+                    handleNext={handleNext}
+                    steps={steps}
+                    titulo={steps[activeStep]}
+                    onClickButtonGoBack={onClickGoBack}
+                    openComments={(target) => setAnchorElement(target)}
+                  />
+                )}
+
                 <Menu
                   anchorEl={anchorElement}
                   onClose={() => setAnchorElement(null)}

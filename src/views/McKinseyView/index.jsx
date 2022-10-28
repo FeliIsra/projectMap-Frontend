@@ -14,10 +14,10 @@ import {
   CardTitle,
   FactorContent,
   FactorDescription,
-  ContentContainer,
 } from './styles';
 import { ButtonContainer } from 'views/DashboardView/styles';
 import { ArrowBack, Comment } from '@mui/icons-material';
+import { Title, TitleContainer } from 'views/FodaView/styles';
 
 const McKinseyView = ({
   onAdd,
@@ -26,6 +26,7 @@ const McKinseyView = ({
   showResults = false,
   onClickGoBackButton,
   openComments,
+  title,
 }) => {
   const renderTitle = (title) => (
     <CardTitleContainer>
@@ -56,19 +57,22 @@ const McKinseyView = ({
   // TO-DO: revisar el alto de los cuadrantes. Podriamos calcular dependiendo la pantalla
   return (
     <>
-      <ButtonContainer
-        sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}
-      >
-        <IconButton size="small" onClick={onClickGoBackButton}>
-          <ArrowBack />
-        </IconButton>
-        <IconButton
-          size="small"
-          onClick={(event) => openComments(event.currentTarget)}
-        >
-          <Comment />
-        </IconButton>
-      </ButtonContainer>
+      <TitleContainer>
+        <ButtonContainer>
+          <IconButton size="small" onClick={onClickGoBackButton}>
+            <ArrowBack />
+          </IconButton>
+        </ButtonContainer>
+        <Title>{showResults ? `Resultados de ${title}` : title}</Title>
+        <ButtonContainer sx={{ gap: '10px' }}>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
+          >
+            <Comment />
+          </IconButton>
+        </ButtonContainer>
+      </TitleContainer>
       <Grid
         container
         rowSpacing={2}

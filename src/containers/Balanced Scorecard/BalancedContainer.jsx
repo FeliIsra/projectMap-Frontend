@@ -10,7 +10,10 @@ import {
   onGetOne,
   onUpdateObjective,
 } from 'redux/actions/balanceScorecard.actions';
-import { areaObjectivesSelector } from 'redux/selectors/balanced.selector';
+import {
+  areaObjectivesSelector,
+  titleSelector,
+} from 'redux/selectors/balanced.selector';
 import { CheckpointsMonths } from 'helpers/enums/balanced';
 
 const BalancedContainer = () => {
@@ -19,6 +22,7 @@ const BalancedContainer = () => {
   const [isAddOkrModalOpen, setAddOkrModalOpen] = useState(false);
   const selectedTool = useSelector(okrToolSelector);
   const objectives = useSelector(areaObjectivesSelector);
+  const { title } = useSelector(titleSelector);
 
   useEffect(() => {
     dispatch(onGetOne(balancedId));
@@ -47,6 +51,7 @@ const BalancedContainer = () => {
         onSubmitObjetive={onSubmitObjetive}
         objectives={objectives}
         onEditObjective={onEditObjective}
+        title={title}
       />
     </LayoutContainer>
   );

@@ -136,10 +136,12 @@ export const tableSelector = createSelector([porcentajeSelector], (list) => {
   });
 });
 
-export const titleSelector = createSelector([getPestel], (pestel) => ({
-  ...pestel,
-  title: `${pestel?.title} - ${parseDate(pestel?.createdAt)}`,
-}));
+export const titleSelector = createSelector([getPestel], (pestel) => {
+  return {
+    ...pestel,
+    title: `${pestel?.titulo} - ${parseDate(pestel?.createdAt)}`,
+  };
+});
 
 export const pieChartSelector = createSelector(
   [porcentajeSelector, totalResultsSelect],
