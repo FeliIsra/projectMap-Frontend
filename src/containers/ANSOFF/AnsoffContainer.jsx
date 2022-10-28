@@ -64,6 +64,9 @@ const AnsoffContainer = () => {
   const onDeleteProducto = (productId) =>
     disptch(onDeleteProduct(ansoffId, productId));
 
+  const onEditProducto = (productId, values) =>
+    disptch(onEditProduct(ansoffId, productId, values));
+
   const initialValuesProducto = {
     nombre: '',
     situacionDelMercado: '',
@@ -100,6 +103,7 @@ const AnsoffContainer = () => {
             title={item?.title}
             openComments={(target) => setAnchorElement(target)}
             onDeleteProducto={onDeleteProducto}
+            onEditProducto={onEditProducto}
           />
           <Menu
             anchorEl={anchorElement}
