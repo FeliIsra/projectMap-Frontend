@@ -2,7 +2,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import {
   addProduct,
   create,
-  deletePestel,
+  deleteAnsoff,
   editProduct,
   getOne,
   getOptions,
@@ -22,8 +22,8 @@ export function* ansoffCreate(action) {
 
 export function* ansoffDelete(action) {
   try {
-    const { formData, id } = action;
-    const { data } = yield call(deletePestel, id, formData);
+    const { id } = action;
+    const { data } = yield call(deleteAnsoff, id);
     yield put({ type: constants.DELETE_ANSOFF_SUCCEEDED, data });
   } catch (error) {
     yield put({ type: constants.DELETE_ANSOFF_FAILED, error });

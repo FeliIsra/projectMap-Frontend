@@ -2,7 +2,7 @@ import { get, post, remove, put } from 'services/api';
 
 export const create = (formData) => post('ansoff', formData);
 
-export const deletePestel = (id, formData) => remove(`ansoff/${id}`, formData);
+export const deleteAnsoff = (id) => remove(`ansoff/${id}`);
 
 export const getOne = (id) => get(`ansoff/${id}`);
 

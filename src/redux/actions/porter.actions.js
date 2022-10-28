@@ -6,7 +6,7 @@ export const onCreate = (formData) => ({
 });
 
 export const onDelete = (id, formData) => ({
-  type: constants.PORTER_CREATE_REQUESTED,
+  type: constants.PORTER_DELETE_REQUESTED,
   formData,
   id,
 });

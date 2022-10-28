@@ -1,8 +1,10 @@
-import { get, post, put } from 'services/api';
+import { get, post, put, remove } from 'services/api';
 
 export const createTool = (formData) => post('okr-projects', formData);
 
 export const getOneTool = (id) => get(`okr-projects/${id}`);
+
+export const deleteOkr = (id) => remove(`okr-projects/${id}`);
 
 export const createOkr = (id, formData) =>
   post(`okr-projects/${id}/okrs`, formData);

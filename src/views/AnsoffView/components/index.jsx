@@ -160,7 +160,7 @@ const Steps = ({
                         selectedValue={
                           producto?.exito
                             ? getExitoProducto(producto.exito)
-                            : { label: 'Selecione el exito', value: '' }
+                            : { label: 'Seleccione el exito', value: '' }
                         }
                         onChange={(newValue) => {
                           onEditExito({ ...producto, exito: newValue });
@@ -235,7 +235,7 @@ const Steps = ({
                           selectedValue={
                             producto?.exito
                               ? getExitoProducto(producto.exito)
-                              : { label: 'Selecione el exito', value: '' }
+                              : { label: 'Seleccione el exito', value: '' }
                           }
                           onChange={(newValue) => {
                             onEditExito({ ...producto, exito: newValue });
@@ -310,7 +310,7 @@ const Steps = ({
                         selectedValue={
                           producto?.exito
                             ? getExitoProducto(producto.exito)
-                            : { label: 'Selecione el exito', value: '' }
+                            : { label: 'Seleccione el exito', value: '' }
                         }
                         onChange={(newValue) => {
                           onEditExito({ ...producto, exito: newValue });
@@ -384,7 +384,7 @@ const Steps = ({
                         selectedValue={
                           producto?.exito
                             ? getExitoProducto(producto.exito)
-                            : { label: 'Selecione el exito', value: '' }
+                            : { label: 'Seleccione el exito', value: '' }
                         }
                         onChange={(newValue) => {
                           onEditExito({ ...producto, exito: newValue });
