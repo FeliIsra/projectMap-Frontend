@@ -11,6 +11,7 @@ import {
   onGetOne,
   onGetOptions,
   onEditProduct,
+  onDeleteProduct,
 } from 'redux/actions/ansoff.actions';
 import {
   situacionDelMercadoSelector,
@@ -37,7 +38,7 @@ const AnsoffContainer = () => {
 
   useEffect(() => {
     disptch(onGetOne(ansoffId));
-    disptch(onGetOptions(ansoffId));
+    disptch(onGetOptions());
   }, []);
 
   const isLastStep = activeStep === 4;
@@ -59,6 +60,9 @@ const AnsoffContainer = () => {
 
   const onEditExito = (formData) =>
     disptch(onEditProduct(ansoffId, formData._id, formData));
+
+  const onDeleteProducto = (productId) =>
+    disptch(onDeleteProduct(ansoffId, productId));
 
   const initialValuesProducto = {
     nombre: '',
@@ -95,6 +99,7 @@ const AnsoffContainer = () => {
             onClickGoBackButton={onClickGoBackButton}
             title={item?.title}
             openComments={(target) => setAnchorElement(target)}
+            onDeleteProducto={onDeleteProducto}
           />
           <Menu
             anchorEl={anchorElement}

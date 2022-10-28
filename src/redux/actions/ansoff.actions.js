@@ -31,3 +31,9 @@ export const onEditProduct = (id, productId, formData) => ({
   productId,
   formData,
 });
+
+export const onDeleteProduct = (id, productId) => ({
+  type: constants.DELETE_PRODUCT_ANSOFF_REQUESTED,
+  id,
+  productId,
+});

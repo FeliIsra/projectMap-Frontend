@@ -26,6 +26,7 @@ const ansoffReducer = (state = defaultState, action) => {
     case constants.GET_ANSOFF_SUCCEEDED:
     case constants.ADD_PRODUCT_ANSOFF_SUCCEEDED:
     case constants.EDIT_PRODUCT_ANSOFF_SUCCEEDED:
+    case constants.DELETE_PRODUCT_ANSOFF_SUCCEEDED:
       return {
         ...state,
         data: { ...state.data, ...data },

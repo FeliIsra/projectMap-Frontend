@@ -13,3 +13,6 @@ export const addProduct = (id, formData) =>
 
 export const editProduct = (id, productId, formData) =>
   put(`ansoff/${id}/products/${productId}`, formData);
+
+export const deleteProduct = (id, productId) =>
+  remove(`ansoff/${id}/products/${productId}`);

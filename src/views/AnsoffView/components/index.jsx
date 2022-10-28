@@ -1,33 +1,20 @@
 import React, { useState } from 'react';
-import {
-  Grid,
-  IconButton,
-  Fab,
-  Stepper,
-  Step,
-  StepLabel,
-  Typography,
-} from '@mui/material';
+import { Grid, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
 import { COLORS } from 'helpers/enums/colors';
 import SelectMenu from 'components/inputs/SelectMenu';
 import { exitoProductoList, getExitoProducto } from 'helpers/enums/ansoff';
+import { Delete, Edit } from '@mui/icons-material';
+import { ButtonsContainer } from '../styles';
 
 const Steps = ({
-  onSubmitProducto,
-  onClickResultsButton,
-  showResults = false,
-  situacionDelMercadoOptions,
-  situacionDelProductoOptions,
-  initialValuesProducto,
   productos,
-  steps,
-  handleNext,
-  handleBack,
   activeStep,
   productosFiltered,
   onEditExito,
+  onDeleteProducto,
+  showText,
 }) => {
   return (
     <>
@@ -46,7 +33,7 @@ const Steps = ({
                 fontWeight: 800,
               }}
             >
-              <Grid item xs={4} display="flex" justifyContent={'center'}>
+              <Grid item xs={3} display="flex" justifyContent={'center'}>
                 <span style={{ textAlign: 'center' }}>Nombre</span>
               </Grid>
               <Grid item xs={4} display="flex" justifyContent={'center'}>
@@ -61,14 +48,14 @@ const Steps = ({
               </Grid>
             </Grid>
           </Grid>
-          {productos ? (
+          {productos.length ? (
             <Grid item xs={12}>
               <Grid container display="flex">
                 {productos?.map((producto) => (
                   <>
                     <Grid
                       item
-                      xs={4}
+                      xs={3}
                       display="flex"
                       justifyContent={'center'}
                       sx={{ padding: '20px 0' }}
@@ -93,21 +80,38 @@ const Steps = ({
                     >
                       {producto.situacionDelProducto}
                     </Grid>
+                    <Grid item xs={1} display="flex" alignItems={'center'}>
+                      <ButtonsContainer>
+                        {/* <IconButton color="secondary">
+                          <Edit />
+                        </IconButton> */}
+                        <IconButton
+                          onClick={() => onDeleteProducto(producto._id)}
+                          sx={{ color: 'grey' }}
+                        >
+                          <Delete />
+                        </IconButton>
+                      </ButtonsContainer>
+                    </Grid>
                   </>
                 ))}
               </Grid>
             </Grid>
           ) : (
-            <Typography
-              sx={{
-                padding: '50px 0',
-                fontSize: '20px',
-                fontWeight: 800,
-                margin: '0 auto',
-              }}
-            >
-              Agregue productos usando el boton <AddIcon />
-            </Typography>
+            <>
+              {showText && (
+                <Typography
+                  sx={{
+                    padding: '50px 0',
+                    fontSize: '20px',
+                    fontWeight: 800,
+                    margin: '0 auto',
+                  }}
+                >
+                  Agregue productos usando el boton <AddIcon />
+                </Typography>
+              )}
+            </>
           )}
         </>
       )}

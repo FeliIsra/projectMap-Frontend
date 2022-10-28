@@ -84,7 +84,7 @@ const AnsoffView = (props) => {
             ))}
           </Stepper>
         </Grid>
-        <Steps {...props} />
+        <Steps {...props} showText={!showForm} />
         {showForm && activeStep === 0 && (
           <Grid
             item
@@ -228,21 +228,22 @@ const AnsoffView = (props) => {
       )}
       {!showForm && (
         <>
-          <Fab
-            color="secondary"
-            aria-label="back"
-            style={{
-              position: 'fixed',
-              top: 'auto',
-              bottom: 20,
-              left: 20,
-              right: 'auto',
-            }}
-            onClick={handleBack}
-            disabled={activeStep === 0}
-          >
-            <NavigateBeforeIcon />
-          </Fab>
+          {activeStep !== 0 && (
+            <Fab
+              color="secondary"
+              aria-label="back"
+              style={{
+                position: 'fixed',
+                top: 'auto',
+                bottom: 20,
+                left: 20,
+                right: 'auto',
+              }}
+              onClick={handleBack}
+            >
+              <NavigateBeforeIcon />
+            </Fab>
+          )}
           <Fab
             color="secondary"
             aria-label="next"

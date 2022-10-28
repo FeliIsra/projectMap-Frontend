@@ -6,6 +6,7 @@ import {
   editProduct,
   getOne,
   getOptions,
+  deleteProduct,
 } from 'services/ansoff.services';
 
 import * as constants from 'redux/contansts/ansoff.constants';
@@ -69,6 +70,16 @@ export function* ansoffEditProduct(action) {
   }
 }
 
+export function* ansoffDeleteProducto(action) {
+  try {
+    const { id, productId } = action;
+    const { data } = yield call(deleteProduct, id, productId);
+    yield put({ type: constants.DELETE_PRODUCT_ANSOFF_SUCCEEDED, data });
+  } catch (error) {
+    yield put({ type: constants.DELETE_PRODUCT_ANSOFF_FAILED, error });
+  }
+}
+
 export function* watchAnsoff() {
   yield all([
     takeLatest(constants.CREATE_ANSOFF_REQUESTED, ansoffCreate),
@@ -77,5 +88,6 @@ export function* watchAnsoff() {
     takeLatest(constants.ADD_PRODUCT_ANSOFF_REQUESTED, ansoffAddProduct),
     takeLatest(constants.GET_OPTIONS_ANSOFF_REQUESTED, ansoffGetOptions),
     takeLatest(constants.EDIT_PRODUCT_ANSOFF_REQUESTED, ansoffEditProduct),
+    takeLatest(constants.DELETE_PRODUCT_ANSOFF_REQUESTED, ansoffDeleteProducto),
   ]);
 }
