@@ -1,5 +1,5 @@
 import React from 'react';
-import { Add, ArrowBack } from '@mui/icons-material';
+import { Add, ArrowBack, ArrowForward } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
@@ -18,8 +18,15 @@ import {
   ButtonContainer,
   Title,
 } from './styles';
+import { StepValue } from 'helpers/enums/steps';
 
-const ProjectView = ({ items, titulo, onClickButtonGoBack, project }) => {
+const ProjectView = ({
+  items,
+  titulo,
+  onClickButtonGoBack,
+  project,
+  onCLickMejoraContinua,
+}) => {
   const renderStep = (step) => (
     <Item>
       <CustomCircularProgress
@@ -39,11 +46,19 @@ const ProjectView = ({ items, titulo, onClickButtonGoBack, project }) => {
         <StepTitle>{step.title}</StepTitle>
       </ContentContainer>
       <ContentContainer>
-        <IconButton
-          onClick={(event) => step.onClickAdd(step.value, event.currentTarget)}
-        >
-          <Add />
-        </IconButton>
+        {step.value !== StepValue.MEJORA_CONTINUA ? (
+          <IconButton
+            onClick={(event) =>
+              step.onClickAdd(step.value, event.currentTarget)
+            }
+          >
+            <Add />
+          </IconButton>
+        ) : (
+          <IconButton onClick={(event) => onCLickMejoraContinua()}>
+            <ArrowForward />
+          </IconButton>
+        )}
       </ContentContainer>
     </Item>
   );

@@ -7,7 +7,7 @@ import { onCreateTool as onCreateOkr } from 'redux/actions/okr.actions';
 import { onCreate as onCreateBalanced } from 'redux/actions/balanceScorecard.actions';
 import { onCreate as onCreateQuestionnarie } from 'redux/actions/questionnarie.actions';
 
-const StepValue = {
+export const StepValue = {
   EVALUACION_ENTORNO_EXTERNO: 1,
   EVALUACION_SITUACION_INTERNA: 2,
   DEFINICION_LINIAMIENTOS_ESTRATEGICOS: 3,
@@ -42,9 +42,7 @@ export const STEPS = [
   {
     value: StepValue.MEJORA_CONTINUA,
     title: 'Mejora Continua',
-    menuItems: [
-      { titulo: 'Agregar Analisis de Indicadores y Metas', action: () => {} },
-    ],
+    menuItems: [{ titulo: '', action: () => {} }],
   },
   {
     value: StepValue.DEFINICION_PLANES_TRANSFORMACION,

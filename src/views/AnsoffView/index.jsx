@@ -210,7 +210,7 @@ const AnsoffView = (props) => {
           </Grid>
         )}
       </Grid>
-      {!showResults && !showForm && (
+      {!showResults && !showForm && activeStep === 0 && (
         <Fab
           color="primary"
           aria-label="add"

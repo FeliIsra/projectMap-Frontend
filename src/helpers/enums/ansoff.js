@@ -53,8 +53,8 @@ export const EstrategiaClasificacion = {
 };
 
 export const exitoProductoList = [
-  { label: 'Bastante Exitoso', value: 'Alto' },
-  { label: 'Poco Exitoso', value: 'Bajo' },
+  { label: 'Bastante Exitoso', value: 'Muy Exitoso' },
+  { label: 'Poco Exitoso', value: 'Poco exitoso' },
   { label: 'Indefinido', value: 'Indefinido' },
 ];
 

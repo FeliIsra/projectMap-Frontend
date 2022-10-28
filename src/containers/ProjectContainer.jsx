@@ -108,6 +108,8 @@ const ProjectContainer = () => {
     deleteTool[tool]();
   };
 
+  const onCLickMejoraContinua = () => navigate('mejora-continua');
+
   const items = STEPS?.map((step) => ({
     ...step,
     onClickAdd,
@@ -122,6 +124,7 @@ const ProjectContainer = () => {
         titulo={projectInfo?.titulo}
         onClickButtonGoBack={onClickButtonGoBack}
         project={projectInfo}
+        onCLickMejoraContinua={onCLickMejoraContinua}
       />
       <Menu
         anchorEl={anchorElement}
