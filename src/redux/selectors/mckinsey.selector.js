@@ -10,8 +10,8 @@ import { parseDate } from 'helpers/date';
 
 const getMckinsey = (state) => state.mckinsey.data;
 
-export const cuadrantesSelector = createSelector([getMckinsey], (mckinsey) =>
-  Object.entries(Cuadrantes)?.map(([key, value]) => ({
+export const cuadrantesSelector = createSelector([getMckinsey], (mckinsey) => {
+  const list = Object.entries(Cuadrantes)?.map(([key, value]) => ({
     title: value,
     name: value,
     unidades:
@@ -26,8 +26,9 @@ export const cuadrantesSelector = createSelector([getMckinsey], (mckinsey) =>
       }, []) || [],
     color: CuadrantesColor[key],
     significado: SignificadoCuadrante[key],
-  }))
-);
+  }));
+  return list;
+});
 
 export const titleSelector = createSelector([getMckinsey], (tool) => ({
   ...tool,

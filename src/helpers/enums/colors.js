@@ -14,7 +14,7 @@ export const COLORS = {
   Aquamarine: '#A5FFD6',
   MagicMint: '#BCE9C8',
   Bone: '#D2D3BA',
-  VividTangerine: '#FFA69E',
+  VividTangerine: '#F89D95',
   BitterSweet: '#FF686B',
   GreenBayLeaf: '#84A98C',
   GreenCuttySark: '#52796F',

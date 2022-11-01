@@ -12,13 +12,14 @@ import LayoutContainer from 'containers/LayoutContainer';
 import CustomizedTables from 'components/commons/Table';
 
 import McKinseyView from 'views/McKinseyView';
-import { Title } from 'views/McKinseyView/styles';
-import { Grid } from '@mui/material';
+import { SectionRadar, Title } from 'views/McKinseyView/styles';
+import { Box, Grid } from '@mui/material';
 
 import { Menu, MenuItem } from '@mui/material';
 import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
 import { Container } from 'views/FodaView/styles';
+import RadarChartCustom from 'components/commons/RadarChart';
 
 const McKinseyContainerResults = () => {
   const { matrizId, id } = useParams();
@@ -27,6 +28,40 @@ const McKinseyContainerResults = () => {
   const onClickGoBackButton = () =>
     navigate(`/projects/${id}/mckinsey/${matrizId}`);
   const cuadrantes = useSelector(cuadrantesSelector);
+  const cuadrantesOrdenados = [
+    cuadrantes[2],
+    cuadrantes[1],
+    cuadrantes[5],
+    cuadrantes[0],
+    cuadrantes[4],
+    cuadrantes[8],
+    cuadrantes[3],
+    cuadrantes[7],
+    cuadrantes[6],
+  ];
+
+  console.log({ cuadrantesOrdenados });
+
+  const buildChartData = () => {
+    const chartData = [];
+    let total = 0;
+    cuadrantesOrdenados?.map(
+      (cuadrante) => (total += cuadrante.unidades.length)
+    );
+    cuadrantesOrdenados?.map((cuadrante) => {
+      const data = {
+        subject: cuadrante.name,
+        A: cuadrante.unidades.length,
+        fullMark: total,
+      };
+
+      chartData.push(data);
+    });
+
+    return chartData;
+  };
+
+  console.log(buildChartData());
 
   const [anchorElement, setAnchorElement] = useState(null);
 
@@ -67,12 +102,12 @@ const McKinseyContainerResults = () => {
               <Comments show tool="MCKINSEY" toolId={matrizId} projectId={id} />
             </MenuItem>
           </Menu>
-          <Grid item sx={{ height: '100%' }}>
+          <Grid item sx={{ height: '100%', marginTop: '40px' }}>
             <Grid container>
               <Grid item sx={{ padding: '30px' }}>
-                <Title>Tabla de General</Title>
+                <Title>Tabla de Resultados</Title>
                 <CustomizedTables
-                  items={cuadrantes}
+                  items={cuadrantesOrdenados}
                   columns={[
                     {
                       label: 'Cuadrante',
@@ -91,6 +126,12 @@ const McKinseyContainerResults = () => {
               </Grid>
             </Grid>
           </Grid>
+          <Box sx={{ margin: '0 auto' }}>
+            <SectionRadar sx={{ textAlign: 'center' }}>
+              <Title>Grafico de Radar</Title>
+              <RadarChartCustom data={buildChartData()} />
+            </SectionRadar>
+          </Box>
         </Grid>
       </Container>
     </LayoutContainer>

@@ -10,7 +10,7 @@ const CustomizedTables = ({ items, columns }) => {
   return (
     <TableContainer>
       <Table
-        sx={{ minWidth: 700, maxWidth: 1300 }}
+        sx={{ minWidth: 700, maxWidth: 1300, marginTop: '10px' }}
         aria-label="customized table"
       >
         <TableHead>
