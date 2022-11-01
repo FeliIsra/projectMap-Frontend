@@ -62,7 +62,7 @@ export const ContentContainer = styled('div')({
   },
   button: {
     backgroundColor: COLORS.white,
-    marginBottom: 5,
+    marginBottom: 8,
   },
 });
 

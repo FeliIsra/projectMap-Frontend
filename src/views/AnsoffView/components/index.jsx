@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Grid, IconButton, Typography } from '@mui/material';
+import { Box, Grid, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
 import { COLORS } from 'helpers/enums/colors';
 import SelectMenu from 'components/inputs/SelectMenu';
 import { exitoProductoList, getExitoProducto } from 'helpers/enums/ansoff';
-import { Delete, Edit } from '@mui/icons-material';
-import { ButtonsContainer } from '../styles';
+import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
+import { ButtonsContainer, CustomForm } from '../styles';
+import { Field, Formik, ErrorMessage } from 'formik';
+import Input from 'components/inputs/Input';
+import SelectInput from 'components/inputs/SelectInput';
+import { validateField } from 'helpers/validateField';
 
 const Steps = ({
   productos,
@@ -15,7 +19,136 @@ const Steps = ({
   onEditExito,
   onDeleteProducto,
   showText,
+  situacionDelMercadoOptions,
+  situacionDelProductoOptions,
+  onEditProducto,
 }) => {
+  const [editProductId, setEditProductId] = useState(null);
+
+  const renderForm = (values) => (
+    <Grid
+      item
+      xs={12}
+      sx={{
+        padding: '20px',
+        backgroundColor: COLORS.Geyser,
+      }}
+    >
+      <Formik
+        onSubmit={(values) => {
+          onEditProducto(values._id, values);
+          setEditProductId(null);
+        }}
+        initialValues={values}
+      >
+        {({ handleSubmit }) => (
+          <CustomForm onSubmit={handleSubmit} sx={{ flex: 1 }}>
+            <Grid
+              container
+              display="flex"
+              spacing={3}
+              alignItems="center"
+              justifyContent={'space-between'}
+            >
+              <Grid item xs={12} md={4}>
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="nombre"
+                    placeholder="Nombre"
+                    component={Input}
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'nombre'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="situacionDelMercado"
+                    placeholder="Situacion Del Mercado"
+                    component={SelectInput}
+                    options={situacionDelMercadoOptions}
+                    fontSize={18}
+                    validate={validateField}
+                  />
+                </Box>
+                <ErrorMessage name={'situacionDelMercado'}>
+                  {(msg) => (
+                    <Typography
+                      sx={{
+                        textAlign: 'left',
+                        color: 'red',
+                        marginLeft: 2,
+                        marginTop: '2px',
+                        fontSize: '14px',
+                      }}
+                    >
+                      {msg}
+                    </Typography>
+                  )}
+                </ErrorMessage>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Box sx={{ width: '100%' }}>
+                  <Field
+                    name="situacionDelProducto"
+                    placeholder="Situacion Del Producto"
+                    component={SelectInput}
+                    options={situacionDelProductoOptions}
+                    fontSize={18}
+                    validate={validateField}
+                  />
+                  <ErrorMessage name={'situacionDelProducto'}>
+                    {(msg) => (
+                      <Typography
+                        sx={{
+                          textAlign: 'left',
+                          color: 'red',
+                          marginLeft: 2,
+                          marginTop: '2px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={1}>
+                <ButtonsContainer>
+                  <IconButton
+                    color="secondary"
+                    onClick={() => setEditProductId(null)}
+                  >
+                    <Cancel />
+                  </IconButton>
+                  <IconButton color="primary" type="submit">
+                    <CheckCircle />
+                  </IconButton>
+                </ButtonsContainer>
+              </Grid>
+            </Grid>
+          </CustomForm>
+        )}
+      </Formik>
+    </Grid>
+  );
+
   return (
     <>
       {activeStep === 0 && (
@@ -53,46 +186,55 @@ const Steps = ({
               <Grid container display="flex">
                 {productos?.map((producto) => (
                   <>
-                    <Grid
-                      item
-                      xs={3}
-                      display="flex"
-                      justifyContent={'center'}
-                      sx={{ padding: '20px 0' }}
-                    >
-                      {producto.nombre}
-                    </Grid>
-                    <Grid
-                      item
-                      xs={4}
-                      display="flex"
-                      justifyContent={'center'}
-                      sx={{ padding: '20px 0' }}
-                    >
-                      {producto.situacionDelMercado}
-                    </Grid>
-                    <Grid
-                      item
-                      xs={4}
-                      display="flex"
-                      justifyContent={'center'}
-                      sx={{ padding: '20px 0' }}
-                    >
-                      {producto.situacionDelProducto}
-                    </Grid>
-                    <Grid item xs={1} display="flex" alignItems={'center'}>
-                      <ButtonsContainer>
-                        {/* <IconButton color="secondary">
-                          <Edit />
-                        </IconButton> */}
-                        <IconButton
-                          onClick={() => onDeleteProducto(producto._id)}
-                          sx={{ color: 'grey' }}
+                    {editProductId === producto._id ? (
+                      renderForm(producto)
+                    ) : (
+                      <>
+                        <Grid
+                          item
+                          xs={3}
+                          display="flex"
+                          justifyContent={'center'}
+                          sx={{ padding: '20px 0' }}
                         >
-                          <Delete />
-                        </IconButton>
-                      </ButtonsContainer>
-                    </Grid>
+                          {producto.nombre}
+                        </Grid>
+                        <Grid
+                          item
+                          xs={4}
+                          display="flex"
+                          justifyContent={'center'}
+                          sx={{ padding: '20px 0' }}
+                        >
+                          {producto.situacionDelMercado}
+                        </Grid>
+                        <Grid
+                          item
+                          xs={4}
+                          display="flex"
+                          justifyContent={'center'}
+                          sx={{ padding: '20px 0' }}
+                        >
+                          {producto.situacionDelProducto}
+                        </Grid>
+                        <Grid item xs={1} display="flex" alignItems={'center'}>
+                          <ButtonsContainer>
+                            <IconButton
+                              color="secondary"
+                              onClick={() => setEditProductId(producto._id)}
+                            >
+                              <Edit />
+                            </IconButton>
+                            <IconButton
+                              onClick={() => onDeleteProducto(producto._id)}
+                              sx={{ color: 'grey' }}
+                            >
+                              <Delete />
+                            </IconButton>
+                          </ButtonsContainer>
+                        </Grid>
+                      </>
+                    )}
                   </>
                 ))}
               </Grid>

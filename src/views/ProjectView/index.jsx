@@ -1,6 +1,6 @@
 import React from 'react';
-import { Add, ArrowBack, ArrowForward } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { Add, ArrowBack, ArrowForward, Menu } from '@mui/icons-material';
+import { Box, IconButton } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
 
@@ -47,13 +47,29 @@ const ProjectView = ({
       </ContentContainer>
       <ContentContainer>
         {step.value !== StepValue.MEJORA_CONTINUA ? (
-          <IconButton
-            onClick={(event) =>
-              step.onClickAdd(step.value, event.currentTarget)
-            }
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '5px',
+            }}
           >
-            <Add />
-          </IconButton>
+            <IconButton
+              onClick={(event) =>
+                step.onClickAdd(step.value, event.currentTarget)
+              }
+            >
+              <Add />
+            </IconButton>
+            <IconButton
+              onClick={(event) =>
+                step.onClickList(step.value, event.currentTarget)
+              }
+            >
+              <Menu />
+            </IconButton>
+          </Box>
         ) : (
           <IconButton onClick={(event) => onCLickMejoraContinua()}>
             <ArrowForward />

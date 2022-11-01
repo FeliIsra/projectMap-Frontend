@@ -24,3 +24,5 @@ export const getBalancedScorecard = (id) =>
   get(`projects/${id}/balanced-scorecards`);
 
 export const getQuestionnaires = (id) => get(`projects/${id}/questionnaires`);
+
+export const getShared = () => get('projects/shared');
