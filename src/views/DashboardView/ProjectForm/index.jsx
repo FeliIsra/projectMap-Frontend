@@ -63,7 +63,7 @@ const ProjectForm = ({ onSubmit }) => (
           </Box>
 
           <SubmitButton type="submit" color="primary">
-            Create
+            Crear
           </SubmitButton>
         </CustomForm>
       )}

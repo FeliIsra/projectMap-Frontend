@@ -28,6 +28,10 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         loading: false,
       };
+    case constants.USER_ON_LOGOUT_REQUESTED:
+      return {
+        defaultState,
+      };
     case constants.USER_ON_FORGOT_PASSWORD_SUCCEEDED:
     case constants.USER_ON_LOGOUT_SUCCEEDED:
     case constants.USER_ON_RESET_PASSWORD_SUCCEEDED:

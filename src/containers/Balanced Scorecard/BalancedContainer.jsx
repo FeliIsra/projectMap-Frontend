@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import LayoutContainer from 'containers/LayoutContainer';
 import { useParams } from 'react-router';
-import { Grid } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { okrToolSelector } from 'redux/selectors/okr.selector';
 import BalancedView from 'views/BalancedView';
 import {
   onAddObjective,
@@ -14,13 +12,10 @@ import {
   areaObjectivesSelector,
   titleSelector,
 } from 'redux/selectors/balanced.selector';
-import { CheckpointsMonths } from 'helpers/enums/balanced';
 
 const BalancedContainer = () => {
   const { balancedId } = useParams();
   const dispatch = useDispatch();
-  const [isAddOkrModalOpen, setAddOkrModalOpen] = useState(false);
-  const selectedTool = useSelector(okrToolSelector);
   const objectives = useSelector(areaObjectivesSelector);
   const { title } = useSelector(titleSelector);
 

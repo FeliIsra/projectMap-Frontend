@@ -2,6 +2,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import * as appConstants from 'redux/contansts/app.constants';
 import * as constants from 'redux/contansts/user.constants';
+import * as constantsConsultoria from 'redux/contansts/consultora.constants';
 import {
   forgotPassword,
   initialize,
@@ -11,6 +12,7 @@ import {
   register,
 } from 'services/user.services';
 import { getCookie } from 'helpers/cookies';
+import { addConsultant } from 'services/consultora.services';
 
 export function* userInitialize() {
   try {
@@ -50,10 +52,20 @@ export function* userRegister(action) {
   try {
     const { formData } = action;
     const { data } = yield call(register, formData);
-    yield put({
-      type: constants.USER_ON_REGISTER_SUCCEEDED,
-      data,
-    });
+    if (formData.role === 'Consultant') {
+      const { data: dataAdd } = yield call(addConsultant, formData.consultora, {
+        email: formData.email,
+      });
+      yield put({
+        type: constantsConsultoria.CONSULTORIA_ADD_CONSULTANT_SUCCEEDED,
+        data: dataAdd,
+      });
+    } else {
+      yield put({
+        type: constants.USER_ON_REGISTER_SUCCEEDED,
+        data,
+      });
+    }
   } catch (error) {
     yield put({ type: constants.USER_ON_REGISTER_FAILED, error });
   }
@@ -61,7 +73,6 @@ export function* userRegister(action) {
 
 export function* userLogout() {
   try {
-    yield call(logout);
     yield put({ type: constants.USER_ON_LOGOUT_SUCCEEDED });
   } catch (error) {
     yield put({ type: constants.USER_ON_LOGOUT_FAILED, error });

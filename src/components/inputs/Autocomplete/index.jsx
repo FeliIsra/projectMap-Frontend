@@ -9,7 +9,15 @@ import { CustomInput } from './styles';
 const filter = createFilterOptions();
 
 const AutoComplete = (props) => {
-  const { placeholder, field, name, onChange, options, optionKey } = props;
+  const {
+    placeholder,
+    field,
+    name,
+    onChange,
+    options,
+    optionKey,
+    agregarNuevo = true,
+  } = props;
   const { value } = field;
 
   const getLabel = (value) =>
@@ -31,10 +39,12 @@ const AutoComplete = (props) => {
         const isExisting = options.some(
           (option) => inputValue === option[optionKey]
         );
-        if (inputValue !== '' && !isExisting) {
-          filtered.push({
-            [optionKey]: `${inputValue} (Agregar Nuevo)`,
-          });
+        if (agregarNuevo) {
+          if (inputValue !== '' && !isExisting) {
+            filtered.push({
+              [optionKey]: `${inputValue} (Agregar Nuevo)`,
+            });
+          }
         }
 
         return filtered;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, IconButton, Typography, Chip } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';

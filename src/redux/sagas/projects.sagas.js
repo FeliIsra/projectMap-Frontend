@@ -1,14 +1,8 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import {
-  onGetAnsoff,
-  onGetMckinsey,
-  onGetOKR,
-  onGetPestel,
-  onGetPorter,
-} from 'redux/actions/projects.actions';
 
-import * as appConstants from 'redux/contansts/app.constants';
+import * as constantesConsultora from 'redux/contansts/consultora.constants';
 import * as constants from 'redux/contansts/projects.constants';
+import { addProject } from 'services/consultora.services';
 import {
   getAll,
   getAnsoffs,
@@ -28,10 +22,22 @@ export function* projectsSaveOne(action) {
   try {
     const { formData } = action;
     const { data } = yield call(save, formData);
-    yield put({
-      type: constants.PROJECTS_ON_CREATE_SUCCEEDED,
-      data,
-    });
+    if (formData?.consultora) {
+      const { data: dataConsultora } = yield call(
+        addProject,
+        formData.consultora,
+        data._id
+      );
+      yield put({
+        type: constantesConsultora.CONSULTORIA_ADD_PROJECT_SUCCEEDED,
+        data: dataConsultora,
+      });
+    } else {
+      yield put({
+        type: constants.PROJECTS_ON_CREATE_SUCCEEDED,
+        data,
+      });
+    }
   } catch (error) {
     yield put({ type: constants.PROJECTS_ON_CREATE_FAILED, error });
   }

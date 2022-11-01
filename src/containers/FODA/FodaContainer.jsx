@@ -133,6 +133,7 @@ const FodaContainer = () => {
               {({ handleSubmit, setFieldValue }) => (
                 <CustomForm onSubmit={handleSubmit}>
                   <Box sx={{ width: '100%' }}>
+                    {console.log({ options: seeds[factor] || [] })}
                     <Field
                       name="descripcion"
                       placeholder="Descripcion"

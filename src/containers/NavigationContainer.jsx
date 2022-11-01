@@ -23,6 +23,7 @@ import QuestionnarieContainer from 'containers/Questionnarie/QuestionnarieContai
 import QuestionnarieQuestionsContainer from 'containers/Questionnarie/QuestionnarieQuestionsContainer';
 import QuestionnarieResultsContainer from 'containers/Questionnarie/QuestionnarieResultsContainer';
 import MejoraContinuaContainer from 'containers/MEJORA-CONTINUA/MejoraContinuaContainer';
+import ConsultoriaContainer from './AdminConsultoria/AdminConsultoriaContainer';
 
 export const NavigationContainer = () => {
   return (
@@ -31,6 +32,7 @@ export const NavigationContainer = () => {
       <Route path="/register" element={<RegisterContainer />} />
       <Route path="/forgot-password" element={<ForgotPasswordContainer />} />
       <Route path="/dashboard" element={<DashboardContainer />} />
+      <Route path="/consultoria" element={<ConsultoriaContainer />} />
       <Route path="/projects">
         <Route
           path=":id/foda/:fodaId/results"
