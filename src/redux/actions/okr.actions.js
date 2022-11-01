@@ -21,6 +21,12 @@ export const onAddOkr = (id, formData) => ({
   formData,
 });
 
+export const onDeleteOkr = (id, okrId) => ({
+  type: constants.DELETE_OKR_REQUEST,
+  id,
+  okrId,
+});
+
 export const onAddKeyResult = (id, okrId, formData) => ({
   type: constants.ADD_OKR_KEY_RESULT_REQUESTED,
   id,

@@ -11,6 +11,9 @@ export const createOkr = (id, formData) =>
 
 export const getOneOkr = (id, okrId) => get(`okr-projects/${id}/okrs/${okrId}`);
 
+export const deleteOkrItem = (id, okrId) =>
+  remove(`okr-projects/${id}/okrs/${okrId}`);
+
 export const addKeyResult = (id, okrId, formData) =>
   post(`okr-projects/${id}/okrs/${okrId}`, formData);
 

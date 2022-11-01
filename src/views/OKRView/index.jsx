@@ -63,6 +63,7 @@ const OKRView = ({
   titulo,
   onEditKeyResultStatus,
   openComments,
+  deleteOkr,
 }) => {
   const [okrInputId, setOkrInputId] = useState(null);
   const [keyResultId, setKeyResultId] = useState(null);
@@ -118,6 +119,11 @@ const OKRView = ({
                 </Grid>
                 <Grid item md={1} sx={tableHeaderStyle}>
                   <span>Avance</span>
+                </Grid>
+                <Grid item md={1} sx={tableHeaderStyle}>
+                  <IconButton type="button" onClick={() => deleteOkr(okr._id)}>
+                    <Delete fontSize="inherit" />
+                  </IconButton>
                 </Grid>
               </Grid>
             </Grid>

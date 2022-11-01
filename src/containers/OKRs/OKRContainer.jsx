@@ -13,6 +13,7 @@ import {
 import {
   onAddKeyResult,
   onAddOkr,
+  onDeleteOkr,
   onEditKeyResult,
   onGetOneTool,
 } from 'redux/actions/okr.actions';
@@ -64,6 +65,8 @@ const OKRContainer = () => {
     dispatch(onEditKeyResult(okrToolId, okrId, keyResultId, formData));
   };
 
+  const deleteOkr = (okrId) => dispatch(onDeleteOkr(okrToolId, okrId));
+
   return (
     <LayoutContainer>
       <Grid container>
@@ -75,6 +78,7 @@ const OKRContainer = () => {
             titulo={selectedTool.titulo}
             onEditKeyResultStatus={onEditKeyResultStatus}
             openComments={(target) => setAnchorElement(target)}
+            deleteOkr={deleteOkr}
           />
           <Menu
             anchorEl={anchorElement}

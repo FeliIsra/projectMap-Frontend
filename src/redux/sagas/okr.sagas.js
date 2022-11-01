@@ -8,6 +8,7 @@ import {
   editKeyStatus,
   editKeyResult,
   deleteOkr,
+  deleteOkrItem,
 } from 'services/okr.services';
 
 import * as constants from 'redux/contansts/okr.constants';
@@ -116,6 +117,19 @@ export function* okrEditKeyResult(action) {
   }
 }
 
+export function* okrDeleteOkr(action) {
+  try {
+    const { id, okrId } = action;
+    const { data } = yield call(deleteOkrItem, id, okrId);
+    yield put({
+      type: constants.DELETE_OKR_SUCCEEDED,
+      data: { ...data, okrId },
+    });
+  } catch (error) {
+    yield put({ type: constants.DELETE_OKR_FAILED, error });
+  }
+}
+
 export function* watchOkr() {
   yield all([
     takeLatest(constants.CREATE_OKR_TOOL_REQUESTED, okrCreateTool),
@@ -126,5 +140,6 @@ export function* watchOkr() {
     takeLatest(constants.ADD_OKR_KEY_RESULT_REQUESTED, okrAddKeyResult),
     takeEvery(constants.EDIT_KEY_RESULT_KEY_STATUS_REQUESTED, okrEditKeyStatus),
     takeEvery(constants.EDIT_KEY_RESULT_REQUESTED, okrEditKeyResult),
+    takeLatest(constants.DELETE_OKR_REQUEST, okrDeleteOkr),
   ]);
 }
