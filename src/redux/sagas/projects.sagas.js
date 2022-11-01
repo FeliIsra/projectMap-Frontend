@@ -22,6 +22,7 @@ import {
   getQuestionnaires,
   save,
   deleteProject,
+  getShared,
 } from 'services/projects.services';
 
 export function* projectsSaveOne(action) {
@@ -203,6 +204,18 @@ export function* projectsOnGetQuestionnaires(action) {
   }
 }
 
+export function* projectsOnGetAllShared() {
+  try {
+    const { data } = yield call(getShared);
+    yield put({
+      type: constants.PROJECTS_SHARED_ON_GET_ALL_SUCCEEDED,
+      data,
+    });
+  } catch (error) {
+    yield put({ type: constants.PROJECTS_SHARED_ON_GET_ALL_FAILED, error });
+  }
+}
+
 export function* watchProjects() {
   yield all([
     takeLatest(constants.PROJECTS_ON_GET_ONE_REQUESTED, projectsOnGetOne),
@@ -234,6 +247,13 @@ export function* watchProjects() {
     takeLatest(
       constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED,
       projectsOnGetQuestionnaires
+    ),
+    takeLatest(
+      [
+        constants.PROJECTS_SHARED_ON_GET_ALL_REQUESTED,
+        constants.PROJECTS_ON_GET_ALL_REQUESTED,
+      ],
+      projectsOnGetAllShared
     ),
   ]);
 }

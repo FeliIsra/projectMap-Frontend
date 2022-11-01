@@ -16,7 +16,7 @@ const DashboardContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isAddNewOpen, setAddNew] = useState(false);
-  const { items } = useSelector((state) => state.projects);
+  const { items, itemsShared } = useSelector((state) => state.projects);
 
   useEffect(() => {
     dispatch(onGetAll());
@@ -51,6 +51,7 @@ const DashboardContainer = () => {
         onAddNew={() => setAddNew(true)}
         onClickProject={onClickProject}
         items={items}
+        itemsShared={itemsShared}
         onClickDelete={onClickDelete}
       />
       <Modal

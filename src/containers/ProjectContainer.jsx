@@ -43,16 +43,19 @@ import { onDelete as onDeleteAnsoff } from 'redux/actions/ansoff.actions';
 import { onDelete as onDeleteMckinsey } from 'redux/actions/mckinsey.actions';
 import { onDelete as onDeleteBalanceScorecard } from 'redux/actions/balanceScorecard.actions';
 import { onDeleteTool as onDeleteOkr } from 'redux/actions/okr.actions';
+import { getMenuItems } from 'helpers/enums/steps';
 
 const ProjectContainer = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorElement, setAnchorElement] = useState(null);
+  const [anchorElementAdd, setAnchorElementAdd] = useState(null);
   const [stepValue, setStepValue] = useState(0);
   const [addTool, setAddTool] = useState(null);
   // const menuItems = getMenuItems(stepValue);
   const toolsItems = useSelector(stepToolsSelector);
+  const toolsAddOptions = getMenuItems(stepValue);
 
   const projectInfo = useSelector((state) => state.projects.data);
   const onClickButtonGoBack = () => navigate(`/dashboard`);
@@ -70,6 +73,11 @@ const ProjectContainer = () => {
   }, []);
 
   const onClickAdd = (value, anchorElement) => {
+    setStepValue(value);
+    setAnchorElementAdd(anchorElement);
+  };
+
+  const onClickList = (value, anchorElement) => {
     setStepValue(value);
     setAnchorElement(anchorElement);
   };
@@ -113,6 +121,7 @@ const ProjectContainer = () => {
   const items = STEPS?.map((step) => ({
     ...step,
     onClickAdd,
+    onClickList,
     // TO-DO: cambiar por el valor que corresponde
     progress: Math.floor(Math.random() * 100) + 1,
   }));
@@ -146,6 +155,43 @@ const ProjectContainer = () => {
                     setAddTool(item);
                     setAnchorElement(null);
                   }
+                }}
+              >
+                {item?.titulo}
+              </MenuItemText>
+              {item._id && (
+                <IconButton
+                  sx={{
+                    display: 'flex',
+                    width: '10px',
+                    height: '10px',
+                    alignItems: 'right',
+                  }}
+                  onClick={() => deleteTool(item)}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              )}
+            </Box>
+          </MenuItem>
+        ))}
+      </Menu>
+      <Menu
+        anchorEl={anchorElementAdd}
+        onClose={() => setAnchorElementAdd(null)}
+        open={!!anchorElementAdd}
+      >
+        {toolsAddOptions?.map((item) => (
+          <MenuItem key={item?.key}>
+            <Box
+              display="flex"
+              sx={{ width: '100%', justifyContent: 'space-between' }}
+            >
+              <MenuItemText
+                sx={{ width: '80%' }}
+                onClick={() => {
+                  setAddTool(item);
+                  setAnchorElementAdd(null);
                 }}
               >
                 {item?.titulo}

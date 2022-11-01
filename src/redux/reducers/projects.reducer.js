@@ -19,6 +19,7 @@ export const defaultState = {
   mckinseys: [],
   balancedScorecards: [],
   questionnaires: [],
+  itemsShared: [],
 };
 
 const projectsReducer = (state = defaultState, action) => {
@@ -42,7 +43,7 @@ const projectsReducer = (state = defaultState, action) => {
     case constants.PROJECTS_ON_CREATE_SUCCEEDED:
       return {
         ...state,
-        items: state.items.concat(data),
+        items: [...state.items, ...data],
         loading: false,
       };
     case constants.PROJECTS_ON_GET_ALL_SUCCEEDED:
@@ -155,6 +156,18 @@ const projectsReducer = (state = defaultState, action) => {
         items: state.items.filter((item) => item._id !== data._id),
         loading: false,
       };
+    case constants.PROJECTS_SHARED_ON_GET_ALL_SUCCEEDED:
+      return {
+        ...state,
+        itemsShared: [...state.itemsShared, ...data],
+        loading: false,
+      };
+    case constants.PROJECTS_ON_GET_ALL_REQUESTED:
+      return {
+        ...state,
+        data: null,
+      };
+    case constants.PROJECTS_SHARED_ON_GET_ALL_FAILED:
     case constants.PROJECTS_ON_CREATE_FAILED:
     case constants.PROJECTS_ON_GET_ONE_FAILED:
     case constants.PROJECTS_ON_DELETE_FAILED:

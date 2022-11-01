@@ -58,18 +58,13 @@ export const stepToolsSelector = createSelector(
     questionnaires
   ) => {
     return {
-      1: [...porters, getMenuItems(1)[0], ...pestels, getMenuItems(1)[1]],
-      2: [...fodas, getMenuItems(2)[0]],
-      3: [...ansoffs, getMenuItems(3)[0]],
-      4: [...mckenseys, getMenuItems(4)[0]],
-      5: [...questionnaires, getMenuItems(5)[0]],
-      6: [
-        ...balanceScorecards,
-        getMenuItems(6)[0],
-        ...okrs,
-        getMenuItems(6)[1],
-      ],
-      7: [getMenuItems(7)[0]],
+      1: [...porters, ...pestels],
+      2: [...fodas],
+      3: [...ansoffs],
+      4: [...mckenseys],
+      5: [...questionnaires],
+      6: [...balanceScorecards, ...okrs],
+      7: [],
     };
   }
 );
