@@ -1,4 +1,6 @@
 import LayoutContainer from 'containers/LayoutContainer';
+import { COLORS } from 'helpers/enums/colors';
+import { getRandomInt } from 'helpers/randomNumber';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -133,6 +135,19 @@ const ConsultoriaContainer = () => {
   };
 
   const createNewProjectOnSubmit = (formData) => {
+    const colors = [
+      COLORS.Aquamarine,
+      COLORS.AthensGray,
+      '#f58e90',
+      COLORS.GhostGray,
+      COLORS.VividTangerine,
+      COLORS.WildSand,
+    ];
+
+    const random = getRandomInt(6);
+
+    const color = colors[random];
+    formData.color = color;
     formData.consultora = consultora?._id;
     dispatch(onCreate(formData));
     closeModalNewProject();
