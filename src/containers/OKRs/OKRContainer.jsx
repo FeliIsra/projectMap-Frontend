@@ -31,10 +31,12 @@ import { Menu, MenuItem } from '@mui/material';
 import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
 import { validateField } from 'helpers/validateField';
+import { useNavigate } from 'react-router-dom';
 
 const OKRContainer = () => {
   const { okrToolId, id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isAddOkrModalOpen, setAddOkrModalOpen] = useState(false);
   const selectedTool = useSelector(okrToolSelector);
 
@@ -79,6 +81,7 @@ const OKRContainer = () => {
             onEditKeyResultStatus={onEditKeyResultStatus}
             openComments={(target) => setAnchorElement(target)}
             deleteOkr={deleteOkr}
+            onClickBack={() => navigate(`/projects/${id}`)}
           />
           <Menu
             anchorEl={anchorElement}

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Avatar, Box, Grid, IconButton, Tooltip } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  Grid,
+  IconButton,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
 import { Area, getDeviationColor, Trend } from 'helpers/enums/balanced';
@@ -173,8 +180,15 @@ const BalancedView = ({
   );
 
   return (
-    <>
-      {/* <TitleContainer>
+    <Grid>
+      <Box
+        sx={{
+          padding: '30px',
+          display: 'flex',
+          flex: 1,
+          justifyContent: 'space-between',
+        }}
+      >
         <ButtonContainer>
           <IconButton size="small" onClick={onClickButtonGoBack}>
             <ArrowBack />
@@ -189,7 +203,7 @@ const BalancedView = ({
             <Comment />
           </IconButton>
         </ButtonContainer>
-      </TitleContainer> */}
+      </Box>
       <Grid
         container
         sx={{
@@ -247,7 +261,7 @@ const BalancedView = ({
           </Grid>
         ))}
       </Grid>
-    </>
+    </Grid>
   );
 };
 

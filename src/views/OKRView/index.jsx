@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 import { COLORS } from 'helpers/enums/colors';
-import { Add, Check, Comment, Delete } from '@mui/icons-material';
+import { Add, ArrowBack, Check, Comment, Delete } from '@mui/icons-material';
 import Button from 'components/commons/Button';
 import { getKeyResultWitValues, monthsPerQuarter } from 'helpers/enums/okr';
 import KeyResultInput from './components/KeyResultInput';
@@ -64,6 +64,7 @@ const OKRView = ({
   onEditKeyResultStatus,
   openComments,
   deleteOkr,
+  onClickBack,
 }) => {
   const [okrInputId, setOkrInputId] = useState(null);
   const [keyResultId, setKeyResultId] = useState(null);
@@ -76,11 +77,14 @@ const OKRView = ({
       }}
     >
       <Grid item xs={9} sx={{ display: 'flex', alignItems: 'center' }}>
+        <IconButton size="small" onClick={() => onClickBack()}>
+          <ArrowBack />
+        </IconButton>
         <Typography style={{ fontSize: 30, fontWeight: 800 }}>
           {titulo}
         </Typography>
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
         <IconButton
           size="small"
           onClick={(event) => openComments(event.currentTarget)}

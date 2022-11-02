@@ -12,10 +12,12 @@ import {
   areaObjectivesSelector,
   titleSelector,
 } from 'redux/selectors/balanced.selector';
+import { useNavigate } from 'react-router-dom';
 
 const BalancedContainer = () => {
-  const { balancedId } = useParams();
+  const { balancedId, id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const objectives = useSelector(areaObjectivesSelector);
   const { title } = useSelector(titleSelector);
 
@@ -47,6 +49,7 @@ const BalancedContainer = () => {
         objectives={objectives}
         onEditObjective={onEditObjective}
         title={title}
+        onClickButtonGoBack={() => navigate(`/projects/${id}`)}
       />
     </LayoutContainer>
   );
