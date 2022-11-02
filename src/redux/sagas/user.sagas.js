@@ -11,7 +11,7 @@ import {
   resetPassword,
   register,
 } from 'services/user.services';
-import { getCookie } from 'helpers/cookies';
+import { getCookie, removeUserCookies } from 'helpers/cookies';
 import { addConsultant } from 'services/consultora.services';
 
 export function* userInitialize() {
@@ -71,8 +71,11 @@ export function* userRegister(action) {
   }
 }
 
-export function* userLogout() {
+export function* userLogout(action) {
   try {
+    const { callback } = action;
+    removeUserCookies();
+    if (callback) callback();
     yield put({ type: constants.USER_ON_LOGOUT_SUCCEEDED });
   } catch (error) {
     yield put({ type: constants.USER_ON_LOGOUT_FAILED, error });

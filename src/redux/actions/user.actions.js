@@ -15,8 +15,9 @@ export const onRegister = (formData) => ({
   formData,
 });
 
-export const onLogout = () => ({
+export const onLogout = (callback) => ({
   type: constants.USER_ON_LOGOUT_REQUESTED,
+  callback,
 });
 
 export const onResetPassword = (formData) => ({

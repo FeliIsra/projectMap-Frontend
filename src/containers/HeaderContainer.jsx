@@ -14,8 +14,7 @@ const HeaderContainer = () => {
 
   const onLogoutClick = () => {
     removeUserCookies();
-    dispatch(onLogout());
-    navigate('/login');
+    dispatch(onLogout(() => navigate('/login')));
   };
 
   const menuItems = [
