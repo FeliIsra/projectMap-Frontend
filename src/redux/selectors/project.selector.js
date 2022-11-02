@@ -1,3 +1,4 @@
+import { CompletitionColors } from 'helpers/enums/completition';
 import { getMenuItems } from 'helpers/enums/steps';
 import { createSelector } from 'reselect';
 
@@ -65,6 +66,91 @@ export const stepToolsSelector = createSelector(
       5: [...questionnaires],
       6: [...balanceScorecards, ...okrs],
       7: [],
+    };
+  }
+);
+
+const orderByCreatedDateDesc = (first, second) =>
+  new Date(second.createdAt).getTime() - new Date(first.createdAt).getTime();
+
+export const getFirstStep = createSelector(
+  [getPorters, getPestels],
+  (porters, pestels) => {
+    const porterCompletion =
+      porters.sort((a, b) => orderByCreatedDateDesc(a, b))[0]?.completion ||
+      'Vacio';
+    const pestelCompletion =
+      pestels.sort((a, b) => orderByCreatedDateDesc(a, b))[0]?.completion ||
+      'Vacio';
+
+    const array = [porterCompletion, pestelCompletion];
+    if (array.every((status) => status === 'Vacio')) return 'Vacio';
+    if (array.every((status) => status === 'Completo')) return 'Completo';
+    else return 'Incompleto';
+  }
+);
+
+export const getSecondStep = createSelector(
+  [getFodas],
+  (fodas) =>
+    fodas.sort((a, b) => orderByCreatedDateDesc(a, b))[0]?.completion || 'Vacio'
+);
+
+export const getThirdStep = createSelector(
+  [getAnsoffs],
+  (ansoffs) =>
+    ansoffs.sort((a, b) => orderByCreatedDateDesc(a, b))[0]?.completion ||
+    'Vacio'
+);
+
+export const getFourthStep = createSelector(
+  [getMckinseys],
+  (mckenseys) =>
+    mckenseys.sort((a, b) => orderByCreatedDateDesc(a, b))[0]?.completion ||
+    'Vacio'
+);
+
+export const getFivethStep = createSelector(
+  [getQuestionnaires],
+  (questionnaires) =>
+    questionnaires.sort((a, b) => orderByCreatedDateDesc(a, b))[0]
+      ?.completion || 'Vacio'
+);
+
+export const getSixthtStep = createSelector(
+  [getOkrs, getBalancedScorecard],
+  (okrs, balanceScorecards) => {
+    const okrCompletion =
+      okrs.sort((a, b) => orderByCreatedDateDesc(a, b))[0]?.completion ||
+      'Vacio';
+    const balancedCompletion =
+      balanceScorecards.sort((a, b) => orderByCreatedDateDesc(a, b))[0]
+        ?.completion || 'Vacio';
+
+    const array = [okrCompletion, balancedCompletion];
+    if (array.every((status) => status === 'Vacio')) return 'Vacio';
+    if (array.every((status) => status === 'Completo')) return 'Completo';
+    else return 'Incompleto';
+  }
+);
+
+export const progressSelector = createSelector(
+  [
+    getFirstStep,
+    getSecondStep,
+    getThirdStep,
+    getFourthStep,
+    getFivethStep,
+    getSixthtStep,
+  ],
+  (firstStep, secondStep, thirdStep, fourthStep, fivethStep, sixthStep) => {
+    return {
+      1: CompletitionColors[firstStep],
+      2: CompletitionColors[secondStep],
+      3: CompletitionColors[thirdStep],
+      4: CompletitionColors[fourthStep],
+      5: CompletitionColors[fivethStep],
+      6: CompletitionColors[sixthStep],
     };
   }
 );

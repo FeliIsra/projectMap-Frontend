@@ -26,22 +26,19 @@ const ProjectView = ({
   onClickButtonGoBack,
   project,
   onCLickMejoraContinua,
+  stepsColors,
 }) => {
   const renderStep = (step) => (
     <Item>
-      <CustomCircularProgress
-        variant="determinate"
-        value={100}
-        size="168px"
-        thickness={2}
-        style={{ color: 'white' }}
-      />
-      <CustomCircularProgress
-        variant="determinate"
-        value={step.progress}
-        size="168px"
-        thickness={2}
-      />
+      {step.value !== StepValue.MEJORA_CONTINUA && (
+        <CustomCircularProgress
+          variant="determinate"
+          value={100}
+          size="168px"
+          thickness={2}
+          style={{ color: stepsColors[step.value] }}
+        />
+      )}
       <ContentContainer style={{ flex: 1, justifyContent: 'center' }}>
         <StepTitle>{step.title}</StepTitle>
       </ContentContainer>

@@ -19,4 +19,6 @@ export const COLORS = {
   GreenBayLeaf: '#84A98C',
   GreenCuttySark: '#52796F',
   Geyser: '#DEE2E6',
+  CompletedStep: '#06B192',
+  IncompletedStep: '#FCD966',
 };

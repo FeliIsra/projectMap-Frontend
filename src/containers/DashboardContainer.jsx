@@ -54,11 +54,7 @@ const DashboardContainer = () => {
         itemsShared={itemsShared}
         onClickDelete={onClickDelete}
       />
-      <Modal
-        isOpen={isAddNewOpen}
-        onClose={() => setAddNew(false)}
-        backgroundColor={COLORS.WildSand}
-      >
+      <Modal isOpen={isAddNewOpen} onClose={() => setAddNew(false)}>
         <ProjectForm onSubmit={onSubmit} />
       </Modal>
     </LayoutContainer>

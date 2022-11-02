@@ -33,7 +33,10 @@ import {
 import LayoutContainer from 'containers/LayoutContainer';
 import ProjectView from 'views/ProjectView';
 import { MenuItemText } from 'views/ProjectView/styles';
-import { stepToolsSelector } from 'redux/selectors/project.selector';
+import {
+  stepToolsSelector,
+  progressSelector,
+} from 'redux/selectors/project.selector';
 import { validateField } from 'helpers/validateField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { onDelete as onDeletePestel } from 'redux/actions/pestel.actions';
@@ -56,6 +59,7 @@ const ProjectContainer = () => {
   // const menuItems = getMenuItems(stepValue);
   const toolsItems = useSelector(stepToolsSelector);
   const toolsAddOptions = getMenuItems(stepValue);
+  const stepsColors = useSelector(progressSelector);
 
   const projectInfo = useSelector((state) => state.projects.data);
   const onClickButtonGoBack = () => navigate(`/dashboard`);
@@ -118,12 +122,10 @@ const ProjectContainer = () => {
 
   const onCLickMejoraContinua = () => navigate('mejora-continua');
 
-  const items = STEPS?.map((step) => ({
+  const items = STEPS?.map((step, index) => ({
     ...step,
     onClickAdd,
     onClickList,
-    // TO-DO: cambiar por el valor que corresponde
-    progress: Math.floor(Math.random() * 100) + 1,
   }));
 
   return (
@@ -134,6 +136,7 @@ const ProjectContainer = () => {
         onClickButtonGoBack={onClickButtonGoBack}
         project={projectInfo}
         onCLickMejoraContinua={onCLickMejoraContinua}
+        stepsColors={stepsColors}
       />
       <Menu
         anchorEl={anchorElement}
