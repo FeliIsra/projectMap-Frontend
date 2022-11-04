@@ -35,8 +35,9 @@ import CustomizedTables from 'components/commons/Table';
 import RadarChartCustom from 'components/commons/RadarChart';
 import PieChartCustom from 'components/commons/PieChart';
 import { COLORS } from 'helpers/enums/colors';
-import { Menu, MenuItem } from '@mui/material';
+import { Box, Menu, MenuItem } from '@mui/material';
 import Comments from 'components/comments/Comments';
+import ToolTip from 'components/commons/ToolTip';
 
 const PestelContainer = () => {
   const { pestelId, id } = useParams();
@@ -104,7 +105,14 @@ const PestelContainer = () => {
           </Menu>
           {consejos?.length ? (
             <SectionTable>
-              <Title>Tabla de Consejos</Title>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Title>Tabla de Consejos</Title>
+                <ToolTip
+                  text="Esta tabla contiene los consejos que el análisis le arroja por cada factor precargado utilizado. Preste atención a los mismos y planifique acorde."
+                  placement="right"
+                  fontSize="16px"
+                />
+              </Box>
               <CustomizedTables
                 items={consejos}
                 columns={[

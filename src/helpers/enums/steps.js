@@ -37,7 +37,12 @@ export const STEPS = [
   {
     value: StepValue.EVALUACION_SITUACION_INTERNA,
     title: 'Evaluación de la Situación Interna',
-    menuItems: [{ titulo: 'Agregar Analisis FODA', action: onCreateFoda }],
+    menuItems: [
+      {
+        titulo: 'Agregar Analisis FODA',
+        action: onCreateFoda,
+      },
+    ],
   },
   {
     value: StepValue.MEJORA_CONTINUA,

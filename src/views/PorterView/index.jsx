@@ -15,6 +15,8 @@ import { ArrowBack, Comment } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { ButtonContainer } from 'views/FodaView/styles';
 import { validateField } from 'helpers/validateField';
+import ToolTip from 'components/commons/ToolTip';
+import { tooltips } from './tooltips';
 
 const PorterView = ({
   options,
@@ -42,7 +44,10 @@ const PorterView = ({
         <IconButton size="small" onClick={onClickButtonGoBack}>
           <ArrowBack />
         </IconButton>
-        <CardTitle>{titulo}</CardTitle>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <CardTitle>{titulo}</CardTitle>
+          <ToolTip text={tooltips[titulo]} placement="right" fontSize="14px" />
+        </Box>
         <ButtonContainer sx={{ gap: '10px' }}>
           <IconButton
             size="small"

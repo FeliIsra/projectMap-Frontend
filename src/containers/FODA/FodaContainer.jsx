@@ -35,6 +35,7 @@ import AutoComplete from 'components/inputs/Autocomplete';
 import Comments from 'components/comments/Comments';
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import { validateField } from 'helpers/validateField';
+import ToolTip from 'components/commons/ToolTip';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -125,15 +126,14 @@ const FodaContainer = () => {
           </MenuItem>
         </Menu>
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
-          <CreateContent>
+          <CreateContent sx={{ width: '400px' }}>
             <CardTitle>
               {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
             </CardTitle>
             <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
               {({ handleSubmit, setFieldValue }) => (
                 <CustomForm onSubmit={handleSubmit}>
-                  <Box sx={{ width: '100%' }}>
-                    {console.log({ options: seeds[factor] || [] })}
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name="descripcion"
                       placeholder="Descripcion"
@@ -149,6 +149,11 @@ const FodaContainer = () => {
                         )
                       }
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Seleccione o escriba el factor que quiere agregar a su análisis."
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name="descripcion">
                       {(msg) => (
@@ -166,13 +171,18 @@ const FodaContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name="importancia"
                       component={SelectInput}
                       options={importancia}
                       placeholder="Importancia"
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Algunos factores que agregue en su análisis tendrán mayor impacto que otros. Si algo tiene un gran impacto, positivo o negativo, en su organización, utilice la opción superior, de ser menos importante, la inferior"
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name="importancia">
                       {(msg) => (
@@ -190,13 +200,22 @@ const FodaContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name={showUrgencia ? 'urgencia' : 'intensidad'}
                       component={SelectInput}
                       options={showUrgencia ? urgencia : intensidad}
                       placeholder={showUrgencia ? 'Urgencia' : 'Intensidad'}
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text={
+                        showUrgencia
+                          ? 'El factor que está agregando tiene asignada una urgencia. Si es una oportunidad, representa la ventana de oportunidad para explotarlo y de ser una amenaza representa con qué rapidez está percibida amenaza se volverá realidad.'
+                          : 'Los factores a agregar se pueden manifestar con fuerza variable. No es lo mismo por ejemplo, una inflación del 2% a una de 20%. Utilice esta escala para describir ese comportamiento.'
+                      }
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage
                       name={showUrgencia ? 'urgencia' : 'intensidad'}
@@ -216,13 +235,18 @@ const FodaContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name="tendencia"
                       component={SelectInput}
                       options={tendencia}
                       placeholder="Tendencia"
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Un factor necesariamente tiene una tendencia, ¿Está empeorando o mejorando?, ¿Está tendiendo a desaparecer o se está volviendo más importante?. Utilice estas 5 posibilidades para representar este comportamiento."
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name={'tendencia'}>
                       {(msg) => (

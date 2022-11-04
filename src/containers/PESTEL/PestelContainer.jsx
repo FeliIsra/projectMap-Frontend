@@ -38,6 +38,7 @@ import AutoComplete from 'components/inputs/Autocomplete';
 import Comments from 'components/comments/Comments';
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import { validateField } from 'helpers/validateField';
+import ToolTip from 'components/commons/ToolTip';
 
 const PestelContainer = () => {
   const { pestelId, id } = useParams();
@@ -129,14 +130,14 @@ const PestelContainer = () => {
           </MenuItem>
         </Menu>
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
-          <CreateContent>
+          <CreateContent sx={{ width: '400px' }}>
             <CardTitle>
               {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
             </CardTitle>
             <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
               {({ handleSubmit, setFieldValue }) => (
                 <CustomForm onSubmit={handleSubmit}>
-                  <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name="descripcion"
                       placeholder="Descripcion"
@@ -152,6 +153,11 @@ const PestelContainer = () => {
                         )
                       }
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Seleccione o escriba el factor que quiere agregar a su análisis."
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name={'descripcion'}>
                       {(msg) => (
@@ -169,13 +175,18 @@ const PestelContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name="importancia"
                       component={SelectInput}
                       options={importancia}
                       placeholder="Importancia"
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Algunos factores que agregue en su análisis tendrán mayor impacto que otros. Si algo tiene un gran impacto, positivo o negativo, en su organización, utilice la opción superior, de ser menos importante, la inferior"
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name={'importancia'}>
                       {(msg) => (
@@ -193,13 +204,18 @@ const PestelContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name={'intensidad'}
                       component={SelectInput}
                       options={intensidad}
                       placeholder={'Intensidad'}
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Los factores a agregar se pueden manifestar con fuerza variable. No es lo mismo por ejemplo, una inflación del 2% a una de 20%. Utilice esta escala para describir ese comportamiento."
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name={'intensidad'}>
                       {(msg) => (
@@ -217,13 +233,18 @@ const PestelContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name="tendencia"
                       component={SelectInput}
                       options={tendencia}
                       placeholder={'Tendencia'}
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Un factor necesariamente tiene una tendencia, ¿Está empeorando o mejorando?, ¿Está tendiendo a desaparecer o se está volviendo más importante?. Utilice estas 5 posibilidades para representar este comportamiento."
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name={'tendencia'}>
                       {(msg) => (

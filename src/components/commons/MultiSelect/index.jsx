@@ -26,8 +26,6 @@ export default function MultipleSelect({ initialProjects = [], onChange }) {
       target: { value },
     } = event;
 
-    console.log({ value });
-
     const mappedProjects = projects.map((project) => {
       if (project.id === value[value.length - 1]) {
         project.checked = !project.checked;

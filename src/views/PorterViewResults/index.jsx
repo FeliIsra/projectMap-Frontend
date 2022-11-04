@@ -11,6 +11,8 @@ import Box from '@mui/material/Box';
 import { ArrowBack, Comment } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { ButtonContainer } from 'views/FodaView/styles';
+import { tooltips } from 'views/PorterView/tooltips';
+import ToolTip from 'components/commons/ToolTip';
 
 const PorterViewResults = ({
   consejo,
@@ -21,6 +23,7 @@ const PorterViewResults = ({
   titulo,
   onClickButtonGoBack,
   openComments,
+  goToHub,
 }) => {
   return (
     <CreateContent sx={{ gap: '0px' }}>
@@ -35,7 +38,10 @@ const PorterViewResults = ({
         <IconButton size="small" onClick={onClickButtonGoBack}>
           <ArrowBack />
         </IconButton>
-        <CardTitle>{titulo}</CardTitle>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <CardTitle>{titulo}</CardTitle>
+          <ToolTip text={tooltips[titulo]} placement="right" fontSize="14px" />
+        </Box>
         <ButtonContainer sx={{ gap: '10px' }}>
           <IconButton
             size="small"
@@ -117,7 +123,10 @@ const PorterViewResults = ({
               Atras
             </Button>
           )}
-          <Button color="primary" onClick={handleNext}>
+          <Button
+            color="primary"
+            onClick={activeStep === steps?.length - 1 ? goToHub : handleNext}
+          >
             {activeStep === steps?.length - 1 ? 'Finalizar' : 'Siguiente'}
           </Button>
         </ButtonsContainer>

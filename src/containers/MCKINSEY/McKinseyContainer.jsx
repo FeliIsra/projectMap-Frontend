@@ -30,6 +30,7 @@ import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
 import { validateField } from 'helpers/validateField';
 import { Container } from 'views/FodaView/styles';
+import ToolTip from 'components/commons/ToolTip';
 
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
@@ -104,7 +105,7 @@ const McKinseyContainer = () => {
           backgroundColor={COLORS.WildSand}
           disabled
         >
-          <CreateContent>
+          <CreateContent sx={{ width: '400px' }}>
             <CreateModalTitle>{`Agregar Unidad de Negocio`}</CreateModalTitle>
             <Formik onSubmit={onSubmit} initialValues={initialValues}>
               {({ handleSubmit }) => (
@@ -132,12 +133,24 @@ const McKinseyContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                    }}
+                  >
                     <Field
                       name="fuerzaCompetitiva"
                       component={SliderInput}
                       label="Fuerza Competitiva"
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="Fuerza competiva: Dentro del mercado en el que se da la actividad economica: ¿como se esta posicionado en comparacion con productos competitivos?"
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name={'fuerzaCompetitiva'}>
                       {(msg) => (
@@ -155,12 +168,24 @@ const McKinseyContainer = () => {
                       )}
                     </ErrorMessage>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                    }}
+                  >
                     <Field
                       name="atractivoDeMercado"
                       component={SliderInput}
                       label="Atractivo De Mercado"
                       validate={validateField}
+                    />
+                    <ToolTip
+                      text="¿Como se compara su mercado con otros? Esta en auge o en decadencia?"
+                      placement="right"
+                      fontSize="14px"
                     />
                     <ErrorMessage name={'atractivoDeMercado'}>
                       {(msg) => (

@@ -17,8 +17,6 @@ const LoginContainer = () => {
     password: '',
   };
 
-  console.log({ data });
-
   const onSubmit = (values) => dispatch(onLogin(values));
 
   return (

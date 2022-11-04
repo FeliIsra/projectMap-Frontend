@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, IconButton, Fab } from '@mui/material';
+import { Grid, IconButton, Fab, Box } from '@mui/material';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -18,6 +18,8 @@ import {
 import { ButtonContainer } from 'views/DashboardView/styles';
 import { ArrowBack, Comment } from '@mui/icons-material';
 import { Title, TitleContainer } from 'views/FodaView/styles';
+import ToolTip from 'components/commons/ToolTip';
+import { tooltips } from './tooltips';
 
 const McKinseyView = ({
   onAdd,
@@ -30,7 +32,10 @@ const McKinseyView = ({
 }) => {
   const renderTitle = (title) => (
     <CardTitleContainer>
-      <CardTitle>{title}</CardTitle>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <CardTitle>{title}</CardTitle>
+        <ToolTip text={tooltips[title]} placement="right" fontSize="14px" />
+      </Box>
     </CardTitleContainer>
   );
 

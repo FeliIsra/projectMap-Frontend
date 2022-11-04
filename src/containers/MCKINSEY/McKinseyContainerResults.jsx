@@ -40,8 +40,6 @@ const McKinseyContainerResults = () => {
     cuadrantes[6],
   ];
 
-  console.log({ cuadrantesOrdenados });
-
   const buildChartData = () => {
     const chartData = [];
     let total = 0;
@@ -60,8 +58,6 @@ const McKinseyContainerResults = () => {
 
     return chartData;
   };
-
-  console.log(buildChartData());
 
   const [anchorElement, setAnchorElement] = useState(null);
 
@@ -114,7 +110,7 @@ const McKinseyContainerResults = () => {
                       value: 'title',
                     },
                     {
-                      label: 'Que significa para la Unidad de Negocio?',
+                      label: '¿Que significa para la Unidad de Negocio?',
                       value: 'significado',
                     },
                     {

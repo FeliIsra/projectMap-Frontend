@@ -42,7 +42,7 @@ const AutoComplete = (props) => {
         if (agregarNuevo) {
           if (inputValue !== '' && !isExisting) {
             filtered.push({
-              [optionKey]: `${inputValue} (Agregar Nuevo)`,
+              [optionKey]: `${inputValue}`,
             });
           }
         }

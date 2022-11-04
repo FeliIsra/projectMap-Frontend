@@ -38,6 +38,7 @@ const PorterContainerResults = () => {
   const consejos = useSelector(consejosSelector);
   const navigate = useNavigate();
   const onClickGoBack = () => navigate(`/projects/${id}/porter/${porterId}`);
+  const goToHub = () => navigate(`/projects/${id}`);
 
   useEffect(() => {
     dispatch(onGetConsejos(porterId));
@@ -130,6 +131,7 @@ const PorterContainerResults = () => {
                     titulo={steps[activeStep]}
                     onClickButtonGoBack={onClickGoBack}
                     openComments={(target) => setAnchorElement(target)}
+                    goToHub={goToHub}
                   />
                 )}
 

@@ -69,7 +69,6 @@ const ConsultoriaContainer = () => {
   };
 
   const onAssignProjectsSubmit = (formData) => {
-    console.log('ON SUBMIT');
     const { projects } = formData;
     const addProjects = [];
     const removeProjects = [];

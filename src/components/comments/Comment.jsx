@@ -32,7 +32,7 @@ const Comment = ({ comment }) => {
             <Tooltip arrow placement="top" title="Borrar">
               <IconButton
                 onClick={onClickDeleteButton}
-                disabled={!comment.showDelete}
+                disabled={comment.showDelete}
               >
                 <DeleteIcon />
               </IconButton>
