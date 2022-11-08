@@ -73,3 +73,41 @@ export const STEPS = [
 export const getMenuItems = (stepValue) =>
   Object.values(STEPS)?.find((step) => step.value === stepValue)?.menuItems ||
   [];
+
+export const stepsInfo = {
+  1: {
+    title: 'Evaluación del Entorno Externo',
+    description:
+      "Also every whose good unto god midst fowl good yielding likeness make moving it can't made replenish seas divided lights make our sea. Winged herb is from female which under days meat living whales every living seas had. Divided give bring land created which sixth to green, darkness. Subdue so.",
+  },
+  2: {
+    title: 'Evaluación del Entorno Interno',
+    description:
+      "Creepeth creeping saw. Image every kind bearing fish. Stars make be Fly, creepeth under. Together. May shall dominion also every said void so replenish hath whose behold, seed seas so. Place behold were together bearing, that, doesn't that tree us from fill. One evening Divide fish whales above form his.",
+  },
+  3: {
+    title: 'Definición de Lineamientos Estratégicos',
+    description:
+      "Face it upon saying, give fill subdue moved. All appear given doesn't female let. Multiply own. Fruitful fifth, dry so land unto blessed were herb. Which saw won't isn't can't female. Signs fruit the first open divided land he beast bearing whose, lights also every that abundantly created also to.",
+  },
+  4: {
+    title: 'Formulación de la Estrategia Competitiva',
+    description:
+      "Thing winged make saw image the cattle day light second. She'd fowl man waters a herb behold good form the hath hath man, second own. God saying. Beast. Evening seasons called our beast saying they're in appear for light wherein bring had won't over yielding fish was own sea signs.",
+  },
+  5: {
+    title: 'Definición de los Planes de Transformación',
+    description:
+      "Divided you'll us. One. So without replenish open night. Sea lights creepeth us were behold evening female made fowl one she'l created. Upon likeness, unto green green air. Moving image make second given divided to Can't of beginning. Made. She'l Above subdue void him he seas third can't kind they're.",
+  },
+  6: {
+    title: 'Planeamiento Financiero y Medición de Resultados',
+    description:
+      "They're them said also herb dry third moved blessed. Male fowl darkness saying, seas won't third our kind kind from yielding blessed multiply to. Kind male over, image. Fruit the. Fruit greater image i Gathered blessed their hath abundantly you'll made sixth. Sixth fourth was isn't his is be saying.",
+  },
+  7: {
+    title: 'Mejora Continua',
+    description:
+      "Darkness fowl rule seasons, set gathered heaven be whales. Of life male without shall. Man spirit likeness. Creature yielding earth moved. Evening him sixth form to fruitful deep hath be subdue multiply created bearing seed meat you're creature, saying. Yielding shall it it you saying. Very they're for fowl creature.",
+  },
+};

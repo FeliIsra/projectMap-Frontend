@@ -6,22 +6,22 @@ import { COLORS } from 'helpers/enums/colors';
 
 export const Container = styled('div')({
   display: 'flex',
-  margin: '0 auto',
+  width: '100%',
+  margin: '50px 20px 10px',
   alignItems: 'center',
-  justifyContent: 'center',
-  aspectRatio: '1',
-  padding: '20px 0',
+  justifyContent: 'space-around',
+  gap: '50px',
 });
 
 export const Content = styled('div')({
   position: 'relative',
   display: 'flex',
-  flex: 1,
   flexDirection: 'column',
   alignItems: 'center',
   borderRadius: '50%',
   height: '95%',
   maxWidth: '95%',
+  aspectRatio: '1',
 });
 
 export const StepContainer = styled('div')({
