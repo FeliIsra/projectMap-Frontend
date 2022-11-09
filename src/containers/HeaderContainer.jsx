@@ -21,7 +21,7 @@ const HeaderContainer = () => {
     {
       key: 'profile',
       label: 'Profile',
-      onClick: () => navigate('/me'),
+      onClick: () => navigate('/profile'),
     },
     {
       key: 'logout',

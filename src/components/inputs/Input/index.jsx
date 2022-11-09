@@ -5,7 +5,7 @@ import { VisibilityOutlined, VisibilityOffOutlined } from '@mui/icons-material';
 import { CustomInput, InputContainer, IconContainer } from './styles';
 
 const Input = (props) => {
-  const { placeholder, field, type } = props;
+  const { placeholder, field, type, disable } = props;
   const [showPassword, setShowPassword] = useState(false);
   const isPasswordInput = type === 'password';
 
@@ -24,6 +24,7 @@ const Input = (props) => {
         placeholder={placeholder}
         type={getInputType()}
         showIcon={isPasswordInput}
+        disabled={disable}
       />
       {isPasswordInput && (
         <IconContainer className="icon">

@@ -33,7 +33,7 @@ const AssignProjectsModal = ({
             color: COLORS.BlueDianne,
           }}
         >
-          Projectos
+          Proyectos
         </span>
         <Formik onSubmit={onSubmit} initialValues={initialValues}>
           {({ handleSubmit, setFieldValue }) => (

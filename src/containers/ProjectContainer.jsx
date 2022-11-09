@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { IconButton, Menu, MenuItem } from '@mui/material';
+import { ButtonBase, IconButton, Menu, MenuItem } from '@mui/material';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
-import ToolTip from 'components/commons/ToolTip';
+import { PopupModal } from 'react-calendly';
 import {
   onGetAnsoff,
   onGetBalanced,
@@ -57,6 +57,7 @@ const ProjectContainer = () => {
   const [anchorElementAdd, setAnchorElementAdd] = useState(null);
   const [stepValue, setStepValue] = useState(0);
   const [addTool, setAddTool] = useState(null);
+  const [isCalendlyOpen, setCalendlyOpen] = useState(false);
   // const menuItems = getMenuItems(stepValue);
   const toolsItems = useSelector(stepToolsSelector);
   const toolsAddOptions = getMenuItems(stepValue);
@@ -266,7 +267,32 @@ const ProjectContainer = () => {
           </Formik>
         </FormContainer>
       </Modal>
-      {}
+      <PopupModal
+        url="https://calendly.com/lgandolfo/30min"
+        onModalClose={() => setCalendlyOpen(false)}
+        open={isCalendlyOpen}
+        /*
+         * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+         * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+         */
+        rootElement={document.getElementById('root')}
+      />
+      <ButtonBase
+        sx={{
+          position: 'fixed',
+          bottom: '20px',
+          left: '20px',
+          color: '#ffffff',
+          backgroundColor: '#00A4E8',
+          padding: '15px',
+          fontSize: '16px',
+          borderRadius: 30,
+          fontWeight: '800',
+        }}
+        onClick={() => setCalendlyOpen(true)}
+      >
+        Agende con un consultor
+      </ButtonBase>
     </LayoutContainer>
   );
 };
