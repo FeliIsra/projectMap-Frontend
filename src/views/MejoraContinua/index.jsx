@@ -1,5 +1,13 @@
 import React from 'react';
-import { Box, Grid, Paper, Stack, styled, Typography } from '@mui/material';
+import {
+  Box,
+  Grid,
+  IconButton,
+  Paper,
+  Stack,
+  styled,
+  Typography,
+} from '@mui/material';
 import { Doughnut, Radar, Bar, Line, PolarArea } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -16,6 +24,8 @@ import {
 } from 'chart.js';
 
 import { getRandomInt } from 'helpers/randomNumber';
+import { ButtonContainer, Title, TitleContainer } from 'views/FodaView/styles';
+import { ArrowBack } from '@mui/icons-material';
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -158,192 +168,204 @@ const MejoraContinuaView = ({
   dataAnsoff,
   dataOkrs,
   dataBalanced,
+  onClickButtonGoBack,
 }) => {
   return (
-    <Box
-      sx={{
-        padding: '30px',
-        display: 'flex',
-        flex: 1,
-      }}
-    >
-      <Grid container spacing={2}>
-        <Grid item md={4} sx={{ display: 'flex', flex: 1 }}>
-          <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
-            <Item sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box sx={{ width: '100%' }}>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontFamily: 'Fira Sans',
-                    fontSize: '1.3rem',
-                  }}
-                >
-                  Comparativa FODA
-                </Typography>
-                <Radar
-                  data={dataFODA}
-                  options={{
-                    scales: {
-                      r: {
-                        ticks: {
-                          stepSize: 50,
+    <Box>
+      <TitleContainer sx={{ justifyContent: 'unset' }}>
+        <ButtonContainer>
+          <IconButton size="small" onClick={onClickButtonGoBack}>
+            <ArrowBack />
+          </IconButton>
+        </ButtonContainer>
+        <Title sx={{ marginLeft: '50%', fontSize: 34 }}>Mejora continua</Title>
+      </TitleContainer>
+      <Box
+        sx={{
+          padding: '30px',
+          display: 'flex',
+          width: '100%',
+          flex: 1,
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid item md={4} sx={{ display: 'flex', flex: 1 }}>
+            <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
+              <Item sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ width: '100%' }}>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontFamily: 'Fira Sans',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    Comparativa FODA
+                  </Typography>
+                  <Radar
+                    data={dataFODA}
+                    options={{
+                      scales: {
+                        r: {
+                          ticks: {
+                            stepSize: 50,
+                          },
                         },
                       },
-                    },
-                  }}
-                />
-              </Box>
-            </Item>
-            <Item sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box sx={{ width: '100%' }}>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontFamily: 'Fira Sans',
-                    fontSize: '1.3rem',
-                  }}
-                >
-                  Comparativa PORTER
-                </Typography>
-                <Bar data={dataPorter} />
-              </Box>
-            </Item>
-            <Item sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontFamily: 'Fira Sans',
-                    fontSize: '1.3rem',
-                  }}
-                >
-                  MCKINSEY
-                </Typography>
-                <PolarArea
-                  data={dataMckinsey}
-                  options={{
-                    plugins: {
-                      legend: {
-                        position: 'right',
+                    }}
+                  />
+                </Box>
+              </Item>
+              <Item sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ width: '100%' }}>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontFamily: 'Fira Sans',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    Comparativa PORTER
+                  </Typography>
+                  <Bar data={dataPorter} />
+                </Box>
+              </Item>
+              <Item sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontFamily: 'Fira Sans',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    MCKINSEY
+                  </Typography>
+                  <PolarArea
+                    data={dataMckinsey}
+                    options={{
+                      plugins: {
+                        legend: {
+                          position: 'right',
+                        },
                       },
-                    },
-                  }}
-                />
-              </Box>
-            </Item>
-          </Stack>
+                    }}
+                  />
+                </Box>
+              </Item>
+            </Stack>
+          </Grid>
+          <Grid item md={5} sx={{ display: 'flex', flex: 1 }}>
+            <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
+              <Item sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontFamily: 'Fira Sans',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    Balanced Scoredcard
+                  </Typography>
+                  <Line data={dataBalanced} />
+                </Box>
+              </Item>
+              <Item
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                }}
+              >
+                <Box>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontFamily: 'Fira Sans',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    OKR
+                  </Typography>
+                  <Bar
+                    options={{
+                      indexAxis: 'y',
+                      plugins: {
+                        legend: {
+                          position: 'bottom',
+                        },
+                      },
+                    }}
+                    data={dataOkrs}
+                  />
+                </Box>
+              </Item>
+            </Stack>
+          </Grid>
+          <Grid item md={3} sx={{ display: 'flex', flex: 1 }}>
+            <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
+              <Item sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontFamily: 'Fira Sans',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    PESTEL
+                  </Typography>
+                  <Doughnut
+                    data={dataPESTEL}
+                    style={{ display: 'flex', width: '100%' }}
+                    options={{
+                      plugins: {
+                        legend: {
+                          position: 'bottom',
+                        },
+                      },
+                    }}
+                  />
+                </Box>
+              </Item>
+              <Item sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontFamily: 'Fira Sans',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    ANSOFF
+                  </Typography>
+                  <Bar
+                    options={{
+                      plugins: {
+                        legend: {
+                          position: 'bottom',
+                        },
+                      },
+                      responsive: true,
+                      scales: {
+                        x: {
+                          stacked: true,
+                        },
+                        y: {
+                          stacked: true,
+                        },
+                      },
+                      indexAxis: 'y',
+                    }}
+                    data={dataAnsoff}
+                  />
+                </Box>
+              </Item>
+            </Stack>
+          </Grid>
         </Grid>
-        <Grid item md={5} sx={{ display: 'flex', flex: 1 }}>
-          <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
-            <Item sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontFamily: 'Fira Sans',
-                    fontSize: '1.3rem',
-                  }}
-                >
-                  Balanced Scoredcard
-                </Typography>
-                <Line data={dataBalanced} />
-              </Box>
-            </Item>
-            <Item
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
-              <Box>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontFamily: 'Fira Sans',
-                    fontSize: '1.3rem',
-                  }}
-                >
-                  OKR
-                </Typography>
-                <Bar
-                  options={{
-                    indexAxis: 'y',
-                    plugins: {
-                      legend: {
-                        position: 'bottom',
-                      },
-                    },
-                  }}
-                  data={dataOkrs}
-                />
-              </Box>
-            </Item>
-          </Stack>
-        </Grid>
-        <Grid item md={3} sx={{ display: 'flex', flex: 1 }}>
-          <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
-            <Item sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontFamily: 'Fira Sans',
-                    fontSize: '1.3rem',
-                  }}
-                >
-                  PESTEL
-                </Typography>
-                <Doughnut
-                  data={dataPESTEL}
-                  style={{ display: 'flex', width: '100%' }}
-                  options={{
-                    plugins: {
-                      legend: {
-                        position: 'bottom',
-                      },
-                    },
-                  }}
-                />
-              </Box>
-            </Item>
-            <Item sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontFamily: 'Fira Sans',
-                    fontSize: '1.3rem',
-                  }}
-                >
-                  ANSOFF
-                </Typography>
-                <Bar
-                  options={{
-                    plugins: {
-                      legend: {
-                        position: 'bottom',
-                      },
-                    },
-                    responsive: true,
-                    scales: {
-                      x: {
-                        stacked: true,
-                      },
-                      y: {
-                        stacked: true,
-                      },
-                    },
-                    indexAxis: 'y',
-                  }}
-                  data={dataAnsoff}
-                />
-              </Box>
-            </Item>
-          </Stack>
-        </Grid>
-      </Grid>
+      </Box>
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import LayoutContainer from 'containers/LayoutContainer';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import OKRView from 'views/OKRView';
 import {
   Grid,
@@ -49,6 +49,9 @@ const MejoraContinuaContainer = () => {
   const dataOkrs = useSelector(horizontalChartSelector);
   const dataBalanced = useSelector(lineChartSelector);
 
+  const navigate = useNavigate();
+  const onClickButtonGoBack = () => navigate(`/projects/${id}`);
+
   useEffect(() => {
     dispatch(onGetOne(id));
   }, []);
@@ -65,6 +68,7 @@ const MejoraContinuaContainer = () => {
             dataAnsoff={dataAnsoff}
             dataOkrs={dataOkrs}
             dataBalanced={dataBalanced}
+            onClickButtonGoBack={onClickButtonGoBack}
           />
         </Grid>
       </Grid>
