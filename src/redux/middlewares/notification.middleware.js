@@ -14,6 +14,7 @@ const notificationMiddleware = () => (next) => (action) => {
     case userConstants.USER_ON_LOGIN_FAILED:
     case userConstants.USER_ON_LOGOUT_FAILED:
     case userConstants.USER_ON_RESET_PASSWORD_FAILED:
+    case userConstants.USER_ON_REGISTER_FAILED:
       sendErrorNotification(error.response?.data?.message || error.message);
       break;
     default:

@@ -38,6 +38,7 @@ const userReducer = (state = defaultState, action) => {
     case constants.USER_ON_FORGOT_PASSWORD_FAILED:
     case constants.USER_ON_INITIALIZE_FAILED:
     case constants.USER_ON_LOGIN_FAILED:
+    case constants.USER_ON_REGISTER_FAILED:
     case constants.USER_ON_RESET_PASSWORD_FAILED:
       return defaultState;
     case constants.USER_ON_LOGOUT_FAILED:

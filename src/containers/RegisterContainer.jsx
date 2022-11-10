@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { onRegister } from 'redux/actions/user.actions';
 
@@ -11,12 +11,10 @@ import RegisterView from 'views/RegisterView';
 
 const RegisterContainer = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { loading, data } = useSelector((state) => state.user);
 
   const onSubmit = (values) => {
     dispatch(onRegister(values));
-    navigate('login');
   };
 
   return (

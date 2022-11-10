@@ -48,7 +48,7 @@ const LoginForm = ({ onSubmit }) => (
             <Field
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               component={Input}
               validate={validateField}
             />
@@ -73,8 +73,8 @@ const LoginForm = ({ onSubmit }) => (
       )}
     </Formik>
     <LinkContainer>
-      <CustomLink to="/forgot-password">Forgot password?</CustomLink>
-      <CustomLink to="/register">Create an account</CustomLink>
+      <CustomLink to="/forgot-password">Olvide mi contraseña</CustomLink>
+      <CustomLink to="/register">Crear una cuenta</CustomLink>
     </LinkContainer>
   </FormContainer>
 );

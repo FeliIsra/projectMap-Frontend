@@ -37,7 +37,7 @@ const NewConsultantModal = ({ isOpen, onClose, onSubmit }) => {
                 <Field
                   name="firstName"
                   component={Input}
-                  placeholder="First Name"
+                  placeholder="Nombre"
                   validate={validateField}
                 />
                 <ErrorMessage name={'firstName'}>
@@ -60,7 +60,7 @@ const NewConsultantModal = ({ isOpen, onClose, onSubmit }) => {
                 <Field
                   name="lastName"
                   component={Input}
-                  placeholder="Last Name"
+                  placeholder="Apellido"
                   validate={validateField}
                 />
                 <ErrorMessage name={'lastName'}>
@@ -106,7 +106,7 @@ const NewConsultantModal = ({ isOpen, onClose, onSubmit }) => {
                 <Field
                   name="password"
                   component={Input}
-                  placeholder="Password"
+                  placeholder="Contraseña"
                   validate={validateField}
                 />
                 <ErrorMessage name={'password'}>

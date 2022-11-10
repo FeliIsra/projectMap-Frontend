@@ -10,7 +10,7 @@ import { Box, Typography } from '@mui/material';
 
 const RegisterForm = ({ onSubmit }) => (
   <FormContainer>
-    <Title>Register</Title>
+    <Title>Registrate</Title>
     <Formik
       onSubmit={onSubmit}
       initialValues={{
@@ -27,7 +27,7 @@ const RegisterForm = ({ onSubmit }) => (
             <Field
               name="firstName"
               type="text"
-              placeholder="First Name"
+              placeholder="Nombre"
               component={Input}
               validate={validateField}
             />
@@ -51,7 +51,7 @@ const RegisterForm = ({ onSubmit }) => (
             <Field
               name="lastName"
               type="text"
-              placeholder="Last Name"
+              placeholder="Apellido"
               component={Input}
               validate={validateField}
             />
@@ -99,7 +99,7 @@ const RegisterForm = ({ onSubmit }) => (
             <Field
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               component={Input}
               validate={validateField}
             />
@@ -123,7 +123,7 @@ const RegisterForm = ({ onSubmit }) => (
             <Field
               name="confirmPassword"
               type="password"
-              placeholder="Confirm Password"
+              placeholder="Confirmar contraseña"
               component={Input}
               validate={validateField}
             />
@@ -143,7 +143,7 @@ const RegisterForm = ({ onSubmit }) => (
               )}
             </ErrorMessage>
           </Box>
-          <SubmitButton type="submit">Send</SubmitButton>
+          <SubmitButton type="submit">Enviar</SubmitButton>
         </CustomForm>
       )}
     </Formik>
