@@ -59,6 +59,7 @@ const DashboardView = (props) => {
                 onClick={() => onClickProject(_id)}
                 onClickIcon={() => {}}
                 onClickDelete={() => onClickDelete(_id)}
+                onDeleteDisable={true}
               />
             </Grid>
           ))}

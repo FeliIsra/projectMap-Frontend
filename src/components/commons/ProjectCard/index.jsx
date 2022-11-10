@@ -12,14 +12,21 @@ import {
 import { Box, IconButton } from '@mui/material';
 
 const ProjectCard = (props) => {
-  const { color, descripcion, titulo, onClick, onClickDelete } = props;
+  const {
+    color,
+    descripcion,
+    titulo,
+    onClick,
+    onClickDelete,
+    onDeleteDisable = false,
+  } = props;
   return (
     <Card>
       <CardContent backgroundcolor={color}>
         <TitleContainer>
           <Title>{titulo}</Title>
           <Box display="flex">
-            <IconButton onClick={onClick}>
+            <IconButton onClick={onClick} disabled={onDeleteDisable}>
               <IosShareIcon color="black" />
             </IconButton>
             <IconButton onClick={onClickDelete}>
