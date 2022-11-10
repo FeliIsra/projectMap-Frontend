@@ -20,6 +20,9 @@ export const defaultState = {
   balancedScorecards: [],
   questionnaires: [],
   itemsShared: [],
+  sharedUsers: [],
+  errorShared: null,
+  sharedUsersSuccess: false,
 };
 
 const projectsReducer = (state = defaultState, action) => {
@@ -43,7 +46,7 @@ const projectsReducer = (state = defaultState, action) => {
     case constants.PROJECTS_ON_CREATE_SUCCEEDED:
       return {
         ...state,
-        items: [...state.items, ...data],
+        items: [...state.items, data],
         loading: false,
       };
     case constants.PROJECTS_ON_GET_ALL_SUCCEEDED:
@@ -153,7 +156,7 @@ const projectsReducer = (state = defaultState, action) => {
     case constants.PROJECTS_ON_DELETE_SUCCEEDED:
       return {
         ...state,
-        items: state.items.filter((item) => item._id !== data._id),
+        items: state?.items?.filter((item) => item._id !== data._id),
         loading: false,
       };
     case constants.PROJECTS_SHARED_ON_GET_ALL_SUCCEEDED:
@@ -166,6 +169,33 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         data: null,
+      };
+    case constants.PROJECTS_SHARE_USER_SUCCEEDED:
+      return {
+        ...state,
+        sharedUsers: data,
+        sharedUsersSuccess: true,
+      };
+    case constants.PROJECTS_UNSHARE_USER_SUCCEEDED:
+      return {
+        ...state,
+        sharedUsers: data,
+      };
+    case constants.PROJECTS_SHARED_USERS_SUCCEEDED:
+      return {
+        ...state,
+        sharedUsers: data,
+      };
+    case constants.PROJECTS_SHARE_USER_FAILED:
+      return {
+        ...state,
+        errorShared: error,
+      };
+    case constants.PROJECTS_SHARE_USER_REQUESTED:
+      return {
+        ...state,
+        errorShared: null,
+        sharedUsersSuccess: false,
       };
     case constants.PROJECTS_SHARED_ON_GET_ALL_FAILED:
     case constants.PROJECTS_ON_CREATE_FAILED:

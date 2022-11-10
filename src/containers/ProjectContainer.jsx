@@ -17,6 +17,9 @@ import {
   onGetPestel,
   onGetPorter,
   onGetQuestionnaire,
+  onGetSharedUsers,
+  onShareUser,
+  onUnShareUsers,
 } from 'redux/actions/projects.actions';
 import { STEPS } from 'helpers/enums/steps';
 import { COLORS } from 'helpers/enums/colors';
@@ -48,23 +51,68 @@ import { onDelete as onDeleteMckinsey } from 'redux/actions/mckinsey.actions';
 import { onDelete as onDeleteBalanceScorecard } from 'redux/actions/balanceScorecard.actions';
 import { onDeleteTool as onDeleteOkr } from 'redux/actions/okr.actions';
 import { getMenuItems } from 'helpers/enums/steps';
+import Comments from 'components/comments/Comments';
+import ShareModal from 'views/ProjectView/components/shareModal';
+import UnShareModal from 'views/ProjectView/components/unShareModal';
 
 const ProjectContainer = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorElement, setAnchorElement] = useState(null);
+  const [openComments, setOpencomments] = useState(null);
   const [anchorElementAdd, setAnchorElementAdd] = useState(null);
   const [stepValue, setStepValue] = useState(0);
   const [addTool, setAddTool] = useState(null);
   const [isCalendlyOpen, setCalendlyOpen] = useState(false);
+
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isUnShareModalOpen, setIsUnShareModalOpen] = useState(false);
+
   // const menuItems = getMenuItems(stepValue);
   const toolsItems = useSelector(stepToolsSelector);
   const toolsAddOptions = getMenuItems(stepValue);
   const stepsColors = useSelector(progressSelector);
 
   const projectInfo = useSelector((state) => state.projects.data);
+  const sharedUsers = useSelector((state) => state.projects.sharedUsers);
+  const errorShared = useSelector(
+    (state) => state.projects.errorShared?.response?.data?.message
+  );
+  const sharedUsersSuccess = useSelector(
+    (state) => state.projects.sharedUsersSuccess
+  );
+
   const onClickButtonGoBack = () => navigate(`/dashboard`);
+
+  const openShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const closeShareModal = () => {
+    setIsShareModalOpen(false);
+  };
+
+  const openUnShareModal = () => {
+    setIsUnShareModalOpen(true);
+  };
+
+  const closeUnShareModal = () => {
+    setIsUnShareModalOpen(false);
+  };
+
+  const shareModalOnSubmit = (formData) => {
+    dispatch(onShareUser(id, formData));
+  };
+
+  const unShareModalOnSubmit = (formDataDirty) => {
+    console.log('====== ON SUBMIT ===== ');
+    const formData = {
+      emails: formDataDirty.projects.map((x) => x.titulo),
+    };
+    dispatch(onUnShareUsers(id, formData));
+    closeUnShareModal();
+  };
 
   useEffect(() => {
     dispatch(onGetOne(id));
@@ -76,7 +124,12 @@ const ProjectContainer = () => {
     dispatch(onGetOKR(id));
     dispatch(onGetBalanced(id));
     dispatch(onGetQuestionnaire(id));
+    dispatch(onGetSharedUsers(id));
   }, []);
+
+  useEffect(() => {
+    if (sharedUsersSuccess) closeShareModal();
+  }, [sharedUsersSuccess]);
 
   const onClickAdd = (value, anchorElement) => {
     setStepValue(value);
@@ -139,7 +192,29 @@ const ProjectContainer = () => {
         project={projectInfo}
         onCLickMejoraContinua={onCLickMejoraContinua}
         stepsColors={stepsColors}
+        openComments={(target) => setOpencomments(target)}
+        openShareModal={openShareModal}
+        openUnShareModal={openUnShareModal}
       />
+      <Menu
+        anchorEl={openComments}
+        onClose={() => setOpencomments(null)}
+        open={!!openComments}
+        PaperProps={{
+          style: {
+            width: 500,
+          },
+        }}
+        sx={{
+          '& .MuiMenu-list': {
+            background: COLORS.AthensGray,
+          },
+        }}
+      >
+        <MenuItem key={1} disableRipple>
+          <Comments show tool="HUB" toolId={id} projectId={id} />
+        </MenuItem>
+      </Menu>
       <Menu
         anchorEl={anchorElement}
         onClose={() => setAnchorElement(null)}
@@ -293,6 +368,22 @@ const ProjectContainer = () => {
       >
         Agende con un consultor
       </ButtonBase>
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={closeShareModal}
+        onSubmit={shareModalOnSubmit}
+        errorShared={errorShared}
+      />
+      <UnShareModal
+        isOpen={isUnShareModalOpen}
+        onClose={closeUnShareModal}
+        onSubmit={unShareModalOnSubmit}
+        sharedUsers={sharedUsers.map((user) => ({
+          id: user._id,
+          titulo: user.email,
+          checked: false,
+        }))}
+      />
     </LayoutContainer>
   );
 };

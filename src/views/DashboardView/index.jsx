@@ -16,6 +16,7 @@ import {
 
 const DashboardView = (props) => {
   const { onAddNew, onClickProject, items, onClickDelete, itemsShared } = props;
+  console.log({ items });
   return (
     <Container>
       <Content>

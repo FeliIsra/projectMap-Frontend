@@ -8,13 +8,8 @@ import { validateField } from 'helpers/validateField';
 import React from 'react';
 import { CustomForm } from 'styles/form';
 
-const AssignProjectsModal = ({
-  initialProjects,
-  isOpen,
-  onClose,
-  onSubmit,
-}) => {
-  console.log({ initialProjects });
+const UnShareModal = ({ sharedUsers, isOpen, onClose, onSubmit }) => {
+  console.log({ sharedUsers });
   const initialValues = {};
   return (
     <Modal isOpen={isOpen} backgroundColor={COLORS.WildSand} disabled>
@@ -34,7 +29,7 @@ const AssignProjectsModal = ({
             color: COLORS.BlueDianne,
           }}
         >
-          Proyectos
+          Descompartir usuarios
         </span>
         <Formik onSubmit={onSubmit} initialValues={initialValues}>
           {({ handleSubmit, setFieldValue }) => (
@@ -51,8 +46,8 @@ const AssignProjectsModal = ({
                   <Field
                     name="projects"
                     component={MultiSelectInput}
-                    initialProjects={initialProjects}
-                    placeholder="Proyectos"
+                    initialProjects={sharedUsers}
+                    placeholder="Email"
                     validate={validateField}
                     onChange={(projects) => {
                       setFieldValue('projects', projects);
@@ -97,4 +92,4 @@ const AssignProjectsModal = ({
   );
 };
 
-export default AssignProjectsModal;
+export default UnShareModal;

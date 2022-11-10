@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Add, ArrowBack, ArrowForward, Menu } from '@mui/icons-material';
+import {
+  Add,
+  ArrowBack,
+  ArrowForward,
+  Menu,
+  Comment,
+  PresentToAll,
+  CancelPresentation,
+} from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
@@ -27,6 +35,9 @@ const ProjectView = ({
   project,
   onCLickMejoraContinua,
   stepsColors,
+  openComments,
+  openShareModal,
+  openUnShareModal,
 }) => {
   const [stepHover, setStepHover] = useState(null);
   const renderStep = (step) => (
@@ -86,6 +97,27 @@ const ProjectView = ({
           </IconButton>
         </ButtonContainer>
         <Title>{titulo}</Title>
+
+        <IconButton
+          size="small"
+          onClick={() => openShareModal()}
+          sx={{ marginLeft: '35%', marginRight: '5px' }}
+        >
+          <PresentToAll />
+        </IconButton>
+        <IconButton
+          size="small"
+          onClick={() => openUnShareModal()}
+          sx={{ marginRight: '5px' }}
+        >
+          <CancelPresentation />
+        </IconButton>
+        <IconButton
+          size="small"
+          onClick={(event) => openComments(event.currentTarget)}
+        >
+          <Comment />
+        </IconButton>
       </TitleButtonContainer>
       <Container>
         <Content style={{ background: project?.color || COLORS.AthensGray }}>

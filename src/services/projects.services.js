@@ -1,4 +1,4 @@
-import { post, get, remove } from 'services/api';
+import { post, get, remove, put } from 'services/api';
 
 export const save = (formData) => post('projects', formData);
 
@@ -26,3 +26,11 @@ export const getBalancedScorecard = (id) =>
 export const getQuestionnaires = (id) => get(`projects/${id}/questionnaires`);
 
 export const getShared = () => get('projects/shared');
+
+export const getSharedUsers = (id) => get(`projects/${id}/shared`);
+
+export const shareUser = (id, formData) =>
+  post(`projects/${id}/share/email`, formData);
+
+export const unShareUsers = (id, formData) =>
+  put(`projects/${id}/share/email/stop`, formData);

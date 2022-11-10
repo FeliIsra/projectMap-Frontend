@@ -48,7 +48,7 @@ const consultoraReducer = (state = defaultState, action) => {
         ...state,
         data: {
           ...state.data,
-          projects: state.data.projects.filter(
+          projects: state?.data?.projects?.filter(
             (project) => project._id !== data._id
           ),
         },

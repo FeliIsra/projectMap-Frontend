@@ -93,6 +93,8 @@ export const TitleButtonContainer = styled('div')({
   padding: '20px',
   position: 'absolute',
   alignItems: 'center',
+  width: '90%',
+  marginBottom: '50px',
 });
 
 export const ButtonContainer = styled('div')({});
@@ -101,4 +103,5 @@ export const Title = styled('span')({
   fontFamily: 'Fira Sans',
   fontWeight: 500,
   fontSize: 36,
+  marginLeft: '25%',
 });

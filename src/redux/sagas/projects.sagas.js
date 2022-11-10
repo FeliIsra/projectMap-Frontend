@@ -17,6 +17,9 @@ import {
   save,
   deleteProject,
   getShared,
+  getSharedUsers,
+  shareUser,
+  unShareUsers,
 } from 'services/projects.services';
 
 export function* projectsSaveOne(action) {
@@ -222,6 +225,45 @@ export function* projectsOnGetAllShared() {
   }
 }
 
+export function* projectsOnGetUsersShared(action) {
+  try {
+    const { id } = action;
+    const { data } = yield call(getSharedUsers, id);
+    yield put({
+      type: constants.PROJECTS_SHARED_USERS_SUCCEEDED,
+      data,
+    });
+  } catch (error) {
+    yield put({ type: constants.PROJECTS_SHARED_USERS_FAILED, error });
+  }
+}
+
+export function* projectsOnShareUser(action) {
+  try {
+    const { id, formData } = action;
+    const { data } = yield call(shareUser, id, formData);
+    yield put({
+      type: constants.PROJECTS_SHARE_USER_SUCCEEDED,
+      data,
+    });
+  } catch (error) {
+    yield put({ type: constants.PROJECTS_SHARE_USER_FAILED, error });
+  }
+}
+
+export function* projectsOnUnShareUsers(action) {
+  try {
+    const { id, formData } = action;
+    const { data } = yield call(unShareUsers, id, formData);
+    yield put({
+      type: constants.PROJECTS_UNSHARE_USER_SUCCEEDED,
+      data,
+    });
+  } catch (error) {
+    yield put({ type: constants.PROJECTS_UNSHARE_USER_FAILED, error });
+  }
+}
+
 export function* watchProjects() {
   yield all([
     takeLatest(constants.PROJECTS_ON_GET_ONE_REQUESTED, projectsOnGetOne),
@@ -253,6 +295,15 @@ export function* watchProjects() {
     takeLatest(
       constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED,
       projectsOnGetQuestionnaires
+    ),
+    takeLatest(
+      constants.PROJECTS_SHARED_USERS_REQUESTED,
+      projectsOnGetUsersShared
+    ),
+    takeLatest(constants.PROJECTS_SHARE_USER_REQUESTED, projectsOnShareUser),
+    takeLatest(
+      constants.PROJECTS_UNSHARE_USER_REQUESTED,
+      projectsOnUnShareUsers
     ),
     takeLatest(
       [

@@ -58,3 +58,20 @@ export const onGetQuestionnaire = (id) => ({
   type: constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED,
   id,
 });
+
+export const onGetSharedUsers = (id) => ({
+  type: constants.PROJECTS_SHARED_USERS_REQUESTED,
+  id,
+});
+
+export const onShareUser = (id, formData) => ({
+  type: constants.PROJECTS_SHARE_USER_REQUESTED,
+  id,
+  formData,
+});
+
+export const onUnShareUsers = (id, formData) => ({
+  type: constants.PROJECTS_UNSHARE_USER_REQUESTED,
+  id,
+  formData,
+});

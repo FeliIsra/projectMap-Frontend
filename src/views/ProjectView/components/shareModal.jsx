@@ -2,19 +2,20 @@ import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Modal from 'components/commons/Modal';
 import MultiSelectInput from 'components/commons/MultiSelect';
+import Input from 'components/inputs/Input';
 import { ErrorMessage, Field, Formik } from 'formik';
 import { COLORS } from 'helpers/enums/colors';
 import { validateField } from 'helpers/validateField';
 import React from 'react';
 import { CustomForm } from 'styles/form';
 
-const AssignProjectsModal = ({
+const ShareModal = ({
   initialProjects,
   isOpen,
   onClose,
   onSubmit,
+  errorShared,
 }) => {
-  console.log({ initialProjects });
   const initialValues = {};
   return (
     <Modal isOpen={isOpen} backgroundColor={COLORS.WildSand} disabled>
@@ -34,11 +35,11 @@ const AssignProjectsModal = ({
             color: COLORS.BlueDianne,
           }}
         >
-          Proyectos
+          Compartir proyecto
         </span>
         <Formik onSubmit={onSubmit} initialValues={initialValues}>
           {({ handleSubmit, setFieldValue }) => (
-            <CustomForm onSubmit={handleSubmit}>
+            <CustomForm onSubmit={handleSubmit} sx={{ width: '500px' }}>
               <Box
                 sx={{
                   display: 'flex',
@@ -49,16 +50,16 @@ const AssignProjectsModal = ({
               >
                 <Box sx={{ width: '100%' }}>
                   <Field
-                    name="projects"
-                    component={MultiSelectInput}
+                    name="email"
+                    component={Input}
                     initialProjects={initialProjects}
-                    placeholder="Proyectos"
+                    placeholder="Email"
                     validate={validateField}
-                    onChange={(projects) => {
-                      setFieldValue('projects', projects);
+                    onChange={(email) => {
+                      setFieldValue('email', email);
                     }}
                   />
-                  <ErrorMessage name={'projects'}>
+                  <ErrorMessage name={'email'}>
                     {(msg) => (
                       <Typography
                         sx={{
@@ -73,6 +74,21 @@ const AssignProjectsModal = ({
                       </Typography>
                     )}
                   </ErrorMessage>
+                  {errorShared ? (
+                    <Typography
+                      sx={{
+                        textAlign: 'left',
+                        color: 'red',
+                        marginLeft: 2,
+                        marginTop: '2px',
+                        fontSize: '14px',
+                      }}
+                    >
+                      {errorShared}
+                    </Typography>
+                  ) : (
+                    <></>
+                  )}
                 </Box>
               </Box>
               <Box
@@ -86,7 +102,7 @@ const AssignProjectsModal = ({
                   Cancelar
                 </Button>
                 <Button color="primary" type="submit">
-                  Guardar
+                  Compartir
                 </Button>
               </Box>
             </CustomForm>
@@ -97,4 +113,4 @@ const AssignProjectsModal = ({
   );
 };
 
-export default AssignProjectsModal;
+export default ShareModal;
