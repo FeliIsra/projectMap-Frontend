@@ -9,7 +9,6 @@ import React from 'react';
 import { CustomForm } from 'styles/form';
 
 const UnShareModal = ({ sharedUsers, isOpen, onClose, onSubmit }) => {
-  console.log({ sharedUsers });
   const initialValues = {};
   return (
     <Modal isOpen={isOpen} backgroundColor={COLORS.WildSand} disabled>

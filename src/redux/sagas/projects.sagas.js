@@ -305,12 +305,12 @@ export function* watchProjects() {
       constants.PROJECTS_UNSHARE_USER_REQUESTED,
       projectsOnUnShareUsers
     ),
-    // takeLatest(
-    //   [
-    //     constants.PROJECTS_SHARED_ON_GET_ALL_REQUESTED,
-    //     constants.PROJECTS_ON_GET_ALL_REQUESTED,
-    //   ],
-    //   projectsOnGetAllShared
-    // ),
+    takeLatest(
+      [
+        constants.PROJECTS_SHARED_ON_GET_ALL_REQUESTED,
+        constants.PROJECTS_ON_GET_ALL_REQUESTED,
+      ],
+      projectsOnGetAllShared
+    ),
   ]);
 }

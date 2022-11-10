@@ -103,5 +103,4 @@ export const Title = styled('span')({
   fontFamily: 'Fira Sans',
   fontWeight: 500,
   fontSize: 36,
-  marginLeft: '25%',
 });

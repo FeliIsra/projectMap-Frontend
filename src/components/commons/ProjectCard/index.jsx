@@ -26,10 +26,10 @@ const ProjectCard = (props) => {
         <TitleContainer>
           <Title>{titulo}</Title>
           <Box display="flex">
-            <IconButton onClick={onClick} disabled={onDeleteDisable}>
+            <IconButton onClick={onClick}>
               <IosShareIcon color="black" />
             </IconButton>
-            <IconButton onClick={onClickDelete}>
+            <IconButton onClick={onClickDelete} disabled={onDeleteDisable}>
               <DeleteIcon color="black" />
             </IconButton>
           </Box>

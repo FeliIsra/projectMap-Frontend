@@ -90,34 +90,38 @@ const ProjectView = ({
 
   return (
     <>
-      <TitleButtonContainer>
+      <TitleButtonContainer
+        sx={{ display: 'flex', justifyContent: 'space-between' }}
+      >
         <ButtonContainer>
           <IconButton size="small" onClick={onClickButtonGoBack}>
             <ArrowBack />
           </IconButton>
         </ButtonContainer>
-        <Title>{titulo}</Title>
+        <Title sx={{}}>{titulo}</Title>
 
-        <IconButton
-          size="small"
-          onClick={() => openShareModal()}
-          sx={{ marginLeft: '35%', marginRight: '5px' }}
-        >
-          <PresentToAll />
-        </IconButton>
-        <IconButton
-          size="small"
-          onClick={() => openUnShareModal()}
-          sx={{ marginRight: '5px' }}
-        >
-          <CancelPresentation />
-        </IconButton>
-        <IconButton
-          size="small"
-          onClick={(event) => openComments(event.currentTarget)}
-        >
-          <Comment />
-        </IconButton>
+        <Box sx={{ display: 'flex' }}>
+          <IconButton
+            size="small"
+            onClick={() => openShareModal()}
+            sx={{ marginRight: '5px' }}
+          >
+            <PresentToAll />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={() => openUnShareModal()}
+            sx={{ marginRight: '5px' }}
+          >
+            <CancelPresentation />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={(event) => openComments(event.currentTarget)}
+          >
+            <Comment />
+          </IconButton>
+        </Box>
       </TitleButtonContainer>
       <Container>
         <Content style={{ background: project?.color || COLORS.AthensGray }}>

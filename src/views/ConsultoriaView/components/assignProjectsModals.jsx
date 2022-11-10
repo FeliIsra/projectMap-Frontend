@@ -14,7 +14,6 @@ const AssignProjectsModal = ({
   onClose,
   onSubmit,
 }) => {
-  console.log({ initialProjects });
   const initialValues = {};
   return (
     <Modal isOpen={isOpen} backgroundColor={COLORS.WildSand} disabled>
