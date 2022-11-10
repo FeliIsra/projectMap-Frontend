@@ -1,5 +1,5 @@
-import React from 'react';
-import IosShareIcon from '@mui/icons-material/IosShare';
+import React, { useState } from 'react';
+import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import {
@@ -10,6 +10,7 @@ import {
   CardContent,
 } from './styles';
 import { Box, IconButton } from '@mui/material';
+import ConfirmDeleteModal from './components/confirmDeleteModal';
 
 const ProjectCard = (props) => {
   const {
@@ -20,23 +21,58 @@ const ProjectCard = (props) => {
     onClickDelete,
     onDeleteDisable = false,
   } = props;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [confirmDeleteError, setConfirmDeleteError] = useState(null);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setConfirmDeleteError(null);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const onSubmit = ({ name }) => {
+    if (name !== titulo) {
+      setConfirmDeleteError('Nombre del projecto incorrecto.');
+    } else {
+      onClickDelete();
+      closeModal();
+    }
+  };
+
   return (
-    <Card>
-      <CardContent backgroundcolor={color}>
-        <TitleContainer>
-          <Title>{titulo}</Title>
-          <Box display="flex">
-            <IconButton onClick={onClick}>
-              <IosShareIcon color="black" />
-            </IconButton>
-            <IconButton onClick={onClickDelete} disabled={onDeleteDisable}>
-              <DeleteIcon color="black" />
-            </IconButton>
-          </Box>
-        </TitleContainer>
-        <Description>{descripcion}</Description>
-      </CardContent>
-    </Card>
+    <>
+      <Card>
+        <CardContent backgroundcolor={color}>
+          <TitleContainer>
+            <Title>{titulo}</Title>
+            <Box display="flex">
+              <IconButton onClick={onClick}>
+                <SubdirectoryArrowRightIcon color="black" />
+              </IconButton>
+              <IconButton
+                onClick={() => openModal()}
+                disabled={onDeleteDisable}
+              >
+                <DeleteIcon color="black" />
+              </IconButton>
+            </Box>
+          </TitleContainer>
+          <Description>{descripcion}</Description>
+        </CardContent>
+      </Card>
+      <ConfirmDeleteModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onSubmit={onSubmit}
+        errors={confirmDeleteError}
+        titulo="Eliminar proyecto"
+        descripcion="Para confirmar la eliminacion, confirme escribiendo el nombre del proyecto"
+        placeholder="Nombre del proyecto."
+      />
+    </>
   );
 };
 

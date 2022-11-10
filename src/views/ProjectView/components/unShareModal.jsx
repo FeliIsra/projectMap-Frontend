@@ -28,7 +28,7 @@ const UnShareModal = ({ sharedUsers, isOpen, onClose, onSubmit }) => {
             color: COLORS.BlueDianne,
           }}
         >
-          Descompartir usuarios
+          Desvincular usuarios
         </span>
         <Formik onSubmit={onSubmit} initialValues={initialValues}>
           {({ handleSubmit, setFieldValue }) => (

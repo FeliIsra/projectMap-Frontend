@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LayoutContainer from 'containers/LayoutContainer';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +13,9 @@ import {
   titleSelector,
 } from 'redux/selectors/balanced.selector';
 import { useNavigate } from 'react-router-dom';
+import { Menu, MenuItem } from '@mui/material';
+import { COLORS } from 'helpers/enums/colors';
+import Comments from 'components/comments/Comments';
 
 const BalancedContainer = () => {
   const { balancedId, id } = useParams();
@@ -20,6 +23,7 @@ const BalancedContainer = () => {
   const navigate = useNavigate();
   const objectives = useSelector(areaObjectivesSelector);
   const { title } = useSelector(titleSelector);
+  const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     dispatch(onGetOne(balancedId));
@@ -50,7 +54,32 @@ const BalancedContainer = () => {
         onEditObjective={onEditObjective}
         title={title}
         onClickButtonGoBack={() => navigate(`/projects/${id}`)}
+        openComments={(target) => setAnchorElement(target)}
       />
+      <Menu
+        anchorEl={anchorElement}
+        onClose={() => setAnchorElement(null)}
+        open={!!anchorElement}
+        PaperProps={{
+          style: {
+            width: 500,
+          },
+        }}
+        sx={{
+          '& .MuiMenu-list': {
+            background: COLORS.AthensGray,
+          },
+        }}
+      >
+        <MenuItem key={1} disableRipple>
+          <Comments
+            show
+            tool="BALANCED_SCORECARD"
+            toolId={balancedId}
+            projectId={id}
+          />
+        </MenuItem>
+      </Menu>
     </LayoutContainer>
   );
 };

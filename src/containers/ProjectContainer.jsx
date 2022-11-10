@@ -54,6 +54,7 @@ import { getMenuItems } from 'helpers/enums/steps';
 import Comments from 'components/comments/Comments';
 import ShareModal from 'views/ProjectView/components/shareModal';
 import UnShareModal from 'views/ProjectView/components/unShareModal';
+import ConfirmDeleteModal from 'components/commons/ProjectCard/components/confirmDeleteModal';
 
 const ProjectContainer = () => {
   let { id } = useParams();
@@ -68,7 +69,10 @@ const ProjectContainer = () => {
 
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isUnShareModalOpen, setIsUnShareModalOpen] = useState(false);
-
+  const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] =
+    useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const [confirmDeleteError, setConfirmDeleteError] = useState(null);
   // const menuItems = getMenuItems(stepValue);
   const toolsItems = useSelector(stepToolsSelector);
   const toolsAddOptions = getMenuItems(stepValue);
@@ -99,6 +103,26 @@ const ProjectContainer = () => {
 
   const closeUnShareModal = () => {
     setIsUnShareModalOpen(false);
+  };
+
+  const openConfirmDeleteModal = (item) => {
+    setIsConfirmDeleteModalOpen(true);
+    setItemToDelete(item);
+  };
+
+  const closeConfirmDeleteModal = () => {
+    setIsConfirmDeleteModalOpen(false);
+    setConfirmDeleteError(null);
+    setItemToDelete(null);
+  };
+
+  const onSubmitConfirmModal = ({ name }) => {
+    if (name !== itemToDelete?.titulo) {
+      setConfirmDeleteError('Nombre de la herramienta incorrecto.');
+    } else {
+      deleteTool(itemToDelete);
+      closeConfirmDeleteModal();
+    }
   };
 
   const shareModalOnSubmit = (formData) => {
@@ -223,7 +247,11 @@ const ProjectContainer = () => {
           <MenuItem key={item?.key}>
             <Box
               display="flex"
-              sx={{ width: '100%', justifyContent: 'space-between' }}
+              sx={{
+                width: '100%',
+                justifyContent: 'space-between',
+                gap: '10px',
+              }}
             >
               <MenuItemText
                 sx={{ width: '80%' }}
@@ -246,7 +274,7 @@ const ProjectContainer = () => {
                     height: '10px',
                     alignItems: 'right',
                   }}
-                  onClick={() => deleteTool(item)}
+                  onClick={() => openConfirmDeleteModal(item)}
                 >
                   <DeleteIcon />
                 </IconButton>
@@ -382,6 +410,15 @@ const ProjectContainer = () => {
           titulo: user.email,
           checked: false,
         }))}
+      />
+      <ConfirmDeleteModal
+        isOpen={isConfirmDeleteModalOpen}
+        onClose={closeConfirmDeleteModal}
+        onSubmit={onSubmitConfirmModal}
+        errors={confirmDeleteError}
+        titulo="Eliminar herramienta"
+        descripcion="Para confirmar la eliminacion, confirme escribiendo el nombre de la herramienta"
+        placeholder="Nombre de la herramienta."
       />
     </LayoutContainer>
   );
