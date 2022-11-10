@@ -106,7 +106,6 @@ const ProjectContainer = () => {
   };
 
   const unShareModalOnSubmit = (formDataDirty) => {
-    console.log('====== ON SUBMIT ===== ');
     const formData = {
       emails: formDataDirty.projects.map((x) => x.titulo),
     };
