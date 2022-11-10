@@ -26,9 +26,9 @@ const LoginContainer = () => {
       {loading && <Loading isModalMode message="Loading" />}
       {data && data.justRegistered ? (
         <Navigate to="/login" replace={true} />
-      ) : data.role !== 'ConsultantAdmin' ? (
+      ) : data && data.role !== 'ConsultantAdmin' ? (
         <Navigate to="/dashboard" replace={true} />
-      ) : data.role === 'ConsultantAdmin' ? (
+      ) : data && data.role === 'ConsultantAdmin' ? (
         <Navigate to="/consultoria" replace={true} />
       ) : (
         ''
