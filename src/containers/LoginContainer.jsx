@@ -19,13 +19,16 @@ const LoginContainer = () => {
 
   const onSubmit = (values) => dispatch(onLogin(values));
 
+  console.log({ data });
   return (
     <LayoutContainer hasHeader={false}>
       <LoginView onSubmit={onSubmit} initialValues={initialValues} />
       {loading && <Loading isModalMode message="Loading" />}
-      {data && data.role !== 'ConsultantAdmin' ? (
+      {data && data.justRegistered ? (
+        <Navigate to="/login" replace={true} />
+      ) : data.role !== 'ConsultantAdmin' ? (
         <Navigate to="/dashboard" replace={true} />
-      ) : data && data.role === 'ConsultantAdmin' ? (
+      ) : data.role === 'ConsultantAdmin' ? (
         <Navigate to="/consultoria" replace={true} />
       ) : (
         ''

@@ -26,6 +26,7 @@ const userReducer = (state = defaultState, action) => {
     case constants.USER_ON_REGISTER_SUCCEEDED:
       return {
         ...state,
+        data: { ...data.user, justRegistered: true },
         loading: false,
       };
     case constants.USER_ON_LOGOUT_REQUESTED:
