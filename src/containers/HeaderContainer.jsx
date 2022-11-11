@@ -20,12 +20,12 @@ const HeaderContainer = () => {
   const menuItems = [
     {
       key: 'profile',
-      label: 'Profile',
+      label: 'Perfil',
       onClick: () => navigate('/profile'),
     },
     {
       key: 'logout',
-      label: 'Logout',
+      label: 'Cerrar sesion',
       onClick: onLogoutClick,
     },
   ];
