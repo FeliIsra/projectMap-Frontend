@@ -132,7 +132,9 @@ const PestelContainer = () => {
         <Modal isOpen={!!factor} backgroundColor={COLORS.WildSand} disabled>
           <CreateContent sx={{ width: '400px' }}>
             <CardTitle>
-              {!!factor?.area ? `Editar ${factor?.area}` : `Agregar ${factor}`}
+              {!!factor?.area
+                ? `Editar factor ${factor?.area}`
+                : `Agregar factor ${factor}`}
             </CardTitle>
             <Formik onSubmit={onSubmitFactor} initialValues={initialValues}>
               {({ handleSubmit, setFieldValue }) => (
