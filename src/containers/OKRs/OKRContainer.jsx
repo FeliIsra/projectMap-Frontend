@@ -30,7 +30,7 @@ import { okrToolSelector } from 'redux/selectors/okr.selector';
 import { Menu, MenuItem } from '@mui/material';
 import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
-import { validateField } from 'helpers/validateField';
+import { validateField, validateFielWithNoZero } from 'helpers/validateField';
 import { useNavigate } from 'react-router-dom';
 
 const OKRContainer = () => {
@@ -187,7 +187,7 @@ const OKRContainer = () => {
                         </ToggleButtonGroup>
                       </>
                     )}
-                    validate={validateField}
+                    validate={validateFielWithNoZero}
                   />
                   <ErrorMessage name={'quarter'}>
                     {(msg) => (
