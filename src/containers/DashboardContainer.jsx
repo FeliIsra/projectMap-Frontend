@@ -11,12 +11,15 @@ import DashboardView from 'views/DashboardView';
 import ProjectForm from 'views/DashboardView/ProjectForm';
 import { COLORS } from 'helpers/enums/colors';
 import { getRandomInt } from 'helpers/randomNumber';
+import Loading from 'components/commons/Loading';
 
 const DashboardContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isAddNewOpen, setAddNew] = useState(false);
-  const { items, itemsShared } = useSelector((state) => state.projects);
+  const { items, itemsShared, loading } = useSelector(
+    (state) => state.projects
+  );
 
   useEffect(() => {
     dispatch(onGetAll());
@@ -57,6 +60,7 @@ const DashboardContainer = () => {
       <Modal isOpen={isAddNewOpen} onClose={() => setAddNew(false)}>
         <ProjectForm onSubmit={onSubmit} />
       </Modal>
+      {loading && <Loading isModalMode message="Cargando proyectos" />}
     </LayoutContainer>
   );
 };

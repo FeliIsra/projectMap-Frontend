@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ButtonBase, IconButton, Menu, MenuItem } from '@mui/material';
+import { ButtonBase, IconButton, Menu, MenuItem, Popover } from '@mui/material';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
@@ -40,6 +40,7 @@ import { MenuItemText } from 'views/ProjectView/styles';
 import {
   stepToolsSelector,
   progressSelector,
+  getConsultantSelector,
 } from 'redux/selectors/project.selector';
 import { validateField } from 'helpers/validateField';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -77,6 +78,7 @@ const ProjectContainer = () => {
   const toolsItems = useSelector(stepToolsSelector);
   const toolsAddOptions = getMenuItems(stepValue);
   const stepsColors = useSelector(progressSelector);
+  const consultant = useSelector(getConsultantSelector);
 
   const projectInfo = useSelector((state) => state.projects.data);
   const sharedUsers = useSelector((state) => state.projects.sharedUsers);
@@ -369,8 +371,26 @@ const ProjectContainer = () => {
           </Formik>
         </FormContainer>
       </Modal>
+      {!!consultant?.calendlyUser && (
+        <ButtonBase
+          sx={{
+            position: 'fixed',
+            bottom: '20px',
+            left: '20px',
+            color: '#ffffff',
+            backgroundColor: '#00A4E8',
+            padding: '15px',
+            fontSize: '16px',
+            borderRadius: 30,
+            fontWeight: '800',
+          }}
+          onClick={() => setCalendlyOpen(true)}
+        >
+          Agende con un consultor
+        </ButtonBase>
+      )}
       <PopupModal
-        url="https://calendly.com/lgandolfo/30min"
+        url={consultant?.calendlyUser}
         onModalClose={() => setCalendlyOpen(false)}
         open={isCalendlyOpen}
         /*
@@ -379,22 +399,6 @@ const ProjectContainer = () => {
          */
         rootElement={document.getElementById('root')}
       />
-      <ButtonBase
-        sx={{
-          position: 'fixed',
-          bottom: '20px',
-          left: '20px',
-          color: '#ffffff',
-          backgroundColor: '#00A4E8',
-          padding: '15px',
-          fontSize: '16px',
-          borderRadius: 30,
-          fontWeight: '800',
-        }}
-        onClick={() => setCalendlyOpen(true)}
-      >
-        Agende con un consultor
-      </ButtonBase>
       <ShareModal
         isOpen={isShareModalOpen}
         onClose={closeShareModal}

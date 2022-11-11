@@ -24,3 +24,13 @@ export const onResetPassword = (formData) => ({
   type: constants.USER_ON_RESET_PASSWORD_REQUESTED,
   formData,
 });
+
+export const getUser = () => ({
+  type: constants.USER_ON_INITIALIZE_REQUESTED,
+});
+
+export const onEdit = (id, formData) => ({
+  type: constants.USER_ON_EDIT_REQUESTED,
+  id,
+  formData,
+});
