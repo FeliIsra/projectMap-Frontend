@@ -5,6 +5,9 @@ import InputBase from '@mui/material/InputBase';
 export const SelectContainer = styled('div')({
   display: 'flex',
   width: '100%',
+  '& .MuiInputBase-root': {
+    width: '100%',
+  },
 });
 
 export const BootstrapInput = styled(InputBase)((props) => ({

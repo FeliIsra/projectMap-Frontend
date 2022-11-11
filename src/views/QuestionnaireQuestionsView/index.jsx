@@ -87,10 +87,10 @@ const QuestionnaireQuestionsView = ({
                           padding: '20px',
                         }}
                       >
-                        <Grid item xs={8}>
+                        <Grid item xs={6}>
                           <Typography key={questionId}>{question}</Typography>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                           <Box sx={{ width: '100%' }}>
                             <Field
                               name={`${subject.chapterId}.${questionId}.${question}`}

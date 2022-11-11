@@ -13,7 +13,6 @@ const SelectInput = (props) => {
         {...field}
         displayEmpty
         input={<BootstrapInput fontsize={fontSize} />}
-        style={{ flex: 1 }}
       >
         <MenuItem disabled value="">
           <em>{placeholder}</em>
