@@ -168,6 +168,7 @@ const projectsReducer = (state = defaultState, action) => {
     case constants.PROJECTS_ON_GET_ALL_REQUESTED:
       return {
         ...state,
+        loading: true,
         data: null,
       };
     case constants.PROJECTS_SHARE_USER_SUCCEEDED:

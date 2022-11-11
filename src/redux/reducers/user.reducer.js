@@ -12,6 +12,8 @@ const userReducer = (state = defaultState, action) => {
     case constants.USER_ON_LOGIN_REQUESTED:
     case constants.USER_ON_RESET_PASSWORD_REQUESTED:
     case constants.USER_ON_REGISTER_REQUESTED:
+    case constants.USER_ON_INITIALIZE_REQUESTED:
+    case constants.USER_ON_EDIT_REQUESTED:
       return {
         ...state,
         loading: true,
@@ -27,6 +29,12 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         data: { ...data.user, justRegistered: true },
+        loading: false,
+      };
+    case constants.USER_ON_EDIT_SUCCEEDED:
+      return {
+        ...state,
+        data: { ...state.data, ...data.user },
         loading: false,
       };
     case constants.USER_ON_LOGOUT_REQUESTED:

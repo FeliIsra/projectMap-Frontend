@@ -7,9 +7,9 @@ import {
   forgotPassword,
   initialize,
   login,
-  logout,
   resetPassword,
   register,
+  editProfile,
 } from 'services/user.services';
 import { getCookie, removeUserCookies } from 'helpers/cookies';
 import { addConsultant } from 'services/consultora.services';
@@ -92,13 +92,30 @@ export function* userResetPassword(action) {
   }
 }
 
+export function* userEditProfile(action) {
+  try {
+    const { formData, id } = action;
+    const { data } = yield call(editProfile, id, formData);
+    yield put({ type: constants.USER_ON_EDIT_SUCCEEDED, data });
+  } catch (error) {
+    yield put({ type: constants.USER_ON_EDIT_FAILED, error });
+  }
+}
+
 export function* watchUser() {
   yield all([
-    takeLatest(appConstants.APP_ON_INITIALIZE_REQUESTED, userInitialize),
+    takeLatest(
+      [
+        appConstants.APP_ON_INITIALIZE_REQUESTED,
+        constants.USER_ON_INITIALIZE_REQUESTED,
+      ],
+      userInitialize
+    ),
     takeLatest(constants.USER_ON_FORGOT_PASSWORD_REQUESTED, userForgotPassword),
     takeLatest(constants.USER_ON_LOGIN_REQUESTED, userLogin),
     takeLatest(constants.USER_ON_REGISTER_REQUESTED, userRegister),
     takeLatest(constants.USER_ON_LOGOUT_REQUESTED, userLogout),
     takeLatest(constants.USER_ON_RESET_PASSWORD_REQUESTED, userResetPassword),
+    takeLatest(constants.USER_ON_EDIT_REQUESTED, userEditProfile),
   ]);
 }

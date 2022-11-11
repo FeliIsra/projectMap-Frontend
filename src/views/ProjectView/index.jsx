@@ -7,8 +7,10 @@ import {
   Comment,
   PresentToAll,
   CancelPresentation,
+  Send,
+  CancelScheduleSend,
 } from '@mui/icons-material';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, Fab, IconButton, Typography, Tooltip } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
 
@@ -26,7 +28,7 @@ import {
   ButtonContainer,
   Title,
 } from './styles';
-import { STEPS, stepsInfo, StepValue } from 'helpers/enums/steps';
+import { stepsInfo, StepValue } from 'helpers/enums/steps';
 
 const ProjectView = ({
   items,
@@ -98,29 +100,8 @@ const ProjectView = ({
             <ArrowBack />
           </IconButton>
         </ButtonContainer>
-        <Title sx={{}}>{titulo}</Title>
-
-        <Box sx={{ display: 'flex' }}>
-          <IconButton
-            size="small"
-            onClick={() => openShareModal()}
-            sx={{ marginRight: '5px' }}
-          >
-            <PresentToAll />
-          </IconButton>
-          <IconButton
-            size="small"
-            onClick={() => openUnShareModal()}
-            sx={{ marginRight: '5px' }}
-          >
-            <CancelPresentation />
-          </IconButton>
-          <IconButton
-            size="small"
-            onClick={(event) => openComments(event.currentTarget)}
-          >
-            <Comment />
-          </IconButton>
+        <Box sx={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+          <Title>{titulo}</Title>
         </Box>
       </TitleButtonContainer>
       <Container>
@@ -289,6 +270,57 @@ const ProjectView = ({
           </Box>
         </Box>
       </Container>
+      <Tooltip title="Comentarios" arrow placement="right">
+        <Fab
+          aria-label="share"
+          style={{
+            position: 'fixed',
+            top: 80,
+            bottom: 'auto',
+            right: 20,
+            left: 'auto',
+            color: COLORS.white,
+            backgroundColor: '#00A4E8',
+          }}
+          onClick={(event) => openComments(event.currentTarget)}
+        >
+          <Comment />
+        </Fab>
+      </Tooltip>
+      <Tooltip title="Dejar de Compartir" arrow placement="right">
+        <Fab
+          aria-label="unshare"
+          style={{
+            position: 'fixed',
+            top: 'auto',
+            bottom: 150,
+            right: 'auto',
+            left: 20,
+            color: COLORS.white,
+            backgroundColor: COLORS.RedBurntSienna,
+          }}
+          onClick={() => openUnShareModal()}
+        >
+          <CancelScheduleSend />
+        </Fab>
+      </Tooltip>
+      <Tooltip title="Compartir" arrow placement="right">
+        <Fab
+          aria-label="share"
+          style={{
+            position: 'fixed',
+            top: 'auto',
+            bottom: 80,
+            right: 'auto',
+            left: 20,
+            color: COLORS.white,
+            backgroundColor: '#00A4E8',
+          }}
+          onClick={() => openShareModal()}
+        >
+          <Send style={{ rotate: '270deg' }} />
+        </Fab>
+      </Tooltip>
     </>
   );
 };

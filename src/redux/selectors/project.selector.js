@@ -36,6 +36,7 @@ const getQuestionnaires = (state) =>
     ...x,
     redirectUrl: `questionnaire/${x._id}`,
   }));
+const getSharedUsers = (state) => state.projects.sharedUsers;
 
 export const stepToolsSelector = createSelector(
   [
@@ -153,4 +154,9 @@ export const progressSelector = createSelector(
       6: CompletitionColors[sixthStep],
     };
   }
+);
+
+export const getConsultantSelector = createSelector(
+  [getSharedUsers],
+  (sharedUsers) => sharedUsers?.find((user) => user.role === 'Consultant')
 );

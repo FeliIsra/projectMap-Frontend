@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Collapse, IconButton } from '@mui/material';
+import { Box, Collapse, Divider, IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import Comment from 'components/comments/Comment';
 import { CustomInput } from 'components/inputs/Input/styles';
@@ -45,6 +45,7 @@ const Comments = ({ show, tool, toolId, projectId }) => {
               ))}
             </Box>
           )}
+          <Divider />
           <Box
             display="flex"
             justifyContent="space-between"
