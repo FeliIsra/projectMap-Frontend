@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import { IconButton, Menu, MenuItem } from '@mui/material';
-import {
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  Notifications,
-} from '@mui/icons-material';
+import { Menu, MenuItem } from '@mui/material';
+import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 
 import Logo from 'components/commons/Logo';
 
@@ -33,9 +29,6 @@ const Header = (props) => {
           <Logo />
           {user && (
             <HeaderAccountContainer>
-              <IconButton>
-                <Notifications />
-              </IconButton>
               {!!menuItems?.length && (
                 <AccountButton
                   aria-haspopup="true"
