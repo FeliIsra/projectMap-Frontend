@@ -36,7 +36,6 @@ import {
   horizontalChartSelector,
   lineChartSelector,
 } from 'redux/selectors/mejora.continua.selector';
-import Loading from 'components/commons/Loading';
 
 const MejoraContinuaContainer = () => {
   const { id } = useParams();
@@ -61,6 +60,7 @@ const MejoraContinuaContainer = () => {
       <Grid container>
         <Grid item sx={{ height: '100%', width: '100%', display: 'flex' }}>
           <MejoraContinuaView
+            projectId={id}
             dataFODA={dataFODA}
             dataPESTEL={dataPESTEL}
             dataMckinsey={dataMckinsey}

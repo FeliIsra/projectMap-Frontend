@@ -26,6 +26,7 @@ import {
 import { getRandomInt } from 'helpers/randomNumber';
 import { ButtonContainer, Title, TitleContainer } from 'views/FodaView/styles';
 import { ArrowBack } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -161,6 +162,7 @@ export const ansoffOptions = {
 };
 
 const MejoraContinuaView = ({
+  projectId,
   dataFODA,
   dataPESTEL,
   dataMckinsey,
@@ -170,6 +172,8 @@ const MejoraContinuaView = ({
   dataBalanced,
   onClickButtonGoBack,
 }) => {
+  console.log('dataPESTEL', dataPESTEL);
+  const navigate = useNavigate();
   return (
     <Box>
       <TitleContainer sx={{ justifyContent: 'unset' }}>
@@ -238,6 +242,12 @@ const MejoraContinuaView = ({
                       fontFamily: 'Fira Sans',
                       fontSize: '1.3rem',
                     }}
+                    onClick={() =>
+                      dataMckinsey?.id &&
+                      navigate(
+                        `/projects/${projectId}/mckinsey/${dataMckinsey.id}`
+                      )
+                    }
                   >
                     MCKINSEY
                   </Typography>
@@ -265,6 +275,12 @@ const MejoraContinuaView = ({
                       fontFamily: 'Fira Sans',
                       fontSize: '1.3rem',
                     }}
+                    onClick={() =>
+                      dataBalanced?.id &&
+                      navigate(
+                        `/projects/${projectId}/balanceScorecard/${dataBalanced.id}`
+                      )
+                    }
                   >
                     Balanced Scoredcard
                   </Typography>
@@ -285,6 +301,10 @@ const MejoraContinuaView = ({
                       fontFamily: 'Fira Sans',
                       fontSize: '1.3rem',
                     }}
+                    onClick={() =>
+                      dataOkrs?.id &&
+                      navigate(`/projects/${projectId}/okr/${dataOkrs.id}`)
+                    }
                   >
                     OKR
                   </Typography>
@@ -313,6 +333,10 @@ const MejoraContinuaView = ({
                       fontFamily: 'Fira Sans',
                       fontSize: '1.3rem',
                     }}
+                    onClick={() =>
+                      dataPESTEL?.id &&
+                      navigate(`/projects/${projectId}/pestel/${dataPESTEL.id}`)
+                    }
                   >
                     PESTEL
                   </Typography>
