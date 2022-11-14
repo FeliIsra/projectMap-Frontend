@@ -89,7 +89,7 @@ export const FactorDescription = styled('span')({
   fontFamily: "'Fira Sans'",
   fontStyle: 'normal',
   fontWeight: 500,
-  fontSize: '12px',
+  fontSize: '16px',
   lineHeight: '14px',
   alignItems: 'center',
 });

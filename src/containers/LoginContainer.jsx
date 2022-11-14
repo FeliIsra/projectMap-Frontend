@@ -19,7 +19,6 @@ const LoginContainer = () => {
 
   const onSubmit = (values) => dispatch(onLogin(values));
 
-  console.log({ data });
   return (
     <LayoutContainer hasHeader={false}>
       <LoginView onSubmit={onSubmit} initialValues={initialValues} />

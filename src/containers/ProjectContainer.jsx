@@ -268,7 +268,7 @@ const ProjectContainer = () => {
               >
                 {item?.titulo}
               </MenuItemText>
-              {item._id && (
+              {item._id && !Number.isInteger(item._id) && (
                 <IconButton
                   sx={{
                     display: 'flex',

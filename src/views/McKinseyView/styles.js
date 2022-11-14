@@ -37,7 +37,6 @@ export const CardContent = styled('div')((props) => ({
   padding: '12px 20px',
   maxHeight: 265,
   gap: 10,
-  overflowY: 'scroll',
 }));
 
 export const CardTitleContainer = styled('div')({
@@ -97,7 +96,7 @@ export const FactorDescription = styled('span')({
   fontFamily: "'Fira Sans'",
   fontStyle: 'normal',
   fontWeight: 500,
-  fontSize: '12px',
+  fontSize: '16px',
   lineHeight: '14px',
   alignItems: 'center',
 });

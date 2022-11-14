@@ -60,12 +60,22 @@ export const stepToolsSelector = createSelector(
     questionnaires
   ) => {
     return {
-      1: [...porters, ...pestels],
+      1: [
+        { titulo: 'PORTER', _id: -1 },
+        ...porters,
+        { titulo: 'PESTEL', _id: -2 },
+        ...pestels,
+      ],
       2: [...fodas],
       3: [...ansoffs],
       4: [...mckenseys],
       5: [...questionnaires],
-      6: [...balanceScorecards, ...okrs],
+      6: [
+        { titulo: 'Balanced scorecard', _id: -3 },
+        ...balanceScorecards,
+        { titulo: 'OKR', _id: -4 },
+        ...okrs,
+      ],
       7: [],
     };
   }

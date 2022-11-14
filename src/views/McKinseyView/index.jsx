@@ -20,6 +20,7 @@ import { ArrowBack, Comment } from '@mui/icons-material';
 import { Title, TitleContainer } from 'views/FodaView/styles';
 import ToolTip from 'components/commons/ToolTip';
 import { tooltips } from './tooltips';
+import CustomChip from 'components/commons/CustomChip';
 
 const McKinseyView = ({
   onAdd,
@@ -43,7 +44,7 @@ const McKinseyView = ({
     items?.map((item) => (
       <FactorContent>
         <FactorDescription>{item.nombre}</FactorDescription>
-        {showResults && <Chip label={item.puntuacion} />}
+        {showResults && <CustomChip value={item.puntuacion} total={100} />}
       </FactorContent>
     ));
 
@@ -90,7 +91,18 @@ const McKinseyView = ({
             color,
             <>
               {renderTitle(title)}
-              {renderFactores(unidades)}
+              {
+                <div
+                  style={{
+                    overflowY: 'scroll',
+                    display: 'flex',
+                    gap: 5,
+                    flexDirection: 'column',
+                  }}
+                >
+                  {renderFactores(unidades)}
+                </div>
+              }
             </>
           )
         )}

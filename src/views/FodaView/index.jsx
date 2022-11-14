@@ -23,6 +23,7 @@ import Button from 'components/commons/Button';
 import { ArrowBack, Comment } from '@mui/icons-material';
 import Comments from 'components/comments/Comments';
 import ToolTip from 'components/commons/ToolTip';
+import CustomChip from 'components/commons/CustomChip';
 
 const FodaView = ({
   onAdd,
@@ -40,7 +41,7 @@ const FodaView = ({
   total = {},
   openComments,
 }) => {
-  const renderTitle = (title, onAdd, total, toolTip) => (
+  const renderTitle = (title, onAdd, value, toolTip) => (
     <CardTitleContainer>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <CardTitle>{title}</CardTitle>
@@ -56,7 +57,7 @@ const FodaView = ({
         </AddButton>
       ) : (
         <ChipContainer>
-          <Chip label={total} />
+          <CustomChip value={value} />
         </ChipContainer>
       )}
     </CardTitleContainer>
@@ -76,7 +77,7 @@ const FodaView = ({
             </IconButton>
           </>
         ) : (
-          <Chip label={factor.puntuacion} />
+          <CustomChip value={factor.puntuacion} total={125} />
         )}
       </FactorContent>
     ));

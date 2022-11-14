@@ -22,6 +22,7 @@ import {
 } from './styles';
 import Button from 'components/commons/Button';
 import ToolTip from 'components/commons/ToolTip';
+import CustomChip from 'components/commons/CustomChip';
 
 const PestelView = ({
   onAdd,
@@ -77,7 +78,7 @@ const PestelView = ({
             </IconButton>
           </>
         ) : (
-          <Chip label={factor.puntuacion} />
+          <CustomChip value={factor.puntuacion} total={125} />
         )}
       </FactorContent>
     ));
