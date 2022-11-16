@@ -114,10 +114,10 @@ const ProjectView = ({
         <Content style={{ background: '#275C62' }}>
           <StepContainer style={{ justifyContent: 'center' }}>
             <Step
-              onMouseEnter={(e) =>
+              onClick={(e) =>
                 setStepHover(StepValue.EVALUACION_ENTORNO_EXTERNO)
               }
-              onMouseLeave={(e) => setStepHover(null)}
+              // onMouseLeave={(e) => setStepHover(null)}
             >
               <ItemContainer
                 style={{
@@ -132,10 +132,10 @@ const ProjectView = ({
           </StepContainer>
           <StepContainer style={{ justifyContent: 'space-between' }}>
             <Step
-              onMouseEnter={(e) =>
+              onClick={(e) =>
                 setStepHover(StepValue.PLAN_FINANCIERO_MEDICION_RESULTADOS)
               }
-              onMouseLeave={(e) => setStepHover(null)}
+              // onMouseLeave={(e) => setStepHover(null)}
             >
               <ItemContainer
                 style={{ left: '-40%', transform: 'translateX(50%)', top: '0' }}
@@ -144,10 +144,10 @@ const ProjectView = ({
               </ItemContainer>
             </Step>
             <Step
-              onMouseEnter={(e) =>
+              onClick={(e) =>
                 setStepHover(StepValue.EVALUACION_SITUACION_INTERNA)
               }
-              onMouseLeave={(e) => setStepHover(null)}
+              // onMouseLeave={(e) => setStepHover(null)}
             >
               <ItemContainer
                 style={{
@@ -162,8 +162,8 @@ const ProjectView = ({
           </StepContainer>
           <StepContainer style={{ justifyContent: 'center' }}>
             <Step
-              onMouseEnter={(e) => setStepHover(StepValue.MEJORA_CONTINUA)}
-              onMouseLeave={(e) => setStepHover(null)}
+              onClick={(e) => setStepHover(StepValue.MEJORA_CONTINUA)}
+              // onMouseLeave={(e) => setStepHover(null)}
             >
               <ItemContainer
                 style={{
@@ -178,10 +178,10 @@ const ProjectView = ({
           </StepContainer>
           <StepContainer style={{ justifyContent: 'space-between' }}>
             <Step
-              onMouseEnter={(e) =>
+              onClick={(e) =>
                 setStepHover(StepValue.DEFINICION_PLANES_TRANSFORMACION)
               }
-              onMouseLeave={(e) => setStepHover(null)}
+              // onMouseLeave={(e) => setStepHover(null)}
             >
               <ItemContainer
                 style={{
@@ -194,10 +194,10 @@ const ProjectView = ({
               </ItemContainer>
             </Step>
             <Step
-              onMouseEnter={(e) =>
+              onClick={(e) =>
                 setStepHover(StepValue.DEFINICION_LINIAMIENTOS_ESTRATEGICOS)
               }
-              onMouseLeave={(e) => setStepHover(null)}
+              // onMouseLeave={(e) => setStepHover(null)}
             >
               <ItemContainer
                 style={{
@@ -212,10 +212,10 @@ const ProjectView = ({
           </StepContainer>
           <StepContainer style={{ justifyContent: 'center' }}>
             <Step
-              onMouseEnter={(e) =>
+              onClick={(e) =>
                 setStepHover(StepValue.FORMULACION_ESTRATEGIA_COMPETITIVA)
               }
-              onMouseLeave={(e) => setStepHover(null)}
+              // onMouseLeave={(e) => setStepHover(null)}
             >
               <ItemContainer
                 style={{
@@ -238,6 +238,7 @@ const ProjectView = ({
             height: '100%',
             color: COLORS.white,
             borderRadius: '15px',
+            marginRight: '15px',
           }}
         >
           <Box
@@ -251,27 +252,53 @@ const ProjectView = ({
               gap: '20px',
             }}
           >
-            <Typography
+            <Box
               sx={{
-                fontFamily: 'Fira Sans, sans-serif',
-                fontSize: '24px',
-                textAlign: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
               }}
             >
-              {stepHover
-                ? stepsInfo[stepHover].title
-                : 'Titulo direccion estrategica'}
-            </Typography>
+              {stepHover && (
+                <IconButton size="small" onClick={() => setStepHover(null)}>
+                  <ArrowBack />
+                </IconButton>
+              )}
+              <Typography
+                sx={{
+                  fontFamily: 'Fira Sans, sans-serif',
+                  fontSize: '24px',
+                  textAlign: 'center',
+                  marginRight: stepHover === 7 ? '25%' : '',
+                }}
+              >
+                {stepHover
+                  ? stepsInfo[stepHover].title
+                  : 'Proceso de Planificación Estratégica'}
+              </Typography>
+            </Box>
             <Typography
               sx={{
                 fontFamily: 'Fira Sans, sans-serif',
                 fontSize: '18px',
+                overflowY: 'scroll',
               }}
             >
               {parse(
                 stepHover
-                  ? stepsInfo[stepHover].description
-                  : 'Descripcion direccion estrategica'
+                  ? `<br> ${stepsInfo[stepHover].description}`
+                  : `
+                      <br>
+                      El proceso de Planificación Estratégica puede ser dividido en varias fases, todas con sus distintas herramientas orientadas a evaluar la situación actual de su proyecto, definir lineamientos estratégicos y un plan de acción para alcanzar los objetivos que usted decida definir. En ProjectMap, y con el propósito de simplificar el mismo, nos limitamos a 7 esferas con sus respectivas herramientas, 6 completables y una de visualización. Las mismas pueden ser completadas en cualquier orden, dependiendo de la información que usted tenga a su disposición
+                      <br><br>
+                      <p style=text-align:center><b>Modo de uso</b></p>
+                      Al posicionarse por encima de las distintas esferas detalladas del lado izquierdo de la pantalla, podrá ver información de las mismas junto con las distintas herramientas disponibles para su uso. Recuerde, cuanto más esferas complete y con más periodicidad las actualice, mejores serán las respuestas que las mismas le den, y mayor seguimiento le podrá dar usted a su proyecto. 
+                      <br><br>
+                      <p style=text-align:center><b>Completitud de las esferas</b></p>
+                      Inicialmente, todas las esferas aparecerán con su completitud vacía, por lo que estarán marcadas en rojo. Cuando usted avance con las mismas, vera su color cambiar de rojo a amarillo, que representa completitud intermedia, y de amarillo a verde, representanto su completitud recomendada. 
+                      <br><br>
+                      Recuerde que estos colores representan la completitud de la herramienta y no tiene que ver con las respuestas o consejos de las mismas
+                  `
               )}
             </Typography>
           </Box>
