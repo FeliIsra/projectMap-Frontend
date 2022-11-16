@@ -50,7 +50,7 @@ export const radarChartSelector = createSelector([getFodas], (fodas) => {
       }
     );
   });
-  return { labels, datasets: data };
+  return { labels, datasets: data, id: fodas[0]?._id };
 });
 
 export const pieChartSelector = createSelector([getPestels], (pestels) => {
@@ -134,6 +134,7 @@ export const polarChartSelector = createSelector(
 export const barChartSelector = createSelector([getPorters], (porters) => {
   return porters?.reduce(
     (prev, porter, index) => {
+      if (index === 0) prev.id = porter?._id;
       porter?.consejos?.forEach((item) => {
         if (item.fuerza === 'Rivalidad entre competidores')
           prev.datasets[index].data[0] = item.valorConsejoGeneral;
@@ -169,6 +170,7 @@ export const barChartSelector = createSelector([getPorters], (porters) => {
           backgroundColor: 'rgba(53, 162, 235)',
         },
       ],
+      id: null,
     }
   );
 });
@@ -178,6 +180,7 @@ export const horizontalBarChartSelector = createSelector(
   (ansoffs) => {
     return ansoffs?.reduce(
       (prev, ansoff, index) => {
+        if (index === 0) prev.id = ansoff._id;
         prev.datasets[index].label = ansoff.titulo;
         const total = ansoff?.productos?.length;
         if (!total) return prev;

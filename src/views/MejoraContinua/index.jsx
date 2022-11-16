@@ -26,7 +26,8 @@ import {
 import { getRandomInt } from 'helpers/randomNumber';
 import { ButtonContainer, Title, TitleContainer } from 'views/FodaView/styles';
 import { ArrowBack } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { COLORS } from 'helpers/enums/colors';
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -172,8 +173,6 @@ const MejoraContinuaView = ({
   dataBalanced,
   onClickButtonGoBack,
 }) => {
-  console.log('dataPESTEL', dataPESTEL);
-  const navigate = useNavigate();
   return (
     <Box>
       <TitleContainer sx={{ justifyContent: 'unset' }}>
@@ -197,15 +196,27 @@ const MejoraContinuaView = ({
             <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
               <Item sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Box sx={{ width: '100%' }}>
-                  <Typography
-                    sx={{
-                      fontWeight: 'bold',
-                      fontFamily: 'Fira Sans',
-                      fontSize: '1.3rem',
+                  <Link
+                    to={
+                      dataFODA.id
+                        ? `/projects/${projectId}/foda/${dataFODA.id}`
+                        : ''
+                    }
+                    style={{
+                      textDecoration: 'none',
+                      color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    Comparativa FODA
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        fontFamily: 'Fira Sans',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      Comparativa FODA
+                    </Typography>
+                  </Link>
                   <Radar
                     data={dataFODA}
                     options={{
@@ -222,35 +233,53 @@ const MejoraContinuaView = ({
               </Item>
               <Item sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Box sx={{ width: '100%' }}>
-                  <Typography
-                    sx={{
-                      fontWeight: 'bold',
-                      fontFamily: 'Fira Sans',
-                      fontSize: '1.3rem',
+                  <Link
+                    to={
+                      dataPorter.id
+                        ? `/projects/${projectId}/porter/${dataPorter.id}`
+                        : ''
+                    }
+                    style={{
+                      textDecoration: 'none',
+                      color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    Comparativa PORTER
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        fontFamily: 'Fira Sans',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      Comparativa PORTER
+                    </Typography>
+                  </Link>
                   <Bar data={dataPorter} />
                 </Box>
               </Item>
               <Item sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Box>
-                  <Typography
-                    sx={{
-                      fontWeight: 'bold',
-                      fontFamily: 'Fira Sans',
-                      fontSize: '1.3rem',
-                    }}
-                    onClick={() =>
-                      dataMckinsey?.id &&
-                      navigate(
-                        `/projects/${projectId}/mckinsey/${dataMckinsey.id}`
-                      )
+                  <Link
+                    to={
+                      dataMckinsey.id
+                        ? `/projects/${projectId}/mckinsey/${dataMckinsey.id}`
+                        : ''
                     }
+                    style={{
+                      textDecoration: 'none',
+                      color: 'rgba(0, 0, 0, 0.6)',
+                    }}
                   >
-                    MCKINSEY
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        fontFamily: 'Fira Sans',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      MCKINSEY
+                    </Typography>
+                  </Link>
                   <PolarArea
                     data={dataMckinsey}
                     options={{
@@ -269,21 +298,27 @@ const MejoraContinuaView = ({
             <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
               <Item sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Box>
-                  <Typography
-                    sx={{
-                      fontWeight: 'bold',
-                      fontFamily: 'Fira Sans',
-                      fontSize: '1.3rem',
-                    }}
-                    onClick={() =>
-                      dataBalanced?.id &&
-                      navigate(
-                        `/projects/${projectId}/balanceScorecard/${dataBalanced.id}`
-                      )
+                  <Link
+                    to={
+                      dataBalanced.id
+                        ? `/projects/${projectId}/balanceScorecard/${dataBalanced.id}`
+                        : ''
                     }
+                    style={{
+                      textDecoration: 'none',
+                      color: 'rgba(0, 0, 0, 0.6)',
+                    }}
                   >
-                    Balanced Scoredcard
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        fontFamily: 'Fira Sans',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      Balanced Scoredcard
+                    </Typography>
+                  </Link>
                   <Line data={dataBalanced} />
                 </Box>
               </Item>
@@ -295,19 +330,27 @@ const MejoraContinuaView = ({
                 }}
               >
                 <Box>
-                  <Typography
-                    sx={{
-                      fontWeight: 'bold',
-                      fontFamily: 'Fira Sans',
-                      fontSize: '1.3rem',
-                    }}
-                    onClick={() =>
-                      dataOkrs?.id &&
-                      navigate(`/projects/${projectId}/okr/${dataOkrs.id}`)
+                  <Link
+                    to={
+                      dataOkrs.id
+                        ? `/projects/${projectId}/okr/${dataOkrs.id}`
+                        : ''
                     }
+                    style={{
+                      textDecoration: 'none',
+                      color: 'rgba(0, 0, 0, 0.6)',
+                    }}
                   >
-                    OKR
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        fontFamily: 'Fira Sans',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      OKR
+                    </Typography>
+                  </Link>
                   <Bar
                     options={{
                       indexAxis: 'y',
@@ -327,19 +370,27 @@ const MejoraContinuaView = ({
             <Stack spacing={2} sx={{ display: 'flex', flex: 1 }}>
               <Item sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Box>
-                  <Typography
-                    sx={{
-                      fontWeight: 'bold',
-                      fontFamily: 'Fira Sans',
-                      fontSize: '1.3rem',
-                    }}
-                    onClick={() =>
-                      dataPESTEL?.id &&
-                      navigate(`/projects/${projectId}/pestel/${dataPESTEL.id}`)
+                  <Link
+                    to={
+                      dataPESTEL.id
+                        ? `/projects/${projectId}/pestel/${dataPESTEL.id}`
+                        : ''
                     }
+                    style={{
+                      textDecoration: 'none',
+                      color: 'rgba(0, 0, 0, 0.6)',
+                    }}
                   >
-                    PESTEL
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        fontFamily: 'Fira Sans',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      PESTEL
+                    </Typography>
+                  </Link>
                   <Doughnut
                     data={dataPESTEL}
                     style={{ display: 'flex', width: '100%' }}
@@ -355,15 +406,27 @@ const MejoraContinuaView = ({
               </Item>
               <Item sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Box>
-                  <Typography
-                    sx={{
-                      fontWeight: 'bold',
-                      fontFamily: 'Fira Sans',
-                      fontSize: '1.3rem',
+                  <Link
+                    to={
+                      dataAnsoff.id
+                        ? `/projects/${projectId}/ansoff/${dataAnsoff.id}`
+                        : ''
+                    }
+                    style={{
+                      textDecoration: 'none',
+                      color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    ANSOFF
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        fontFamily: 'Fira Sans',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      ANSOFF
+                    </Typography>
+                  </Link>
                   <Bar
                     options={{
                       plugins: {
