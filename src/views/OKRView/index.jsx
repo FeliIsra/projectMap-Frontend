@@ -138,144 +138,184 @@ const OKRView = ({
                     okr.quarter,
                     keyResult.keyStatus
                   ),
+                  priority: keyResult.priority,
+                  responsible: keyResult.responsible,
                 }}
                 onSubmit={(values, actions) => {
                   onEditKeyResultStatus(okr._id, keyResult._id, values);
                   setKeyResultId(null);
                 }}
               >
-                <Form>
-                  <Grid item xs={12}>
-                    <Grid
-                      container
-                      sx={{
-                        padding: '10px 0',
-                        background: COLORS.AthensGray,
-                        alignItems: 'center',
-                      }}
-                    >
+                {({ setFieldValue }) => (
+                  <Form>
+                    <Grid item xs={12}>
                       <Grid
-                        item
-                        md={3}
-                        sx={{ display: 'flex', paddingLeft: '10px' }}
+                        container
+                        sx={{
+                          padding: '10px 0',
+                          background: COLORS.AthensGray,
+                          alignItems: 'center',
+                        }}
                       >
-                        <div style={{ flex: 1 }}>
-                          <span>{keyResult.description}</span>
-                        </div>
-                        <Divider orientation="vertical" flexItem />
-                      </Grid>
-                      <Grid item md={1} sx={{ display: 'flex' }}>
-                        <KeyResultCell>
-                          <Tooltip
-                            title={keyResult?.responsible}
-                            placement="top"
-                            arrow
-                          >
-                            <Avatar
-                              {...stringAvatar(keyResult?.responsible || '')}
-                            />
-                          </Tooltip>
-                        </KeyResultCell>
-                        <Divider orientation="vertical" flexItem />
-                      </Grid>
-                      <>
-                        {keyResult.keyStatus?.map((keyStatus, index) => (
-                          <Grid item md={1} sx={{ display: 'flex' }}>
-                            <KeyResultCell>
-                              {keyResultId === keyResult._id ? (
-                                <Field
-                                  name={`keyStatus[${index}].value`}
-                                  placeholder="Valor"
-                                  component={Input}
-                                  inputProps={{
-                                    style: { textAlign: 'center' },
-                                  }}
-                                  hiddenLabel
-                                  variant="standard"
-                                  size="small"
-                                  type="number"
-                                  validate={validateField}
+                        <Grid
+                          item
+                          md={3}
+                          sx={{ display: 'flex', paddingLeft: '10px' }}
+                        >
+                          <div style={{ flex: 1 }}>
+                            <span>{keyResult.description}</span>
+                          </div>
+                          <Divider orientation="vertical" flexItem />
+                        </Grid>
+                        <Grid item md={1} sx={{ display: 'flex' }}>
+                          <KeyResultCell>
+                            {keyResultId === keyResult._id ? (
+                              <Field
+                                name="responsible"
+                                placeholder="Responsable"
+                                component={Input}
+                                inputProps={{
+                                  style: { textAlign: 'center' },
+                                }}
+                                hiddenLabel
+                                variant="standard"
+                                size="small"
+                                validate={validateField}
+                              />
+                            ) : (
+                              <Tooltip
+                                title={keyResult?.responsible}
+                                placement="top"
+                                arrow
+                              >
+                                <Avatar
+                                  {...stringAvatar(
+                                    keyResult?.responsible || ''
+                                  )}
                                 />
-                              ) : (
-                                <span>{keyStatus.value}</span>
-                              )}
-                            </KeyResultCell>
-                            <Divider orientation="vertical" flexItem />
-                          </Grid>
-                        ))}
-                      </>
-                      <Grid item md={1} sx={{ display: 'flex' }}>
-                        <KeyResultCell>
-                          <span>{keyResult.goal}</span>
-                        </KeyResultCell>
-                        <Divider orientation="vertical" flexItem />
-                      </Grid>
-                      <Grid item md={2} sx={{ display: 'flex' }}>
-                        <KeyResultCell>
-                          <Rating
-                            name="read-only"
-                            value={keyResult.priority}
-                            readOnly
-                          />
-                        </KeyResultCell>
-                        <Divider orientation="vertical" flexItem />
-                      </Grid>
-                      <Grid item md={1} sx={{ display: 'flex' }}>
-                        <KeyResultCell>
-                          <span>
-                            {keyResult.progress.toLocaleString(undefined, {
-                              maximumFractionDigits: 2,
-                              minimumFractionDigits: 0,
-                            })}
-                            %
-                          </span>
-                        </KeyResultCell>
-                        <Divider orientation="vertical" flexItem />
-                      </Grid>
-                      <Grid item md={1} sx={{ display: 'flex' }}>
-                        <KeyResultCell>
-                          <>
-                            <IconButton
-                              type="submit"
-                              style={{
-                                display:
-                                  keyResultId === keyResult._id
-                                    ? 'flex'
-                                    : 'none',
-                              }}
-                            >
-                              <Check fontSize="inherit" />
-                            </IconButton>
-                          </>
-                          <>
+                              </Tooltip>
+                            )}
+                          </KeyResultCell>
+                          <Divider orientation="vertical" flexItem />
+                        </Grid>
+                        <>
+                          {keyResult.keyStatus?.map((keyStatus, index) => (
+                            <Grid item md={1} sx={{ display: 'flex' }}>
+                              <KeyResultCell>
+                                {keyResultId === keyResult._id ? (
+                                  <Field
+                                    name={`keyStatus[${index}].value`}
+                                    placeholder="Valor"
+                                    component={Input}
+                                    inputProps={{
+                                      style: { textAlign: 'center' },
+                                    }}
+                                    hiddenLabel
+                                    variant="standard"
+                                    size="small"
+                                    type="number"
+                                    validate={validateField}
+                                  />
+                                ) : (
+                                  <span>{keyStatus.value}</span>
+                                )}
+                              </KeyResultCell>
+                              <Divider orientation="vertical" flexItem />
+                            </Grid>
+                          ))}
+                        </>
+                        <Grid item md={1} sx={{ display: 'flex' }}>
+                          <KeyResultCell>
+                            <span>{keyResult.goal}</span>
+                          </KeyResultCell>
+                          <Divider orientation="vertical" flexItem />
+                        </Grid>
+                        <Grid item md={2} sx={{ display: 'flex' }}>
+                          <KeyResultCell>
+                            {keyResultId === keyResult._id ? (
+                              <Field
+                                name={`priority`}
+                                placeholder="Prioridad"
+                                component={({ field, ...props }) => (
+                                  <Rating
+                                    {...field}
+                                    {...props}
+                                    onChange={(e, value) =>
+                                      setFieldValue('priority', value)
+                                    }
+                                  />
+                                )}
+                                validate={validateField}
+                              />
+                            ) : (
+                              <Rating
+                                name="read-only"
+                                value={keyResult.priority}
+                                readOnly
+                              />
+                            )}
+                          </KeyResultCell>
+                          <Divider orientation="vertical" flexItem />
+                        </Grid>
+                        <Grid item md={1} sx={{ display: 'flex' }}>
+                          <KeyResultCell>
+                            <span>
+                              {keyResult.progress.toLocaleString(undefined, {
+                                maximumFractionDigits: 2,
+                                minimumFractionDigits: 0,
+                              })}
+                              %
+                            </span>
+                          </KeyResultCell>
+                          <Divider orientation="vertical" flexItem />
+                        </Grid>
+                        <Grid item md={1} sx={{ display: 'flex' }}>
+                          <KeyResultCell>
+                            <>
+                              <IconButton
+                                type="submit"
+                                style={{
+                                  display:
+                                    keyResultId === keyResult._id
+                                      ? 'flex'
+                                      : 'none',
+                                }}
+                              >
+                                <Check fontSize="inherit" />
+                              </IconButton>
+                            </>
+                            <>
+                              <IconButton
+                                type="button"
+                                style={{
+                                  display:
+                                    keyResultId === keyResult._id
+                                      ? 'flex'
+                                      : 'none',
+                                }}
+                                onClick={() => setKeyResultId(null)}
+                              >
+                                <Delete fontSize="inherit" />
+                              </IconButton>
+                            </>
                             <IconButton
                               type="button"
+                              onClick={() => setKeyResultId(keyResult._id)}
                               style={{
                                 display:
                                   keyResultId === keyResult._id
-                                    ? 'flex'
-                                    : 'none',
+                                    ? 'none'
+                                    : 'flex',
                               }}
-                              onClick={() => setKeyResultId(null)}
                             >
-                              <Delete fontSize="inherit" />
+                              <Edit fontSize="inherit" />
                             </IconButton>
-                          </>
-                          <IconButton
-                            type="button"
-                            onClick={() => setKeyResultId(keyResult._id)}
-                            style={{
-                              display:
-                                keyResultId === keyResult._id ? 'none' : 'flex',
-                            }}
-                          >
-                            <Edit fontSize="inherit" />
-                          </IconButton>
-                        </KeyResultCell>
+                          </KeyResultCell>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                </Form>
+                  </Form>
+                )}
               </Formik>
             ))}
             {okrInputId === okr._id && (

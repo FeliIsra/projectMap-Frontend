@@ -50,8 +50,7 @@ export const radarChartSelector = createSelector([getFodas], (fodas) => {
       }
     );
   });
-
-  return { labels, datasets: data };
+  return { labels, datasets: data, id: fodas[0]?._id };
 });
 
 export const pieChartSelector = createSelector([getPestels], (pestels) => {
@@ -89,7 +88,7 @@ export const pieChartSelector = createSelector([getPestels], (pestels) => {
       }
     );
   });
-  return { labels, datasets: data };
+  return { labels, datasets: data, id: pestels[0]?._id };
 });
 
 export const polarChartSelector = createSelector(
@@ -112,6 +111,7 @@ export const polarChartSelector = createSelector(
           borderWidth: 1,
         },
       ],
+      id: null,
     };
     const unidades = mckinseys[0]?.unidadesDeNegocio.map(
       ({ nombre, atractivoDeMercado, fuerzaCompetitiva }) => ({
@@ -126,6 +126,7 @@ export const polarChartSelector = createSelector(
         defaultData.labels.push(unidad.nombre);
         defaultData.datasets[0].data.push(unidad.puntuacion);
       });
+    defaultData.id = mckinseys[0]?._id;
     return defaultData;
   }
 );
@@ -133,6 +134,7 @@ export const polarChartSelector = createSelector(
 export const barChartSelector = createSelector([getPorters], (porters) => {
   return porters?.reduce(
     (prev, porter, index) => {
+      if (index === 0) prev.id = porter?._id;
       porter?.consejos?.forEach((item) => {
         if (item.fuerza === 'Rivalidad entre competidores')
           prev.datasets[index].data[0] = item.valorConsejoGeneral;
@@ -168,6 +170,7 @@ export const barChartSelector = createSelector([getPorters], (porters) => {
           backgroundColor: 'rgba(53, 162, 235)',
         },
       ],
+      id: null,
     }
   );
 });
@@ -177,6 +180,7 @@ export const horizontalBarChartSelector = createSelector(
   (ansoffs) => {
     return ansoffs?.reduce(
       (prev, ansoff, index) => {
+        if (index === 0) prev.id = ansoff._id;
         prev.datasets[index].label = ansoff.titulo;
         const total = ansoff?.productos?.length;
         if (!total) return prev;
@@ -234,6 +238,7 @@ export const horizontalChartSelector = createSelector([getOkrs], (tool) => {
         backgroundColor: 'rgba(54, 162, 235, 1)',
       },
     ],
+    id: null,
   };
   tool[0]?.okrs?.forEach((ork) => {
     ork.keyResults?.forEach((keyResult) => {
@@ -242,6 +247,7 @@ export const horizontalChartSelector = createSelector([getOkrs], (tool) => {
       defaultData.datasets[1].data.push(keyResult.progress);
     });
   });
+  defaultData.id = tool[0]?._id;
   return defaultData;
 });
 
@@ -276,6 +282,7 @@ export const lineChartSelector = createSelector(
         'Diciembre',
       ],
       datasets: [],
+      id: null,
     };
     balanced[0]?.objectives?.forEach((objective, index) => {
       const color =
@@ -291,6 +298,7 @@ export const lineChartSelector = createSelector(
         borderColor: color,
       });
     });
+    defaultData.id = balanced[0]?._id;
     return defaultData;
   }
 );
