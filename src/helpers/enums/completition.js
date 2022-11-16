@@ -9,5 +9,5 @@ export const Completition = {
 export const CompletitionColors = {
   Completo: COLORS.CompletedStep,
   Incompleto: COLORS.IncompletedStep,
-  Vacio: COLORS.white,
+  Vacio: '#bb3e03',
 };

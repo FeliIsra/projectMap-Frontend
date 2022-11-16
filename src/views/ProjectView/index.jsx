@@ -13,6 +13,7 @@ import {
 import { Box, Fab, IconButton, Typography, Tooltip } from '@mui/material';
 
 import { COLORS } from 'helpers/enums/colors';
+import parse from 'html-react-parser';
 
 import {
   Container,
@@ -29,6 +30,7 @@ import {
   Title,
 } from './styles';
 import { stepsInfo, StepValue } from 'helpers/enums/steps';
+import { color } from '@mui/system';
 
 const ProjectView = ({
   items,
@@ -93,7 +95,10 @@ const ProjectView = ({
   return (
     <>
       <TitleButtonContainer
-        sx={{ display: 'flex', justifyContent: 'space-between' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
       >
         <ButtonContainer>
           <IconButton size="small" onClick={onClickButtonGoBack}>
@@ -104,8 +109,9 @@ const ProjectView = ({
           <Title>{titulo}</Title>
         </Box>
       </TitleButtonContainer>
-      <Container>
-        <Content style={{ background: project?.color || COLORS.AthensGray }}>
+
+      <Container sx={{ marginTop: '90px' }}>
+        <Content style={{ background: '#275C62' }}>
           <StepContainer style={{ justifyContent: 'center' }}>
             <Step
               onMouseEnter={(e) =>
@@ -227,8 +233,8 @@ const ProjectView = ({
           sx={{
             display: 'flex',
             flex: 1,
-            maxWidth: '20%',
-            backgroundColor: COLORS.BlueDianne,
+            maxWidth: '30%',
+            backgroundColor: '#275C62',
             height: '100%',
             color: COLORS.white,
             borderRadius: '15px',
@@ -260,12 +266,13 @@ const ProjectView = ({
               sx={{
                 fontFamily: 'Fira Sans, sans-serif',
                 fontSize: '18px',
-                textAlign: 'center',
               }}
             >
-              {stepHover
-                ? stepsInfo[stepHover].description
-                : 'Descripcion direccion estrategica'}
+              {parse(
+                stepHover
+                  ? stepsInfo[stepHover].description
+                  : 'Descripcion direccion estrategica'
+              )}
             </Typography>
           </Box>
         </Box>

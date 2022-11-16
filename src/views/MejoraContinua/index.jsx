@@ -173,12 +173,12 @@ const MejoraContinuaView = ({
   return (
     <Box>
       <TitleContainer sx={{ justifyContent: 'unset' }}>
-        <ButtonContainer>
+        <ButtonContainer sx={{ marginLeft: '1.5%' }}>
           <IconButton size="small" onClick={onClickButtonGoBack}>
             <ArrowBack />
           </IconButton>
         </ButtonContainer>
-        <Title sx={{ marginLeft: '50%', fontSize: 34 }}>Mejora continua</Title>
+        <Title sx={{ marginLeft: '45%', fontSize: 34 }}>Mejora continua</Title>
       </TitleContainer>
       <Box
         sx={{

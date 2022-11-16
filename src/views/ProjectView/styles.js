@@ -90,11 +90,10 @@ export const CustomCircularProgress = styled(CircularProgress)({
 export const TitleButtonContainer = styled('div')({
   display: 'flex',
   flexDirection: 'row',
-  padding: '20px',
+  padding: '40px',
   position: 'absolute',
   alignItems: 'center',
   width: '90%',
-  marginBottom: '50px',
 });
 
 export const ButtonContainer = styled('div')({});

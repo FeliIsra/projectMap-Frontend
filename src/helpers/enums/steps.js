@@ -77,13 +77,23 @@ export const getMenuItems = (stepValue) =>
 export const stepsInfo = {
   1: {
     title: 'Evaluación del Entorno Externo',
-    description:
-      "Also every whose good unto god midst fowl good yielding likeness make moving it can't made replenish seas divided lights make our sea. Winged herb is from female which under days meat living whales every living seas had. Divided give bring land created which sixth to green, darkness. Subdue so.",
+    description: `
+      <p style=text-align:center ><b>Herramientas</b></p>
+       - <b>FODA</b>: 
+          El análisis FODA es una herramienta de planificación estratégica, diseñada para realizar una análisis interno (Fortalezas y Debilidades) y externo (Oportunidades y Amenazas) en la empresa. Resulta fundamental para la toma de decisiones actuales y futuras. 
+          Se trata de una herramienta muy valiosa para cualquier negocio, en tanto que da la pauta para conocer lo que se está haciendo bien y todo aquello que representa un reto actual o potencial.
+    `,
   },
   2: {
-    title: 'Evaluación del Entorno Interno',
-    description:
-      "Creepeth creeping saw. Image every kind bearing fish. Stars make be Fly, creepeth under. Together. May shall dominion also every said void so replenish hath whose behold, seed seas so. Place behold were together bearing, that, doesn't that tree us from fill. One evening Divide fish whales above form his.",
+    title: 'Evaluación de la Situación Interna',
+    description: `
+    Está conformada por el análisis tanto de las competencias claves de la organización y de sus mayores fuentes de diferenciación como de sus más grandes debilidades. 
+
+      <p style=text-align:center ><b>Herramientas</b></p>
+       - <b>FODA</b>: 
+          El análisis FODA es una herramienta de planificación estratégica, diseñada para realizar una análisis interno (Fortalezas y Debilidades) y externo (Oportunidades y Amenazas) en la empresa. Resulta fundamental para la toma de decisiones actuales y futuras. 
+          Se trata de una herramienta muy valiosa para cualquier negocio, en tanto que da la pauta para conocer lo que se está haciendo bien y todo aquello que representa un reto actual o potencial.
+    `,
   },
   3: {
     title: 'Definición de Lineamientos Estratégicos',
