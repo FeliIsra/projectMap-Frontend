@@ -27,9 +27,9 @@ const renderCustomizedLabel = ({
     </text>
   );
 };
-const PieChartCustom = ({ data, colors }) => {
+const PieChartCustom = ({ data, colors, width = 500, height = 500 }) => {
   return (
-    <PieChart width={500} height={500}>
+    <PieChart width={width} height={height}>
       <Pie
         data={data}
         cx={200}

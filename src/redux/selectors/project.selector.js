@@ -61,19 +61,19 @@ export const stepToolsSelector = createSelector(
   ) => {
     return {
       1: [
-        { titulo: 'PORTER', _id: -1 },
+        { titulo: 'Porters:', _id: -1 },
         ...porters,
-        { titulo: 'PESTEL', _id: -2 },
+        { titulo: 'Pestels:', _id: -2 },
         ...pestels,
       ],
-      2: [...fodas],
-      3: [...ansoffs],
-      4: [...mckenseys],
-      5: [...questionnaires],
+      2: [{ titulo: 'FODAs: ', _id: -1 }, ...fodas],
+      3: [{ titulo: 'Ansoffs: ', _id: -1 }, ...ansoffs],
+      4: [{ titulo: 'McKenseys: ', _id: -1 }, ...mckenseys],
+      5: [{ titulo: 'Cuestionarios: ', _id: -1 }, ...questionnaires],
       6: [
-        { titulo: 'Balanced scorecard', _id: -3 },
+        { titulo: 'Balanced scorecards:', _id: -3 },
         ...balanceScorecards,
-        { titulo: 'OKR', _id: -4 },
+        { titulo: 'OKRs:', _id: -4 },
         ...okrs,
       ],
       7: [],
