@@ -1,4 +1,5 @@
 import * as constants from 'redux/contansts/user.constants';
+import * as appConstants from 'redux/contansts/app.constants';
 
 export const defaultState = {
   data: null,
@@ -14,6 +15,7 @@ const userReducer = (state = defaultState, action) => {
     case constants.USER_ON_REGISTER_REQUESTED:
     case constants.USER_ON_INITIALIZE_REQUESTED:
     case constants.USER_ON_EDIT_REQUESTED:
+    case appConstants.APP_ON_INITIALIZE_REQUESTED:
       return {
         ...state,
         loading: true,

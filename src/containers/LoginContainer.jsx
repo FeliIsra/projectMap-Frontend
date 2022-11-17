@@ -8,6 +8,7 @@ import Loading from 'components/commons/Loading';
 import LayoutContainer from 'containers/LayoutContainer';
 
 import LoginView from 'views/LoginView';
+import { Role } from 'helpers/enums/roles';
 
 const LoginContainer = () => {
   const dispatch = useDispatch();
@@ -25,9 +26,9 @@ const LoginContainer = () => {
       {loading && <Loading isModalMode message="Loading" />}
       {data && data.justRegistered ? (
         <Navigate to="/login" replace={true} />
-      ) : data && data.role !== 'ConsultantAdmin' ? (
+      ) : data && data.role !== Role.ConsultantAdmin ? (
         <Navigate to="/dashboard" replace={true} />
-      ) : data && data.role === 'ConsultantAdmin' ? (
+      ) : data && data.role === Role.ConsultantAdmin ? (
         <Navigate to="/consultoria" replace={true} />
       ) : (
         ''

@@ -1,3 +1,4 @@
+import Loading from 'components/commons/Loading';
 import LayoutContainer from 'containers/LayoutContainer';
 import { COLORS } from 'helpers/enums/colors';
 import { getRandomInt } from 'helpers/randomNumber';
@@ -5,7 +6,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import {
-  onAddConsultant,
   onAssign,
   onGetOne,
   onRemoveConsultatn,
@@ -22,8 +22,8 @@ const ConsultoriaContainer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.user.data);
-  const consultora = useSelector((state) => state?.consultora?.data);
-  const isLoading = useSelector((state) => state?.consultora?.loading);
+  const consultora = useSelector((state) => state.consultora.data);
+  const isLoading = useSelector((state) => state.consultora.loading);
 
   const [isModalOpenAssignProjects, setisModalOpenAssignProjects] =
     useState(false);
@@ -39,8 +39,8 @@ const ConsultoriaContainer = () => {
   };
 
   useEffect(() => {
-    dispatch(onGetOne(user?.consultora));
-  }, [user]);
+    if (user?.consultora) dispatch(onGetOne(user.consultora));
+  }, [dispatch, user?.consultora]);
 
   const openModalAssignProjects = (projectsShared, consultant) => {
     setProjectsConsultantShared(projectsShared);
@@ -153,37 +153,38 @@ const ConsultoriaContainer = () => {
   };
 
   return (
-    !isLoading && (
-      <LayoutContainer>
-        <ConsultoriaView
-          title={consultora?.name}
-          consultants={consultora?.consultants}
-          projects={consultora?.projects}
-          onClickDeleteProject={onClickDeleteProject}
-          onClickProject={onClickProject}
-          openModalAssignProjects={openModalAssignProjects}
-          openModalNewConsultat={openModalNewConsultant}
-          deleteConsultant={deleteConsultant}
-          openModalNewProject={openModalNewProject}
-        />
-        <AssignProjectsModal
-          isOpen={isModalOpenAssignProjects}
-          onClose={closeModalAssignProjects}
-          initialProjects={buildProjectCheckeds()}
-          onSubmit={onAssignProjectsSubmit}
-        />
-        <NewConsultantModal
-          isOpen={isModalOpenNewConsultant}
-          onClose={closeModalNewConsultant}
-          onSubmit={createConsultantOnSubmit}
-        />
-        <NewProjectModal
-          isOpen={isModalOpenNewProject}
-          onClose={closeModalNewProject}
-          onSubmit={createNewProjectOnSubmit}
-        />
-      </LayoutContainer>
-    )
+    <LayoutContainer>
+      <ConsultoriaView
+        title={consultora?.name}
+        consultants={consultora?.consultants}
+        projects={consultora?.projects}
+        onClickDeleteProject={onClickDeleteProject}
+        onClickProject={onClickProject}
+        openModalAssignProjects={openModalAssignProjects}
+        openModalNewConsultat={openModalNewConsultant}
+        deleteConsultant={deleteConsultant}
+        openModalNewProject={openModalNewProject}
+      />
+      <AssignProjectsModal
+        isOpen={isModalOpenAssignProjects}
+        onClose={closeModalAssignProjects}
+        initialProjects={buildProjectCheckeds()}
+        onSubmit={onAssignProjectsSubmit}
+      />
+      <NewConsultantModal
+        isOpen={isModalOpenNewConsultant}
+        onClose={closeModalNewConsultant}
+        onSubmit={createConsultantOnSubmit}
+      />
+      <NewProjectModal
+        isOpen={isModalOpenNewProject}
+        onClose={closeModalNewProject}
+        onSubmit={createNewProjectOnSubmit}
+      />
+      {isLoading && (
+        <Loading isModalMode message="Cargando proyectos de la consultora" />
+      )}
+    </LayoutContainer>
   );
 };
 

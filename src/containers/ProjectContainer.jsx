@@ -41,6 +41,7 @@ import {
   stepToolsSelector,
   progressSelector,
   getConsultantSelector,
+  getLoadingSelector,
 } from 'redux/selectors/project.selector';
 import { validateField } from 'helpers/validateField';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -56,6 +57,7 @@ import Comments from 'components/comments/Comments';
 import ShareModal from 'views/ProjectView/components/shareModal';
 import UnShareModal from 'views/ProjectView/components/unShareModal';
 import ConfirmDeleteModal from 'components/commons/ProjectCard/components/confirmDeleteModal';
+import Loading from 'components/commons/Loading';
 
 const ProjectContainer = () => {
   let { id } = useParams();
@@ -88,8 +90,14 @@ const ProjectContainer = () => {
   const sharedUsersSuccess = useSelector(
     (state) => state.projects.sharedUsersSuccess
   );
+  const user = useSelector((state) => state.user.data);
+  const loading = useSelector(getLoadingSelector);
 
-  const onClickButtonGoBack = () => navigate(`/dashboard`);
+  const onClickButtonGoBack = () => {
+    if (user?.role && user?.role === 'AdminConsultant')
+      navigate(`/consultoria`);
+    else navigate(`/dashborard`);
+  };
 
   const openShareModal = () => {
     setIsShareModalOpen(true);
@@ -424,6 +432,7 @@ const ProjectContainer = () => {
         descripcion="Para confirmar la eliminacion, confirme escribiendo el nombre de la herramienta"
         placeholder="Nombre de la herramienta."
       />
+      {loading && <Loading isModalMode message="Cargando proyecto" />}
     </LayoutContainer>
   );
 };

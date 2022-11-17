@@ -40,13 +40,11 @@ const fodaReducer = (state = defaultState, action) => {
     case constants.FODA_GET_OPTIONS_SUCCEEDED:
       return {
         ...state,
-        loading: false,
         options: { ...state.options, ...data.options },
       };
     case constants.FODA_GET_SEEDS_SUCCEEDED:
       return {
         ...state,
-        loading: false,
         seeds: { ...state.seeds, ...data.seeds },
       };
     case constants.CREATE_FODA_FAILED:

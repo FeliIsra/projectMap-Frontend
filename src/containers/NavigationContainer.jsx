@@ -25,6 +25,7 @@ import QuestionnarieResultsContainer from 'containers/Questionnarie/Questionnari
 import MejoraContinuaContainer from 'containers/MEJORA-CONTINUA/MejoraContinuaContainer';
 import ConsultoriaContainer from 'containers/AdminConsultoria/AdminConsultoriaContainer';
 import UserProfileContainer from 'containers/UserProfileContainer';
+import DashboardRouteContainer from 'containers/DashboardRouteContainer';
 
 export const NavigationContainer = () => {
   return (
@@ -32,7 +33,9 @@ export const NavigationContainer = () => {
       <Route path="/login" element={<LoginContainer />} />
       <Route path="/register" element={<RegisterContainer />} />
       <Route path="/forgot-password" element={<ForgotPasswordContainer />} />
-      <Route path="/dashboard" element={<DashboardContainer />} />
+      <Route path="/dashboard" element={<DashboardRouteContainer />}>
+        <Route path="" element={<DashboardContainer />} />
+      </Route>
       <Route path="/consultoria" element={<ConsultoriaContainer />} />
       <Route path="/profile" element={<UserProfileContainer />} />
       <Route path="/projects">

@@ -38,6 +38,16 @@ const getQuestionnaires = (state) =>
   }));
 const getSharedUsers = (state) => state.projects.sharedUsers;
 
+const getLoadingFoda = (state) => state.projects.loadingFodas;
+const getLoadingPestels = (state) => state.projects.loadingPestels;
+const getLoadingPortes = (state) => state.projects.loadingPorters;
+const getLoadingAnsoffs = (state) => state.projects.loadingAnsoffs;
+const getLoadingOkrs = (state) => state.projects.loadingOkrs;
+const getLoadingMckinseys = (state) => state.projects.loadingMckinseys;
+const getLoadingBalanced = (state) => state.projects.loadingBalanced;
+const getLoadingQuestionnaires = (state) =>
+  state.projects.loadingQuestionnaires;
+
 export const stepToolsSelector = createSelector(
   [
     getFodas,
@@ -169,4 +179,35 @@ export const progressSelector = createSelector(
 export const getConsultantSelector = createSelector(
   [getSharedUsers],
   (sharedUsers) => sharedUsers?.find((user) => user.role === 'Consultant')
+);
+
+export const getLoadingSelector = createSelector(
+  [
+    getLoadingFoda,
+    getLoadingPestels,
+    getLoadingPortes,
+    getLoadingAnsoffs,
+    getLoadingOkrs,
+    getLoadingMckinseys,
+    getLoadingBalanced,
+    getLoadingQuestionnaires,
+  ],
+  (
+    loadingFodas,
+    loadingPestels,
+    loadingPorters,
+    loadingAnsoffs,
+    loadingOkrs,
+    loadingMckinseys,
+    loadingBalanced,
+    loadingQuestionnaires
+  ) =>
+    loadingFodas &&
+    loadingPestels &&
+    loadingPorters &&
+    loadingAnsoffs &&
+    loadingOkrs &&
+    loadingMckinseys &&
+    loadingBalanced &&
+    loadingQuestionnaires
 );

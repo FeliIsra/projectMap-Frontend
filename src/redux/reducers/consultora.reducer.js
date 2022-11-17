@@ -21,7 +21,7 @@ const consultoraReducer = (state = defaultState, action) => {
     case constants.CONSULTORIA_ADD_PROJECT_REQUESTED:
       return {
         ...state,
-        laading: true,
+        loading: true,
       };
     case constants.CONSULTORIA_CREATE_SUCCEEDED:
     case constants.CONSULTORIA_GET_ONE_SUCCEEDED:
@@ -35,13 +35,13 @@ const consultoraReducer = (state = defaultState, action) => {
       return {
         ...state,
         data,
-        laading: true,
+        loading: false,
       };
     case constants.CONSULTORIA_DELETE_SUCCEEDED:
       return {
         ...state,
         data: {},
-        loading: true,
+        loading: false,
       };
     case constantsProjects.PROJECTS_ON_DELETE_SUCCEEDED:
       return {
@@ -66,7 +66,7 @@ const consultoraReducer = (state = defaultState, action) => {
     case constants.CONSULTORIA_REMOVE_PROJECT_FAILED:
       return {
         ...state,
-        laading: true,
+        loading: false,
       };
     default:
       return error?.response?.status === 401 ? defaultState : state;

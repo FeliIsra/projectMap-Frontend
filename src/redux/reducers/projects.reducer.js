@@ -12,13 +12,21 @@ export const defaultState = {
   items: [],
   loading: false,
   fodas: [],
+  loadingFodas: false,
   pestels: [],
+  loadingPestels: false,
   porters: [],
+  loadingPorters: false,
   ansoffs: [],
+  loadingAnsoffs: false,
   okrs: [],
+  loadingOkrs: false,
   mckinseys: [],
+  loadingMckinseys: false,
   balancedScorecards: [],
+  loadingBalanced: false,
   questionnaires: [],
+  loadingQuestionnaires: false,
   itemsShared: [],
   sharedUsers: [],
   errorShared: null,
@@ -30,18 +38,50 @@ const projectsReducer = (state = defaultState, action) => {
   switch (type) {
     case constants.PROJECTS_ON_CREATE_REQUESTED:
     case constants.PROJECTS_ON_GET_ONE_REQUESTED:
-    case constants.PROJECTS_ON_GET_FODA_REQUESTED:
-    case constants.PROJECTS_ON_GET_PORTER_REQUESTED:
-    case constants.PROJECTS_ON_GET_PESTEL_REQUESTED:
-    case constants.PROJECTS_ON_GET_ANSOFF_REQUESTED:
-    case constants.PROJECTS_ON_GET_MCKINSEY_REQUESTED:
-    case constants.PROJECTS_ON_GET_OKR_REQUESTED:
-    case constants.PROJECTS_ON_GET_BALANCED_SCORECARD_REQUESTED:
-    case constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED:
     case constants.PROJECTS_ON_DELETE_REQUESTED:
       return {
         ...state,
         loading: true,
+      };
+    case constants.PROJECTS_ON_GET_FODA_REQUESTED:
+      return {
+        ...state,
+        loadingFodas: true,
+      };
+    case constants.PROJECTS_ON_GET_PORTER_REQUESTED:
+      return {
+        ...state,
+        loadingPorters: true,
+      };
+    case constants.PROJECTS_ON_GET_PESTEL_REQUESTED:
+      return {
+        ...state,
+        loadingPestels: true,
+      };
+    case constants.PROJECTS_ON_GET_ANSOFF_REQUESTED:
+      return {
+        ...state,
+        loadingAnsoffs: true,
+      };
+    case constants.PROJECTS_ON_GET_MCKINSEY_REQUESTED:
+      return {
+        ...state,
+        loadingMckinseys: true,
+      };
+    case constants.PROJECTS_ON_GET_OKR_REQUESTED:
+      return {
+        ...state,
+        loadingOkrs: true,
+      };
+    case constants.PROJECTS_ON_GET_BALANCED_SCORECARD_REQUESTED:
+      return {
+        ...state,
+        loadingBalanced: true,
+      };
+    case constants.PROJECTS_ON_GET_QUESTIONNAIRE_REQUESTED:
+      return {
+        ...state,
+        loadingQuestionnaires: true,
       };
     case constants.PROJECTS_ON_CREATE_SUCCEEDED:
       return {
@@ -65,7 +105,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         fodas: data,
-        loding: false,
+        loadingFoda: false,
       };
     case fodaConsts.DELETE_FODA_SUCCEEDED:
       return {
@@ -77,7 +117,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         porters: data,
-        loding: false,
+        lodingPorters: false,
       };
     case porterConsts.PORTER_DELETE_SUCCEEDED:
       return {
@@ -89,7 +129,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         pestels: data,
-        loding: false,
+        lodingPestels: false,
       };
     case pestelConsts.DELETE_PESTEL_SUCCEEDED:
       return {
@@ -101,7 +141,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         ansoffs: data,
-        loding: false,
+        lodingAnsoffs: false,
       };
     case ansoffConsts.DELETE_ANSOFF_SUCCEEDED:
       return {
@@ -113,7 +153,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         okrs: data,
-        loding: false,
+        lodingOkrs: false,
       };
     case okrConsts.DELETE_OKR_TOOL_SUCCEEDED:
       return {
@@ -125,7 +165,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         mckinseys: data,
-        loding: false,
+        lodingMckinseys: false,
       };
     case mckinseyConsts.DELETE_MCKINSEY_SUCCEEDED:
       return {
@@ -137,7 +177,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         balancedScorecards: data,
-        loding: false,
+        lodingBalanced: false,
       };
     case bsConsts.DELETE_BALANCE_SCORECARD_SUCCEEDED:
       return {
@@ -151,7 +191,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         questionnaires: data,
-        loding: false,
+        loadingQuestionnaires: false,
       };
     case constants.PROJECTS_ON_DELETE_SUCCEEDED:
       return {

@@ -36,6 +36,7 @@ import Comments from 'components/comments/Comments';
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import { validateField } from 'helpers/validateField';
 import ToolTip from 'components/commons/ToolTip';
+import Loading from 'components/commons/Loading';
 
 const FodaContainer = () => {
   const { fodaId, id } = useParams();
@@ -54,6 +55,7 @@ const FodaContainer = () => {
   const fortalezas = useSelector(fortalezasSelector);
   const oportunidades = useSelector(oportunidadesSelector);
   const seeds = useSelector((state) => state.foda.seeds);
+  const loading = useSelector((state) => state.foda.loading);
   const { title } = useSelector(titleSelector);
 
   useEffect(() => {
@@ -278,6 +280,7 @@ const FodaContainer = () => {
           </CreateContent>
         </Modal>
       </Container>
+      {loading && <Loading isModalMode message="Cargando FODA" />}
     </LayoutContainer>
   );
 };
