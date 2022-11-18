@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, ButtonBase, FormLabel, Typography } from '@mui/material';
-import { Field, Formik } from 'formik';
+import { ErrorMessage, Field, Formik } from 'formik';
 import Input from 'components/inputs/Input';
 import { COLORS } from 'helpers/enums/colors';
+import { validateCalendlyLink } from 'helpers/validateField';
 
 const ProfileView = ({ user, onSubmit }) => {
   const onSubmitForm = (values) => onSubmit(values);
@@ -128,7 +129,23 @@ const ProfileView = ({ user, onSubmit }) => {
                         type="text"
                         component={Input}
                         placeholder="Ingrese el link de Calendly"
+                        validate={validateCalendlyLink}
                       />
+                      <ErrorMessage name={'calendlyUser'}>
+                        {(msg) => (
+                          <Typography
+                            sx={{
+                              textAlign: 'left',
+                              color: 'red',
+                              marginLeft: 2,
+                              marginTop: '2px',
+                              fontSize: '14px',
+                            }}
+                          >
+                            {msg}
+                          </Typography>
+                        )}
+                      </ErrorMessage>
                     </Box>
                   )}
                   <Box
