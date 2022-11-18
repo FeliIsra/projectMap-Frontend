@@ -185,7 +185,14 @@ const KeyResultInput = ({ okr, onSubmit, onClickCancel }) => {
             </Grid>
             <Grid item md={2} sx={{ display: 'flex' }}>
               <QuarterFieldContainer>
-                <Box sx={{ width: '100%' }}>
+                <Box
+                  sx={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
                   <Field
                     name="priority"
                     component={({ field, ...props }) => (

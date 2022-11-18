@@ -10,7 +10,14 @@ import {
   Typography,
 } from '@mui/material';
 import { COLORS } from 'helpers/enums/colors';
-import { Add, ArrowBack, Check, Comment, Delete } from '@mui/icons-material';
+import {
+  Add,
+  ArrowBack,
+  Cancel,
+  Check,
+  Comment,
+  Delete,
+} from '@mui/icons-material';
 import Button from 'components/commons/Button';
 import { getKeyResultWitValues, monthsPerQuarter } from 'helpers/enums/okr';
 import KeyResultInput from './components/KeyResultInput';
@@ -295,7 +302,7 @@ const OKRView = ({
                                 }}
                                 onClick={() => setKeyResultId(null)}
                               >
-                                <Delete fontSize="inherit" />
+                                <Cancel fontSize="inherit" />
                               </IconButton>
                             </>
                             <IconButton
