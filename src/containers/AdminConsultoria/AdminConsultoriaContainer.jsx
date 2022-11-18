@@ -137,15 +137,17 @@ const ConsultoriaContainer = () => {
 
   const createNewProjectOnSubmit = (formData) => {
     const colors = [
-      COLORS.Aquamarine,
-      COLORS.AthensGray,
-      '#f58e90',
-      COLORS.GhostGray,
-      COLORS.VividTangerine,
-      COLORS.WildSand,
+      '#d8f3dcff',
+      '#b7e4c7ff',
+      '#95d5b2ff',
+      '#74c69dff',
+      '#52b788ff',
+      '#40916cff',
+      '#2d6a4fff',
+      '#1b4332ff',
     ];
 
-    const random = getRandomInt(6);
+    const random = getRandomInt(8);
 
     const color = colors[random];
     formData.color = color;
