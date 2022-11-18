@@ -26,6 +26,7 @@ const Comments = ({ show, tool, toolId, projectId }) => {
         toolId,
       })
     );
+    setComment('');
   };
 
   useEffect(() => {
