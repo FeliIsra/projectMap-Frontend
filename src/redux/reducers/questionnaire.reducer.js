@@ -23,6 +23,7 @@ const questionnaireReducer = (state = defaultState, action) => {
       return {
         ...state,
         data,
+        loading: false,
       };
     case constants.QUESTIONNARIE_ON_INSERT_SUCCEEDED:
       return {

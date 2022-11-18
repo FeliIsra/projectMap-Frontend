@@ -81,11 +81,17 @@ export function* watchQuestionnaire() {
       questionnaireCreate
     ),
     takeLatest(
-      constants.QUESTIONNARIE_ON_GET_QUESTIONS_REQUESTED,
+      [
+        constants.QUESTIONNARIE_ON_GET_ONE_REQUESTED,
+        constants.QUESTIONNARIE_ON_GET_QUESTIONS_REQUESTED,
+      ],
       questionnaireGetQuestions
     ),
     takeLatest(
-      constants.QUESTIONNARIE_ON_GET_ONE_REQUESTED,
+      [
+        constants.QUESTIONNARIE_ON_GET_ONE_REQUESTED,
+        constants.QUESTIONNARIE_ON_GET_QUESTIONS_REQUESTED,
+      ],
       questionnaireGetOne
     ),
     takeLatest(
