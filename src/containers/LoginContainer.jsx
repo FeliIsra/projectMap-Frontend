@@ -23,7 +23,6 @@ const LoginContainer = () => {
   return (
     <LayoutContainer hasHeader={false}>
       <LoginView onSubmit={onSubmit} initialValues={initialValues} />
-      {loading && <Loading isModalMode message="Loading" />}
       {data && data.justRegistered ? (
         <Navigate to="/login" replace={true} />
       ) : data && data.role !== Role.ConsultantAdmin ? (

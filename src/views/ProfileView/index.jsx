@@ -3,6 +3,7 @@ import { Box, ButtonBase, FormLabel, Typography } from '@mui/material';
 import { Field, Formik } from 'formik';
 import Input from 'components/inputs/Input';
 import { COLORS } from 'helpers/enums/colors';
+import Textarea from 'components/inputs/Textarea';
 
 const ProfileView = ({ user, onSubmit }) => {
   const onSubmitForm = (values) => onSubmit(values);
@@ -98,6 +99,20 @@ const ProfileView = ({ user, onSubmit }) => {
                       placeholder="Email"
                       component={Input}
                       disable
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <FormLabel>Biografia</FormLabel>
+                    <Field
+                      name="biography"
+                      type="textarea"
+                      placeholder="Biografia"
+                      component={Textarea}
                     />
                   </Box>
                   <Box
