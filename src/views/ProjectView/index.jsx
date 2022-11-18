@@ -45,7 +45,7 @@ const ProjectView = ({
 }) => {
   const [stepHover, setStepHover] = useState(null);
   const renderStep = (step) => (
-    <Item>
+    <Item sx={{ cursor: 'pointer' }}>
       {step.value !== StepValue.MEJORA_CONTINUA && (
         <CustomCircularProgress
           variant="determinate"
