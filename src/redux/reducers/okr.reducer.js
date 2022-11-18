@@ -14,6 +14,7 @@ const okrReducer = (state = defaultState, action) => {
     case constants.CREATE_OKR_REQUESTED:
     case constants.GET_OKR_REQUESTED:
     case constants.ADD_OKR_KEY_RESULT_REQUESTED:
+    case constants.GET_OKR_TOOL_REQUESTED:
       return {
         ...state,
         loading: true,

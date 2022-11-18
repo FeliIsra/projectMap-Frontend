@@ -22,29 +22,33 @@ import { ansoffSteps } from 'helpers/enums/ansoff';
 import { Menu, MenuItem } from '@mui/material';
 import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
+import Loading from 'components/commons/Loading';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const AnsoffContainer = () => {
   const { ansoffId, id } = useParams();
-  const disptch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [activeStep, setActiveStep] = useState(0);
   const [anchorElement, setAnchorElement] = useState(null);
 
   const item = useSelector((state) => state.ansoff.data);
+  const loading = useSelector((state) => state.ansoff.loading);
   const situacionDelMercadoOptions = useSelector(situacionDelMercadoSelector);
   const situacionDelProductoOptions = useSelector(situacionDelProductoSelector);
   const productosFiltered = useSelector(productosSelector);
 
   useEffect(() => {
-    disptch(onGetOne(ansoffId));
-    disptch(onGetOptions());
+    dispatch(onGetOne(ansoffId));
+    dispatch(onGetOptions());
+    dispatch(onGetAllComments('ANSOFF', ansoffId));
   }, []);
 
   const isLastStep = activeStep === 4;
 
   const onSubmitProducto = (formData) => {
-    disptch(onAddProducto(ansoffId, formData));
+    dispatch(onAddProducto(ansoffId, formData));
   };
 
   const handleBack = () => {
@@ -59,13 +63,13 @@ const AnsoffContainer = () => {
   const onClickGoBackButton = () => navigate(`/projects/${id}`);
 
   const onEditExito = (formData) =>
-    disptch(onEditProduct(ansoffId, formData._id, formData));
+    dispatch(onEditProduct(ansoffId, formData._id, formData));
 
   const onDeleteProducto = (productId) =>
-    disptch(onDeleteProduct(ansoffId, productId));
+    dispatch(onDeleteProduct(ansoffId, productId));
 
   const onEditProducto = (productId, values) =>
-    disptch(onEditProduct(ansoffId, productId, values));
+    dispatch(onEditProduct(ansoffId, productId, values));
 
   const initialValuesProducto = {
     nombre: '',
@@ -126,6 +130,7 @@ const AnsoffContainer = () => {
           </Menu>
         </Grid>
       </Grid>
+      {loading && <Loading isModalMode message="Cargando Ansoff" />}
     </LayoutContainer>
   );
 };

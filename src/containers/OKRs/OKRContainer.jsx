@@ -32,6 +32,8 @@ import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
 import { validateField, validateFielWithNoZero } from 'helpers/validateField';
 import { useNavigate } from 'react-router-dom';
+import Loading from 'components/commons/Loading';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const OKRContainer = () => {
   const { okrToolId, id } = useParams();
@@ -39,11 +41,13 @@ const OKRContainer = () => {
   const navigate = useNavigate();
   const [isAddOkrModalOpen, setAddOkrModalOpen] = useState(false);
   const selectedTool = useSelector(okrToolSelector);
+  const { loading } = useSelector((state) => state.okr);
 
   const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     dispatch(onGetOneTool(okrToolId));
+    dispatch(onGetAllComments('OKR', okrToolId));
   }, []);
 
   const onSubmitOkr = (formData) => {
@@ -221,6 +225,7 @@ const OKRContainer = () => {
           </Formik>
         </CreateContent>
       </Modal>
+      {loading && <Loading isModalMode message="Cargando OKR" />}
     </LayoutContainer>
   );
 };

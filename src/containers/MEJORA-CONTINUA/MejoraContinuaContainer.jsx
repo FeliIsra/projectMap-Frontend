@@ -36,6 +36,7 @@ import {
   horizontalChartSelector,
   lineChartSelector,
 } from 'redux/selectors/mejora.continua.selector';
+import Loading from 'components/commons/Loading';
 
 const MejoraContinuaContainer = () => {
   const { id } = useParams();
@@ -47,6 +48,7 @@ const MejoraContinuaContainer = () => {
   const dataAnsoff = useSelector(horizontalBarChartSelector);
   const dataOkrs = useSelector(horizontalChartSelector);
   const dataBalanced = useSelector(lineChartSelector);
+  const loading = useSelector((state) => state.mejoraContinua.loading);
 
   const navigate = useNavigate();
   const onClickButtonGoBack = () => navigate(`/projects/${id}`);
@@ -72,6 +74,7 @@ const MejoraContinuaContainer = () => {
           />
         </Grid>
       </Grid>
+      {loading && <Loading isModalMode message="Cargando Dashboard" />}
     </LayoutContainer>
   );
 };

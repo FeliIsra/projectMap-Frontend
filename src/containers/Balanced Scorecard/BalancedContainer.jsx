@@ -16,6 +16,8 @@ import { useNavigate } from 'react-router-dom';
 import { Menu, MenuItem } from '@mui/material';
 import { COLORS } from 'helpers/enums/colors';
 import Comments from 'components/comments/Comments';
+import Loading from 'components/commons/Loading';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const BalancedContainer = () => {
   const { balancedId, id } = useParams();
@@ -23,10 +25,12 @@ const BalancedContainer = () => {
   const navigate = useNavigate();
   const objectives = useSelector(areaObjectivesSelector);
   const { title } = useSelector(titleSelector);
+  const { loading } = useSelector((state) => state.balanceScorecard);
   const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
     dispatch(onGetOne(balancedId));
+    dispatch(onGetAllComments('BALANCED_SCORECARD', balancedId));
   }, []);
 
   const onSubmitObjetive = (area, formData) => {
@@ -80,6 +84,7 @@ const BalancedContainer = () => {
           />
         </MenuItem>
       </Menu>
+      {loading && <Loading isModalMode message="Cargando Balanced Scorecard" />}
     </LayoutContainer>
   );
 };

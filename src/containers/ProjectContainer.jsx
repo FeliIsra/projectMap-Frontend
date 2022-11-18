@@ -58,6 +58,7 @@ import ShareModal from 'views/ProjectView/components/shareModal';
 import UnShareModal from 'views/ProjectView/components/unShareModal';
 import ConfirmDeleteModal from 'components/commons/ProjectCard/components/confirmDeleteModal';
 import Loading from 'components/commons/Loading';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const ProjectContainer = () => {
   let { id } = useParams();
@@ -158,6 +159,7 @@ const ProjectContainer = () => {
     dispatch(onGetBalanced(id));
     dispatch(onGetQuestionnaire(id));
     dispatch(onGetSharedUsers(id));
+    dispatch(onGetAllComments('HUB', id));
   }, []);
 
   useEffect(() => {

@@ -20,6 +20,8 @@ import { initialValuesSelector } from 'redux/selectors/porter.selector';
 import { Menu, MenuItem } from '@mui/material';
 import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
+import Loading from 'components/commons/Loading';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const PorterContainer = () => {
   const { porterId, id } = useParams();
@@ -30,8 +32,7 @@ const PorterContainer = () => {
     navigate(`/projects/${id}/porter/${porterId}/results`);
   const onClickGoBackButton = () => navigate(`/projects/${id}`);
 
-  const porter = useSelector((state) => state.porter);
-  const { options, questions } = porter;
+  const { options, questions, loading } = useSelector((state) => state.porter);
 
   delete options.fuerza;
 
@@ -42,7 +43,6 @@ const PorterContainer = () => {
   const [anchorElement, setAnchorElement] = useState(null);
 
   const initialValues = useSelector(initialValuesSelector);
-  const loading = useSelector((state) => state?.porter?.loading);
 
   const isStepOptional = (step) => {
     return step === 99;
@@ -84,6 +84,7 @@ const PorterContainer = () => {
     dispatch(onGetOne(porterId));
     dispatch(onGetQuestions());
     dispatch(onGetOptions());
+    dispatch(onGetAllComments('PORTER', porterId));
   }, []);
 
   return (
@@ -166,6 +167,7 @@ const PorterContainer = () => {
           )}
         </Box>
       </Container>
+      {loading && <Loading isModalMode message="Cargando Porter" />}
     </LayoutContainer>
   );
 };

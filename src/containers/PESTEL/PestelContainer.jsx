@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import Modal from 'components/commons/Modal';
-import Input from 'components/inputs/Input';
 import Button from 'components/commons/Button';
 import { COLORS } from 'helpers/enums/colors';
 import {
@@ -39,6 +38,8 @@ import Comments from 'components/comments/Comments';
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import { validateField } from 'helpers/validateField';
 import ToolTip from 'components/commons/ToolTip';
+import Loading from 'components/commons/Loading';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const PestelContainer = () => {
   const { pestelId, id } = useParams();
@@ -47,7 +48,7 @@ const PestelContainer = () => {
   const onClickResultsButton = () =>
     navigate(`/projects/${id}/pestel/${pestelId}/results`);
   const onClickResultsButtonGoBack = () => navigate(`/projects/${id}`);
-  const disptch = useDispatch();
+  const dispatch = useDispatch();
   const { importancia, intensidad, tendencia } = useSelector((state) => {
     return state.pestel.options;
   });
@@ -61,24 +62,26 @@ const PestelContainer = () => {
   const ambientales = useSelector(ambientalSelector);
   const legales = useSelector(legalSelector);
   const seeds = useSelector((state) => state.pestel.seeds);
+  const loading = useSelector((state) => state.pestel.loading);
   const { title } = useSelector(titleSelector);
 
   useEffect(() => {
-    disptch(onGetOptions());
-    disptch(onGetSeeds());
-    disptch(onGetOne(pestelId));
+    dispatch(onGetOptions());
+    dispatch(onGetSeeds());
+    dispatch(onGetOne(pestelId));
+    dispatch(onGetAllComments('PESTEL', pestelId));
   }, []);
 
   const onAdd = (factor) => setFactor(factor);
 
   const onEdit = (factor) => setFactor(factor);
 
-  const onDelete = (factor) => disptch(onDeleteFactor(pestelId, factor._id));
+  const onDelete = (factor) => dispatch(onDeleteFactor(pestelId, factor._id));
 
   const onSubmitFactor = (formData) => {
     if (factor._id)
-      disptch(onUpdateFactor(pestelId, factor._id, { ...formData }));
-    else disptch(onInsertFactor(pestelId, { ...formData, area: factor }));
+      dispatch(onUpdateFactor(pestelId, factor._id, { ...formData }));
+    else dispatch(onInsertFactor(pestelId, { ...formData, area: factor }));
     setFactor('');
   };
 
@@ -278,6 +281,7 @@ const PestelContainer = () => {
           </CreateContent>
         </Modal>
       </Container>
+      {loading && <Loading isModalMode message="Cargando Pestel" />}
     </LayoutContainer>
   );
 };

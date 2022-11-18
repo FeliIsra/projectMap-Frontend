@@ -35,7 +35,6 @@ const ansoffReducer = (state = defaultState, action) => {
     case constants.GET_OPTIONS_ANSOFF_SUCCEEDED:
       return {
         ...state,
-        loading: false,
         options: { ...state.options, ...data },
       };
     case constants.GET_ANSOFF_FAILED:

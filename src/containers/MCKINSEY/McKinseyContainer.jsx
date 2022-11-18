@@ -31,10 +31,12 @@ import { COLORS } from 'helpers/enums/colors';
 import { validateField } from 'helpers/validateField';
 import { Container } from 'views/FodaView/styles';
 import ToolTip from 'components/commons/ToolTip';
+import Loading from 'components/commons/Loading';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
-  const disptch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const onClickResultsButton = () =>
     navigate(`/projects/${id}/mckinsey/${matrizId}/results`);
@@ -42,11 +44,13 @@ const McKinseyContainer = () => {
   const onClickGoBackButton = () => navigate(`/projects/${id}`);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const cuadrantes = useSelector(cuadrantesSelector);
+  const loading = useSelector((state) => state.mckinsey.loading);
 
   const [anchorElement, setAnchorElement] = useState(null);
 
   useEffect(() => {
-    disptch(onGetOne(matrizId));
+    dispatch(onGetOne(matrizId));
+    dispatch(onGetAllComments('MCKINSEY', matrizId));
   }, []);
 
   const onAdd = () => {
@@ -54,7 +58,7 @@ const McKinseyContainer = () => {
   };
 
   const onSubmit = (formData) => {
-    disptch(onAddUnidad(matrizId, { ...formData, projectId: id }));
+    dispatch(onAddUnidad(matrizId, { ...formData, projectId: id }));
     setAddModalOpen(false);
   };
 
@@ -220,6 +224,7 @@ const McKinseyContainer = () => {
           </CreateContent>
         </Modal>
       </Container>
+      {loading && <Loading isModalMode message="Cargando Mckinsey" />}
     </LayoutContainer>
   );
 };
