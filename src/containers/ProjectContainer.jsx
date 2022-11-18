@@ -142,8 +142,12 @@ const ProjectContainer = () => {
 
   const unShareModalOnSubmit = (formDataDirty) => {
     const formData = {
-      emails: formDataDirty.projects.map((x) => x.titulo),
+      emails: formDataDirty.projects
+        .filter((x) => x.checked)
+        .map((x) => x.titulo),
     };
+    console.log({ formDataDirty });
+    console.log({ formData });
     dispatch(onUnShareUsers(id, formData));
     closeUnShareModal();
   };
