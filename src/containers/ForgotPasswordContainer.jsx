@@ -16,7 +16,7 @@ const ForgotPasswordContainer = () => {
   return (
     <LayoutContainer hasHeader={false}>
       <ForgotPasswordView onSubmit={onSubmit} />
-      {loading && <Loading isModalMode message="Loading" />}
+      {loading && <Loading isModalMode message="Cargando" />}
     </LayoutContainer>
   );
 };

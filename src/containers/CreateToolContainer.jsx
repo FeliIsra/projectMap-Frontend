@@ -95,7 +95,7 @@ const CreateToolContainer = () => {
           />
         )}
       </Routes>
-      {loading && <Loading isModalMode message="Loading" />}
+      {loading && <Loading isModalMode message="Cargando" />}
     </LayoutContainer>
   );
 };

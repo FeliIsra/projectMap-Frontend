@@ -14,6 +14,7 @@ import {
   onGetOne,
 } from 'redux/actions/questionnarie.actions';
 import { initialValuesSelector } from 'redux/selectors/questionnaire.selector';
+import Loading from 'components/commons/Loading';
 
 const QuestionnarieQuestionsContainer = () => {
   const { questionnaireId, id } = useParams();
@@ -76,47 +77,46 @@ const QuestionnarieQuestionsContainer = () => {
   };
 
   return (
-    !loading && (
-      <>
-        <LayoutContainer>
-          <Container>
-            <QuestionnaireQuestionsView
-              title="Preguntas"
-              onClickButtonGoBack={onClickButtonGoBack}
-              onClickNextButton={onClickNextButton}
-              openComments={(target) => setAnchorElement(target)}
-              questions={data}
-              handleSubmit={handleSubmit}
-              initialValues={initialValues}
-            />
-            <Menu
-              anchorEl={anchorElement}
-              onClose={() => setAnchorElement(null)}
-              open={!!anchorElement}
-              PaperProps={{
-                style: {
-                  width: 500,
-                },
-              }}
-              sx={{
-                '& .MuiMenu-list': {
-                  background: COLORS.AthensGray,
-                },
-              }}
-            >
-              <MenuItem key={1} disableRipple>
-                <Comments
-                  show
-                  tool="QUESTIONNAIRE"
-                  toolId={questionnaireId}
-                  projectId={id}
-                />
-              </MenuItem>
-            </Menu>
-          </Container>
-        </LayoutContainer>
-      </>
-    )
+    <>
+      {loading && <Loading isModalMode message="Cargando" />}
+      <LayoutContainer>
+        <Container>
+          <QuestionnaireQuestionsView
+            title="Preguntas"
+            onClickButtonGoBack={onClickButtonGoBack}
+            onClickNextButton={onClickNextButton}
+            openComments={(target) => setAnchorElement(target)}
+            questions={data}
+            handleSubmit={handleSubmit}
+            initialValues={initialValues}
+          />
+          <Menu
+            anchorEl={anchorElement}
+            onClose={() => setAnchorElement(null)}
+            open={!!anchorElement}
+            PaperProps={{
+              style: {
+                width: 500,
+              },
+            }}
+            sx={{
+              '& .MuiMenu-list': {
+                background: COLORS.AthensGray,
+              },
+            }}
+          >
+            <MenuItem key={1} disableRipple>
+              <Comments
+                show
+                tool="QUESTIONNAIRE"
+                toolId={questionnaireId}
+                projectId={id}
+              />
+            </MenuItem>
+          </Menu>
+        </Container>
+      </LayoutContainer>
+    </>
   );
 };
 

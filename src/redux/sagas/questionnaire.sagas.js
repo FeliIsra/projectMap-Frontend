@@ -62,6 +62,10 @@ export function* questionnaireInsert(action) {
       type: constants.QUESTIONNARIE_ON_INSERT_SUCCEEDED,
       data,
     });
+    yield put({
+      type: constants.QUESTIONNARIE_ON_GET_ONE_REQUESTED,
+      id,
+    });
   } catch (error) {
     yield put({
       type: constants.QUESTIONNARIE_ON_INSERT_FAILED,

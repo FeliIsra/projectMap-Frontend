@@ -20,7 +20,7 @@ const RegisterContainer = () => {
   return (
     <LayoutContainer hasHeader={false}>
       <RegisterView onSubmit={onSubmit} />
-      {loading && <Loading isModalMode message="Loading" />}
+      {loading && <Loading isModalMode message="Cargando" />}
       {data && <Navigate to="/login" replace={true} />}
     </LayoutContainer>
   );

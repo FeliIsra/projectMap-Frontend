@@ -83,7 +83,7 @@ const QuestionnaireResultsView = ({
             }}
           >
             <Typography sx={{ fontSize: 18 }}>
-              {chart[1].value === 0
+              {chart[1].value !== 0
                 ? 'Revise las respuestas de su cuestionario, algunas de ellas están contestadas de manera errónea. Relea el contenido proporcionado e intente nuevamente.'
                 : '¡Usted ha respondido todas las respuestas de manera correcta! Siga con el siguiente cuestionario o comuníquese con su consultor para que el mismo le agregue nuevos cuestionarios.'}
             </Typography>
