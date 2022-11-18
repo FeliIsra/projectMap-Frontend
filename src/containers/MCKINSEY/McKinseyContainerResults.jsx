@@ -122,7 +122,7 @@ const McKinseyContainerResults = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Box sx={{ margin: '0 auto' }}>
+          <Box sx={{ margin: '0 auto', marginTop: '10%' }}>
             <SectionRadar sx={{ textAlign: 'center' }}>
               <Title>Grafico de Radar</Title>
               <RadarChartCustom data={buildChartData()} />

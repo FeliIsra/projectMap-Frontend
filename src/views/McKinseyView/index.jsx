@@ -133,7 +133,7 @@ const McKinseyView = ({
           right: 20,
           left: 'auto',
         }}
-        onClick={onClickResultsButton}
+        onClick={!showResults ? onClickResultsButton : onClickGoBackButton}
       >
         {showResults ? <NavigateBeforeIcon /> : <NavigateNextIcon />}
       </Fab>
