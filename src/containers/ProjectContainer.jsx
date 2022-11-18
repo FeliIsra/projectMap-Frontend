@@ -146,8 +146,6 @@ const ProjectContainer = () => {
         .filter((x) => x.checked)
         .map((x) => x.titulo),
     };
-    console.log({ formDataDirty });
-    console.log({ formData });
     dispatch(onUnShareUsers(id, formData));
     closeUnShareModal();
   };
