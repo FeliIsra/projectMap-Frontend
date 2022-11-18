@@ -133,6 +133,8 @@ const ConsultoriaContainer = () => {
     dispatch(onRemoveConsultatn(consultora?._id, formData));
   };
 
+  const goProfile = (_id) => navigate(`/profile/${_id}`);
+
   const createNewProjectOnSubmit = (formData) => {
     const colors = [
       COLORS.Aquamarine,
@@ -164,6 +166,7 @@ const ConsultoriaContainer = () => {
         openModalNewConsultat={openModalNewConsultant}
         deleteConsultant={deleteConsultant}
         openModalNewProject={openModalNewProject}
+        goProfile={goProfile}
       />
       <AssignProjectsModal
         isOpen={isModalOpenAssignProjects}

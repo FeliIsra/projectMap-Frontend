@@ -1,5 +1,6 @@
 import { COLORS } from 'helpers/enums/colors';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 const { Typography, IconButton } = require('@mui/material');
@@ -14,6 +15,7 @@ const Consultant = ({
   openModal,
   sharedProjects,
   deleteConsultant,
+  goProfile,
 }) => {
   return (
     <Box
@@ -31,8 +33,11 @@ const Consultant = ({
         {firstName} {lastName}
       </Typography>
       <Box>
+        <IconButton onClick={() => goProfile(_id)}>
+          <AccountCircleIcon />
+        </IconButton>
         <IconButton onClick={() => openModal(sharedProjects, email)}>
-          <AssignmentIndIcon />
+          <SwitchAccountIcon />
         </IconButton>
         <IconButton onClick={() => deleteConsultant({ email })}>
           <CancelIcon />

@@ -46,7 +46,7 @@ const ProfileView = ({ user, onSubmit }) => {
             width: '100%',
           }}
         >
-          <Formik initialValues={{ ...user }} onSubmit={onSubmit}>
+          <Formik initialValues={user} onSubmit={onSubmit}>
             {({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
                 <Box
@@ -91,11 +91,11 @@ const ProfileView = ({ user, onSubmit }) => {
                       flexDirection: 'column',
                     }}
                   >
-                    <FormLabel>Mail</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <Field
                       name="email"
                       type="text"
-                      placeholder="Mail"
+                      placeholder="Email"
                       component={Input}
                       disable
                     />
@@ -115,7 +115,7 @@ const ProfileView = ({ user, onSubmit }) => {
                       disable
                     />
                   </Box>
-                  {user.role === 'Consultant' && (
+                  {user?.role === 'Consultant' && (
                     <Box
                       sx={{
                         display: 'flex',
@@ -141,14 +141,14 @@ const ProfileView = ({ user, onSubmit }) => {
                     <ButtonBase
                       type="submit"
                       sx={{
-                        padding: '16px 8px',
+                        padding: '16px 20px',
                         borderRadius: '15px',
                         backgroundColor: COLORS.BlueDianne,
                         color: COLORS.white,
                         fontSize: '16px',
                       }}
                     >
-                      Guardar Cambios
+                      Guardar
                     </ButtonBase>
                   </Box>
                 </Box>

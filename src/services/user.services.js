@@ -13,3 +13,5 @@ export const logout = () => post('auth/logout');
 export const resetPassword = async (formData) => put('auth/password', formData);
 
 export const editProfile = async (id, formData) => put(`users/${id}`, formData);
+
+export const getProfile = async (id) => get(`users/${id}`);

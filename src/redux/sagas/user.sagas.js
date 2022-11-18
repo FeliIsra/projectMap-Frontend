@@ -10,6 +10,7 @@ import {
   resetPassword,
   register,
   editProfile,
+  getProfile,
 } from 'services/user.services';
 import { getCookie, removeUserCookies } from 'helpers/cookies';
 import { addConsultant } from 'services/consultora.services';
@@ -97,8 +98,20 @@ export function* userEditProfile(action) {
     const { formData, id } = action;
     const { data } = yield call(editProfile, id, formData);
     yield put({ type: constants.USER_ON_EDIT_SUCCEEDED, data });
+    yield put({ type: constants.USER_ON_GET_PROFILE_REQUESTED, id });
+    yield put({ type: constants.USER_ON_INITIALIZE_REQUESTED });
   } catch (error) {
     yield put({ type: constants.USER_ON_EDIT_FAILED, error });
+  }
+}
+
+export function* userGetProfile(action) {
+  try {
+    const { id } = action;
+    const { data } = yield call(getProfile, id);
+    yield put({ type: constants.USER_ON_GET_PROFILE_SUCCEEDED, data });
+  } catch (error) {
+    yield put({ type: constants.USER_ON_GET_PROFILE_FAILED, error });
   }
 }
 
@@ -117,5 +130,6 @@ export function* watchUser() {
     takeLatest(constants.USER_ON_LOGOUT_REQUESTED, userLogout),
     takeLatest(constants.USER_ON_RESET_PASSWORD_REQUESTED, userResetPassword),
     takeLatest(constants.USER_ON_EDIT_REQUESTED, userEditProfile),
+    takeLatest(constants.USER_ON_GET_PROFILE_REQUESTED, userGetProfile),
   ]);
 }

@@ -37,6 +37,7 @@ export const NavigationContainer = () => {
         <Route path="" element={<DashboardContainer />} />
       </Route>
       <Route path="/consultoria" element={<ConsultoriaContainer />} />
+      <Route path="/profile/:userId" element={<UserProfileContainer />} />
       <Route path="/profile" element={<UserProfileContainer />} />
       <Route path="/projects">
         <Route

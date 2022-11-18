@@ -15,6 +15,7 @@ const ConsultoriaView = ({
   openModalNewConsultat,
   deleteConsultant,
   openModalNewProject,
+  goProfile,
 }) => {
   return (
     <Box
@@ -149,6 +150,7 @@ const ConsultoriaView = ({
                     openModal={openModalAssignProjects}
                     sharedProjects={sharedProjects}
                     deleteConsultant={deleteConsultant}
+                    goProfile={goProfile}
                   />
                 </Box>
               )

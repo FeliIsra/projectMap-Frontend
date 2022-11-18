@@ -34,3 +34,8 @@ export const onEdit = (id, formData) => ({
   id,
   formData,
 });
+
+export const onGetProfile = (id) => ({
+  type: constants.USER_ON_GET_PROFILE_REQUESTED,
+  id,
+});
