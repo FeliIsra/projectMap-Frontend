@@ -174,7 +174,13 @@ const MejoraContinuaView = ({
   onClickButtonGoBack,
 }) => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: 'flex',
+        width: '100%',
+        flexDirection: 'column',
+      }}
+    >
       <TitleContainer sx={{ justifyContent: 'unset' }}>
         <ButtonContainer sx={{ marginLeft: '1.5%' }}>
           <IconButton size="small" onClick={onClickButtonGoBack}>
@@ -185,10 +191,9 @@ const MejoraContinuaView = ({
       </TitleContainer>
       <Box
         sx={{
-          padding: '30px',
+          padding: '30px 0',
           display: 'flex',
           width: '100%',
-          flex: 1,
         }}
       >
         <Grid container spacing={2}>
