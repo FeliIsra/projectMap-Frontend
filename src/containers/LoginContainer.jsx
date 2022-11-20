@@ -32,6 +32,7 @@ const LoginContainer = () => {
       ) : (
         ''
       )}
+      {loading && <Loading isModalMode message="Iniciando sesión" />}
     </LayoutContainer>
   );
 };

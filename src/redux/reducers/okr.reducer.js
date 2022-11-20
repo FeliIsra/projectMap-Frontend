@@ -39,6 +39,11 @@ const okrReducer = (state = defaultState, action) => {
           okrs: state.data.okrs.filter((okr) => okr._id !== data.okrId),
         },
       };
+    case constants.DELETE_KEY_RESULT_SUCCEEDED:
+      return {
+        ...state,
+        data,
+      };
     case constants.GET_OKR_FAILED:
     case constants.CREATE_OKR_FAILED:
     case constants.ADD_OKR_KEY_RESULT_FAILED:

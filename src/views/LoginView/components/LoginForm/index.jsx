@@ -73,7 +73,6 @@ const LoginForm = ({ onSubmit }) => (
       )}
     </Formik>
     <LinkContainer>
-      <CustomLink to="/forgot-password">Olvide mi contraseña</CustomLink>
       <CustomLink to="/register">Crear una cuenta</CustomLink>
     </LinkContainer>
   </FormContainer>

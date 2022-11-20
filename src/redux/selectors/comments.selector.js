@@ -8,7 +8,7 @@ export const getCommentsList = createSelector(
   (comments, user) => {
     return comments?.map((comment) => ({
       ...comment,
-      showDelete: comment.author === user._id,
+      showDelete: comment.author._id === user._id,
     }));
   }
 );

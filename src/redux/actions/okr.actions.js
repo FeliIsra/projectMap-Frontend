@@ -49,3 +49,10 @@ export const onEditKeyResult = (id, okrId, keyResultId, formData) => ({
   keyResultId,
   formData,
 });
+
+export const onDeleteKeyResult = (id, okrId, keyResultId) => ({
+  type: constants.DELETE_KEY_RESULT_REQUESTED,
+  id,
+  okrId,
+  keyResultId,
+});
