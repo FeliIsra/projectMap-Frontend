@@ -78,7 +78,7 @@ export const stepToolsSelector = createSelector(
       ],
       2: [{ titulo: 'FODAs: ', _id: -1 }, ...fodas],
       3: [{ titulo: 'Ansoffs: ', _id: -1 }, ...ansoffs],
-      4: [{ titulo: 'McKenseys: ', _id: -1 }, ...mckenseys],
+      4: [{ titulo: 'McKinseys: ', _id: -1 }, ...mckenseys],
       5: [{ titulo: 'Cuestionarios: ', _id: -1 }, ...questionnaires],
       6: [
         { titulo: 'Balanced scorecards:', _id: -3 },

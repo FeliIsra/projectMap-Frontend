@@ -121,7 +121,7 @@ export const stepsInfo = {
     description: `
          La misma consiste en la diseño e implementación de planes y estrategias que definan las acciones a realizar para lograr sus objetivos tanto a corto como largo plazo.
          <p style=text-align:center ><b>Herramientas</b></p>
-       - <b>Matriz McKensey</b>: 
+       - <b>Matriz McKinsey</b>: 
           A través de la matriz de McKinsey se evalúa el posicionamiento de un producto o servicio en un mercado y se define si, según las condiciones competitivas y otros factores que pueden afectar a su producción y distribución, es una buena decisión mantener ese producto en un determinado mercado, si conviene invertir para crecer o si, por el contrario, lo más conveniente es realizar una desinversión. El objetivo de esta herramienta es proporcionar información clave para configurar la cartera de negocios de la mejor manera.
     `,
   },
