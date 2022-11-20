@@ -1,6 +1,7 @@
 import ProjectCard from 'components/commons/ProjectCard';
 import Consultant from './components/consultant';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import ToolTip from 'components/commons/ToolTip';
 
 const { Box, Typography, IconButton } = require('@mui/material');
 const React = require('react');
@@ -61,16 +62,22 @@ const ConsultoriaView = ({
               justifyContent: 'space-between',
             }}
           >
-            <Typography
-              sx={{
-                fontFamily: 'Fira Sans',
-                fontWeight: 500,
-                fontSize: 18,
-                marginBottom: '10px',
-              }}
-            >
-              Proyectos
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography
+                sx={{
+                  fontFamily: 'Fira Sans',
+                  fontWeight: 500,
+                  fontSize: 18,
+                }}
+              >
+                Proyectos
+              </Typography>
+              <ToolTip
+                text="Aquí puede ver enumerados los proyectos que está llevando su consultora. Desde aquí puede acceder, editar y eliminar los mismos."
+                placement="right"
+                fontSize="16px"
+              />
+            </Box>
             <IconButton onClick={() => openModalNewProject()}>
               <AddCircleIcon />
             </IconButton>
@@ -116,16 +123,22 @@ const ConsultoriaView = ({
               justifyContent: 'space-between',
             }}
           >
-            <Typography
-              sx={{
-                fontFamily: 'Fira Sans',
-                fontWeight: 500,
-                fontSize: 18,
-                marginBottom: '10px',
-              }}
-            >
-              Consultores
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography
+                sx={{
+                  fontFamily: 'Fira Sans',
+                  fontWeight: 500,
+                  fontSize: 18,
+                }}
+              >
+                Consultores
+              </Typography>
+              <ToolTip
+                text="Desde esta vista usted puede administrar los consultores que pertenecen a su consultora. Puede crear, editar, y eliminar los mismos, además de asignarles distintos proyectos."
+                placement="right"
+                fontSize="16px"
+              />
+            </Box>
             <IconButton onClick={() => openModalNewConsultat()}>
               <AddCircleIcon />
             </IconButton>

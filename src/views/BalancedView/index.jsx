@@ -24,8 +24,13 @@ import {
   Comment,
 } from '@mui/icons-material';
 import { ButtonContainer, Title, TitleContainer } from 'views/FodaView/styles';
+import ToolTip from 'components/commons/ToolTip';
 
-const tableHeaderStyle = { display: 'flex', justifyContent: 'center' };
+const tableHeaderStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 const stringToColor = (string) => {
   let hash = 0;
@@ -89,39 +94,86 @@ const BalancedView = ({
     setExpanded(newExpanded ? panel : null);
   };
 
-  const renderHeader = (area) => (
-    <Grid
-      container
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 10px 0 25px',
-        background: '#cfd7c7',
-      }}
-    >
-      <Grid item md={4}>
-        <span style={{ fontSize: 20, fontWeight: 800 }}>{area}</span>
+  const renderHeader = (area) => {
+    console.log(area);
+    let toolTip;
+    if (area === 'Financiera')
+      toolTip =
+        'En esta perspectiva usted debe analizar sus objetivos e indicadores económicos y financieros. Los mismos podrían ser un ROI, unas ganancias operativas, el valor agregado económico entre otras cosas. Recuerde cargar la mayor cantidad de indicadores, sean micro o macroeconómicos para aumentar la información que usted tiene en su contexto';
+    if (area === 'Clientes')
+      toolTip =
+        'La perspectiva del cliente es de las más importantes a tener en cuenta en una empresa de productos o servicios. Con este tipo de perspectiva usted debe apuntar a indicadores orientados a la satisfacción, retención y crecimiento de sus clientes.';
+    if (area === 'Procesos Internos')
+      toolTip =
+        'Esta perspectiva le permitirá a usted analizar todos los procesos que poseen una importancia fundamental en su empresa, aspectos como el mantenimiento de equipos o instalaciones, la reposición de ciertos productos entre otros.';
+    if (area === 'Aprendizaje')
+      toolTip =
+        'Esta perspectiva le permite a usted identificar los factores relacionados a la información en su empresa. Los mismos pueden ser el capital humano, los sistemas de información o el clima organizacional que hay en su empresa, todas cosas que le permiten a usted sustentar los procesos de valor en su organización.';
+    return (
+      <Grid
+        container
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 10px 0 25px',
+          background: '#cfd7c7',
+        }}
+      >
+        <Grid item md={4} sx={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{ fontSize: 20, fontWeight: 800 }}>{area}</span>
+          <ToolTip text={toolTip} placement="right" fontSize="14px" />
+        </Grid>
+        <Grid item md={2} sx={tableHeaderStyle}>
+          <span>Medida</span>
+          <ToolTip
+            text="Unidad de medida con la que se analiza el objetivo, como podría ser una venta o una unidad monetaria"
+            placement="right"
+            fontSize="14px"
+          />
+        </Grid>
+        <Grid item md={2} sx={tableHeaderStyle}>
+          <span>Responsable</span>
+          <ToolTip
+            text="Es importante que todo el equipo sepa quien es el responsable de que se haga seguimiento de este objetivo."
+            placement="right"
+            fontSize="14px"
+          />
+        </Grid>
+        <Grid item md={1} sx={tableHeaderStyle}>
+          <span>Objectivo</span>
+          <ToolTip
+            text="Piense un objetivo desafiante pero posible, aunque usted tiene la posibilidad de editar el mismo, recomendamos mantener la primera aproximación al mismo para poder observar mejor los desvíos."
+            placement="right"
+            fontSize="14px"
+          />
+        </Grid>
+        <Grid item md={1} sx={tableHeaderStyle}>
+          <span>Actual</span>
+          <ToolTip
+            text="Representa el avance porcentual a su objetivo. Recuerde comparar esto con el lugar en el que está en el trimestre para entender su situación actual. Además, utilice el desvío y tendencia para contextualizar"
+            placement="right"
+            fontSize="14px"
+          />
+        </Grid>
+        <Grid item md={1} sx={tableHeaderStyle}>
+          <span>Tendencia</span>
+          <ToolTip
+            text="Representa la tendencia del avance en función de los últimos data points."
+            placement="right"
+            fontSize="14px"
+          />
+        </Grid>
+        <Grid item md={1} sx={tableHeaderStyle}>
+          <span>Desvio</span>
+          <ToolTip
+            text="Representa la diferencia entre donde estoy versus donde debería estar; el avance esperado versus el avances real."
+            placement="right"
+            fontSize="14px"
+          />
+        </Grid>
       </Grid>
-      <Grid item md={2} sx={tableHeaderStyle}>
-        <span>Medida</span>
-      </Grid>
-      <Grid item md={2} sx={tableHeaderStyle}>
-        <span>Responsable</span>
-      </Grid>
-      <Grid item md={1} sx={tableHeaderStyle}>
-        <span>Objectivo</span>
-      </Grid>
-      <Grid item md={1} sx={tableHeaderStyle}>
-        <span>Actual</span>
-      </Grid>
-      <Grid item md={1} sx={tableHeaderStyle}>
-        <span>Tendencia</span>
-      </Grid>
-      <Grid item md={1} sx={tableHeaderStyle}>
-        <span>Desvio</span>
-      </Grid>
-    </Grid>
-  );
+    );
+  };
 
   const renderRow = ({
     action,
