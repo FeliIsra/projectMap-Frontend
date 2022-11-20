@@ -474,7 +474,7 @@ const OKRView = ({
           ))
         ) : (
           <Alert severity="warning">
-            b<AlertTitle>Atencion</AlertTitle>
+            <AlertTitle>Atencion</AlertTitle>
             No hay OKRs cargados.
           </Alert>
         )}
