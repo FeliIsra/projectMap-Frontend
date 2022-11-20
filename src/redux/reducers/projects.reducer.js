@@ -105,7 +105,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         fodas: data,
-        loadingFoda: false,
+        loadingFodas: false,
       };
     case fodaConsts.DELETE_FODA_SUCCEEDED:
       return {
@@ -117,7 +117,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         porters: data,
-        lodingPorters: false,
+        loadingPorters: false,
       };
     case porterConsts.PORTER_DELETE_SUCCEEDED:
       return {
@@ -129,7 +129,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         pestels: data,
-        lodingPestels: false,
+        loadingPestels: false,
       };
     case pestelConsts.DELETE_PESTEL_SUCCEEDED:
       return {
@@ -141,7 +141,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         ansoffs: data,
-        lodingAnsoffs: false,
+        loadingAnsoffs: false,
       };
     case ansoffConsts.DELETE_ANSOFF_SUCCEEDED:
       return {
@@ -153,7 +153,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         okrs: data,
-        lodingOkrs: false,
+        loadingOkrs: false,
       };
     case okrConsts.DELETE_OKR_TOOL_SUCCEEDED:
       return {
@@ -165,7 +165,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         mckinseys: data,
-        lodingMckinseys: false,
+        loadingMckinseys: false,
       };
     case mckinseyConsts.DELETE_MCKINSEY_SUCCEEDED:
       return {
@@ -177,7 +177,7 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         balancedScorecards: data,
-        lodingBalanced: false,
+        loadingBalanced: false,
       };
     case bsConsts.DELETE_BALANCE_SCORECARD_SUCCEEDED:
       return {
