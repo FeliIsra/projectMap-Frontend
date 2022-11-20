@@ -28,17 +28,15 @@ const Comment = ({ comment }) => {
         }}
       >
         <CardContent sx={{ position: 'relative' }}>
-          <Box position="absolute" right={5} top={2}>
-            <Tooltip arrow placement="top" title="Borrar">
-              <IconButton
-                onClick={onClickDeleteButton}
-                disabled={comment.showDelete}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
-
+          {comment.showDelete && (
+            <Box position="absolute" right={5} top={2}>
+              <Tooltip arrow placement="top" title="Borrar">
+                <IconButton onClick={onClickDeleteButton}>
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          )}
           <Box alignItems="flex-start" display="flex">
             <Box mr={1.5}>
               <Typography
