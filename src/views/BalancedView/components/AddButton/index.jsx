@@ -22,7 +22,7 @@ const AddButton = ({ onClick }) => {
         onClick={onClick}
       >
         <Add fontSize="inherit" />
-        <span>Add</span>
+        <span>Agregar</span>
       </IconButton>
     </Grid>
   );

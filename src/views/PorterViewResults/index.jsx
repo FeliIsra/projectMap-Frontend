@@ -62,7 +62,9 @@ const PorterViewResults = ({
             border: '3px solid #264653',
           }}
         >
-          <Typography variant={'h5'}>{consejo?.valorConsejoGeneral}</Typography>
+          <Typography variant={'h5'}>
+            {consejo?.valorConsejoGeneral} / 60
+          </Typography>
         </Grid>
         <Grid
           item

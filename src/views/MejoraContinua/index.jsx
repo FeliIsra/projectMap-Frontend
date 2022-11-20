@@ -28,6 +28,7 @@ import { ButtonContainer, Title, TitleContainer } from 'views/FodaView/styles';
 import { ArrowBack } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import { COLORS } from 'helpers/enums/colors';
+import ToolTip from 'components/commons/ToolTip';
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -187,7 +188,7 @@ const MejoraContinuaView = ({
             <ArrowBack />
           </IconButton>
         </ButtonContainer>
-        <Title sx={{ marginLeft: '45%', fontSize: 34 }}>Mejora continua</Title>
+        <Title sx={{ marginLeft: '40%', fontSize: 34 }}>Mejora continua</Title>
       </TitleContainer>
       <Box
         sx={{
@@ -212,15 +213,28 @@ const MejoraContinuaView = ({
                       color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        fontFamily: 'Fira Sans',
-                        fontSize: '1.3rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                     >
-                      Comparativa FODA
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          fontFamily: 'Fira Sans',
+                          fontSize: '1.3rem',
+                        }}
+                      >
+                        Comparativa FODA
+                      </Typography>
+                      <ToolTip
+                        text="En este gráfico usted puede observar la comparación de puntajes de importancia de los últimos dos FODAs de su empresa. Utilice estas métricas para analizar la evolución de la misma y recuerde entrar a los FODAs para verificar los consejos y los factores específicos guardados. "
+                        placement="right"
+                        fontSize="14px"
+                      />
+                    </Box>
                   </Link>
                   <Radar
                     data={dataFODA}
@@ -249,15 +263,28 @@ const MejoraContinuaView = ({
                       color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        fontFamily: 'Fira Sans',
-                        fontSize: '1.3rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                     >
-                      Comparativa PORTER
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          fontFamily: 'Fira Sans',
+                          fontSize: '1.3rem',
+                        }}
+                      >
+                        Comparativa PORTER
+                      </Typography>
+                      <ToolTip
+                        text="En esta gráfica usted puede observar la comparación de puntajes en las distintas áreas delineadas por Porter de sus últimas 2 herramientas cargadas. Estas métricas evolutivas son muy útiles para analizar dónde usted está disponiendo de sus recursos, y a dónde debería hacerlo. "
+                        placement="right"
+                        fontSize="14px"
+                      />
+                    </Box>
                   </Link>
                   <Bar data={dataPorter} />
                 </Box>
@@ -275,15 +302,28 @@ const MejoraContinuaView = ({
                       color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        fontFamily: 'Fira Sans',
-                        fontSize: '1.3rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
                     >
-                      MCKINSEY
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          fontFamily: 'Fira Sans',
+                          fontSize: '1.3rem',
+                        }}
+                      >
+                        MCKINSEY
+                      </Typography>
+                      <ToolTip
+                        text="Gráfico comparativo entre los distintos productos cargados en su análisis Mckinsey. Recuerde que a puntaje mayor, mejor es la posición de su producto. Recuerde que dependiendo de su estado actual, usted deberá decidir qué tanto riesgo quiere tomar con productos no óptimos."
+                        placement="right"
+                        fontSize="14px"
+                      />
+                    </Box>
                   </Link>
                   <PolarArea
                     data={dataMckinsey}
@@ -314,15 +354,28 @@ const MejoraContinuaView = ({
                       color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        fontFamily: 'Fira Sans',
-                        fontSize: '1.3rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                     >
-                      Balanced Scoredcard
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          fontFamily: 'Fira Sans',
+                          fontSize: '1.3rem',
+                        }}
+                      >
+                        Balanced Scoredcard
+                      </Typography>
+                      <ToolTip
+                        text="En este gráfico usted puede ver el avance absoluto de sus objetivos cargados en el balanced scorecard para compararlos a simple vista. Recuerde que usted puede en cualquier momento priorizar un objetivo distinto de ser necesario."
+                        placement="right"
+                        fontSize="14px"
+                      />
+                    </Box>
                   </Link>
                   <Line data={dataBalanced} />
                 </Box>
@@ -346,15 +399,28 @@ const MejoraContinuaView = ({
                       color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        fontFamily: 'Fira Sans',
-                        fontSize: '1.3rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                     >
-                      OKR
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          fontFamily: 'Fira Sans',
+                          fontSize: '1.3rem',
+                        }}
+                      >
+                        OKR
+                      </Typography>
+                      <ToolTip
+                        text="En este gráfico usted puede observar un gráfico comparativo entre los objetivos y el progreso de sus OKRs. Recuerde analizar estos números acorde del mes en el que está, y recuerde que puede priorizar un OKR distinto de ser necesario."
+                        placement="right"
+                        fontSize="14px"
+                      />
+                    </Box>
                   </Link>
                   <Bar
                     options={{
@@ -386,15 +452,28 @@ const MejoraContinuaView = ({
                       color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        fontFamily: 'Fira Sans',
-                        fontSize: '1.3rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                     >
-                      PESTEL
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          fontFamily: 'Fira Sans',
+                          fontSize: '1.3rem',
+                        }}
+                      >
+                        PESTEL
+                      </Typography>
+                      <ToolTip
+                        text="En este gráfico usted puede observar la distribución de puntajes de importancia en el ultimo analisis Pestel de su empresa. Utilice estas métricas para analizar cuáles son los puntos importantes que su empresa debe analizar, y recuerde entrar a la herramienta para revisar los consejos y factores específicos."
+                        placement="right"
+                        fontSize="14px"
+                      />
+                    </Box>
                   </Link>
                   <Doughnut
                     data={dataPESTEL}
@@ -422,15 +501,28 @@ const MejoraContinuaView = ({
                       color: 'rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        fontFamily: 'Fira Sans',
-                        fontSize: '1.3rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                     >
-                      ANSOFF
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          fontFamily: 'Fira Sans',
+                          fontSize: '1.3rem',
+                        }}
+                      >
+                        ANSOFF
+                      </Typography>
+                      <ToolTip
+                        text="En este gráfico comparativo usted puede analizar la distribución de productos categorizados mediante los últimos 2 análisis Ansoff. Utilice este gráfico para analizar cómo sus productos fueron evolucionando en el tiempo y para pensar posibles cambios en su estrategia de inversión."
+                        placement="right"
+                        fontSize="14px"
+                      />
+                    </Box>
                   </Link>
                   <Bar
                     options={{
