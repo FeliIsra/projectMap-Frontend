@@ -25,3 +25,6 @@ export const editKeyStatus = (id, okrId, keyResultId, formData) =>
     `okr-projects/${id}/okrs/${okrId}/key-results/${keyResultId}/key-status/${formData.id}`,
     formData
   );
+
+export const deleteOkrKeyResultItem = (id, okrId, keyResultId) =>
+  remove(`okr-projects/${id}/okrs/${okrId}/key-results/${keyResultId}`);

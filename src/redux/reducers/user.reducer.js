@@ -16,7 +16,6 @@ const userReducer = (state = defaultState, action) => {
     case constants.USER_ON_RESET_PASSWORD_REQUESTED:
     case constants.USER_ON_REGISTER_REQUESTED:
     case constants.USER_ON_INITIALIZE_REQUESTED:
-    case appConstants.APP_ON_INITIALIZE_REQUESTED:
       return {
         ...state,
         loading: true,

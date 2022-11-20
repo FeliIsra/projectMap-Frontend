@@ -13,6 +13,7 @@ import {
 import {
   onAddKeyResult,
   onAddOkr,
+  onDeleteKeyResult,
   onDeleteOkr,
   onEditKeyResult,
   onGetOneTool,
@@ -73,6 +74,9 @@ const OKRContainer = () => {
 
   const deleteOkr = (okrId) => dispatch(onDeleteOkr(okrToolId, okrId));
 
+  const deleteKeyResult = (okrId, keyResultId) =>
+    dispatch(onDeleteKeyResult(okrToolId, okrId, keyResultId));
+
   return (
     <LayoutContainer>
       <Grid container>
@@ -86,6 +90,7 @@ const OKRContainer = () => {
             openComments={(target) => setAnchorElement(target)}
             deleteOkr={deleteOkr}
             onClickBack={() => navigate(`/projects/${id}`)}
+            deleteKeyResult={deleteKeyResult}
           />
           <Menu
             anchorEl={anchorElement}

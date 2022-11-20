@@ -72,6 +72,7 @@ const OKRView = ({
   openComments,
   deleteOkr,
   onClickBack,
+  deleteKeyResult,
 }) => {
   const [okrInputId, setOkrInputId] = useState(null);
   const [keyResultId, setKeyResultId] = useState(null);
@@ -316,6 +317,20 @@ const OKRView = ({
                               }}
                             >
                               <Edit fontSize="inherit" />
+                            </IconButton>
+                            <IconButton
+                              type="button"
+                              onClick={() =>
+                                deleteKeyResult(okr._id, keyResult._id)
+                              }
+                              style={{
+                                display:
+                                  keyResultId === keyResult._id
+                                    ? 'none'
+                                    : 'flex',
+                              }}
+                            >
+                              <Delete fontSize="inherit" />
                             </IconButton>
                           </KeyResultCell>
                         </Grid>
