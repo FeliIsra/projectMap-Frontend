@@ -59,7 +59,7 @@ const Checkpoints = ({ checkpoints, onSubmit, onClickCancel }) => {
                   </span>
                 </Box>
                 <Box display="flex">
-                  {selectedId === checkpoint._id ? (
+                  {selectedId ? (
                     <Field
                       name={`checkpoints[${index}].actual`}
                       placeholder="Actual"

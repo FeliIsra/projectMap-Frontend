@@ -51,7 +51,7 @@ const PorterViewResults = ({
           </IconButton>
         </ButtonContainer>
       </Box>
-      <Grid container director="row" alignItems="center">
+      <Grid container>
         <Grid
           item
           xs={2}
@@ -60,6 +60,8 @@ const PorterViewResults = ({
             borderTopLeftRadius: '15px',
             textAlign: 'center',
             border: '3px solid #264653',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Typography variant={'h5'}>
@@ -75,6 +77,8 @@ const PorterViewResults = ({
             border: '3px solid #264653',
             borderLeft: '0px solid',
             textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Typography variant={'h6'}>{consejo?.consejoGeneral}</Typography>

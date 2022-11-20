@@ -10,6 +10,8 @@ const DashboardRouteContainer = () => {
 
   if (loading && !data) return <Loading isModalMode />;
 
+  if (!loading && !data) return <Navigate to={'/login'} replace />;
+
   return !loading && data?.role === Role.ConsultantAdmin ? (
     <Navigate to={'/consultoria'} replace />
   ) : (
