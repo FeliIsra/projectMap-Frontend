@@ -19,3 +19,8 @@ export const onInsert = (formData, id) => ({
   formData,
   id,
 });
+
+export const onDelete = (id) => ({
+  type: constants.QUESTIONNARIE_ON_DELETE_REQUESTED,
+  id,
+});

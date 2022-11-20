@@ -2,6 +2,7 @@ import { all, call, put, takeLatest } from '@redux-saga/core/effects';
 import * as constants from 'redux/contansts/questionnarie.constants';
 import {
   create,
+  deleteQuestionnaire,
   getOne,
   insert,
   questions,
@@ -54,6 +55,22 @@ export function* questionnaireGetOne(action) {
   }
 }
 
+export function* questionnaireDelete(action) {
+  try {
+    const { id } = action;
+    const { data } = yield call(deleteQuestionnaire, id);
+    yield put({
+      type: constants.QUESTIONNARIE_ON_DELETE_SUCCEEDED,
+      data,
+    });
+  } catch (error) {
+    yield put({
+      type: constants.QUESTIONNARIE_ON_DELETE_FAILED,
+      error,
+    });
+  }
+}
+
 export function* questionnaireInsert(action) {
   try {
     const { id, formData } = action;
@@ -97,6 +114,10 @@ export function* watchQuestionnaire() {
     takeLatest(
       constants.QUESTIONNARIE_ON_INSERT_REQUESTED,
       questionnaireInsert
+    ),
+    takeLatest(
+      constants.QUESTIONNARIE_ON_DELETE_REQUESTED,
+      questionnaireDelete
     ),
   ]);
 }

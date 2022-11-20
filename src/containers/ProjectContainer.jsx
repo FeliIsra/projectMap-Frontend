@@ -59,6 +59,7 @@ import UnShareModal from 'views/ProjectView/components/unShareModal';
 import ConfirmDeleteModal from 'components/commons/ProjectCard/components/confirmDeleteModal';
 import Loading from 'components/commons/Loading';
 import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
+import { onDelete } from 'redux/actions/questionnarie.actions';
 
 const ProjectContainer = () => {
   let { id } = useParams();
@@ -208,7 +209,12 @@ const ProjectContainer = () => {
       okr: () => {
         dispatch(onDeleteOkr(id));
       },
+      questionnaire: () => {
+        dispatch(onDelete(id));
+      },
     };
+
+    console.log(tool);
     deleteTool[tool]();
   };
 

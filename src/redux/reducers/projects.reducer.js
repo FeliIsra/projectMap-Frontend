@@ -6,6 +6,7 @@ import * as ansoffConsts from 'redux/contansts/ansoff.constants';
 import * as mckinseyConsts from 'redux/contansts/mckinsey.constants';
 import * as okrConsts from 'redux/contansts/okr.constants';
 import * as bsConsts from 'redux/contansts/balanceScorecard.constants';
+import * as quesConstst from 'redux/contansts/questionnarie.constants';
 
 export const defaultState = {
   data: null,
@@ -183,6 +184,14 @@ const projectsReducer = (state = defaultState, action) => {
       return {
         ...state,
         balancedScorecards: state.balancedScorecards.filter(
+          (tool) => tool._id !== data._id
+        ),
+        loading: false,
+      };
+    case quesConstst.QUESTIONNARIE_ON_DELETE_SUCCEEDED:
+      return {
+        ...state,
+        questionnaires: state.questionnaires.filter(
           (tool) => tool._id !== data._id
         ),
         loading: false,
