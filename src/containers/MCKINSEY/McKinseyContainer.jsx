@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Formik, Field, ErrorMessage } from 'formik';
 
-import { onAddUnidad, onGetOne } from 'redux/actions/mckinsey.actions';
+import {
+  onAddUnidad,
+  onDeleteUnidad,
+  onGetOne,
+} from 'redux/actions/mckinsey.actions';
 import {
   cuadrantesSelector,
   titleSelector,
 } from 'redux/selectors/mckinsey.selector';
+import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import Modal from 'components/commons/Modal';
@@ -32,7 +37,6 @@ import { validateField } from 'helpers/validateField';
 import { Container } from 'views/FodaView/styles';
 import ToolTip from 'components/commons/ToolTip';
 import Loading from 'components/commons/Loading';
-import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 
 const McKinseyContainer = () => {
   const { matrizId, id } = useParams();
@@ -62,6 +66,9 @@ const McKinseyContainer = () => {
     setAddModalOpen(false);
   };
 
+  const onDeleteItem = (unidadId) =>
+    dispatch(onDeleteUnidad(matrizId, unidadId));
+
   const initialValues = {
     nombre: '',
     fuerzaCompetitiva: 10,
@@ -82,6 +89,7 @@ const McKinseyContainer = () => {
               onClickGoBackButton={onClickGoBackButton}
               openComments={(target) => setAnchorElement(target)}
               title={title}
+              onDeleteItem={onDeleteItem}
             />
           </Grid>
         </Grid>

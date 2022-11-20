@@ -13,6 +13,7 @@ const mckinseyReducer = (state = defaultState, action) => {
     case constants.CREATE_MCKINSEY_REQUESTED:
     case constants.GET_MCKINSEY_REQUESTED:
     case constants.ADD_UNIDAD_MCKINSEY_REQUESTED:
+    case constants.DELETE_UNIDAD_MCKINSEY_REQUESTED:
       return {
         ...state,
         loading: true,
@@ -20,6 +21,7 @@ const mckinseyReducer = (state = defaultState, action) => {
     case constants.CREATE_MCKINSEY_SUCCEEDED:
     case constants.GET_MCKINSEY_SUCCEEDED:
     case constants.ADD_UNIDAD_MCKINSEY_SUCCEEDED:
+    case constants.DELETE_UNIDAD_MCKINSEY_SUCCEEDED:
       return {
         ...state,
         data: { ...state.data, ...data },
@@ -29,6 +31,7 @@ const mckinseyReducer = (state = defaultState, action) => {
     case constants.CREATE_MCKINSEY_FAILED:
     case constants.DELETE_MCKINSEY_FAILED:
     case constants.ADD_UNIDAD_MCKINSEY_FAILED:
+    case constants.DELETE_UNIDAD_MCKINSEY_FAILED:
       return {
         ...state,
         loading: false,
