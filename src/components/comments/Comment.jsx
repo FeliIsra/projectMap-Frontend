@@ -1,6 +1,7 @@
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {
+  Avatar,
   Box,
   Card,
   CardContent,
@@ -11,6 +12,39 @@ import {
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { onDelete } from 'redux/actions/comments.actions';
+
+const stringToColor = (string) => {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string?.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = '#';
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.slice(-2);
+  }
+  /* eslint-enable no-bitwise */
+  return color;
+};
+
+const stringAvatar = (name) => {
+  return {
+    sx: {
+      bgcolor: stringToColor(name)?.toString(),
+      width: 30,
+      height: 30,
+      fontSize: 16,
+    },
+    children: `${name && name.split(' ')[0][0]}${
+      name.split(' ')[1] ? name.split(' ')[1][0] : ''
+    }`,
+  };
+};
 
 const Comment = ({ comment }) => {
   const dispatch = useDispatch();
@@ -39,20 +73,11 @@ const Comment = ({ comment }) => {
           )}
           <Box alignItems="flex-start" display="flex">
             <Box mr={1.5}>
-              <Typography
-                sx={{
-                  borderRadius: 1000,
-                  backgroundColor: 'white',
-                  padding: 1,
-                  width: '20px',
-                  height: '20px',
-                  textAlign: 'center',
-                }}
-                fontSize={12}
-              >
-                {' '}
-                {comment.author?.firstName[0]}{' '}
-              </Typography>
+              <Avatar
+                {...stringAvatar(
+                  `${comment.author?.firstName} ${comment.author?.lastName}`
+                )}
+              />
             </Box>
             <Box>
               <Box alignItems="center" display="flex">
