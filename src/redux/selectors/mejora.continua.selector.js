@@ -291,12 +291,22 @@ export const lineChartSelector = createSelector(
             ? index % colors?.length
             : colors?.length - (index % colors?.length)
         ];
-      defaultData.datasets.push({
-        label: objective.action,
-        data: objective.checkpoints.map((check) => check.actual),
-        backgroundColor: color,
-        borderColor: color,
-      });
+      const lastWithValue = objective.checkpoints.findLastIndex(
+        (item, index) =>
+          item.actual !== 0 &&
+          objective.checkpoints
+            .slice(index, objective.checkpoints.length + 1)
+            .some((check) => check.actual !== 0)
+      );
+      if (lastWithValue !== -1)
+        defaultData.datasets.push({
+          label: objective.action,
+          data: objective.checkpoints
+            .slice(0, lastWithValue + 1)
+            .map((check) => check.actual),
+          backgroundColor: color,
+          borderColor: color,
+        });
     });
     defaultData.id = balanced[0]?._id;
     return defaultData;

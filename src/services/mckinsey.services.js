@@ -11,3 +11,6 @@ export const getOptions = () => get(`mckinsey/options`);
 
 export const addUnidad = (id, formData) =>
   post(`mckinsey/${id}/unidades`, formData);
+
+export const deleteUnidad = (id, unidadId) =>
+  remove(`mckinsey/${id}/unidades/${unidadId}`);
