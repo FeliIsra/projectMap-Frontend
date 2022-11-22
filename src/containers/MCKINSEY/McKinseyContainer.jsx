@@ -160,7 +160,7 @@ const McKinseyContainer = () => {
                       validate={validateField}
                     />
                     <ToolTip
-                      text="Fuerza competiva: Dentro del mercado en el que se da la actividad economica: ¿como se esta posicionado en comparacion con productos competitivos?"
+                      text="Fuerza competiva: Dentro del mercado en el que se da la actividad economica: ¿como se esta posicionado en comparación con productos competitivos?"
                       placement="right"
                       fontSize="14px"
                     />
