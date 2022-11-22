@@ -10,7 +10,7 @@ import { Box, Typography } from '@mui/material';
 
 const ForgotPasswordForm = ({ onSubmit }) => (
   <FormContainer>
-    <Title>Olvide mi contraseña</Title>
+    <Title>Olvidé mi contraseña</Title>
     <Formik onSubmit={onSubmit} initialValues={{ email: '' }}>
       {({ handleSubmit }) => (
         <CustomForm onSubmit={handleSubmit}>
