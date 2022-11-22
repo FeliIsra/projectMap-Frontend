@@ -3,6 +3,7 @@ import {
   addUnidad,
   create,
   deletePestel,
+  deleteUnidad,
   getOne,
 } from 'services/mckinsey.services';
 
@@ -48,11 +49,25 @@ export function* mckinseyAddUnidad(action) {
   }
 }
 
+export function* mckinseyDeleteUnidad(action) {
+  try {
+    const { id, unidadId } = action;
+    const { data } = yield call(deleteUnidad, id, unidadId);
+    yield put({ type: constants.DELETE_UNIDAD_MCKINSEY_SUCCEEDED, data });
+  } catch (error) {
+    yield put({ type: constants.DELETE_UNIDAD_MCKINSEY_FAILED, error });
+  }
+}
+
 export function* watchMckinsey() {
   yield all([
     takeLatest(constants.CREATE_MCKINSEY_REQUESTED, mckinseyCreate),
     takeLatest(constants.GET_MCKINSEY_REQUESTED, mckinseyGet),
     takeLatest(constants.DELETE_MCKINSEY_REQUEST, mckinseyDelete),
     takeLatest(constants.ADD_UNIDAD_MCKINSEY_REQUESTED, mckinseyAddUnidad),
+    takeLatest(
+      constants.DELETE_UNIDAD_MCKINSEY_REQUESTED,
+      mckinseyDeleteUnidad
+    ),
   ]);
 }

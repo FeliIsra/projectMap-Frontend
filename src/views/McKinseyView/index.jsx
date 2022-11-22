@@ -16,7 +16,7 @@ import {
   FactorDescription,
 } from './styles';
 import { ButtonContainer } from 'views/DashboardView/styles';
-import { ArrowBack, Comment } from '@mui/icons-material';
+import { ArrowBack, Comment, Delete } from '@mui/icons-material';
 import { Title, TitleContainer } from 'views/FodaView/styles';
 import ToolTip from 'components/commons/ToolTip';
 import { tooltips } from './tooltips';
@@ -30,6 +30,7 @@ const McKinseyView = ({
   onClickGoBackButton,
   openComments,
   title,
+  onDeleteItem,
 }) => {
   const renderTitle = (title) => (
     <CardTitleContainer>
@@ -44,6 +45,11 @@ const McKinseyView = ({
     items?.map((item) => (
       <FactorContent>
         <FactorDescription>{item.nombre}</FactorDescription>
+        {!showResults && (
+          <IconButton onClick={() => onDeleteItem(item._id)}>
+            <Delete size="small" />
+          </IconButton>
+        )}
         {showResults && <CustomChip value={item.puntuacion} total={100} />}
       </FactorContent>
     ));

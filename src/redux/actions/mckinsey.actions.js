@@ -20,3 +20,9 @@ export const onAddUnidad = (id, formData) => ({
   id,
   formData,
 });
+
+export const onDeleteUnidad = (id, unidadId) => ({
+  type: constants.DELETE_UNIDAD_MCKINSEY_REQUESTED,
+  id,
+  unidadId,
+});
