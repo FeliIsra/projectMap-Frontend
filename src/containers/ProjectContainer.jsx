@@ -254,7 +254,11 @@ const ProjectContainer = () => {
           },
         }}
       >
-        <MenuItem key={1} disableRipple>
+        <MenuItem
+          key={1}
+          disableRipple
+          sx={{ ':hover': { background: COLORS.AthensGray } }}
+        >
           <Comments show tool="HUB" toolId={id} projectId={id} />
         </MenuItem>
       </Menu>

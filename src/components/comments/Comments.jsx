@@ -46,7 +46,7 @@ const Comments = ({ show, tool, toolId, projectId }) => {
               ))}
             </Box>
           )}
-          <Divider />
+          <Divider sx={{ marginY: '0.5em' }} />
           <Box
             display="flex"
             justifyContent="space-between"

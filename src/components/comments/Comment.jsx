@@ -83,16 +83,11 @@ const Comment = ({ comment }) => {
               <Box alignItems="center" display="flex">
                 <Typography fontSize={14} fontWeight={500}>
                   {comment.author?.firstName} {comment.author?.lastName}
-                  <Typography
-                    color={'#aeaeae'}
-                    component="span"
-                    fontSize={12}
-                    fontWeight={400}
-                    ml={1}
-                  ></Typography>
                 </Typography>
               </Box>
-              <Typography> {comment?.text} </Typography>
+              <Typography sx={{ whiteSpace: 'break-spaces', display: 'flex' }}>
+                {comment?.text}
+              </Typography>
             </Box>
           </Box>
         </CardContent>
