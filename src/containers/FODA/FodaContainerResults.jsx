@@ -115,7 +115,7 @@ const FodaContainer = () => {
                   value: 'porcentaje',
                 },
                 {
-                  label: 'Descripcion',
+                  label: 'Descripción',
                   value: 'descripcion',
                 },
               ]}
@@ -139,7 +139,7 @@ const FodaContainer = () => {
                     value: 'area',
                   },
                   {
-                    label: 'Descripcion',
+                    label: 'Descripcíon',
                     value: 'descripcion',
                   },
                   {

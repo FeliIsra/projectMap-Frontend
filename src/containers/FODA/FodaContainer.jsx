@@ -138,7 +138,7 @@ const FodaContainer = () => {
                   <Box sx={{ width: '100%', display: 'flex' }}>
                     <Field
                       name="descripcion"
-                      placeholder="Descripcion"
+                      placeholder="Descripción"
                       component={AutoComplete}
                       options={seeds[factor] || []}
                       optionKey={'descripcion'}

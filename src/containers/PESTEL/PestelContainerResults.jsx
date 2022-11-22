@@ -121,7 +121,7 @@ const PestelContainer = () => {
                     value: 'area',
                   },
                   {
-                    label: 'Descripcion',
+                    label: 'Descripción',
                     value: 'descripcion',
                   },
                   {

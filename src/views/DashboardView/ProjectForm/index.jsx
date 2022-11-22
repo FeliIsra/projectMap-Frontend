@@ -41,7 +41,7 @@ const ProjectForm = ({ onSubmit }) => (
           <Box sx={{ width: '100%', height: '140px' }}>
             <Field
               name="descripcion"
-              placeholder="Descripcion"
+              placeholder="Descripción"
               component={Textarea}
               validate={validateField}
             />
