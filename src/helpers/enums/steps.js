@@ -31,7 +31,7 @@ export const STEPS = [
     title: 'Planeamiento Financiero y Medición de Resultados',
     menuItems: [
       { titulo: 'Agregar Balaced Scorecard', action: onCreateBalanced },
-      { titulo: 'Agregar OKRs', action: onCreateOkr },
+      { titulo: 'Agregar OKR', action: onCreateOkr },
     ],
   },
   {

@@ -60,6 +60,7 @@ import ConfirmDeleteModal from 'components/commons/ProjectCard/components/confir
 import Loading from 'components/commons/Loading';
 import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
 import { onDelete } from 'redux/actions/questionnarie.actions';
+import { CardTitle } from 'views/FodaView/styles';
 
 const ProjectContainer = () => {
   let { id } = useParams();
@@ -350,6 +351,7 @@ const ProjectContainer = () => {
         onClose={() => setAddTool('')}
       >
         <FormContainer>
+          {console.log(addTool)}
           <Title style={{ fontSize: 18 }}>{addTool?.title}</Title>
           <Formik
             onSubmit={(values) => onSubmitTool(addTool.action, values)}
@@ -357,6 +359,7 @@ const ProjectContainer = () => {
           >
             {({ handleSubmit }) => (
               <CustomForm onSubmit={handleSubmit}>
+                <CardTitle>{addTool?.titulo}</CardTitle>
                 <Box sx={{ width: '100%' }}>
                   <Field
                     name="titulo"
