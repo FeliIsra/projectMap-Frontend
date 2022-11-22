@@ -100,7 +100,7 @@ const McKinseyView = ({
               {
                 <div
                   style={{
-                    overflowY: 'scroll',
+                    overflowY: 'auto',
                     display: 'flex',
                     gap: 5,
                     flexDirection: 'column',

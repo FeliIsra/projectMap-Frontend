@@ -281,7 +281,7 @@ const ProjectView = ({
               sx={{
                 fontFamily: 'Fira Sans, sans-serif',
                 fontSize: '18px',
-                overflowY: 'scroll',
+                overflowY: 'auto',
               }}
             >
               {parse(

@@ -91,7 +91,7 @@ const ConsultoriaView = ({
               flexWrap: 'wrap',
               borderRadius: 3,
               maxHeight: '400px',
-              overflowY: 'scroll',
+              overflowY: 'auto',
               height: '100%',
             }}
           >
@@ -149,7 +149,7 @@ const ConsultoriaView = ({
               padding: '20px',
               borderRadius: 3,
               maxHeight: '400px',
-              overflowY: 'scroll',
+              overflowY: 'auto',
             }}
           >
             {consultants?.map(
