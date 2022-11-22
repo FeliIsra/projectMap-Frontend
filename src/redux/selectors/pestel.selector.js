@@ -103,7 +103,7 @@ export const porcentajeSelector = createSelector(
       porcentaje: (total['politicos'] * 100) / totalPuntuacion,
     };
     const economia = {
-      area: 'Economico',
+      area: 'Económico',
       porcentaje: (total['economicos'] * 100) / totalPuntuacion,
     };
     const sociales = {

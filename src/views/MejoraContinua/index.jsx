@@ -111,7 +111,7 @@ export const dataHorizontalBar = {
 export const dataPie = {
   labels: [
     'Politicos',
-    'Economicos',
+    'Económicos',
     'Sociales',
     'Tecnologicos',
     'Ambientales',

@@ -128,7 +128,7 @@ const PestelView = ({
         <Grid item xs={12} md={6} display={'flex'}>
           <CardContent backgroundcolor={COLORS.Aquamarine}>
             {renderTitle(
-              'Economicos',
+              'Económicos',
               () => onAdd('Economico'),
               total.economicos,
               {

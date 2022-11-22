@@ -56,7 +56,7 @@ export const radarChartSelector = createSelector([getFodas], (fodas) => {
 export const pieChartSelector = createSelector([getPestels], (pestels) => {
   const labels = [
     'Politicos',
-    'Economicos',
+    'Económicos',
     'Sociales',
     'Tecnologicos',
     'Ambientales',
