@@ -154,11 +154,11 @@ const FodaContainer = () => {
           )}
           <ChartContainer>
             <SectionRadar>
-              <Title>Grafico de Radar</Title>
+              <Title>Gráfico de Radar</Title>
               <RadarChartCustom data={dataRadarChart} />
             </SectionRadar>
             <SectionPie>
-              <Title>Grafico de Torta</Title>
+              <Title>Gráfico de Torta</Title>
               <PieChartCustom
                 data={dataPieChart}
                 colors={[
