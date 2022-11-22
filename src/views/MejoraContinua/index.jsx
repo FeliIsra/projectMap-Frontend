@@ -54,8 +54,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const labels = [
   'Desarrollo Mer.',
-  'Penetracion',
-  'Diversificacion',
+  'Penetración',
+  'Diversificación',
   'Desarollo Prod.',
 ];
 

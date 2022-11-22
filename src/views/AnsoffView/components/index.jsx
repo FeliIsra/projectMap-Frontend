@@ -423,7 +423,7 @@ const Steps = ({
               }}
             >
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Clasificado como diversificacion en el mercado</span>
+                <span>Clasificado como diversificación en el mercado</span>
               </Grid>
               <Grid item xs={6} display="flex" justifyContent={'center'}>
                 <span>Exito del producto actual</span>

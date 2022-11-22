@@ -1,15 +1,15 @@
 export const ansoffSteps = [
   {
-    label: 'Clasificacion',
+    label: 'Clasificación',
   },
   {
-    label: 'Penetracion',
+    label: 'Penetración',
   },
   {
     label: 'Desarrollo de Producto',
   },
   {
-    label: 'Diversificacion',
+    label: 'Diversificación',
   },
   {
     label: 'Desarrollo de Mercado',
@@ -28,7 +28,7 @@ export const SituacionDelProducto = {
 
 export const Estrategia = {
   PENETRACION: 'Penetracion',
-  DIVERSIFICAICON: 'Diversificacion',
+  DIVERSIFICAICON: 'Diversificación',
   DESARROLLO_DE_PRODUCTO: 'Desarrollo de Producto',
   DESARROLLO_DE_MERCADO: 'Desarrollo de Mercado',
 };
@@ -73,7 +73,7 @@ export const EstrategiaTextos = {
   },
   [Estrategia.DIVERSIFICAICON]: {
     definicion:
-      'La diversificacion es importante para reducir el riesgo de dependencia de un mercado o producto en particular. Es importante, de todas maneras,  no perder foco de lo que ya funciona.',
+      'La diversificación es importante para reducir el riesgo de dependencia de un mercado o producto en particular. Es importante, de todas maneras,  no perder foco de lo que ya funciona.',
     reflexion:
       'Reflexión: ¿Qué está demostrando ser prometedor y que debería ser abandonado?',
   },
@@ -107,11 +107,11 @@ export const consejosPorEstrategia = (estrategia, porcentaje) => {
     case Estrategia.DIVERSIFICAICON:
       switch (true) {
         case porcentaje === 0:
-          return 'Usted no tiene productos o servicios clasificados como diversificacion. Esto implica que usted no esta intentando expandirse a nuevos mercados o lanzando nuevos productos. Su empresa no sera exitosa con solo escalamiento vertical.';
+          return 'Usted no tiene productos o servicios clasificados como diversificación. Esto implica que usted no esta intentando expandirse a nuevos mercados o lanzando nuevos productos. Su empresa no sera exitosa con solo escalamiento vertical.';
         case porcentaje > 30:
-          return 'Usted tiene un gran porcentaje de productos clasificados como diversificacion. Se esta arriesgando demasiado a nuevos mercados o nuevos productos. Busque equilibrar sus prioridades, o asuma el riesgo conscientemente.';
+          return 'Usted tiene un gran porcentaje de productos clasificados como diversificación. Se esta arriesgando demasiado a nuevos mercados o nuevos productos. Busque equilibrar sus prioridades, o asuma el riesgo conscientemente.';
         case porcentaje > 25 && porcentaje < 30:
-          return 'Usted tiene un numero promedio de productos clasificados como diversificacion. Esta es la posicion en la que quiere estar, el riesgo esta reducido pero las oportunidades de expansion son altas.';
+          return 'Usted tiene un numero promedio de productos clasificados como diversificación. Esta es la posicion en la que quiere estar, el riesgo esta reducido pero las oportunidades de expansion son altas.';
         default:
           return 'Tiene un numero relativamente pequeño de productos clasificados como diversifiacion. Aunque sea una zona de riesgo, busque aumentar estas posibilidades para no perder oportunidades.';
       }

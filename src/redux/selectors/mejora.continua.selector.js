@@ -202,8 +202,8 @@ export const horizontalBarChartSelector = createSelector(
       {
         labels: [
           'Desarrollo Mer.',
-          'Penetracion',
-          'Diversificacion',
+          'Penetración',
+          'Diversificación',
           'Desarollo Prod.',
         ],
         datasets: [
