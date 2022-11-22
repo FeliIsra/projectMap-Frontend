@@ -5,6 +5,7 @@ import {
   Box,
   Card,
   CardContent,
+  Divider,
   IconButton,
   Tooltip,
   Typography,
@@ -57,38 +58,41 @@ const Comment = ({ comment }) => {
     <Box mb={2} width="100%">
       <Card
         sx={{
-          bgcolor: '#aeaeae',
+          bgcolor: 'white',
           transition: 'all .5s ease',
         }}
       >
-        <CardContent sx={{ position: 'relative' }}>
-          {comment.showDelete && (
-            <Box position="absolute" right={5} top={2}>
-              <Tooltip arrow placement="top" title="Borrar">
-                <IconButton onClick={onClickDeleteButton}>
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
-          )}
-          <Box alignItems="flex-start" display="flex">
-            <Box mr={1.5}>
+        <CardContent>
+          <Box
+            alignItems="center"
+            display="flex"
+            justifyContent="space-between"
+          >
+            <Box display="flex" gap="10px" alignItems="center">
               <Avatar
                 {...stringAvatar(
                   `${comment.author?.firstName} ${comment.author?.lastName}`
                 )}
               />
-            </Box>
-            <Box>
-              <Box alignItems="center" display="flex">
-                <Typography fontSize={14} fontWeight={500}>
-                  {comment.author?.firstName} {comment.author?.lastName}
-                </Typography>
-              </Box>
-              <Typography sx={{ whiteSpace: 'break-spaces', display: 'flex' }}>
-                {comment?.text}
+              <Typography fontSize={14} fontWeight={500}>
+                {comment.author?.firstName} {comment.author?.lastName}
               </Typography>
             </Box>
+            {comment.showDelete && (
+              <Box>
+                <Tooltip arrow placement="top" title="Borrar">
+                  <IconButton onClick={onClickDeleteButton}>
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            )}
+          </Box>
+          <Divider sx={{ marginY: '0.5em' }} />
+          <Box>
+            <Typography sx={{ whiteSpace: 'break-spaces', display: 'flex' }}>
+              {comment?.text}
+            </Typography>
           </Box>
         </CardContent>
       </Card>
