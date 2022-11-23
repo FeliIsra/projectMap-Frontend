@@ -76,6 +76,8 @@ const QuestionnarieQuestionsContainer = () => {
     onClickNextButton();
   };
 
+  console.log(loading);
+
   return !loading ? (
     <>
       <LayoutContainer>
