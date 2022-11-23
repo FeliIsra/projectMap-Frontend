@@ -96,7 +96,7 @@ const FodaContainer = () => {
           </Menu>
           <SectionTable>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Title>Tabla de Porcetanjes</Title>
+              <Title>Tabla de Porcentajes</Title>
               <ToolTip
                 text="Esta tabla representa la distribución de las distintas áreas de los factores cargados. Es importante prestar atención a la misma para tener una visión generalizada de como se encuentra su empresa"
                 placement="right"

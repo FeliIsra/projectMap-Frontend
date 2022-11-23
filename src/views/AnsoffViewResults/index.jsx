@@ -101,7 +101,7 @@ const AnsoffViewResults = (props) => {
               justifyContent={'center'}
               alignItems="center"
             >
-              <span style={{ textAlign: 'center' }}>Clasificacion</span>
+              <span style={{ textAlign: 'center' }}>Clasificación</span>
             </Grid>
           </Grid>
         </Grid>
