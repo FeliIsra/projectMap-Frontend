@@ -43,7 +43,7 @@ const QuestionnaireView = ({
 
   const renderPPTs = (ppts) => {
     const pptsReady = ppts?.map((ppt, index) => ({
-      label: `Teoria ${index + 1}`,
+      label: `Pagina ${index + 1}`,
       description: parse(ppt),
     }));
 
