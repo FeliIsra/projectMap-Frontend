@@ -79,7 +79,7 @@ const Steps = ({
                 <Box sx={{ width: '100%' }}>
                   <Field
                     name="situacionDelMercado"
-                    placeholder="Situacion Del Mercado"
+                    placeholder="Situación Del Mercado"
                     component={SelectInput}
                     options={situacionDelMercadoOptions}
                     fontSize={18}
@@ -106,7 +106,7 @@ const Steps = ({
                 <Box sx={{ width: '100%' }}>
                   <Field
                     name="situacionDelProducto"
-                    placeholder="Situacion Del Producto"
+                    placeholder="Situación Del Producto"
                     component={SelectInput}
                     options={situacionDelProductoOptions}
                     fontSize={18}
@@ -171,12 +171,12 @@ const Steps = ({
               </Grid>
               <Grid item xs={4} display="flex" justifyContent={'center'}>
                 <span style={{ textAlign: 'center' }}>
-                  Situacion Del Mercado
+                  Situación Del Mercado
                 </span>
               </Grid>
               <Grid item xs={4} display="flex" justifyContent={'center'}>
                 <span style={{ textAlign: 'center' }}>
-                  Situacion Del Producto
+                  Situación Del Producto
                 </span>
               </Grid>
             </Grid>

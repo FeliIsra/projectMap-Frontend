@@ -127,7 +127,7 @@ const PorterViewResults = ({
               sx={{ mr: 1 }}
               type="button"
             >
-              Atras
+              Atrás
             </Button>
           )}
           <Button

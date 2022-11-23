@@ -82,7 +82,7 @@ export const stepsInfo = {
 
       <p style=text-align:center ><b>Herramientas</b></p>
        - <b>PESTEL</b>: 
-          El análisis PESTEL es utilizado para hacer una planificación estratégica de una empresa, tanto a nivel organizacional como de mercado. Además, si se hace regularmente, tiene la capacidad de mostrar oportunamente las tendencias o cambios en el mercado que puedan influir negativa o positivamente en tu sector por lo que recomendamos que él mismo se realice varias veces por periodo.
+          El análisis PESTEL es utilizado para hacer una planificación estratégica de una empresa, tanto a nivel organizacional como de mercado. Además, si se hace regularmente, tiene la capacidad de mostrar oportunamente las tendencias o cambios en el mercado que puedan influir negativa o positivamente en tu sector, por lo que recomendamos que él mismo se realice varias veces por periodo.
       <br><br>
        - <b>PORTER</b>:
         El modelo de las 5 fuerzas de Porter es una herramienta metodológica de análisis para la investigación acerca de las oportunidades y amenazas en una industria determinada, el mismo utiliza un enfoque mixto entre 5 ejes distintos, siendo los mismos: 
@@ -102,7 +102,7 @@ export const stepsInfo = {
 
       <p style=text-align:center ><b>Herramientas</b></p>
        - <b>FODA</b>: 
-          El análisis FODA es una herramienta de planificación estratégica, diseñada para realizar una análisis interno (Fortalezas y Debilidades) y externo (Oportunidades y Amenazas) en la empresa. Resulta fundamental para la toma de decisiones actuales y futuras. 
+          El análisis FODA es una herramienta de planificación estratégica, diseñada para realizar un análisis interno (Fortalezas y Debilidades) y externo (Oportunidades y Amenazas) en la empresa. Resulta fundamental para la toma de decisiones actuales y futuras. 
           Se trata de una herramienta muy valiosa para cualquier negocio, en tanto que da la pauta para conocer lo que se está haciendo bien y todo aquello que representa un reto actual o potencial.
     `,
   },
@@ -112,14 +112,14 @@ export const stepsInfo = {
     Esta esfera tiene como objetivo el evaluar las posibles oportunidades que posee una organización, como podrían ser posibles negocios a incursionar, como asignar los recursos o como fusionarse. ProjectMap proporciona el análisis del lado del producto en su respectivo mercado.
          <p style=text-align:center ><b>Herramientas</b></p>
        - <b>Matriz Ansoff</b>: 
-         La matriz Ansoff es una herramienta de análisis estratégico que se enfoca en identificar las oportunidades de crecimiento de una empresa. En el caso de nuestra implementación, nos enfocamos en formar una solución de clasificación de productos dependiendo de su estado y su lugar en el mercado. Esta herramienta es importante ya que le dará una visión comparativa en sus distintos productos o servicios para saber cuales debe priorizar sobre otros. 
+         La matriz Ansoff es una herramienta de análisis estratégico que se enfoca en identificar las oportunidades de crecimiento de una empresa. En el caso de nuestra implementación, nos enfocamos en formar una solución de clasificación de productos dependiendo de su estado y su lugar en el mercado. Esta herramienta es importante, ya que le dará una visión comparativa en sus distintos productos o servicios para saber cúales debe priorizar sobre otros. 
 
     `,
   },
   4: {
     title: 'Formulación de la Estrategia Competitiva',
     description: `
-         La misma consiste en la diseño e implementación de planes y estrategias que definan las acciones a realizar para lograr sus objetivos tanto a corto como largo plazo.
+         La misma consiste en el diseño e implementación de planes y estrategias que definan las acciones a realizar para lograr sus objetivos tanto a corto como largo plazo.
          <p style=text-align:center ><b>Herramientas</b></p>
        - <b>Matriz McKinsey</b>: 
           A través de la matriz de McKinsey se evalúa el posicionamiento de un producto o servicio en un mercado y se define si, según las condiciones competitivas y otros factores que pueden afectar a su producción y distribución, es una buena decisión mantener ese producto en un determinado mercado, si conviene invertir para crecer o si, por el contrario, lo más conveniente es realizar una desinversión. El objetivo de esta herramienta es proporcionar información clave para configurar la cartera de negocios de la mejor manera.
@@ -133,7 +133,7 @@ export const stepsInfo = {
        - <b>Planes de transformacion</b>: 
           Los planes de transformación son las estrategias que su empresa deberá tomar para no quedarse atrás en tendencias o nuevas culturas organizacionales que podrían mejorar la calidad de tanto su producto o servicio como de su organización.
           <br><br>
-          Para esto, les ofrecemos una serie de cuestionarios con su respectiva teoría para que usted responda. De su producto ser de una organización, seguramente su consultor asociado le prepare cuestionarios customizados para usted.
+          Para esto, les ofrecemos una serie de cuestionarios con su respectiva teoría para que usted responda. De su producto ser de una organización, seguramente su consultor asociado le prepare cuestionarios personalizados para usted.
     `,
   },
   6: {

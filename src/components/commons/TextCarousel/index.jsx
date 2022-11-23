@@ -72,7 +72,7 @@ export default function TextStepper({ steps }) {
             ) : (
               <KeyboardArrowLeft />
             )}
-            Atras
+            Atrás
           </Button>
         }
         sx={{ backgroundColor: COLORS.Geyser }}

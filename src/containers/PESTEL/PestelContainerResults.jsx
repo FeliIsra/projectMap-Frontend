@@ -80,7 +80,7 @@ const PestelContainer = () => {
             legales={legales}
             title={title}
             onClickButtonGoBack={onClickGoBackButton}
-            buttonTitle="Ir Atras"
+            buttonTitle="Ir Atrás"
             total={total}
             openComments={(target) => setAnchorElement(target)}
           />
