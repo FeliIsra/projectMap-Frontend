@@ -275,13 +275,11 @@ const BalancedView = ({
             >
               {objectives[area]?.map((objective) => (
                 <Grid item xs={12}>
-                  <Accordion>
-                    <AccordionSummary
-                      expanded={expanded === objective._id}
-                      onChange={handleChange(objective._id)}
-                    >
-                      {renderRow(objective)}
-                    </AccordionSummary>
+                  <Accordion
+                    expanded={expanded === objective._id}
+                    onChange={handleChange(objective._id)}
+                  >
+                    <AccordionSummary>{renderRow(objective)}</AccordionSummary>
                     <AccordionDetails>
                       <Checkpoints
                         checkpoints={objective.checkpoints}
