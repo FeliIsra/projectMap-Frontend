@@ -34,9 +34,10 @@ export const resultsSelector = createSelector(
 );
 
 export const initialValuesSelector = createSelector(
-  [getQuestionnaire],
-  (one) => {
+  [getQuestionnaire, getLoading],
+  (one, loading) => {
     const initialValues = {};
+    if (loading) return initialValues;
     one?.chapters?.map((chapter) => {
       const chapterId = chapter?.chapterId;
 
