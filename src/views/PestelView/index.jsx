@@ -112,8 +112,8 @@ const PestelView = ({
         <Grid item xs={12} md={6} display={'flex'}>
           <CardContent backgroundcolor={COLORS.MiddleBlueGreen}>
             {renderTitle(
-              'Politicos',
-              () => onAdd('Politico'),
+              'Políticos',
+              () => onAdd('Político'),
               total.politicos,
               {
                 text: 'En este caso se debe pensar en todos los factores políticos que rodean a tu empresa. Estos elementos provienen de regulaciones legislativas y otros mecanismos, mediante los cuales el gobierno puede incidir en tu negocio.',
@@ -129,7 +129,7 @@ const PestelView = ({
           <CardContent backgroundcolor={COLORS.Aquamarine}>
             {renderTitle(
               'Económicos',
-              () => onAdd('Economico'),
+              () => onAdd('Económico'),
               total.economicos,
               {
                 text: 'Al agregar estos factores, tenga en cuenta todas las variables macroeconómicas que afecten de manera positiva o negativa el desempeño de la empresa u organización tanto a nivel internacional como nacional .Además, tenga en cuenta las variaciones que se puedan presentar en los ciclos económicos, como los periodos de ascenso y de crisis económica. ',
@@ -155,8 +155,8 @@ const PestelView = ({
         <Grid item xs={12} md={6} display={'flex'}>
           <CardContent backgroundcolor={COLORS.Bone}>
             {renderTitle(
-              'Tecnologicos',
-              () => onAdd('Tecnologico'),
+              'Tecnológicos',
+              () => onAdd('Tecnológico'),
               total.tecnologicos,
               {
                 text: 'Los factores tecnológicos son los que están relacionados con el mundo de la ciencia y la innovación. Los mismos son actualmente muy decisivos porque la velocidad de mejora tecnológica es brutal. Se debe ser consciente que la tecnología que se está desarrollando hoy va a cambiar nuestro futuro inmediato y tu empresa no será ajena a estos cambios.',

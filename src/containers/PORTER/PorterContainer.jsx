@@ -22,6 +22,7 @@ import Comments from 'components/comments/Comments';
 import { COLORS } from 'helpers/enums/colors';
 import Loading from 'components/commons/Loading';
 import { onGetAll as onGetAllComments } from 'redux/actions/comments.actions';
+import { getLabel } from 'helpers/enums/porter';
 
 const PorterContainer = () => {
   const { porterId, id } = useParams();
@@ -105,7 +106,7 @@ const PorterContainer = () => {
               }
               return (
                 <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
+                  <StepLabel {...labelProps}>{getLabel(label)}</StepLabel>
                 </Step>
               );
             })}
@@ -132,7 +133,7 @@ const PorterContainer = () => {
                     handleBack={handleBack}
                     handleSubmit={handleSubmit}
                     steps={steps}
-                    titulo={steps[activeStep]}
+                    titulo={getLabel(steps[activeStep])}
                     onClickResults={onClickResultsButton}
                     onClickButtonGoBack={onClickGoBackButton}
                     openComments={(target) => setAnchorElement(target)}

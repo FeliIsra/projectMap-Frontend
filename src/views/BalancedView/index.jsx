@@ -165,7 +165,7 @@ const BalancedView = ({
         <Grid item md={1} sx={tableHeaderStyle}>
           <span>Desvio</span>
           <ToolTip
-            text="Representa la diferencia entre donde estoy versus donde debería estar; el avance esperado versus el avances real."
+            text="Representa la diferencia entre donde estoy versus donde debería estar; el avance esperado versus el avance real."
             placement="right"
             fontSize="14px"
           />

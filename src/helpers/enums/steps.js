@@ -112,8 +112,7 @@ export const stepsInfo = {
     Esta esfera tiene como objetivo el evaluar las posibles oportunidades que posee una organización, como podrían ser posibles negocios a incursionar, como asignar los recursos o como fusionarse. ProjectMap proporciona el análisis del lado del producto en su respectivo mercado.
          <p style=text-align:center ><b>Herramientas</b></p>
        - <b>Matriz Ansoff</b>: 
-         La matriz Ansoff es una herramienta de análisis estratégico que se enfoca en identificar las oportunidades de crecimiento de una empresa. En el caso de nuestra implementación, nos enfocamos en formar una solución de clasificación de productos dependiendo de su estado y su lugar en el mercado. Esta herramienta es importante, ya que le dará una visión comparativa en sus distintos productos o servicios para saber cúales debe priorizar sobre otros. 
-
+         La matriz Ansoff es una herramienta de análisis estratégico que se enfoca en identificar las oportunidades de crecimiento de una empresa. En el caso de nuestra implementación, nos enfocamos en formar una solución de clasificación de productos dependiendo de su estado y su lugar en el mercado. Esta herramienta es importante, ya que le dará una visión comparativa en sus distintos productos o servicios para saber cuales debe priorizar sobre otros.
     `,
   },
   4: {
@@ -130,10 +129,10 @@ export const stepsInfo = {
     description: `
          Ninguna organización puede sobrevivir manteniéndose estática, por lo que planes de transformación deben ser definidos tanto para el talento humano, como para la tecnología utilizada, los procesos que mantiene y cómo maneja la comunicación tanto interna como externa.
          <p style=text-align:center ><b>Herramientas</b></p>
-       - <b>Planes de transformacion</b>: 
+       - <b>Planes de transformación</b>: 
           Los planes de transformación son las estrategias que su empresa deberá tomar para no quedarse atrás en tendencias o nuevas culturas organizacionales que podrían mejorar la calidad de tanto su producto o servicio como de su organización.
           <br><br>
-          Para esto, les ofrecemos una serie de cuestionarios con su respectiva teoría para que usted responda. De su producto ser de una organización, seguramente su consultor asociado le prepare cuestionarios personalizados para usted.
+          Para esto, les ofrecemos una serie de cuestionarios con su respectiva teoría para que usted responda. De su producto ser de una organización, seguramente su consultor.
     `,
   },
   6: {

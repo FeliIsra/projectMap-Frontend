@@ -330,7 +330,7 @@ const MejoraContinuaView = ({
                     options={{
                       plugins: {
                         legend: {
-                          position: 'right',
+                          position: 'bottom',
                         },
                       },
                     }}

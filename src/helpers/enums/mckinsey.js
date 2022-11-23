@@ -26,7 +26,7 @@ export const CuadrantesColor = {
 
 export const SignificadoCuadrante = {
   DOBLE_O_NADA:
-    'Existe un riesgo moderado para el éxito de esta unidad de negocio. Sólo se debe invertir si queda después de inversiones seguras de capital y el crecimiento.',
+    'Existe un riesgo moderado para el éxito de esta unidad de negocio. Solo se debe invertir si queda después de inversiones seguras de capital y el crecimiento.',
   DESARROLLAR:
     'Algunas de las inversiones deben hacerse en esta unidad de negocio, dando prioridad a mejorar / corregir las fallas que llevaron a la puntuación y tomar la puntuación más alta.',
   REFORZAR:
@@ -34,7 +34,7 @@ export const SignificadoCuadrante = {
   REPLANTEAR:
     'Si la unidad de negocio a generar dinero, vale la pena invertir lo menos posible para que continúe operando. Si no es así, reducir las inversiones y planificar una salida gradual.',
   REORGANIZAR:
-    'Existe un riesgo moderado para el éxito de esta unidad de negocio. Sólo se debe invertir si queda después de inversiones seguras de capital y el crecimiento.',
+    'Existe un riesgo moderado para el éxito de esta unidad de negocio. Solo se debe invertir si queda después de inversiones seguras de capital y el crecimiento.',
   MANTENER:
     'Algunas de las inversiones deben hacerse en esta unidad de negocio, dando prioridad a mejorar / corregir las fallas que llevaron a la puntuación y tomar la puntuación más alta.',
   ABANDONAR:
@@ -42,7 +42,7 @@ export const SignificadoCuadrante = {
   SALIR_CON_ORDEN:
     'Si la unidad de negocio a generar dinero, vale la pena invertir lo menos posible para que continúe operando. Si no es así, reducir las inversiones y planificar una salida gradual.',
   COSECHAR:
-    'Existe un riesgo moderado para el éxito de esta unidad de negocio. Sólo se debe invertir si queda después de inversiones seguras de capital y el crecimiento.',
+    'Existe un riesgo moderado para el éxito de esta unidad de negocio. Solo se debe invertir si queda después de inversiones seguras de capital y el crecimiento.',
 };
 
 export const CuadrantesOrder = {

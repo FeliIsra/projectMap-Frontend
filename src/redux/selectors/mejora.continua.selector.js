@@ -55,10 +55,10 @@ export const radarChartSelector = createSelector([getFodas], (fodas) => {
 
 export const pieChartSelector = createSelector([getPestels], (pestels) => {
   const labels = [
-    'Politicos',
+    'Políticos',
     'Económicos',
     'Sociales',
-    'Tecnologicos',
+    'Tecnológicos',
     'Ambientales',
     'Legales',
   ];
@@ -228,12 +228,12 @@ export const horizontalChartSelector = createSelector([getOkrs], (tool) => {
     labels: [],
     datasets: [
       {
-        label: 'Target',
+        label: 'Objetivo',
         data: [],
         backgroundColor: 'rgba(75, 192, 192, 1)',
       },
       {
-        label: 'Progress',
+        label: 'Avance',
         data: [],
         backgroundColor: 'rgba(54, 162, 235, 1)',
       },

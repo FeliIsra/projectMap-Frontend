@@ -79,7 +79,7 @@ export const EstrategiaTextos = {
     definicion:
       'Estos productos ya existen y están en los mercados que conozco. Es importante tener siempre un buen porcentaje de los mismos para asegurar ingresos y tener control de los riesgos.',
     reflexion:
-      'Reflexión: ¿Tengo un buen nivel de penetracion de producto que me permite estabilizar mi riesgo?',
+      'Reflexión: ¿Tengo un buen nivel de penetración de producto que me permite estabilizar mi riesgo?',
   },
   [Estrategia.DIVERSIFICAICON]: {
     definicion:
@@ -89,9 +89,9 @@ export const EstrategiaTextos = {
   },
   [Estrategia.DESARROLLO_DE_PRODUCTO]: {
     definicion:
-      'Usted está intentando innovar lanzando nuevos productos en mercados conocidos. Esta practica es esencial y siempre deben mantenerse para evitar la entrada de posibles competidores.',
+      'Usted está intentando innovar lanzando nuevos productos en mercados conocidos. Esta práctica es esencial y siempre deben mantenerse para evitar la entrada de posibles competidores.',
     reflexion:
-      'Reflexión:  ¿Que otros productos puedo lanzar conociendo a mis clientes actuales?',
+      'Reflexión:  ¿Qué otros productos puedo lanzar conociendo a mis clientes actuales?',
   },
   [Estrategia.DESARROLLO_DE_MERCADO]: {
     definicion:
@@ -132,7 +132,7 @@ export const consejosPorEstrategia = (estrategia, porcentaje) => {
         case porcentaje > 30:
           return 'Tiene un gran número de productos o servicios clasificados como desarrollo del mercado. Tenga cuidado de no poner toda su energía y riesgo en expandirse a nuevos mercados. Recuerde que mantener clientes actuales es mucho mas barato y seguro que crear nuevos. Busque un equilibrio.';
         case porcentaje > 25 && porcentaje < 30:
-          return 'Usted tiene un número promedio de productos clasificados como desarrollo de mercado. Esto es extremadamente saludable ya que se trata de un equilibrio interesante entre innovación y mantener mercados funcionales. Siga asi.';
+          return 'Usted tiene un número promedio de productos clasificados como desarrollo de mercado. Esto es extremadamente saludable ya que se trata de un equilibrio interesante entre innovación y mantener mercados funcionales. Siga así.';
         default:
           return 'Tiene un número pequeño de productos clasificados como desarrollo de mercado. El riesgo es bajo, pero las oportunidades también. Busque utilizar productos ya testeados y exitosos en nuevos mercados.';
       }
@@ -141,11 +141,11 @@ export const consejosPorEstrategia = (estrategia, porcentaje) => {
         case porcentaje === 0:
           return 'Usted no tiene productos o servicios clasificados como de desarrollo de productos. Esto es extremadamente peligroso, ya que indica que su nivel de innovación es nulo. El producto final de esta situación es perder terreno ante nuevos participantes o competencia innovativa.';
         case porcentaje > 30:
-          return 'Usted tiene un gran porcentaje de sus productos o servicios clasificados como desarrollo de producto. Tenga cuidado con sus inversiones, no todas llevaran a rendimiento a corto plazo, algunas tampoco lo harán al largo. Recuerde que invertir es intrinsicamente riesgoso y dirija sus esfuerzos y dineros en los mejores productos.';
+          return 'Usted tiene un gran porcentaje de sus productos o servicios clasificados como desarrollo de producto. Tenga cuidado con sus inversiones, no todas llevarán a rendimiento a corto plazo, algunas tampoco lo harán al largo. Recuerde que invertir es intrínsecamente riesgoso y dirija sus esfuerzos y dineros en los mejores productos.';
         case porcentaje > 25 && porcentaje < 30:
           return 'Usted tiene un número promedio de productos clasificados como desarrollo de productos.  Se encuentra en un lugar saludable. De tener éxito, no se deje llevar y no siga invirtiendo en todo producto que se le ocurra. Sea cauteloso ante nuevos riesgos.';
         default:
-          return 'Tiene un número relativamente pequeño de productos clasificados como de desarrollo de producto. Por un lado es cierto que el riesgo es bajo, pero esto podría indicar una falta de innovación en su empresa. Estudie si esto es su realidad y de ser asi invierta en la misma.';
+          return 'Tiene un número relativamente pequeño de productos clasificados como de desarrollo de producto. Por un lado es cierto que el riesgo es bajo, pero esto podría indicar una falta de innovación en su empresa. Estudie si esto es su realidad y de ser así invierta en la misma.';
       }
     default:
       return '';
