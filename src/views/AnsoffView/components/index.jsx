@@ -273,10 +273,14 @@ const Steps = ({
               }}
             >
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Clasificado como penetracion de mercado</span>
+                <span style={{ textAlign: 'center' }}>
+                  Clasificado como penetración de mercado
+                </span>
               </Grid>
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Exito del producto actual</span>
+                <span style={{ textAlign: 'center' }}>
+                  Exito del producto actual
+                </span>
               </Grid>
             </Grid>
           </Grid>
@@ -347,10 +351,14 @@ const Steps = ({
               }}
             >
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Clasificado como desarrollo de prducto</span>
+                <span style={{ textAlign: 'center' }}>
+                  Clasificado como desarrollo de prducto
+                </span>
               </Grid>
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Exito del producto actual</span>
+                <span style={{ textAlign: 'center' }}>
+                  Exito del producto actual
+                </span>
               </Grid>
             </Grid>
           </Grid>
@@ -423,10 +431,14 @@ const Steps = ({
               }}
             >
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Clasificado como diversificación en el mercado</span>
+                <span style={{ textAlign: 'center' }}>
+                  Clasificado como diversificación en el mercado
+                </span>
               </Grid>
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Exito del producto actual</span>
+                <span style={{ textAlign: 'center' }}>
+                  Exito del producto actual
+                </span>
               </Grid>
             </Grid>
           </Grid>
@@ -497,10 +509,14 @@ const Steps = ({
               }}
             >
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Clasificado como desarrollo de mercado</span>
+                <span style={{ textAlign: 'center' }}>
+                  Clasificado como desarrollo de mercado
+                </span>
               </Grid>
               <Grid item xs={6} display="flex" justifyContent={'center'}>
-                <span>Exito del producto actual</span>
+                <span style={{ textAlign: 'center' }}>
+                  Exito del producto actual
+                </span>
               </Grid>
             </Grid>
           </Grid>

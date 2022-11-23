@@ -27,11 +27,21 @@ export const SituacionDelProducto = {
 };
 
 export const Estrategia = {
-  PENETRACION: 'Penetración',
-  DIVERSIFICAICON: 'Diversificación',
+  PENETRACION: 'Penetracion',
+  DIVERSIFICAICON: 'Diversificacion',
   DESARROLLO_DE_PRODUCTO: 'Desarrollo de Producto',
   DESARROLLO_DE_MERCADO: 'Desarrollo de Mercado',
 };
+
+export const Estrategias = [
+  { label: 'Penetración', value: Estrategia.PENETRACION },
+  { label: 'Diversificación', value: Estrategia.DIVERSIFICAICON },
+  { label: 'Desarrollo de Producto', value: Estrategia.DESARROLLO_DE_PRODUCTO },
+  { label: 'Desarrollo de Mercado', value: Estrategia.DESARROLLO_DE_MERCADO },
+];
+
+export const getEstrategiaLabel = (value) =>
+  Estrategias.find((exito) => exito.value === value).label;
 
 export const EstrategiaClasificacion = {
   [Estrategia.PENETRACION]: {

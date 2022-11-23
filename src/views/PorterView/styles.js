@@ -7,9 +7,7 @@ export const QuestionContainer = styled('div')({
 });
 
 export const Container = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0 auto',
+  margin: '20px auto 0',
   maxWidth: 1300,
   alignItems: 'center',
   justifyContent: 'center',
