@@ -7,6 +7,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import TextStepper from 'components/commons/TextCarousel';
+import parse from 'html-react-parser';
 
 const QuestionnaireView = ({
   title,
@@ -43,7 +44,7 @@ const QuestionnaireView = ({
   const renderPPTs = (ppts) => {
     const pptsReady = ppts?.map((ppt, index) => ({
       label: `Teoria ${index + 1}`,
-      description: ppt,
+      description: parse(ppt),
     }));
 
     return <TextStepper steps={pptsReady} />;
