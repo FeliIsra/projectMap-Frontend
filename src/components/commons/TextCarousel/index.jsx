@@ -42,6 +42,7 @@ export default function TextStepper({ steps }) {
           height: 255,
           width: '100%',
           bgcolor: '#aeaeae',
+          overflowY: 'auto',
         }}
       >
         <Typography sx={{ ml: 3 }}>{steps[activeStep].description}</Typography>
