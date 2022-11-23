@@ -90,7 +90,7 @@ const PorterContainer = () => {
   return (
     <LayoutContainer>
       <Container>
-        <Box sx={{ width: '100%', marginTop: '200px' }}>
+        <Box sx={{ width: '100%' }}>
           <Stepper activeStep={activeStep}>
             {steps?.map((label, index) => {
               const stepProps = {};

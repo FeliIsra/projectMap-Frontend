@@ -71,7 +71,7 @@ const FodaContainer = () => {
             fortalezas={fortalezas}
             title={title}
             onClickButtonGoBack={onClickGoBackButton}
-            buttonTitle="Ir Atras"
+            buttonTitle="Ir Atrás"
             total={total}
             openComments={(target) => setAnchorElement(target)}
           />
@@ -139,7 +139,7 @@ const FodaContainer = () => {
                     value: 'area',
                   },
                   {
-                    label: 'Descripcíon',
+                    label: 'Descripción',
                     value: 'descripcion',
                   },
                   {

@@ -110,7 +110,7 @@ const McKinseyContainerResults = () => {
                       value: 'title',
                     },
                     {
-                      label: '¿Que significa para la Unidad de Negocio?',
+                      label: '¿Qué significa para la Unidad de Negocio?',
                       value: 'significado',
                     },
                     {

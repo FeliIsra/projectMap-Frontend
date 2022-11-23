@@ -138,7 +138,7 @@ const PorterView = ({
                     sx={{ mr: 1 }}
                     type="button"
                   >
-                    Atras
+                    Atrás
                   </Button>
                 )}
                 <Button color="primary" type="submit">

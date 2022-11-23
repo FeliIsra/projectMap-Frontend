@@ -140,7 +140,7 @@ const AnsoffView = (props) => {
                       <Box sx={{ width: '100%' }}>
                         <Field
                           name="situacionDelMercado"
-                          placeholder="Situacion Del Mercado"
+                          placeholder="Situación Del Mercado"
                           component={SelectInput}
                           options={situacionDelMercadoOptions}
                           fontSize={18}
@@ -167,7 +167,7 @@ const AnsoffView = (props) => {
                       <Box sx={{ width: '100%' }}>
                         <Field
                           name="situacionDelProducto"
-                          placeholder="Situacion Del Producto"
+                          placeholder="Situación Del Producto"
                           component={SelectInput}
                           options={situacionDelProductoOptions}
                           fontSize={18}

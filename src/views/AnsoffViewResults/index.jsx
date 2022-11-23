@@ -8,6 +8,7 @@ import {
   Estrategia,
   EstrategiaClasificacion,
   EstrategiaTextos,
+  getEstrategiaLabel,
 } from 'helpers/enums/ansoff';
 import { TitleContainer } from 'components/commons/ProjectCard/styles';
 import { ButtonContainer } from 'views/ProjectView/styles';
@@ -122,7 +123,9 @@ const AnsoffViewResults = (props) => {
                   justifyContent={'center'}
                   alignItems="center"
                 >
-                  <span style={{ textAlign: 'center' }}>{estrategia}</span>
+                  <span style={{ textAlign: 'center' }}>
+                    {getEstrategiaLabel(estrategia)}
+                  </span>
                 </Grid>
                 <Grid
                   item
@@ -247,7 +250,7 @@ const AnsoffViewResults = (props) => {
                           fontWeight: 800,
                         }}
                       >
-                        {estrategia}
+                        {getEstrategiaLabel(estrategia)}
                       </Typography>
                     </div>
                     <span>{EstrategiaTextos[estrategia].definicion}</span>

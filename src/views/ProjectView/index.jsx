@@ -289,13 +289,13 @@ const ProjectView = ({
                   ? `<br> ${stepsInfo[stepHover].description}`
                   : `
                       <br>
-                      El proceso de Planificación Estratégica puede ser dividido en varias fases, todas con sus distintas herramientas orientadas a evaluar la situación actual de su proyecto, definir lineamientos estratégicos y un plan de acción para alcanzar los objetivos que usted decida definir. En ProjectMap, y con el propósito de simplificar el mismo, nos limitamos a 7 esferas con sus respectivas herramientas, 6 completables y una de visualización. Las mismas pueden ser completadas en cualquier orden, dependiendo de la información que usted tenga a su disposición
+                      El proceso de Planificación Estratégica puede ser dividido en varias fases, todas con sus distintas herramientas orientadas a evaluar la situación actual de su proyecto, definir lineamientos estratégicos y un plan de acción para alcanzar los objetivos que usted decida definir. En ProjectMap, y con el propósito de simplificar el mismo, nos limitamos a 7 esferas con sus respectivas herramientas, 6 para completar, y una para visualizar. Las mismas pueden ser completadas en cualquier orden, dependiendo de la información que usted tenga a su disposición
                       <br><br>
                       <p style=text-align:center><b>Modo de uso</b></p>
                       Al hacer click en las distintas esferas detalladas del lado izquierdo de la pantalla, podrá ver información de las mismas junto con las distintas herramientas disponibles para su uso. Recuerde, cuanto más esferas complete y con más periodicidad las actualice, mejores serán las respuestas que las mismas le den, y mayor seguimiento le podrá dar usted a su proyecto. 
                       <br><br>
                       <p style=text-align:center><b>Completitud de las esferas</b></p>
-                      Inicialmente, todas las esferas aparecerán con su completitud vacía, por lo que estarán marcadas en rojo. Cuando usted avance con las mismas, vera su color cambiar de rojo a amarillo, que representa completitud intermedia, y de amarillo a verde, representanto su completitud recomendada. 
+                      Inicialmente, todas las esferas aparecerán con su completitud vacía, por lo que estarán marcadas en rojo. Cuando usted avance con las mismas, verá su color cambiar de rojo a amarillo, que representa completitud intermedia, y de amarillo a verde, representando su completitud recomendada. 
                       <br><br>
                       Recuerde que estos colores representan la completitud de la herramienta y no tiene que ver con las respuestas o consejos de las mismas
                   `

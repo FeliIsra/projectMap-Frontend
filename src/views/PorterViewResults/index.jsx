@@ -62,6 +62,7 @@ const PorterViewResults = ({
             border: '3px solid #264653',
             alignItems: 'center',
             justifyContent: 'center',
+            display: 'flex',
           }}
         >
           <Typography variant={'h5'}>
@@ -126,7 +127,7 @@ const PorterViewResults = ({
               sx={{ mr: 1 }}
               type="button"
             >
-              Atras
+              Atrás
             </Button>
           )}
           <Button
