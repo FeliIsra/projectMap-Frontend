@@ -144,7 +144,7 @@ export const barChartSelector = createSelector([getPorters], (porters) => {
           prev.datasets[index].data[2] = item.valorConsejoGeneral;
         if (item.fuerza === 'Amenaza de nuevos competidores')
           prev.datasets[index].data[3] = item.valorConsejoGeneral;
-        if (item.fuerza === 'Amenaza de productos substitutos')
+        if (item.fuerza === 'Amenaza de productos sustitutos')
           prev.datasets[index].data[4] = item.valorConsejoGeneral;
       });
       prev.datasets[index].label = porter.titulo;
@@ -156,7 +156,7 @@ export const barChartSelector = createSelector([getPorters], (porters) => {
         'Clientes',
         'Proveedores',
         'A. Competidores',
-        'A. Substitutos',
+        'A. sustitutos',
       ],
       datasets: [
         {

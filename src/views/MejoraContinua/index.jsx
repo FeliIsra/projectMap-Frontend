@@ -93,7 +93,7 @@ export const dataLine = {
 };
 
 export const dataHorizontalBar = {
-  labels: ['Objetivo 1', 'Objectivo 2', 'Objetivo 3', 'Objetivo 4'],
+  labels: ['Objetivo 1', 'Objetivo 2', 'Objetivo 3', 'Objetivo 4'],
   datasets: [
     {
       label: 'Dataset 1',

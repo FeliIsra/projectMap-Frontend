@@ -15,7 +15,7 @@ export const defaultState = {
     'Poder de negociacion con los clientes': [],
     'Poder de negociacion con los proveedores': [],
     'Amenaza de nuevos competidores': [],
-    'Amenaza de productos substitutos': [],
+    'Amenaza de productos sustitutos': [],
   },
   consejos: null,
 };

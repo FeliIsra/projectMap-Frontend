@@ -103,7 +103,7 @@ export const initialValues = {
       valoracion: '',
     },
   },
-  'Amenaza de productos substitutos': {
+  'Amenaza de productos sustitutos': {
     1: {
       nivelDeConcordancia: '',
       valoracion: '',

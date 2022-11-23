@@ -95,7 +95,6 @@ const BalancedView = ({
   };
 
   const renderHeader = (area) => {
-    console.log(area);
     let toolTip;
     if (area === 'Financiera')
       toolTip =
@@ -140,7 +139,7 @@ const BalancedView = ({
           />
         </Grid>
         <Grid item md={1} sx={tableHeaderStyle}>
-          <span>Objectivo</span>
+          <span>Objetivo</span>
           <ToolTip
             text="Piense un objetivo desafiante pero posible, aunque usted tiene la posibilidad de editar el mismo, recomendamos mantener la primera aproximación al mismo para poder observar mejor los desvíos."
             placement="right"
@@ -298,7 +297,6 @@ const BalancedView = ({
                   </Accordion>
                 </Grid>
               ))}
-              {/* Cambiar por el area que hace el render */}
               <Grid item xs={12}>
                 {areaInput === area && (
                   <ObjetiveInput

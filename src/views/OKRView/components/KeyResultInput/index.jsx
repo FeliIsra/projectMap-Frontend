@@ -165,7 +165,7 @@ const KeyResultInput = ({ okr, onSubmit, onClickCancel }) => {
               <QuarterFieldContainer>
                 <Field
                   name="goal"
-                  placeholder="Objectivo"
+                  placeholder="Objetivo"
                   component={Input}
                   inputProps={{
                     style: { textAlign: 'center' },

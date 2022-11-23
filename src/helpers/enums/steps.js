@@ -92,7 +92,7 @@ export const stepsInfo = {
         2) Poder de negociación con los clientes<br>
         3) Poder de negociación con los proveedores<br>
         4) Amenaza de nuevos competidores<br>
-        5) Amenaza de productos substitutos 
+        5) Amenaza de productos sustitutos 
     `,
   },
   2: {

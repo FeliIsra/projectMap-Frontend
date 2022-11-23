@@ -137,7 +137,7 @@ const ObjetiveInput = ({ onSubmit, onClickCancel, area }) => {
                 <Box sx={{ width: '100%' }}>
                   <Field
                     name="target"
-                    placeholder="Objectivo"
+                    placeholder="Objetivo"
                     component={Input}
                     inputProps={{
                       style: { textAlign: 'center' },
