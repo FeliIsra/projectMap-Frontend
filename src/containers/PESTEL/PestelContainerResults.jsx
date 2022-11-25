@@ -117,7 +117,7 @@ const PestelContainer = () => {
                 items={consejos}
                 columns={[
                   {
-                    label: 'Area',
+                    label: 'Área',
                     value: 'area',
                   },
                   {

@@ -107,7 +107,7 @@ const FodaContainer = () => {
               items={items}
               columns={[
                 {
-                  label: 'Area',
+                  label: 'Área',
                   value: 'area',
                 },
                 {

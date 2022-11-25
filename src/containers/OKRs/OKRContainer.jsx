@@ -153,7 +153,7 @@ const OKRContainer = () => {
                 <Box sx={{ width: '100%' }}>
                   <Field
                     name="area"
-                    placeholder="Area"
+                    placeholder="Área"
                     type="text"
                     component={Input}
                     validate={validateField}
